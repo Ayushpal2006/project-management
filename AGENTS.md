@@ -70,6 +70,10 @@ Also in the photos, roles unconfirmed: Ismail (`Ismail.png`) and Yash (`Yash V.p
 6. Never commit secrets (`carousel/.env`) and, while the repo is public, never commit photos of real people or other creators' work.
 7. Never move, rename or delete the user's files without asking.
 
+## Working preferences
+
+- **Git:** commit and push straight to `main`. No feature branches or pull requests unless the user asks for one. When working from a cloud session, prefer running git on the user's own Mac terminal (Remote Control) so the push uses their setup.
+
 ## Tools
 
 - **Publishing and scheduling:** Zernio (confirmed 2026-10-30; the user sometimes calls it "Journeyo"). Use `carousel/` (API key in `carousel/.env`) or the Zernio connector. As of 2026-10-30 the only connected account is YouTube `ayushpal-o9z`; Instagram is not connected yet.
