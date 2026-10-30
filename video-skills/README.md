@@ -1,6 +1,6 @@
 # Video skills
 
-The Claude Code skills used for The Skilled Brains video work. This folder holds references, not copies: `skills.tsv` lists each skill's GitHub repo and the exact commit we use, and `install.sh` downloads them into `~/.claude/skills`.
+The Claude Code skills used for The Skilled Brains video work. `skills.tsv` lists each skill's GitHub repo and the exact commit we use. A copy of each at that commit is kept in `vendor/` (all four are MIT-licensed; their licence files are kept alongside), so `install.sh` works offline on a fresh laptop. It installs them into `~/.claude/skills` (and `~/.codex/skills` if Codex is installed).
 
 | Skill | Source | Installs as |
 |-------|--------|-------------|
@@ -32,7 +32,7 @@ Restart Claude Code afterwards.
 
 ## Updating a skill
 
-Change its commit in `skills.tsv` to a newer one from that repo, re-run `install.sh`, and commit the change so every machine gets the same version.
+Change its commit in `skills.tsv` to a newer one from that repo, delete its folder in `vendor/` and copy in the files at the new commit (or just delete it, and `install.sh` downloads that commit instead), then commit so every machine gets the same version.
 
 ## Adding a skill
 

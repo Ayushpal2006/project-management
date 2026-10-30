@@ -36,11 +36,17 @@ install_folder() {
 
 while IFS=$'\t' read -r name repo commit path install_as; do
   [[ -z "$name" || "$name" == \#* ]] && continue
-  echo "$name ($repo @ ${commit:0:7})"
-  checkout="$cache/$name"
-  git init -q "$checkout"
-  git -C "$checkout" fetch -q --depth 1 "$repo" "$commit"
-  git -C "$checkout" checkout -q FETCH_HEAD
+  if [[ -d "$here/vendor/$name" ]]; then
+    # A copy at the pinned commit is committed in vendor/, so no network is needed.
+    echo "$name (vendored copy of $repo @ ${commit:0:7})"
+    checkout="$here/vendor/$name"
+  else
+    echo "$name ($repo @ ${commit:0:7})"
+    checkout="$cache/$name"
+    git init -q "$checkout"
+    git -C "$checkout" fetch -q --depth 1 "$repo" "$commit"
+    git -C "$checkout" checkout -q FETCH_HEAD
+  fi
 
   if [[ "$install_as" == "-" ]]; then
     for skill in "$checkout/$path"/*/; do
