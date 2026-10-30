@@ -72,14 +72,13 @@ Also in the photos, roles unconfirmed: Ismail (`Ismail.png`) and Yash (`Yash V.p
 
 ## Tools
 
-- **Publishing and scheduling:** Zernio (`carousel/`, API key in `carousel/.env`).
+- **Publishing and scheduling:** Zernio (confirmed 2026-10-30; the user sometimes calls it "Journeyo"). Use `carousel/` (API key in `carousel/.env`) or the Zernio connector. As of 2026-10-30 the only connected account is YouTube `ayushpal-o9z`; Instagram is not connected yet.
 - **Editing:** Premiere Pro and After Effects; deliver editable project files.
 - **B-roll:** team Google Drive library first, see `skilled-brains-editing-tools`.
 
 ## Open questions for the user
 
 - Instagram and YouTube channel links, so past content can be studied and logged.
-- "Journeyo" for scheduling: assumed to mean Zernio, which is already set up. Confirm.
 - "OS" (installed) and "Real Studio" (for video): what they are and their links.
 - The movie / image archive for B-roll: link.
 - Whether the repo should become private, so team photos can be committed and a new laptop gets them with the clone.
