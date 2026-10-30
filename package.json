@@ -1,0 +1,18 @@
+{
+  "name": "skilled-brains-carousel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Publish The Skilled Brains image carousels to social platforms through Zernio",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "accounts": "node scripts/list-accounts.js",
+    "post": "node scripts/post-carousel.js"
+  },
+  "dependencies": {
+    "@zernio/node": "^0.2.1406",
+    "dotenv": "^18.0.9"
+  }
+}
