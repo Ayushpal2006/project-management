@@ -1,54 +1,58 @@
-# The Skilled Brains Carousel
+# The Skilled Brains: carousel and video toolkit
 
-Publishes image carousels (multi-image posts) to Instagram, LinkedIn and other platforms through [Zernio](https://zernio.com).
+Everything needed to make and publish The Skilled Brains content with Claude Code, in one repo. Clone it on any computer or cloud machine, follow the setup below, and you can carry on where you left off.
 
-## Setup
+| Folder | What's in it |
+|--------|--------------|
+| [`carousel/`](carousel/) | Publishes image carousels to Instagram, LinkedIn and other platforms through [Zernio](https://zernio.com), plus a Claude skill for it |
+| [`video-skills/`](video-skills/) | Pinned references to the Claude Code video skills (effects, Watch Skill, GSAP, Three.js) and a script that installs them |
 
-Requires Node.js 18 or newer.
+## Setup on a new machine
+
+You need [git](https://git-scm.com), [Node.js](https://nodejs.org) 18+, Python 3, [uv](https://docs.astral.sh/uv/) and [Claude Code](https://claude.com/claude-code).
+
+**1. Get the repo**
 
 ```bash
+git clone https://github.com/Ayushpal2006/project-management.git
+cd project-management
+```
+
+**2. Install the skills** (video skills and the carousel skill, into `~/.claude/skills`)
+
+```bash
+./video-skills/install.sh
+pip install numpy opencv-python pillow mediapipe
+uv tool install 'watch-skill[standard]'
+claude mcp add watch-skill -- watch-skill serve
+```
+
+**3. Set up the carousel tool**
+
+```bash
+cd carousel
 npm install
 cp .env.example .env
 ```
 
-Open `.env` and set `ZERNIO_API_KEY` to your key from the Zernio dashboard. `.env` is gitignored, so never put the key anywhere else in the repo.
-
-Before posting, connect your social accounts in the Zernio dashboard.
-
-## Find your account IDs
+Put your Zernio API key in `carousel/.env`. Then check it works:
 
 ```bash
 npm run accounts
 ```
 
-This is read-only. It prints each connected account's platform and ID, which you pass to `--account` below.
+**4. Restart Claude Code** so it picks up the new skills.
 
-## Post a carousel
+## What you do yourself vs. what's automated
 
-```bash
-# Save as a draft in Zernio (the default)
-npm run post -- --caption "5 tips for better notes" --account instagram:ACCOUNT_ID slides/1.png slides/2.png slides/3.png
+These steps need you, because they involve your accounts and secrets:
 
-# Schedule it
-npm run post -- --caption "..." --account instagram:ACCOUNT_ID --schedule 2026-11-01T10:00:00Z slides/*.png
+- **Zernio API key.** Copy it from the [Zernio dashboard](https://zernio.com) into `carousel/.env` on each machine. That file is gitignored, so the key never goes to GitHub. If the key is ever exposed, for example by pasting it into a chat, rotate it in the dashboard and update `.env`.
+- **Connecting social accounts.** Link Instagram, LinkedIn and the rest inside the Zernio dashboard. Posts can't publish until accounts are connected.
+- **Approving anything that publishes.** Carousels are saved as drafts unless you ask to schedule or publish them.
 
-# Publish right away (this posts real content)
-npm run post -- --caption "..." --account instagram:ACCOUNT_ID --account linkedin:ACCOUNT_ID --now slides/*.png
-```
+Everything else is scripted or handled by Claude: installing skills at the same versions, uploading slides, creating posts, and looking up account IDs.
 
-Slides are uploaded to Zernio media storage in order, then attached to one post. Supported formats are JPG, PNG, WebP and GIF, and a carousel needs at least two images.
+## Keeping machines in sync
 
-## Using it from code
-
-```js
-import { createCarouselPost } from './src/carousel.js';
-
-const post = await createCarouselPost({
-  caption: '5 tips for better notes',
-  imagePaths: ['slides/1.png', 'slides/2.png'],
-  accounts: [{ platform: 'instagram', accountId: 'ACCOUNT_ID' }],
-  scheduledFor: '2026-11-01T10:00:00Z', // omit for a draft
-});
-```
-
-See the [Zernio API docs](https://zernio.com/llms.txt) for analytics, inbox and other endpoints.
+Commit changes here and `git pull` on the other machine. If `video-skills/skills.tsv` changed, re-run `./video-skills/install.sh`. If `carousel/package.json` changed, run `npm install` in `carousel/`.

@@ -1,0 +1,8 @@
+# Video skills used by The Skilled Brains. One skill source per line, tab-separated:
+# name	repo	commit	path in repo	install as
+# "path in repo" is either a single skill folder (installed under "install as")
+# or a folder of skills (each subfolder installed under its own name; "install as" is "-").
+effects	https://github.com/Vibha-Ramprakash/claude-video-effects	99c9a3393ee14d39bea155a05c73dc069f02f16f	.	effects
+watch	https://github.com/oxbshw/watch-skill	f1317c8fe64744a606c31867b05fbbe3144268c6	skills	-
+gsap	https://github.com/greensock/gsap-skills	aed9cfd3277740755f6bfc1155c7aa645403b760	skills	-
+threejs	https://github.com/CloudAI-X/threejs-skills	0e181866f095b5f06d005133876e926515390d95	skills	-
