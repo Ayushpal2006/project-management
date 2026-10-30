@@ -2,3 +2,12 @@ node_modules/
 .env
 .env.*
 !.env.example
+
+# Photos of real people and other creators' work stay local while the repo is public.
+# Delete these lines only if the repo is made private and the team agrees.
+brand/people/*/photos/
+brand/people/*/grid/
+brand/references/files/
+brand/assets/
+brand/hero-thumbnails/*
+!brand/hero-thumbnails/INDEX.md

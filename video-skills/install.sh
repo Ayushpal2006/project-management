@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
-# Installs every skill listed in skills.tsv, plus the carousel skill, into
-# Claude Code's skills folder. Safe to re-run: it reinstalls at the pinned commits.
+# Installs every skill listed in skills.tsv, plus The Skilled Brains' own skills
+# from skills/, into Claude Code's skills folder, and into Codex's too if Codex is
+# installed. Safe to re-run: it reinstalls at the pinned commits.
 #
-# Usage: ./video-skills/install.sh            # installs into ~/.claude/skills
+# Inside this repo both tools already find skills/ through .claude/skills and
+# .agents/skills; installing makes them available in any folder.
+#
+# Usage: ./video-skills/install.sh            # installs into ~/.claude/skills (+ ~/.codex/skills)
 #        SKILLS_DIR=/some/path ./video-skills/install.sh
 set -euo pipefail
 
@@ -14,11 +18,19 @@ trap 'rm -rf "$cache"' EXIT
 
 mkdir -p "$skills_dir"
 
+targets=("$skills_dir")
+if [[ -z "${SKILLS_DIR:-}" && -d "$HOME/.codex" ]]; then
+  mkdir -p "$HOME/.codex/skills"
+  targets+=("$HOME/.codex/skills")
+fi
+
 install_folder() {
-  local src="$1" name="$2"
-  rm -rf "${skills_dir:?}/$name"
-  cp -R "$src" "$skills_dir/$name"
-  rm -rf "$skills_dir/$name/.git"
+  local src="$1" name="$2" target
+  for target in "${targets[@]}"; do
+    rm -rf "${target:?}/$name"
+    cp -R "$src" "$target/$name"
+    rm -rf "$target/$name/.git"
+  done
   echo "  installed $name"
 }
 
@@ -39,9 +51,11 @@ while IFS=$'\t' read -r name repo commit path install_as; do
   fi
 done < "$here/skills.tsv"
 
-echo "carousel (this repo)"
-install_folder "$repo_root/carousel/skill" "skilled-brains-carousel"
+echo "The Skilled Brains skills (this repo)"
+for skill in "$repo_root/skills"/*/; do
+  [[ -f "$skill/SKILL.md" ]] && install_folder "$skill" "$(basename "$skill")"
+done
 
 echo
-echo "Done. Skills are in $skills_dir. Restart Claude Code to load them."
+echo "Done. Skills are in ${targets[*]}. Restart Claude Code / Codex to load them."
 echo "Remaining one-time steps (see README.md): the effects Python packages and the watch-skill tool."
