@@ -83,7 +83,7 @@
   .cta-sub { position: absolute; left: 110px; width: 860px; top: 660px; font-size: 32px; line-height: 1.4; color: var(--muted); font-weight: 500; }
   .cta-sub b { color: var(--text); }
 
-  .ig { position: absolute; left: 110px; right: 110px; top: 790px; background: #0f0f13; border: 2px solid var(--line); border-radius: 40px; padding: 32px 40px 34px; }
+  .ig { position: absolute; left: 110px; right: 110px; top: 766px; background: #0f0f13; border: 2px solid var(--line); border-radius: 40px; padding: 32px 40px 34px; }
   .ig .row { display: flex; gap: 36px; align-items: center; }
   .ig .av { flex: none; width: 124px; height: 124px; border-radius: 50%; overflow: hidden; background: #012816; border: 3px solid #1b3a29; }
   .ig .av img { width: 100%; height: 100%; object-fit: cover; }
@@ -95,6 +95,8 @@
   .ig .btns { display: flex; gap: 14px; margin-top: 22px; }
   .ig .btn { flex: 1; height: 58px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; }
   .ig .follow { background: #4a5df9; }
+  .ig .add { flex: none; width: 58px; }
+  .ig .more { font-size: 26px; color: #c9c9d2; margin-left: 8px; }
   .ig .msg { background: #26262d; }
 </style>
 </head>
@@ -162,13 +164,13 @@
     <div class="row">
       <div class="av"><img src="" data-a="skilled-brains-logo.png"></div>
       <div>
-        <div class="user">theskilledbrains %VERIFIED%</div>
+        <div class="user">theskilledbrains %VERIFIED%<span class="more">···</span></div>
         <div class="name">Sheetal Singh</div>
-        <div class="stats"><b>11.4K</b> followers</div>
+        <div class="stats"><b>88</b> posts&nbsp;&nbsp;&nbsp;<b>11.4K</b> followers&nbsp;&nbsp;&nbsp;<b>4</b> following</div>
       </div>
     </div>
-    <div class="bio">Learn high-income skills from scratch!<br>AI • Content • Editing • Freelancing</div>
-    <div class="btns"><div class="btn follow">Follow</div><div class="btn msg">Message</div></div>
+    <div class="bio">Learn high-income skills from scratch!<br>AI • Content • Editing • Freelancing 👇<br>Your growth starts now 🚀</div>
+    <div class="btns"><div class="btn follow">Follow</div><div class="btn msg">Message</div><div class="btn msg add">%ADD%</div></div>
   </div>
   <div class="foot"><span>@theskilledbrains</span><span class="n">06 / 06</span></div>
   <div class="grain"></div>
@@ -182,7 +184,8 @@
   let pts = [];
   for (let i = 0; i < 24; i++) { const r = i % 2 ? 10.2 : 12, t = Math.PI * i / 12; pts.push((12 + r * Math.cos(t)).toFixed(2) + "," + (12 + r * Math.sin(t)).toFixed(2)); }
   const VERIFIED = `<svg width="32" height="32" viewBox="0 0 24 24"><polygon points="${pts.join(" ")}" fill="#0095f6" stroke="#0095f6" stroke-width="1.6" stroke-linejoin="round"/><path d="M7.5 12.3l3 3 6-6.2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-  document.body.innerHTML = document.body.innerHTML.replaceAll("%ARROW%", ARROW).replaceAll("%SWIPE%", SWIPE).replaceAll("%VERIFIED%", VERIFIED);
+  const ADD = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="14" cy="8" r="4"/><path d="M6.5 20c.8-3.6 3.9-6 7.5-6s6.7 2.4 7.5 6M2.5 9.5h5M5 7v5"/></svg>';
+  document.body.innerHTML = document.body.innerHTML.replaceAll("%ARROW%", ARROW).replaceAll("%SWIPE%", SWIPE).replaceAll("%VERIFIED%", VERIFIED).replaceAll("%ADD%", ADD);
   document.querySelectorAll("[data-a]").forEach(i => i.src = A + i.dataset.a);
   const id = location.hash.slice(1) || "s2";
   document.getElementById(id).classList.add("on");
