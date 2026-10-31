@@ -6,6 +6,7 @@ Image or video copies go in `brand/references/files/` for study only. They are o
 
 | Date | Link | Creator | Format | What works | What we take | What we don't | Tags |
 |------|------|---------|--------|------------|--------------|---------------|------|
+| 2026-10-31 | User-supplied Klickpin image, pin 1149754979889511915 (local study copy) | Unconfirmed | carousel cover | Dark portrait, oversized type, angled accent labels | Strong scale contrast and portrait-led hierarchy for Google AI cover | Original wording, woman, giant 5, VS layout and exact positioning | cover, typography, portrait |
 | 2026-10-29 | (8 videos, see `skills/skilled-brains-reference-look`) | Aevy TV, Full Disclosure, Cutting Edge School, Tharun Speaks | long video | editorial explainer motion, two-layer captions, ~3 s cut rhythm | layout, motion, timing | their colours, their assets | motion, typography |
 
 ## Learned patterns
