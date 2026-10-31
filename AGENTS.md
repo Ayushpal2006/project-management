@@ -55,10 +55,10 @@ Third-party video skills (effects, watch-skill, GSAP, Three.js) are pinned in `v
 | DSR | Digraj Singh Rajput | Founder |
 | YRM | Yash Ranjan Mishra | Co-founder |
 | Shital Didi | Shital / Sheetal | Co-founder, main thumbnail face |
-| Smile | Smile | Co-founder (no photo yet) |
+| Smile | Ismail | Co-founder (`Ismail.png`) |
 | Ujjwal | Ujjwal Jain | Editor / senior editor |
 
-Also in the photos, roles unconfirmed: Ismail (`Ismail.png`) and Yash (`Yash V.png`). Use them in team posts only until the user confirms.
+Also in the photos, role unconfirmed: Yash (`Yash V.png`). Use them in team posts only until the user confirms.
 
 ## Hard rules
 
@@ -86,4 +86,4 @@ Also in the photos, roles unconfirmed: Ismail (`Ismail.png`) and Yash (`Yash V.p
 - "OS" (installed) and "Real Studio" (for video): what they are and their links.
 - The movie / image archive for B-roll: link.
 - Whether the repo should become private, so team photos can be committed and a new laptop gets them with the clone.
-- Smile's photos; roles of Ismail and Yash V; original logo files `1.jpg`-`8.jpg`.
+- More photos of Smile (Ismail); role of Yash V; original logo files `1.jpg`-`8.jpg`.

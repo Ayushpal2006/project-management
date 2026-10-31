@@ -1,10 +1,10 @@
-# Smile (smile)
+# Smile — Ismail (smile)
 
 - **Role:** Co-founder
 - **How they're named on screen:** Smile
 - **Appears in:** carousels / thumbnails / long videos / shorts
-- **Photo source:** No photos yet. Ask for at least 9 (one per grid cell).
-- **Last updated:** 2026-10-30 (from brief §6; grid not built yet, remaining lines to fill from the master photo)
+- **Photo source:** `Ismail.png` (studio headshot, local only in `photos/`). Ask for at least 8 more angles (one per grid cell).
+- **Last updated:** 2026-10-31 (user confirmed Ismail is the co-founder shown as Smile; grid not built yet)
 
 ## Must match (the face checklist)
 
@@ -16,7 +16,7 @@ Fill these from the master photo. Every face we publish is checked against this 
 - Nose / jaw:
 - Hair and hairline:
 - Beard / moustache:
-- Glasses:
+- Glasses: purple/lavender rectangular frames
 - Marks (moles, scars, dimples, which side):
 - Usual expression on camera:
 

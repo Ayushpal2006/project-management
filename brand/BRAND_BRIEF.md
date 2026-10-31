@@ -109,10 +109,9 @@ Studio headshots (`DSR.png`, `Ismail.png`, `Sheetal.png`, `Ujjwal.png`, `YRM.png
 | **DSR — Digraj Singh Rajput** (full name per label in `all photos.jpeg`) | Founder | Short dark side-parted hair, full neatly trimmed beard, warm wide smile; black polo; white studio bg | Authority / founder voice: "founder explains" covers, intro and outro slides. Cut out and place on near-black with one accent colour. |
 | **YRM — Yash Ranjan Mishra** | Co-founder | Voluminous curly dark hair, black rectangular glasses, short beard, big smile; black polo; light-grey bg (`all photos.jpeg` shows him on a dark-to-green gradient with on-screen text — already on-brand) | Tech/AI explainers, tool reviews. Glasses read well at small thumbnail sizes. |
 | **Shital / Sheetal ("Shital Didi")** | Co-founder | Long dark wavy hair, warm smile. Headshot: black polo on white. Thumbnail shoot: blush/off-white satin shirt, black trousers, gold watch and bangles; office set with light-wood slatted wall, floating black shelves with gold figurines and red decor, plants, desk with MacBook | The main thumbnail face — 117 expression shots covering every emotion (shock, secret, money, thinking, stress). "Didi" framing suits student-first, caring advice. See §7. |
-| **Smile** | Co-founder | **No photo in the folder yet** | Add references, then update this row and §7. |
+| **Smile — Ismail** (`Ismail.png`) | Co-founder | Purple/lavender rectangular glasses, swept dark hair, beard, very big smile; black polo; white bg | Co-founder voice, team posts. Only one headshot so far: ask for more angles before building the grid. |
 | **Ujjwal — Ujjwal Jain** (full name per label in `all photos.jpeg`) | Editor / Senior editor | Tousled wavy hair with lighter highlights, clean-shaven, big grin; black polo; warm off-white bg | Behind-the-scenes / editing-tips content, team posts. |
 | **Yash (`Yash V.png`)** — _role not given_ | ⚠ Unconfirmed | Quiffed dark hair, full beard, smile; black polo; white bg | Team/group posts only until role confirmed. |
-| **Ismail (`Ismail.png`)** — _role not given_ | ⚠ Unconfirmed | Purple/lavender rectangular glasses, swept dark hair, beard, very big smile; black polo; white bg | Team/group posts only until role confirmed. |
 
 ---
 
@@ -146,18 +145,15 @@ Studio headshots (`DSR.png`, `Ismail.png`, `Sheetal.png`, `Ujjwal.png`, `YRM.png
 |---|---|---|
 | `Ujjwal.png` | Studio headshot, wavy hair, big grin, black polo, off-white bg | Team slide, BTS / editing content |
 
-### Smile — 0 files
-_No references yet._
+### Smile (Ismail) — 1 file
+| File | Description | Best use |
+|---|---|---|
+| `Ismail.png` | Studio headshot, purple glasses, beard, black polo, white bg | Team slide, co-founder posts |
 
 ### Yash (`Yash V.png`) — 1 file ⚠ role unconfirmed
 | File | Description | Best use |
 |---|---|---|
 | `Yash V.png` | Studio headshot, quiff, full beard, black polo, white bg | Team slide |
-
-### Ismail — 1 file ⚠ role unconfirmed
-| File | Description | Best use |
-|---|---|---|
-| `Ismail.png` | Studio headshot, purple glasses, beard, black polo, white bg | Team slide |
 
 ### Shital / Sheetal ("Shital Didi") — 118 files (1 headshot + 117 shoot photos)
 
@@ -321,8 +317,8 @@ When new reference photos, logos or team members are added:
 7. Add a dated entry to the changelog below.
 
 ### Open questions
-- Roles for **Ismail** and **Yash (`Yash V.png`)** — not in the team list.
-- No photo of **Smile** yet.
+- Role for **Yash (`Yash V.png`)** — not in the team list.
+- More photos of **Smile (Ismail)**: only one headshot so far.
 - Original logo files `1.jpg`–`8.jpg` (only a screenshot is here).
 - Confirm whether the model on `ChatGPT Codes carousel FINAL/1_cover.png` is Sheetal.
 
@@ -332,3 +328,4 @@ When new reference photos, logos or team members are added:
 
 - **2026-10-30** — Brief created. Inventoried 6 studio headshots, 120 photos in `sheetal didi thumbnail images/` (117 of Sheetal + 3 B-roll), `Logo.png`, `all logos.jpeg`, `all photos.jpeg` and the three ChatGPT Codes carousel folders. Logo hex codes sampled from the files.
 - **2026-10-30** — Moved into the GitHub repo as `brand/BRAND_BRIEF.md`, which is now the master copy. Asset paths now resolve under `brand/assets/`; identity grids live in `brand/people/`.
+- **2026-10-31** — User confirmed Ismail is a co-founder; treated as "Smile". Merged the Smile and Ismail entries.
