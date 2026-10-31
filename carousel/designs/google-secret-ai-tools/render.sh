@@ -5,7 +5,7 @@
 set -e
 cd "$(dirname "$0")"
 ROOT="$(cd ../../.. && pwd)"
-OUT="$ROOT/output/imagegen/google-secret-ai-tools-carousel"
+OUT="${OUT:-$ROOT/output/imagegen/google-secret-ai-tools-carousel}"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 HTML="file://$PWD/slides.html"
 mkdir -p "$OUT"

@@ -72,6 +72,7 @@ Also in the photos, role unconfirmed: Yash (`Yash V.png`). Use them in team post
 
 ## Working preferences
 
+- **Carousels alternate dark and light (user, 2026-10-31):** slide 1 dark, slide 2 light, slide 3 dark, and so on. Keep the same grid and accent on both themes so it still reads as one carousel.
 - **Render in the cloud (user, 2026-10-31):** render videos and carousels in the cloud session, not on the user's Mac. Share previews from the cloud. Copy a file to the Mac only when the user says so.
 - **Clean the Mac after a piece is final (user, 2026-10-31):** once the user finalises a video or carousel, clear its references, source files and intermediates (renders, frames, drafts) from the Mac and keep only the final file. Move them to the Trash, never hard-delete. Never touch files another running task is still using, and never touch `brand/assets/` or anything outside that piece's own working files.
 - **Git:** commit and push straight to `main`. No feature branches or pull requests unless the user asks for one. When working from a cloud session, prefer running git on the user's own Mac terminal (Remote Control) so the push uses their setup.

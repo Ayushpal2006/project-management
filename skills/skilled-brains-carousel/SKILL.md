@@ -18,6 +18,7 @@ Run the pre-publish checklist on the final files:
 3. Layout: phi grid and safe zones (`node tools/overlay.js ig-carousel`).
 4. Originality: if it came from a reference, it passes `skilled-brains-reference-inspiration`.
 5. Spelling: every on-screen word checked; on-screen text in English.
+6. Theme rhythm: slides alternate dark and light, starting with a dark cover (dark, light, dark, light...). Never two dark or two light slides in a row (user, 2026-10-31).
 
 ## Before posting (setup)
 
