@@ -68,10 +68,12 @@ Also in the photos, role unconfirmed: Yash (`Yash V.png`). Use them in team post
 4. Take inspiration from references, never copy them.
 5. Never publish without the user's explicit go-ahead. Zernio posts are drafts by default.
 6. Never commit secrets (`carousel/.env`) and, while the repo is public, never commit photos of real people or other creators' work.
-7. Never move, rename or delete the user's files without asking.
+7. Never move, rename or delete the user's files without asking. The one standing exception is the Mac cleanup after a piece is final (see Working preferences).
 
 ## Working preferences
 
+- **Render in the cloud (user, 2026-10-31):** render videos and carousels in the cloud session, not on the user's Mac. Share previews from the cloud. Copy a file to the Mac only when the user says so.
+- **Clean the Mac after a piece is final (user, 2026-10-31):** once the user finalises a video or carousel, clear its references, source files and intermediates (renders, frames, drafts) from the Mac and keep only the final file. Move them to the Trash, never hard-delete. Never touch files another running task is still using, and never touch `brand/assets/` or anything outside that piece's own working files.
 - **Git:** commit and push straight to `main`. No feature branches or pull requests unless the user asks for one. When working from a cloud session, prefer running git on the user's own Mac terminal (Remote Control) so the push uses their setup.
 
 ## Tools

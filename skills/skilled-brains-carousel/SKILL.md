@@ -39,3 +39,6 @@ npm run post -- --caption "Caption text" --account instagram:ACCOUNT_ID slide1.p
 - Repeat `--account` to post the same carousel to several platforms.
 
 Report the Zernio post ID the script prints.
+
+## Where to render, and cleanup
+Render in the cloud, not on the user's Mac; copy to the Mac only when the user says so. After the user finalises the piece, move its references, sources and intermediates on the Mac to the Trash and keep only the final file, skipping anything another task still uses. Full rule in `AGENTS.md` (Working preferences).

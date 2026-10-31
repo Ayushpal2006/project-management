@@ -78,3 +78,6 @@ House rules in skilled-brains-motion-style still win: no glow, English-only on-s
 - Calm, editorial, confident: eased moves, constant slow drift, hard cuts on the beat. Graphics build on and leave on the cut.
 - Paper/grain/scan-line textures. No bounce-heavy cartoon motion, no glow, no lens flares.
 - SFX: soft paper, whoosh on camera moves, pop/click when an item lands, typing ticks for counters.
+
+## Where to render, and cleanup
+Render in the cloud, not on the user's Mac; copy to the Mac only when the user says so. After the user finalises the piece, move its references, sources and intermediates on the Mac to the Trash and keep only the final file, skipping anything another task still uses. Full rule in `AGENTS.md` (Working preferences).

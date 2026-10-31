@@ -53,3 +53,6 @@ Big serif numbers, candlesticks, pie slices and line charts in warm gold tones.
 ## Workflow notes
 - B-roll comes from the user's Google Drive. The Drive connector only downloads files under 10 MB, so ask for trimmed clips or audio-only MP3s (mono, 48 kbps) of raw footage for transcription. The edit XML then links back to the original 4K files.
 - Before building anything big, show static style frames first and get approval.
+
+## Where to render, and cleanup
+Render in the cloud, not on the user's Mac; copy to the Mac only when the user says so. After the user finalises the piece, move its references, sources and intermediates on the Mac to the Trash and keep only the final file, skipping anything another task still uses. Full rule in `AGENTS.md` (Working preferences).

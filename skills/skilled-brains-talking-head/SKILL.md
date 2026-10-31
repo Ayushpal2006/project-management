@@ -21,3 +21,6 @@ description: Use when planning or editing a Skilled Brains talking-head video (a
 - Who presents which series.
 
 Record each decision here and in the brief.
+
+## Where to render, and cleanup
+Render in the cloud, not on the user's Mac; copy to the Mac only when the user says so. After the user finalises the piece, move its references, sources and intermediates on the Mac to the Trash and keep only the final file, skipping anything another task still uses. Full rule in `AGENTS.md` (Working preferences).

@@ -25,3 +25,6 @@ For each file added to `brand/hero-thumbnails/`:
 
 1. Add a row to `brand/hero-thumbnails/INDEX.md`: file, where it was used, result if known (CTR, views), what makes it work.
 2. After 3 or more, write the shared patterns into the "Learned patterns" section of that INDEX and, if lasting, into the brief (§3 colours, §4 typography or a new rule in §7).
+
+## Where to render, and cleanup
+Render in the cloud, not on the user's Mac; copy to the Mac only when the user says so. After the user finalises the piece, move its references, sources and intermediates on the Mac to the Trash and keep only the final file, skipping anything another task still uses. Full rule in `AGENTS.md` (Working preferences).
