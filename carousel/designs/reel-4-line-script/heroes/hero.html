@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3D hero renders</title>
+<!--
+  Renders one transparent 3D hero per slide with Three.js: hero.html?h=phone|watch|hook|grid|keys|save|bubble
+  Served over http from the design folder (render.cjs does this). Needs `npm i three@0.169.0` in the design folder.
+  Gradient = brand hot pink #ff2e7e to orange #ff7a1a, applied as vertex colours.
+-->
+<style>
+  html, body { margin: 0; background: transparent; overflow: hidden; }
+  canvas { display: block; }
+</style>
+<script type="importmap">{ "imports": { "three": "../node_modules/three/build/three.module.js", "three/addons/": "../node_modules/three/examples/jsm/" } }</script>
+</head>
+<body>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const W = 1080, H = 1000;
+const kind = new URLSearchParams(location.search).get("h") || "phone";
+const PINK = new THREE.Color("#ff2e7e"), ORANGE = new THREE.Color("#ff7a1a"), VIOLET = new THREE.Color("#c13cff");
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(2);
+renderer.setSize(W, H);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+const camera = new THREE.PerspectiveCamera(30, W / H, 0.1, 100);
+camera.position.set(0, 0, 22);
+
+// lights: soft key + pink and orange rims
+const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(-4, 6, 8); scene.add(key);
+const rimP = new THREE.PointLight(0xff2e7e, 180, 40); rimP.position.set(-7, -2, -3); scene.add(rimP);
+const rimO = new THREE.PointLight(0xff7a1a, 180, 40); rimO.position.set(7, 4, -3); scene.add(rimO);
+
+// helpers
+function gradient(geom, dir = new THREE.Vector3(1, 1, 0), from = PINK, to = ORANGE) {
+  geom.computeBoundingBox();
+  const p = geom.attributes.position, c = [], v = new THREE.Vector3();
+  let mn = Infinity, mx = -Infinity;
+  for (let i = 0; i < p.count; i++) { const d = v.fromBufferAttribute(p, i).dot(dir); mn = Math.min(mn, d); mx = Math.max(mx, d); }
+  for (let i = 0; i < p.count; i++) {
+    const t = (v.fromBufferAttribute(p, i).dot(dir) - mn) / (mx - mn || 1);
+    const col = from.clone().lerp(to, t); c.push(col.r, col.g, col.b);
+  }
+  geom.setAttribute("color", new THREE.Float32BufferAttribute(c, 3));
+  return geom;
+}
+const glossBlack = () => new THREE.MeshPhysicalMaterial({ color: 0x141416, metalness: 0.35, roughness: 0.18, clearcoat: 1, clearcoatRoughness: 0.08 });
+const glossGrad = () => new THREE.MeshPhysicalMaterial({ color: 0xffffff, vertexColors: true, metalness: 0.15, roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.06 });
+const chromeGrad = () => new THREE.MeshPhysicalMaterial({ color: 0xffffff, vertexColors: true, metalness: 0.9, roughness: 0.16, clearcoat: 1 });
+
+function canvasTex(w, h, draw) {
+  const cv = document.createElement("canvas"); cv.width = w; cv.height = h;
+  draw(cv.getContext("2d"), w, h);
+  const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
+}
+function lin(ctx, x0, y0, x1, y1) { const g = ctx.createLinearGradient(x0, y0, x1, y1); g.addColorStop(0, "#ff2e7e"); g.addColorStop(1, "#ff7a1a"); return g; }
+function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); }
+function roundedRectShape(w, h, r) {
+  const s = new THREE.Shape(), x = -w / 2, y = -h / 2;
+  s.moveTo(x + r, y); s.lineTo(x + w - r, y); s.quadraticCurveTo(x + w, y, x + w, y + r);
+  s.lineTo(x + w, y + h - r); s.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  s.lineTo(x + r, y + h); s.quadraticCurveTo(x, y + h, x, y + h - r);
+  s.lineTo(x, y + r); s.quadraticCurveTo(x, y, x + r, y); return s;
+}
+async function fontsReady() {
+  const f = new FontFace("Anton", "url(../../../../video-skills/vendor/effects/fonts/Anton-Regular.ttf)");
+  await f.load(); document.fonts.add(f);
+  await document.fonts.ready;
+}
+
+const root = new THREE.Group(); scene.add(root);
+
+const builders = {
+  // cover: glossy black phone playing a Reel, with a floating gradient play button
+  phone() {
+    const body = new THREE.Mesh(new RoundedBoxGeometry(5.4, 10.6, 0.6, 8, 0.7), glossBlack());
+    const screen = new THREE.Mesh(new THREE.PlaneGeometry(4.9, 10.0), new THREE.MeshBasicMaterial({ map: canvasTex(490, 1000, (c, w, h) => {
+      c.fillStyle = "#0e0e10"; rr(c, 0, 0, w, h, 56); c.fill();
+      c.fillStyle = lin(c, 0, 0, w, h); rr(c, 22, 60, w - 44, 560, 40); c.fill();
+      c.fillStyle = "rgba(255,255,255,.95)"; c.beginPath(); c.moveTo(200, 250); c.lineTo(310, 340); c.lineTo(200, 430); c.closePath(); c.fill();
+      const lines = [[1, 330], [2, 260], [3, 380], [4, 220]];
+      lines.forEach(([n, len], i) => { const y = 670 + i * 78;
+        c.fillStyle = lin(c, 30, y, 80, y + 50); rr(c, 30, y, 52, 52, 14); c.fill();
+        c.fillStyle = "#fff"; c.font = "40px Anton"; c.textAlign = "center"; c.fillText(n, 56, y + 42);
+        c.fillStyle = "rgba(255,255,255,.22)"; rr(c, 100, y + 14, len, 22, 11); c.fill(); });
+    }) }));
+    screen.position.z = 0.31;
+    const phone = new THREE.Group(); phone.add(body, screen);
+    phone.rotation.set(0.12, -0.42, 0.14); phone.position.set(-0.8, -0.2, 0);
+    const tri = new THREE.Shape(); tri.moveTo(-1, -1.2); tri.lineTo(1.4, 0); tri.lineTo(-1, 1.2); tri.closePath();
+    const play = new THREE.Mesh(gradient(new THREE.ExtrudeGeometry(tri, { depth: 0.7, bevelEnabled: true, bevelThickness: 0.25, bevelSize: 0.25, bevelSegments: 8 }).center()), glossGrad());
+    play.position.set(3.7, 2.4, 2); play.rotation.set(0.25, -0.5, -0.12); play.scale.setScalar(1.15);
+    const ring = new THREE.Mesh(gradient(new THREE.TorusGeometry(1.0, 0.32, 32, 96), new THREE.Vector3(0, 1, 0)), glossGrad());
+    ring.position.set(-4.4, -3.6, 1.5); ring.rotation.set(0.9, 0.5, 0);
+    root.add(phone, play, ring);
+  },
+  // before: a stopwatch that already burned 6 seconds
+  watch() {
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(3.6, 3.6, 1.1, 96), glossBlack()); body.rotation.x = Math.PI / 2;
+    const bezel = new THREE.Mesh(gradient(new THREE.TorusGeometry(3.6, 0.28, 32, 128)), glossGrad());
+    const face = new THREE.Mesh(new THREE.CircleGeometry(3.3, 96), new THREE.MeshBasicMaterial({ map: canvasTex(800, 800, (c, w, h) => {
+      c.fillStyle = "#121214"; c.beginPath(); c.arc(400, 400, 400, 0, 7); c.fill();
+      for (let i = 0; i < 60; i++) { const a = i / 60 * Math.PI * 2 - Math.PI / 2, r1 = i % 5 ? 360 : 340;
+        c.strokeStyle = i < 6 ? "#ff5c9a" : "rgba(255,255,255,.35)"; c.lineWidth = i % 5 ? 4 : 8;
+        c.beginPath(); c.moveTo(400 + Math.cos(a) * r1, 400 + Math.sin(a) * r1); c.lineTo(400 + Math.cos(a) * 385, 400 + Math.sin(a) * 385); c.stroke(); }
+      c.strokeStyle = lin(c, 400, 0, 800, 400); c.lineWidth = 44; c.lineCap = "round";
+      c.beginPath(); c.arc(400, 400, 300, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * 6 / 60); c.stroke();
+      c.fillStyle = "#fff"; c.font = "250px Anton"; c.textAlign = "center"; c.fillText("0:06", 400, 490);
+    }) }));
+    face.position.z = 0.56;
+    const crown = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.9, 48), glossBlack()); crown.position.y = 4.1;
+    const cap = new THREE.Mesh(gradient(new THREE.CylinderGeometry(0.75, 0.75, 0.4, 48), new THREE.Vector3(1, 0, 0)), glossGrad()); cap.position.y = 4.6;
+    const btn = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.8, 32), glossBlack()); btn.position.set(2.75, 2.75, 0); btn.rotation.z = -Math.PI / 4;
+    const g = new THREE.Group(); g.add(body, bezel, face, crown, cap, btn);
+    g.rotation.set(0.12, -0.38, 0.1); g.position.y = -0.4;
+    root.add(g);
+  },
+  // hook: a chrome fishing hook in the brand gradient
+  hook() {
+    const pts = [];
+    for (let i = 0; i <= 20; i++) pts.push(new THREE.Vector3(0, 5.2 - i * 0.3, 0));
+    for (let i = 1; i <= 60; i++) { const a = -(i / 60) * (Math.PI + 0.75); pts.push(new THREE.Vector3(-1.9 + 1.9 * Math.cos(a), -0.8 + 1.9 * Math.sin(a), 0)); }
+    const curve = new THREE.CatmullRomCurve3(pts.map(p => p.clone()));
+    const tube = new THREE.Mesh(gradient(new THREE.TubeGeometry(curve, 300, 0.38, 32, false), new THREE.Vector3(0, -1, 0.2), PINK, ORANGE), chromeGrad());
+    const end = curve.getPoint(1), tan = curve.getTangent(1);
+    const barbTip = new THREE.Mesh(gradient(new THREE.ConeGeometry(0.62, 1.4, 32), new THREE.Vector3(0, 1, 0), ORANGE, ORANGE), chromeGrad());
+    barbTip.position.copy(end).add(tan.clone().multiplyScalar(0.5)); barbTip.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), tan);
+    const eye = new THREE.Mesh(gradient(new THREE.TorusGeometry(0.75, 0.3, 32, 64), new THREE.Vector3(0, 1, 0), PINK, PINK), chromeGrad());
+    eye.position.set(0, 5.95, 0); eye.rotation.y = Math.PI / 2;
+    const line = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 12, 12), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4 }));
+    line.position.set(0, 12.6, 0);
+    const g = new THREE.Group(); g.add(tube, barbTip, eye, line);
+    g.position.set(0.9, -1.2, 0); g.rotation.set(0.15, -0.55, -0.18); g.scale.setScalar(1.05);
+    root.add(g);
+  },
+  // problem: spreadsheet cells, formatted one by one, a few popping out
+  grid() {
+    const g = new THREE.Group(), n = 5;
+    for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+      const lit = (r === 1 && c === 3) || (r === 3 && c === 1) || (r === 2 && c === 2);
+      const m = new THREE.Mesh(lit ? gradient(new RoundedBoxGeometry(1.6, 1.0, 0.5, 4, 0.14)) : new RoundedBoxGeometry(1.6, 1.0, 0.5, 4, 0.14), lit ? glossGrad() : glossBlack());
+      m.position.set((c - 2) * 1.8, (2 - r) * 1.2, lit ? 1.2 + r * 0.25 : 0);
+      if (lit) m.rotation.set(0.2 * (r - 2), 0.25 * (c - 2), 0.06);
+      g.add(m);
+    }
+    const cursor = new THREE.Shape(); cursor.moveTo(0, 0); cursor.lineTo(0, -2.2); cursor.lineTo(0.55, -1.65); cursor.lineTo(0.95, -2.5); cursor.lineTo(1.35, -2.3); cursor.lineTo(0.95, -1.5); cursor.lineTo(1.7, -1.5); cursor.closePath();
+    const cur = new THREE.Mesh(new THREE.ExtrudeGeometry(cursor, { depth: 0.3, bevelEnabled: true, bevelThickness: 0.08, bevelSize: 0.08, bevelSegments: 4 }), new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.25, clearcoat: 1 }));
+    cur.position.set(0.4, 0.2, 2.6); cur.scale.setScalar(1.1);
+    g.add(cur);
+    g.rotation.set(-0.5, 0.45, 0.18); g.position.set(0, -0.4, 0); g.scale.setScalar(1.05);
+    root.add(g);
+  },
+  // value: the three shortcuts as glossy keycaps
+  keys() {
+    const g = new THREE.Group();
+    const rows = [[["Ctrl", 2.2], ["T", 1.5, 1]], [["Ctrl", 2.2], ["Shift", 2.6], ["L", 1.5, 1]], [["Alt", 2.0], ["=", 1.5, 1]]];
+    rows.forEach((row, ri) => {
+      let x = 0; const total = row.reduce((s, k) => s + k[1] + 0.35, -0.35);
+      row.forEach(([label, w, hot]) => {
+        const key = new THREE.Mesh(hot ? gradient(new RoundedBoxGeometry(w, 1.5, 0.9, 6, 0.28)) : new RoundedBoxGeometry(w, 1.5, 0.9, 6, 0.28), hot ? glossGrad() : glossBlack());
+        const top = new THREE.Mesh(new THREE.PlaneGeometry(w - 0.3, 1.2), new THREE.MeshBasicMaterial({ transparent: true, map: canvasTex(Math.round((w - 0.3) * 200), 240, (c, cw, ch) => {
+          c.fillStyle = hot ? "#1a0a10" : "#fff"; c.font = `${label.length > 1 ? 120 : 150}px Anton`; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText(label, cw / 2, ch / 2 + 6);
+        }) }));
+        top.position.z = 0.46;
+        const k = new THREE.Group(); k.add(key, top);
+        k.position.set(x - total / 2 + w / 2, (1 - ri) * 2.0, hot ? 0.5 : 0);
+        g.add(k); x += w + 0.35;
+      });
+    });
+    g.rotation.set(-0.55, 0.4, 0.16); g.position.set(0, -0.2, 0); g.scale.setScalar(1.12);
+    root.add(g);
+  },
+  // CTA: a save bookmark
+  save() {
+    const s = new THREE.Shape(), w = 3.6, h = 5.2, r = 0.5;
+    s.moveTo(-w / 2, h / 2 - r); s.quadraticCurveTo(-w / 2, h / 2, -w / 2 + r, h / 2); s.lineTo(w / 2 - r, h / 2); s.quadraticCurveTo(w / 2, h / 2, w / 2, h / 2 - r);
+    s.lineTo(w / 2, -h / 2); s.lineTo(0, -h / 2 + 1.5); s.lineTo(-w / 2, -h / 2); s.closePath();
+    const mark = new THREE.Mesh(gradient(new THREE.ExtrudeGeometry(s, { depth: 0.8, bevelEnabled: true, bevelThickness: 0.3, bevelSize: 0.28, bevelSegments: 10 }).center(), new THREE.Vector3(0.6, 1, 0)), glossGrad());
+    const tick = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.0, 2, 2), glossBlack());
+    const badge = new THREE.Mesh(new THREE.CylinderGeometry(1.15, 1.15, 0.5, 64), glossBlack()); badge.rotation.x = Math.PI / 2; badge.position.set(1.9, 2.5, 0.9);
+    const chk = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 1.6), new THREE.MeshBasicMaterial({ transparent: true, map: canvasTex(256, 256, (c) => {
+      c.strokeStyle = "#fff"; c.lineWidth = 30; c.lineCap = "round"; c.lineJoin = "round"; c.beginPath(); c.moveTo(62, 134); c.lineTo(110, 182); c.lineTo(196, 86); c.stroke(); }) }));
+    chk.position.set(1.9, 2.5, 1.16);
+    const g = new THREE.Group(); g.add(mark, badge, chk); void tick;
+    g.rotation.set(0.15, -0.5, 0.12); g.position.set(0, -0.3, 0); g.scale.setScalar(1.2);
+    root.add(g);
+  },
+  // final CTA: comment bubble
+  bubble() {
+    const s = roundedRectShape(7.2, 3.6, 1.2);
+    const tail = new THREE.Shape(); tail.moveTo(-2.2, -1.6); tail.lineTo(-3.0, -3.0); tail.lineTo(-0.9, -1.7); tail.closePath();
+    const geo = new THREE.ExtrudeGeometry([s, tail], { depth: 0.8, bevelEnabled: true, bevelThickness: 0.3, bevelSize: 0.3, bevelSegments: 10 });
+    const b = new THREE.Mesh(gradient(geo, new THREE.Vector3(1, 0.4, 0)), glossGrad());
+    const txt = new THREE.Mesh(new THREE.PlaneGeometry(6.4, 2.6), new THREE.MeshBasicMaterial({ transparent: true, map: canvasTex(1280, 520, (c, w, h) => {
+      c.fillStyle = "#fff"; c.font = "330px Anton"; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText("SCRIPT", w / 2, h / 2 + 18); }) }));
+    txt.position.z = 1.12;
+    const heart = new THREE.Mesh(new THREE.SphereGeometry(0.9, 48, 32), glossBlack()); heart.position.set(3.9, 2.2, 0.8);
+    const g = new THREE.Group(); g.add(b, txt, heart);
+    g.rotation.set(0.12, -0.42, 0.08); g.scale.setScalar(1.05);
+    root.add(g);
+  },
+};
+
+await fontsReady();
+builders[kind]();
+renderer.render(scene, camera);
+window.__done = true;
+</script>
+</body>
+</html>

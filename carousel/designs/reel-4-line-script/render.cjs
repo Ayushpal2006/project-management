@@ -5,7 +5,7 @@
 const { chromium } = require("playwright");
 const path = require("path");
 const fs = require("fs");
-const names = ["cover", "before", "hook", "problem", "value", "cta", "after"];
+const names = ["cover", "before", "hook", "problem", "value", "cta", "after"]; // run render-heroes.cjs first
 (async () => {
   const out = path.resolve(process.argv[2] || path.join(__dirname, "../../../output/reel-4-line-script"));
   fs.mkdirSync(out, { recursive: true });

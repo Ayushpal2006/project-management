@@ -2,245 +2,204 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>The 4-line Reel script carousel</title>
+<title>The 4-line Reel script carousel (v2)</title>
 <!--
-  1080x1350 IG carousel, 7 slides, open with #s1 ... #s7.
-  Brand fonts (brief §4): Clash Display headlines, Satoshi body, Playfair Display numbers, Silkscreen pills.
-  Fonts load from ./fonts/ first (gitignored, Fontshare licence: don't commit), then Fontshare / Google Fonts.
-  Grid: 96 px margin (safe area is 80). Phi lines x 413/667, y 516/834. Type scale 17/28/45/73/118/191.
-  Rhythm: odd slides dark, even slides light. One accent (hot pink) on both themes.
+  v2 (2026-11-02): restyled to the user's reference: condensed all-caps headlines (Anton), pink-to-orange gradient on
+  key words, huge numerals, centred top label, one 3D hero per slide (heroes/*.png from render-heroes.cjs).
+  1080x1350, 80 px safe margin, phi lines y 516 / 834. Odd slides dark, even slides light (user rule).
+  Open with #s1 ... #s7.
 -->
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700,900&display=block">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=block">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&display=block">
 <style>
-  @font-face { font-family: "Clash Display"; font-weight: 700; src: url("fonts/ClashDisplay-Bold.woff2") format("woff2"); }
-  @font-face { font-family: "Satoshi"; font-weight: 400; src: url("fonts/Satoshi-Regular.woff2") format("woff2"); }
+  @font-face { font-family: "Anton"; src: url("../../../video-skills/vendor/effects/fonts/Anton-Regular.ttf") format("truetype"); }
   @font-face { font-family: "Satoshi"; font-weight: 500; src: url("fonts/Satoshi-Medium.woff2") format("woff2"); }
   @font-face { font-family: "Satoshi"; font-weight: 700; src: url("fonts/Satoshi-Bold.woff2") format("woff2"); }
   @font-face { font-family: "Satoshi"; font-weight: 900; src: url("fonts/Satoshi-Black.woff2") format("woff2"); }
-  @font-face { font-family: "Silkscreen"; src: url("fonts/Silkscreen-Regular.ttf") format("truetype"); }
-  @font-face { font-family: "Playfair Display"; font-weight: 400 900; src: url("fonts/PlayfairDisplay.ttf") format("truetype"); }
 
-  .rule, .name h2, .c-words, .c-sub, .c-the, .b-h, .b-res .t, .a-h, .ask .c1, .seg { word-spacing: .14em; }
-  .rule.big { font-size: 80px; line-height: 1.02; }
-  :root {
-    --pink: #ff2e7e;
-    --ink: #0b0b0c;
-    --paper: #eeeae0;
-  }
-  .dark  { --bg: var(--ink);   --fg: #ffffff; --muted: #a7a7b0; --card: #151517; --line: #2a2a2e; --accent-txt: #ff5c9a; --key: #1d1d20; --keyline: #3a3a40; }
-  .light { --bg: var(--paper); --fg: #111111; --muted: #5d5a53; --card: #f8f6f0; --line: #d6d1c3; --accent-txt: #e0126a; --key: #ffffff; --keyline: #c9c3b3; }
+  :root { --grad: linear-gradient(90deg, #ff2e7e 0%, #ff4f5e 50%, #ff7a1a 100%); }
+  .dark  { --bg: #0b0b0c; --fg: #ffffff; --muted: #a3a3ab; --card: rgba(24,24,27,.86); --line: #2c2c31; }
+  .light { --bg: #f6f4ef; --fg: #1d1d1f; --muted: #5f5c55; --card: rgba(255,255,255,.9); --line: #e0dbcf; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 1080px; height: 1350px; overflow: hidden; background: var(--ink); }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #0b0b0c; }
   body { font-family: "Satoshi", sans-serif; -webkit-font-smoothing: antialiased; }
-
   .slide { position: absolute; inset: 0; display: none; overflow: hidden; background: var(--bg); color: var(--fg); }
   .slide.on { display: block; }
-  .grain { position: absolute; inset: 0; pointer-events: none; opacity: .06;
-           background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
-  .light .grain { opacity: .09; mix-blend-mode: multiply; }
+  .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; left: 90px; top: 520px; opacity: .22;
+          background: radial-gradient(circle, #ff2e7e 0%, rgba(255,122,26,.5) 35%, transparent 68%); filter: blur(10px); }
+  .light .glow { opacity: .16; }
 
-  /* top row and footer: same place on every slide */
-  .top { position: absolute; left: 96px; right: 96px; top: 96px; display: flex; justify-content: space-between; align-items: center; }
-  .pill { font-family: "Silkscreen", monospace; font-size: 20px; letter-spacing: 1px; color: var(--accent-txt);
-          border: 2px solid var(--pink); border-radius: 999px; padding: 8px 20px 10px; }
-  .handle { font-size: 24px; font-weight: 700; color: var(--fg); }
-  .foot { position: absolute; left: 96px; right: 96px; bottom: 96px; display: flex; justify-content: space-between; align-items: center; }
-  .count { font-family: "Silkscreen", monospace; font-size: 20px; color: var(--muted); }
-  .swipe { font-size: 24px; font-weight: 700; color: var(--fg); display: flex; align-items: center; gap: 12px; }
-  .swipe i { display: inline-block; width: 44px; height: 3px; background: var(--pink); position: relative; }
-  .swipe i::after { content: ""; position: absolute; right: -2px; top: -7px; border: 8px solid transparent; border-left: 12px solid var(--pink); border-right: 0; }
+  .label { position: absolute; left: 0; right: 0; top: 80px; text-align: center; font-size: 25px; font-weight: 700; color: var(--fg); }
+  .label span { font-weight: 500; color: var(--muted); }
+  .label i { display: inline-block; width: 3px; height: 22px; background: var(--fg); margin: 0 16px -3px; }
 
-  /* the reel timeline: our recurring diagram (4 segments, one lit) */
-  .track { position: absolute; left: 96px; right: 96px; top: 1046px; }
-  .track .lbl { font-family: "Silkscreen", monospace; font-size: 17px; color: var(--muted); margin-bottom: 14px; letter-spacing: 1px; }
-  .bar { display: flex; gap: 8px; height: 64px; }
-  .seg { border-radius: 14px; border: 2px solid var(--line); display: flex; align-items: center; justify-content: center;
-         font-family: "Clash Display", sans-serif; font-weight: 700; font-size: 22px; letter-spacing: .5px; color: var(--muted); }
-  .seg.s1 { flex: 3; } .seg.s2 { flex: 5; } .seg.s3 { flex: 14; } .seg.s4 { flex: 3.6; }
-  .seg.lit { background: var(--pink); border-color: var(--pink); color: #fff; }
-  .ticks { display: flex; justify-content: space-between; margin-top: 10px; font-size: 18px; font-weight: 500; color: var(--muted); }
+  .A { font-family: "Anton", sans-serif; text-transform: uppercase; font-weight: 400; letter-spacing: .5px; }
+  .g { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-  /* line slides (3-6) */
-  .num-row { position: absolute; left: 96px; right: 96px; top: 206px; display: flex; align-items: flex-end; gap: 30px; }
-  .big-n { font-family: "Playfair Display", serif; font-weight: 900; font-size: 236px; line-height: .78; color: var(--pink); }
-  .name { padding-bottom: 6px; }
-  .name .k { font-family: "Silkscreen", monospace; font-size: 20px; color: var(--muted); letter-spacing: 1px; margin-bottom: 8px; }
-  .name h2 { font-family: "Clash Display", sans-serif; font-weight: 700; font-size: 118px; line-height: .9; letter-spacing: -2px; }
-  .when { display: inline-block; margin-top: 16px; font-size: 26px; font-weight: 700; color: var(--accent-txt); }
+  /* numeral + stacked headline */
+  .head { position: absolute; left: 70px; right: 80px; top: 165px; display: flex; align-items: flex-start; gap: 30px; }
+  .num { font-family: "Anton", sans-serif; font-size: 400px; line-height: .78; color: var(--fg); }
+  .stack { padding-top: 4px; }
+  .stack div { line-height: .98; white-space: nowrap; }
 
-  .rule { position: absolute; left: 96px; top: 516px; width: 820px; font-family: "Clash Display", sans-serif; font-weight: 700;
-          font-size: 54px; line-height: 1.08; letter-spacing: -1px; }
-  .rule em { font-style: normal; color: var(--accent-txt); }
+  .desc { position: absolute; left: 80px; width: 900px; top: 540px; font-size: 38px; line-height: 1.25; font-weight: 700; }
+  .desc b { font-weight: 900; }
 
-  .say { position: absolute; left: 96px; right: 96px; top: 700px; background: var(--card); border: 2px solid var(--line);
-         border-left: 8px solid var(--pink); border-radius: 28px; padding: 34px 40px 36px 44px; }
-  .say .k { font-family: "Silkscreen", monospace; font-size: 17px; color: var(--accent-txt); letter-spacing: 1px; margin-bottom: 14px; }
-  .say p { font-size: 40px; line-height: 1.3; font-weight: 700; }
+  .hero { position: absolute; pointer-events: none; }
+  .quote { position: absolute; left: 80px; right: 80px; bottom: 80px; background: var(--card); border-radius: 30px; padding: 30px 38px 32px;
+           border: 2px solid var(--line); box-shadow: 0 20px 60px rgba(0,0,0,.18); }
+  .quote::before { content: ""; position: absolute; left: 0; top: 26px; bottom: 26px; width: 8px; border-radius: 0 6px 6px 0; background: var(--grad); }
+  .quote .k { font-family: "Anton", sans-serif; font-size: 24px; letter-spacing: 2px; margin-bottom: 8px; display: inline-block; }
+  .quote p { font-size: 36px; line-height: 1.28; font-weight: 700; }
 
-  /* keycaps for slide 5 */
-  .keys { display: flex; flex-direction: column; gap: 18px; } .keys .row { display: flex; align-items: center; gap: 4px; }
-  .combo { display: flex; align-items: center; gap: 10px; font-size: 26px; font-weight: 700; color: var(--muted); }
-  kbd { font-family: "Satoshi", sans-serif; font-weight: 900; font-size: 28px; color: var(--fg); background: var(--key);
-        border: 2px solid var(--keyline); border-bottom-width: 6px; border-radius: 12px; padding: 4px 16px 6px; min-width: 60px; text-align: center; }
-  .keys .what { font-size: 34px; font-weight: 700; }
+  /* slide 2 */
+  .b-card { position: absolute; left: 80px; right: 80px; top: 470px; background: #fff; border: 2px solid var(--line); border-radius: 30px; padding: 30px 38px 32px; }
+  .b-card .k { font-family: "Anton", sans-serif; font-size: 24px; letter-spacing: 2px; color: var(--muted); margin-bottom: 8px; }
+  .b-card p { font-size: 34px; line-height: 1.32; font-weight: 700; color: var(--muted); }
+  .b-card s { text-decoration-color: #ff2e7e; text-decoration-thickness: 4px; }
+  .x { display: inline-flex; width: 92px; height: 92px; border-radius: 50%; background: var(--grad); position: relative; vertical-align: middle; margin-bottom: 18px; }
+  .x::before, .x::after { content: ""; position: absolute; left: 50%; top: 50%; width: 50px; height: 10px; border-radius: 5px; background: #fff; }
+  .x::before { transform: translate(-50%,-50%) rotate(45deg); } .x::after { transform: translate(-50%,-50%) rotate(-45deg); }
 
-  /* cover */
-  .c-the { position: absolute; left: 100px; top: 290px; font-family: "Clash Display", sans-serif; font-weight: 700; font-size: 73px; letter-spacing: -1px; color: var(--muted); }
-  .c-hero { position: absolute; left: 84px; top: 330px; display: flex; align-items: flex-end; }
-  .c-four { font-family: "Playfair Display", serif; font-weight: 900; font-size: 400px; line-height: .74; color: var(--pink); }
-  .c-words { margin-left: 22px; margin-bottom: -10px; font-family: "Clash Display", sans-serif; font-weight: 700; font-size: 150px; line-height: .86; letter-spacing: -3px; }
-  .c-sub { position: absolute; left: 96px; top: 740px; width: 860px; font-family: "Clash Display", sans-serif; font-weight: 700; font-size: 73px; line-height: 1.02; letter-spacing: -1.5px; }
-  .c-sub em { font-style: normal; color: var(--accent-txt); }
-
-  /* before */
-  .b-h { position: absolute; left: 96px; top: 206px; font-family: "Clash Display", sans-serif; font-weight: 700; font-size: 118px; line-height: .9; letter-spacing: -2px; }
-  .b-h small { display: block; word-spacing: 0; font-family: "Satoshi", sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 0; color: var(--muted); margin-top: 18px; }
-  .b-card { position: absolute; left: 96px; right: 96px; top: 440px; background: var(--card); border: 2px solid var(--line); border-radius: 28px; padding: 36px 44px 40px; }
-  .b-card .k { font-family: "Silkscreen", monospace; font-size: 17px; color: var(--muted); letter-spacing: 1px; margin-bottom: 14px; }
-  .b-card p { font-size: 40px; line-height: 1.32; font-weight: 500; color: var(--muted); }
-  .b-card p b { color: var(--fg); font-weight: 700; text-decoration: line-through; text-decoration-color: var(--pink); text-decoration-thickness: 4px; }
-  .b-res { position: absolute; left: 96px; right: 96px; top: 834px; display: flex; align-items: center; gap: 34px; }
-  .xmark { flex: none; width: 118px; height: 118px; border-radius: 50%; background: var(--pink); position: relative; }
-  .xmark::before, .xmark::after { content: ""; position: absolute; left: 50%; top: 50%; width: 62px; height: 12px; border-radius: 6px; background: #fff; }
-  .xmark::before { transform: translate(-50%,-50%) rotate(45deg); } .xmark::after { transform: translate(-50%,-50%) rotate(-45deg); }
-  .b-res .t { font-family: "Clash Display", sans-serif; font-weight: 700; font-size: 73px; line-height: .98; letter-spacing: -1.5px; }
-  .b-res .t span { color: var(--accent-txt); }
-  .drop { position: absolute; left: 96px; right: 96px; top: 1046px; }
-  .drop .lbl { font-family: "Silkscreen", monospace; font-size: 17px; color: var(--muted); margin-bottom: 14px; letter-spacing: 1px; }
-  .drop .bar2 { height: 64px; border-radius: 14px; border: 2px solid var(--line); position: relative; overflow: hidden; }
-  .drop .bar2 .gone { position: absolute; left: 0; top: 0; bottom: 0; width: 20%; background: repeating-linear-gradient(135deg, var(--pink) 0 10px, rgba(255,46,126,.55) 10px 20px); }
-  .drop .bar2 .rest { position: absolute; left: 22%; top: 0; bottom: 0; display: flex; align-items: center; font-size: 22px; font-weight: 700; color: var(--muted); }
-
-  /* after + cta */
-  .a-h { position: absolute; left: 96px; top: 200px; font-family: "Clash Display", sans-serif; font-weight: 700; font-size: 73px; line-height: .95; letter-spacing: -1.5px; }
-  .a-h em { font-style: normal; color: var(--accent-txt); }
-  .script { position: absolute; left: 96px; right: 96px; top: 300px; background: var(--card); border: 2px solid var(--line); border-radius: 28px; padding: 14px 36px; }
-  .ln { display: grid; grid-template-columns: 60px 1fr; column-gap: 18px; padding: 20px 0; border-bottom: 2px dashed var(--line); }
+  /* slide 7 */
+  .script { position: absolute; left: 80px; right: 80px; top: 420px; background: var(--card); border: 2px solid var(--line); border-radius: 30px; padding: 8px 34px; }
+  .ln { display: grid; grid-template-columns: 64px 1fr; column-gap: 14px; padding: 18px 0; border-bottom: 2px dashed var(--line); }
   .ln:last-child { border-bottom: 0; }
-  .ln .n { font-family: "Playfair Display", serif; font-weight: 900; font-size: 54px; line-height: .9; color: var(--pink); }
-  .ln .tag { font-family: "Silkscreen", monospace; font-size: 17px; color: var(--muted); letter-spacing: 1px; margin-bottom: 6px; }
-  .ln p { font-size: 29px; line-height: 1.3; font-weight: 700; }
-  .ask { position: absolute; left: 96px; right: 96px; top: 930px; }
-  .ask .c1 { font-family: "Clash Display", sans-serif; font-weight: 700; font-size: 73px; line-height: 1; letter-spacing: -1px; }
-  .ask .c1 span { background: var(--pink); color: #fff; border-radius: 16px; padding: 0 16px 6px; display: inline-block; transform: rotate(-2deg); }
-  .ask .c2 { margin-top: 26px; font-size: 32px; line-height: 1.4; font-weight: 700; color: var(--muted); }
-  .ask .c2 b { color: var(--fg); }
+  .ln .n { font-family: "Anton", sans-serif; font-size: 64px; line-height: .9; }
+  .ln .t { font-family: "Anton", sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--muted); margin-bottom: 4px; }
+  .ln p { font-size: 28px; line-height: 1.28; font-weight: 700; }
+  .cta { position: absolute; left: 80px; top: 1010px; width: 560px; }
+  .cta .c2 { font-size: 30px; line-height: 1.3; font-weight: 700; color: var(--muted); margin-top: 12px; }
+  .cta .c2 b { color: var(--fg); }
 </style>
 </head>
 <body>
 
 <!-- 1 COVER (dark) -->
 <section class="slide dark" id="s1">
-  <div class="grain"></div>
-  <div class="top"><span class="pill">REEL SCRIPTS</span><span class="handle">@theskilledbrains</span></div>
-  <div class="c-the">THE</div>
-  <div class="c-hero"><div class="c-four">4</div><div class="c-words">-LINE<br>SCRIPT</div></div>
-  <div class="c-sub">that makes <em>any Reel</em> watchable</div>
-  <div class="track">
-    <div class="lbl">ONE REEL, FOUR LINES</div>
-    <div class="bar"><div class="seg s1 lit">HOOK</div><div class="seg s2 lit">PROBLEM</div><div class="seg s3 lit">VALUE</div><div class="seg s4 lit">CTA</div></div>
+  <div class="glow"></div>
+  <img class="hero" src="heroes/phone.png" style="left:40px; top:470px; width:1080px;">
+  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="head">
+    <div class="num">4</div>
+    <div class="stack A">
+      <div style="font-size:60px; color:var(--muted)">The</div>
+      <div class="g" style="font-size:132px">-Line Script</div>
+      <div style="font-size:96px">That makes any</div>
+      <div style="font-size:96px">Reel <span class="g">watchable</span> <span class="g">→</span></div>
+    </div>
   </div>
-  <div class="foot"><span class="count">01 / 07</span><span class="swipe">Swipe <i></i></span></div>
 </section>
 
 <!-- 2 BEFORE (light) -->
 <section class="slide light" id="s2">
-  <div class="grain"></div>
-  <div class="top"><span class="pill">BEFORE</span><span class="handle">@theskilledbrains</span></div>
-  <div class="b-h">Before<small>The usual script</small></div>
+  <div class="glow" style="left:380px; top:640px; width:760px; height:760px"></div>
+  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="head" style="top:170px">
+    <div class="stack A">
+      <div class="g" style="font-size:170px">Before</div>
+      <div style="font-size:96px">The usual script</div>
+    </div>
+  </div>
   <div class="b-card">
-    <div class="k">FIRST 6 SECONDS</div>
-    <p>“<b>Hi guys, welcome back!</b> <b>Today I’ll tell you some Excel shortcuts that are very useful.</b> <b>So let’s start…</b>”</p>
+    <div class="k">THE FIRST 6 SECONDS</div>
+    <p>“<s>Hi guys, welcome back! Today I’ll tell you some Excel shortcuts that are very useful. So let’s start…</s>”</p>
   </div>
-  <div class="b-res"><div class="xmark"></div><div class="t"><span>6 seconds gone,</span><br>nobody stays</div></div>
-  <div class="drop">
-    <div class="lbl">WHERE THE REEL LOSES THEM</div>
-    <div class="bar2"><div class="gone"></div><div class="rest">the rest of your Reel, unseen</div></div>
+  <img class="hero" src="heroes/watch.png" style="left:420px; top:720px; width:700px;">
+  <div class="A" style="position:absolute; left:80px; top:830px; font-size:92px; line-height:1;">
+    <span class="x"></span><br><span class="g">6 seconds</span><br><span class="g">gone,</span><br>nobody stays
   </div>
-  <div class="foot"><span class="count">02 / 07</span><span class="swipe">The fix <i></i></span></div>
 </section>
 
 <!-- 3 HOOK (dark) -->
 <section class="slide dark" id="s3">
-  <div class="grain"></div>
-  <div class="top"><span class="pill">LINE 1</span><span class="handle">@theskilledbrains</span></div>
-  <div class="num-row"><div class="big-n">1</div><div class="name"><div class="k">LINE 1</div><h2>HOOK</h2><span class="when">0–3 sec</span></div></div>
-  <div class="rule">Stop the scroll with a <em>pain point</em> or a <em>surprise.</em></div>
-  <div class="say"><div class="k">SAY THIS</div><p>“You’re doing Excel the slow way.”</p></div>
-  <div class="track">
-    <div class="lbl">WHERE IT SITS</div>
-    <div class="bar"><div class="seg s1 lit">HOOK</div><div class="seg s2">PROBLEM</div><div class="seg s3">VALUE</div><div class="seg s4">CTA</div></div>
+  <div class="glow"></div>
+  <img class="hero" src="heroes/hook.png" style="left:240px; top:610px; width:700px;">
+  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="head">
+    <div class="num">1</div>
+    <div class="stack A">
+      <div style="font-size:64px; color:var(--muted)">Line 1</div>
+      <div class="g" style="font-size:180px">Hook</div>
+      <div style="font-size:72px">0–3 sec</div>
+    </div>
   </div>
-  <div class="foot"><span class="count">03 / 07</span><span class="swipe">Line 2 <i></i></span></div>
+  <div class="desc">Stop the scroll with a pain point or a surprise.</div>
+  <div class="quote"><div class="k g">SAY THIS</div><p>“You’re doing Excel the slow way.”</p></div>
 </section>
 
 <!-- 4 PROBLEM (light) -->
 <section class="slide light" id="s4">
-  <div class="grain"></div>
-  <div class="top"><span class="pill">LINE 2</span><span class="handle">@theskilledbrains</span></div>
-  <div class="num-row"><div class="big-n">2</div><div class="name"><div class="k">LINE 2</div><h2>PROBLEM</h2><span class="when">3–8 sec</span></div></div>
-  <div class="rule big">Make them <em>feel it.</em></div>
-  <div class="say"><div class="k">SAY THIS</div><p>“Formatting cell by cell, scrolling to add totals: it eats your day.”</p></div>
-  <div class="track">
-    <div class="lbl">WHERE IT SITS</div>
-    <div class="bar"><div class="seg s1">HOOK</div><div class="seg s2 lit">PROBLEM</div><div class="seg s3">VALUE</div><div class="seg s4">CTA</div></div>
+  <div class="glow"></div>
+  <img class="hero" src="heroes/grid.png" style="left:100px; top:440px; width:900px;">
+  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="head">
+    <div class="num">2</div>
+    <div class="stack A">
+      <div style="font-size:64px; color:var(--muted)">Line 2</div>
+      <div class="g" style="font-size:180px">Problem</div>
+      <div style="font-size:72px">3–8 sec</div>
+    </div>
   </div>
-  <div class="foot"><span class="count">04 / 07</span><span class="swipe">Line 3 <i></i></span></div>
+  <div class="desc">Make them feel it.</div>
+  <div class="quote"><div class="k g">SAY THIS</div><p>“Formatting cell by cell, scrolling to add totals: it eats your day.”</p></div>
 </section>
 
 <!-- 5 VALUE (dark) -->
 <section class="slide dark" id="s5">
-  <div class="grain"></div>
-  <div class="top"><span class="pill">LINE 3</span><span class="handle">@theskilledbrains</span></div>
-  <div class="num-row"><div class="big-n">3</div><div class="name"><div class="k">LINE 3</div><h2>VALUE</h2><span class="when">The main part</span></div></div>
-  <div class="rule">Give the answer <em>straight away,</em> no intro.</div>
-  <div class="say" style="top:676px; padding-top:30px; padding-bottom:32px">
-    <div class="k">SAY THIS</div>
-    <div class="keys">
-      <div class="row"><div class="combo">“<kbd>Ctrl</kbd>+<kbd>T</kbd></div><div class="what">: instant table.</div></div>
-      <div class="row"><div class="combo"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd></div><div class="what">: filters.</div></div>
-      <div class="row"><div class="combo"><kbd>Alt</kbd>+<kbd>=</kbd></div><div class="what">: sums a column.”</div></div>
+  <div class="glow"></div>
+  <img class="hero" src="heroes/keys.png" style="left:90px; top:400px; width:900px;">
+  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="head">
+    <div class="num">3</div>
+    <div class="stack A">
+      <div style="font-size:64px; color:var(--muted)">Line 3</div>
+      <div class="g" style="font-size:180px">Value</div>
+      <div style="font-size:72px">The main part</div>
     </div>
   </div>
-  <div class="track">
-    <div class="lbl">WHERE IT SITS</div>
-    <div class="bar"><div class="seg s1">HOOK</div><div class="seg s2">PROBLEM</div><div class="seg s3 lit">VALUE</div><div class="seg s4">CTA</div></div>
-  </div>
-  <div class="foot"><span class="count">05 / 07</span><span class="swipe">Line 4 <i></i></span></div>
+  <div class="desc">Give the answer straight away, no intro.</div>
+  <div class="quote"><div class="k g">SAY THIS</div><p>“Ctrl + T: instant table. Ctrl + Shift + L: filters. Alt + =: sums a column.”</p></div>
 </section>
 
 <!-- 6 CTA (light) -->
 <section class="slide light" id="s6">
-  <div class="grain"></div>
-  <div class="top"><span class="pill">LINE 4</span><span class="handle">@theskilledbrains</span></div>
-  <div class="num-row"><div class="big-n">4</div><div class="name"><div class="k">LINE 4</div><h2>CTA</h2><span class="when">Last 3 sec</span></div></div>
-  <div class="rule big"><em>One</em> clear action.</div>
-  <div class="say"><div class="k">SAY THIS</div><p>“Save this and try all 3 at work tomorrow.”</p></div>
-  <div class="track">
-    <div class="lbl">WHERE IT SITS</div>
-    <div class="bar"><div class="seg s1">HOOK</div><div class="seg s2">PROBLEM</div><div class="seg s3">VALUE</div><div class="seg s4 lit">CTA</div></div>
+  <div class="glow"></div>
+  <img class="hero" src="heroes/save.png" style="left:110px; top:440px; width:900px;">
+  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="head">
+    <div class="num">4</div>
+    <div class="stack A">
+      <div style="font-size:64px; color:var(--muted)">Line 4</div>
+      <div class="g" style="font-size:180px">CTA</div>
+      <div style="font-size:72px">Last 3 sec</div>
+    </div>
   </div>
-  <div class="foot"><span class="count">06 / 07</span><span class="swipe">All 4 lines <i></i></span></div>
+  <div class="desc">One clear action.</div>
+  <div class="quote"><div class="k g">SAY THIS</div><p>“Save this and try all 3 at work tomorrow.”</p></div>
 </section>
 
 <!-- 7 AFTER + CTA (dark) -->
 <section class="slide dark" id="s7">
-  <div class="grain"></div>
-  <div class="top"><span class="pill">AFTER</span><span class="handle">@theskilledbrains</span></div>
-  <div class="a-h">After: <em>the full script</em></div>
+  <div class="glow" style="left:420px; top:780px; width:700px; height:700px"></div>
+  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="head" style="top:165px">
+    <div class="stack A">
+      <div class="g" style="font-size:150px">After:</div>
+      <div style="font-size:96px">The full 4-line script</div>
+    </div>
+  </div>
   <div class="script">
-    <div class="ln"><div class="n">1</div><div><div class="tag">HOOK · 0–3 SEC</div><p>“You’re doing Excel the slow way.”</p></div></div>
-    <div class="ln"><div class="n">2</div><div><div class="tag">PROBLEM · 3–8 SEC</div><p>“Formatting cell by cell, scrolling to add totals: it eats your day.”</p></div></div>
-    <div class="ln"><div class="n">3</div><div><div class="tag">VALUE · THE MAIN PART</div><p>“Ctrl + T: instant table. Ctrl + Shift + L: filters. Alt + =: sums a column.”</p></div></div>
-    <div class="ln"><div class="n">4</div><div><div class="tag">CTA · LAST 3 SEC</div><p>“Save this and try all 3 at work tomorrow.”</p></div></div>
+    <div class="ln"><div class="n g">1</div><div><div class="t">HOOK · 0–3 SEC</div><p>“You’re doing Excel the slow way.”</p></div></div>
+    <div class="ln"><div class="n g">2</div><div><div class="t">PROBLEM · 3–8 SEC</div><p>“Formatting cell by cell, scrolling to add totals: it eats your day.”</p></div></div>
+    <div class="ln"><div class="n g">3</div><div><div class="t">VALUE · THE MAIN PART</div><p>“Ctrl + T: instant table. Ctrl + Shift + L: filters. Alt + =: sums a column.”</p></div></div>
+    <div class="ln"><div class="n g">4</div><div><div class="t">CTA · LAST 3 SEC</div><p>“Save this and try all 3 at work tomorrow.”</p></div></div>
   </div>
-  <div class="ask">
-    <div class="c1">Comment <span>“SCRIPT”</span></div>
-    <div class="c2">for the template + 10 hook lines · Follow <b>@theskilledbrains</b></div>
+  <img class="hero" src="heroes/bubble.png" style="left:520px; top:930px; width:580px;">
+  <div class="cta">
+    <div class="A" style="font-size:96px; line-height:1">Comment <span class="g">“Script”</span></div>
+    <div class="c2">for the template + 10 hook lines<br>Follow <b>@theskilledbrains</b></div>
   </div>
-  <div class="foot"><span class="count">07 / 07</span><span class="swipe">Save this <i></i></span></div>
 </section>
 
 <script>
