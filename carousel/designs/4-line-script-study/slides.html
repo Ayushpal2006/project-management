@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>The 4-line script (Reels, presentations, speeches)</title>
+<!--
+  2026-11-02. Same white reference look as ../reel-4-line-script (v3): huge black numeral, Anton caps headline,
+  pink-to-orange gradient key words, 3D heroes (from ../reel-4-line-script/heroes), COMMENT CTA + real IG profile.
+  Cover person: drop a cut-out of DSR at people/dsr-cutout.png (gitignored, never commit while the repo is public).
+  Until it exists the cover falls back to the 3D phone.
+  1080x1350, 80 px safe margin. Open with #s1 ... #s8.
+-->
+<style>
+  @font-face { font-family: "Anton"; src: url("../../../video-skills/vendor/effects/fonts/Anton-Regular.ttf") format("truetype"); }
+  @font-face { font-family: "Satoshi"; font-weight: 500; src: url("../reel-4-line-script/fonts/Satoshi-Medium.woff2") format("woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 700; src: url("../reel-4-line-script/fonts/Satoshi-Bold.woff2") format("woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 900; src: url("../reel-4-line-script/fonts/Satoshi-Black.woff2") format("woff2"); }
+
+  :root { --grad: linear-gradient(90deg, #e8338f 0%, #ff4466 50%, #ff7a1a 100%); --fg: #232323; --muted: #6b6b70; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #fff; }
+  body { font-family: "Satoshi", sans-serif; -webkit-font-smoothing: antialiased; color: var(--fg); }
+  .slide { position: absolute; inset: 0; display: none; overflow: hidden; background: #fff; }
+  .slide.on { display: block; }
+  .glow { position: absolute; width: 860px; height: 860px; border-radius: 50%; left: 110px; top: 420px; opacity: .14;
+          background: radial-gradient(circle, #ff2e7e 0%, rgba(255,122,26,.55) 35%, transparent 68%); }
+
+  .label { position: absolute; left: 0; right: 0; top: 80px; text-align: center; font-size: 25px; font-weight: 700; }
+  .label span { font-weight: 500; color: var(--muted); }
+  .label i { display: inline-block; width: 3px; height: 22px; background: var(--fg); margin: 0 16px -3px; }
+
+  .A { font-family: "Anton", sans-serif; text-transform: uppercase; font-weight: 400; letter-spacing: .5px; }
+  .g { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .head { position: absolute; left: 66px; right: 66px; top: 170px; display: flex; align-items: flex-start; gap: 28px; }
+  .num { font-family: "Anton", sans-serif; font-size: 400px; line-height: .78; color: var(--fg); }
+  .stack div { line-height: .98; white-space: nowrap; }
+  .desc { position: absolute; left: 80px; width: 920px; top: 540px; font-size: 40px; line-height: 1.25; font-weight: 900; }
+  .hero { position: absolute; pointer-events: none; }
+
+  /* ❌ / ✅ cards */
+  .pair { position: absolute; left: 80px; right: 80px; bottom: 80px; display: flex; flex-direction: column; gap: 16px; }
+  .c { display: flex; align-items: center; gap: 24px; border-radius: 28px; padding: 24px 32px 26px 24px; }
+  .c p { font-size: 33px; line-height: 1.26; font-weight: 700; }
+  .c.no { background: #f3f3f3; } .c.no p { color: #77777c; }
+  .c.yes { background: #fff; box-shadow: 0 22px 60px rgba(0,0,0,.12), 0 0 0 3px #ff5a6e; } .c.yes p { font-size: 36px; font-weight: 900; }
+  .b { flex: none; width: 62px; height: 62px; border-radius: 50%; position: relative; }
+  .b.x { background: #c9c9cd; } .b.v { background: var(--grad); }
+  .b.x::before, .b.x::after { content: ""; position: absolute; left: 50%; top: 50%; width: 32px; height: 7px; border-radius: 4px; background: #fff; }
+  .b.x::before { transform: translate(-50%,-50%) rotate(45deg); } .b.x::after { transform: translate(-50%,-50%) rotate(-45deg); }
+  .b.v::after { content: ""; position: absolute; left: 23px; top: 13px; width: 13px; height: 26px; border: solid #fff; border-width: 0 7px 7px 0; border-radius: 2px; transform: rotate(45deg); }
+
+  /* slide 7 */
+  .script { position: absolute; left: 80px; right: 80px; top: 470px; background: #f6f6f6; border-radius: 30px; padding: 10px 40px; }
+  .ln { display: grid; grid-template-columns: 74px 1fr; column-gap: 16px; align-items: center; padding: 24px 0; border-bottom: 2px dashed #dcdcdc; }
+  .ln:last-child { border-bottom: 0; }
+  .ln .n { font-family: "Anton", sans-serif; font-size: 72px; line-height: .9; }
+  .ln .t { font-family: "Anton", sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--muted); margin-bottom: 4px; }
+  .ln p { font-size: 34px; line-height: 1.26; font-weight: 700; }
+  .works { position: absolute; left: 80px; right: 80px; bottom: 80px; }
+  .works .k { font-family: "Anton", sans-serif; font-size: 40px; text-transform: uppercase; margin-bottom: 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; }
+  .chip { font-size: 28px; font-weight: 900; padding: 12px 24px 14px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 3px #ff5a6e; }
+
+  /* slide 8 */
+  .ig2 { position: absolute; left: 80px; width: 920px; top: 600px; background: #fff; border-radius: 40px; padding: 30px;
+         box-shadow: 0 40px 90px rgba(0,0,0,.16), 0 0 0 2px #ececec; transform: rotate(-2.5deg); }
+  .ig2 img { display: block; width: 860px; }
+  .ig2 .ring { position: absolute; left: 30px; top: 271px; width: 384px; height: 62px; border-radius: 22px; box-shadow: 0 0 0 7px #fff, 0 0 0 13px #ff4466; }
+</style>
+</head>
+<body>
+
+<!-- 1 COVER -->
+<section class="slide" id="s1">
+  <div class="glow" style="left:40px; top:600px; width:1000px; height:1000px; opacity:.22"></div>
+  <img class="hero" id="coverHero" src="people/dsr-cutout.png" style="left:150px; top:560px; width:780px;"
+       onerror="this.onerror=null; this.src='../reel-4-line-script/heroes/phone.png'; this.style.cssText='left:-60px; top:540px; width:1260px;'">
+  <div class="label">Communication Skills<i></i><span>@theskilledbrains</span></div>
+  <div class="head">
+    <div class="num">4</div>
+    <div class="stack A">
+      <div style="font-size:58px; color:var(--muted)">The</div>
+      <div class="g" style="font-size:132px">-Line Script</div>
+      <div style="font-size:64px">Make any Reel,</div>
+      <div style="font-size:64px">presentation or speech</div>
+      <div style="font-size:64px">impossible to ignore <span class="g">→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 THE MISTAKE -->
+<section class="slide" id="s2">
+  <div class="glow" style="left:470px; top:760px; width:700px; height:700px"></div>
+  <div class="label">Communication Skills<i></i><span>@theskilledbrains</span></div>
+  <div class="head" style="left:80px">
+    <div class="stack A">
+      <div class="g" style="font-size:170px">The mistake</div>
+      <div style="font-size:80px">Most students start like this:</div>
+    </div>
+  </div>
+  <div class="pair" style="top:470px; bottom:auto">
+    <div class="c no"><span class="b x"></span><p>“Good morning everyone, today I’m going to talk about…”</p></div>
+    <div class="c no"><span class="b x"></span><p>“Hi guys, welcome back to my channel…”</p></div>
+  </div>
+  <img class="hero" src="../reel-4-line-script/heroes/zzz.png" style="left:500px; top:760px; width:620px;">
+  <div class="A" style="position:absolute; left:80px; top:840px; width:520px; font-size:92px; line-height:1;">
+    By <span class="g">line 2,</span> people have stopped listening.
+  </div>
+</section>
+
+<!-- 3 HOOK -->
+<section class="slide" id="s3">
+  <div class="glow"></div>
+  <img class="hero" src="../reel-4-line-script/heroes/hook.png" style="left:310px; top:620px; width:520px;">
+  <div class="label">Communication Skills<i></i><span>@theskilledbrains</span></div>
+  <div class="head">
+    <div class="num">1</div>
+    <div class="stack A">
+      <div style="font-size:64px; color:var(--muted)">Line 1</div>
+      <div class="g" style="font-size:180px">Hook</div>
+      <div style="font-size:72px">First 3 seconds</div>
+    </div>
+  </div>
+  <div class="desc">Start with their problem, not your intro.</div>
+  <div class="pair">
+    <div class="c no"><span class="b x"></span><p>“Today I’ll share some study tips.”</p></div>
+    <div class="c yes"><span class="b v"></span><p>“You forget formulas because you only read them.”</p></div>
+  </div>
+</section>
+
+<!-- 4 PROBLEM -->
+<section class="slide" id="s4">
+  <div class="glow"></div>
+  <img class="hero" src="../reel-4-line-script/heroes/book.png" style="left:180px; top:500px; width:720px;">
+  <div class="label">Communication Skills<i></i><span>@theskilledbrains</span></div>
+  <div class="head">
+    <div class="num">2</div>
+    <div class="stack A">
+      <div style="font-size:64px; color:var(--muted)">Line 2</div>
+      <div class="g" style="font-size:180px">Problem</div>
+    </div>
+  </div>
+  <div class="desc">Say what they’re already feeling.</div>
+  <div class="pair">
+    <div class="c no"><span class="b x"></span><p>“Studying is very important for exams.”</p></div>
+    <div class="c yes"><span class="b v"></span><p>“Reading feels like studying, but it fades fast.”</p></div>
+  </div>
+</section>
+
+<!-- 5 VALUE -->
+<section class="slide" id="s5">
+  <div class="glow"></div>
+  <img class="hero" src="../reel-4-line-script/heroes/steps.png" style="left:260px; top:520px; width:560px;">
+  <div class="label">Communication Skills<i></i><span>@theskilledbrains</span></div>
+  <div class="head">
+    <div class="num">3</div>
+    <div class="stack A">
+      <div style="font-size:64px; color:var(--muted)">Line 3</div>
+      <div class="g" style="font-size:180px">Value</div>
+    </div>
+  </div>
+  <div class="desc">Give steps, not advice.</div>
+  <div class="pair">
+    <div class="c no"><span class="b x"></span><p>“Study regularly and revise properly.”</p></div>
+    <div class="c yes"><span class="b v"></span><p>“Close your notes. Write the formula from memory. Check it. Repeat tomorrow.”</p></div>
+  </div>
+</section>
+
+<!-- 6 CTA -->
+<section class="slide" id="s6">
+  <div class="glow"></div>
+  <img class="hero" src="../reel-4-line-script/heroes/moon.png" style="left:250px; top:540px; width:600px;">
+  <div class="label">Communication Skills<i></i><span>@theskilledbrains</span></div>
+  <div class="head">
+    <div class="num">4</div>
+    <div class="stack A">
+      <div style="font-size:64px; color:var(--muted)">Line 4</div>
+      <div class="g" style="font-size:180px">CTA</div>
+    </div>
+  </div>
+  <div class="desc">Ask for one action only.</div>
+  <div class="pair">
+    <div class="c no"><span class="b x"></span><p>“Like, share, subscribe and comment!”</p></div>
+    <div class="c yes"><span class="b v"></span><p>“Try this on one chapter tonight.”</p></div>
+  </div>
+</section>
+
+<!-- 7 PUT IT TOGETHER -->
+<section class="slide" id="s7">
+  <div class="label">Communication Skills<i></i><span>@theskilledbrains</span></div>
+  <div class="head" style="left:80px">
+    <div class="stack A">
+      <div class="g" style="font-size:140px">Put it together</div>
+      <div style="font-size:80px">Your full script:</div>
+    </div>
+  </div>
+  <div class="script">
+    <div class="ln"><div class="n g">1</div><p>You forget formulas because you only read them.</p></div>
+    <div class="ln"><div class="n g">2</div><p>Reading feels like studying, but it fades fast.</p></div>
+    <div class="ln"><div class="n g">3</div><p>Close your notes. Write it from memory. Check. Repeat tomorrow.</p></div>
+    <div class="ln"><div class="n g">4</div><p>Try this on one chapter tonight.</p></div>
+  </div>
+  <div class="works">
+    <div class="k">Works for:</div>
+    <div class="chips"><span class="chip">Reels</span><span class="chip">class presentations</span><span class="chip">college intros</span><span class="chip">viva answers</span></div>
+  </div>
+</section>
+
+<!-- 8 COMMENT + FOLLOW -->
+<section class="slide" id="s8">
+  <div class="glow" style="left:90px; top:420px; width:900px; height:900px; opacity:.16"></div>
+  <div class="label">Communication Skills<i></i><span>@theskilledbrains</span></div>
+  <div class="A" style="position:absolute; left:0; right:0; top:165px; text-align:center; line-height:.98">
+    <div style="font-size:122px; white-space:nowrap">Comment <span class="g">“Script”</span></div>
+    <div style="font-size:54px; margin-top:10px">For the free template + 10 hook lines</div>
+  </div>
+  <div class="ig2">
+    <img src="../reel-4-line-script/assets/ig-profile.png" alt="Instagram profile of @theskilledbrains">
+    <div class="ring"></div>
+  </div>
+  <div class="A" style="position:absolute; left:0; right:0; bottom:80px; text-align:center; font-size:76px; line-height:1">
+    <span class="g">+</span> Follow <span class="g">@theskilledbrains</span>
+  </div>
+</section>
+
+<script>
+  function show() {
+    const id = (location.hash || "#s1").slice(1);
+    document.querySelectorAll(".slide").forEach(s => s.classList.toggle("on", s.id === id));
+  }
+  window.addEventListener("hashchange", show); show();
+</script>
+</body>
+</html>
