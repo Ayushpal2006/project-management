@@ -2,12 +2,13 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>The 4-line Reel script carousel (v2)</title>
+<title>The 4-line Reel script carousel (v3)</title>
 <!--
-  v2 (2026-11-02): restyled to the user's reference: condensed all-caps headlines (Anton), pink-to-orange gradient on
-  key words, huge numerals, centred top label, one 3D hero per slide (heroes/*.png from render-heroes.cjs).
-  1080x1350, 80 px safe margin, phi lines y 516 / 834. Odd slides dark, even slides light (user rule).
-  Open with #s1 ... #s7.
+  v3 (2026-11-02): all-white look per the user (no dark/light alternation). Cover modelled on the user's reference
+  (huge black numeral beside a condensed caps headline, gradient key words, big 3D hero), Comment CTA in the same
+  condensed style, and a final Follow slide with an Instagram profile card.
+  Fonts: Anton (vendored, OFL) for headlines, Satoshi for body. 3D heroes: heroes/*.png (render-heroes.cjs).
+  1080x1350, 80 px safe margin. Open with #s1 ... #s8.
 -->
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&display=block">
 <style>
@@ -16,44 +17,37 @@
   @font-face { font-family: "Satoshi"; font-weight: 700; src: url("fonts/Satoshi-Bold.woff2") format("woff2"); }
   @font-face { font-family: "Satoshi"; font-weight: 900; src: url("fonts/Satoshi-Black.woff2") format("woff2"); }
 
-  :root { --grad: linear-gradient(90deg, #ff2e7e 0%, #ff4f5e 50%, #ff7a1a 100%); }
-  .dark  { --bg: #0b0b0c; --fg: #ffffff; --muted: #a3a3ab; --card: rgba(24,24,27,.86); --line: #2c2c31; }
-  .light { --bg: #f6f4ef; --fg: #1d1d1f; --muted: #5f5c55; --card: rgba(255,255,255,.9); --line: #e0dbcf; }
-
+  :root { --grad: linear-gradient(90deg, #e8338f 0%, #ff4466 50%, #ff7a1a 100%); --bg: #ffffff; --fg: #232323; --muted: #6b6b70; --card: #ffffff; --line: #e6e6e6; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #0b0b0c; }
-  body { font-family: "Satoshi", sans-serif; -webkit-font-smoothing: antialiased; }
-  .slide { position: absolute; inset: 0; display: none; overflow: hidden; background: var(--bg); color: var(--fg); }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #fff; }
+  body { font-family: "Satoshi", sans-serif; -webkit-font-smoothing: antialiased; color: var(--fg); }
+  .slide { position: absolute; inset: 0; display: none; overflow: hidden; background: var(--bg); }
   .slide.on { display: block; }
-  .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; left: 90px; top: 520px; opacity: .22;
-          background: radial-gradient(circle, #ff2e7e 0%, rgba(255,122,26,.5) 35%, transparent 68%); filter: blur(10px); }
-  .light .glow { opacity: .16; }
+  .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; left: 90px; top: 560px; opacity: .14;
+          background: radial-gradient(circle, #ff2e7e 0%, rgba(255,122,26,.55) 35%, transparent 68%); }
+  .shadow { position: absolute; left: 260px; width: 560px; height: 60px; border-radius: 50%; background: radial-gradient(ellipse, rgba(0,0,0,.16), transparent 70%); }
 
-  .label { position: absolute; left: 0; right: 0; top: 80px; text-align: center; font-size: 25px; font-weight: 700; color: var(--fg); }
+  .label { position: absolute; left: 0; right: 0; top: 80px; text-align: center; font-size: 25px; font-weight: 700; }
   .label span { font-weight: 500; color: var(--muted); }
   .label i { display: inline-block; width: 3px; height: 22px; background: var(--fg); margin: 0 16px -3px; }
 
   .A { font-family: "Anton", sans-serif; text-transform: uppercase; font-weight: 400; letter-spacing: .5px; }
   .g { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-  /* numeral + stacked headline */
-  .head { position: absolute; left: 70px; right: 80px; top: 165px; display: flex; align-items: flex-start; gap: 30px; }
+  .head { position: absolute; left: 66px; right: 66px; top: 170px; display: flex; align-items: flex-start; gap: 28px; }
   .num { font-family: "Anton", sans-serif; font-size: 400px; line-height: .78; color: var(--fg); }
-  .stack { padding-top: 4px; }
   .stack div { line-height: .98; white-space: nowrap; }
 
-  .desc { position: absolute; left: 80px; width: 900px; top: 540px; font-size: 38px; line-height: 1.25; font-weight: 700; }
-  .desc b { font-weight: 900; }
-
+  .desc { position: absolute; left: 80px; width: 920px; top: 545px; font-size: 38px; line-height: 1.25; font-weight: 700; }
   .hero { position: absolute; pointer-events: none; }
   .quote { position: absolute; left: 80px; right: 80px; bottom: 80px; background: var(--card); border-radius: 30px; padding: 30px 38px 32px;
-           border: 2px solid var(--line); box-shadow: 0 20px 60px rgba(0,0,0,.18); }
+           border: 2px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.10); }
   .quote::before { content: ""; position: absolute; left: 0; top: 26px; bottom: 26px; width: 8px; border-radius: 0 6px 6px 0; background: var(--grad); }
   .quote .k { font-family: "Anton", sans-serif; font-size: 24px; letter-spacing: 2px; margin-bottom: 8px; display: inline-block; }
   .quote p { font-size: 36px; line-height: 1.28; font-weight: 700; }
 
   /* slide 2 */
-  .b-card { position: absolute; left: 80px; right: 80px; top: 470px; background: #fff; border: 2px solid var(--line); border-radius: 30px; padding: 30px 38px 32px; }
+  .b-card { position: absolute; left: 80px; right: 80px; top: 470px; background: #f6f6f6; border-radius: 30px; padding: 30px 38px 32px; }
   .b-card .k { font-family: "Anton", sans-serif; font-size: 24px; letter-spacing: 2px; color: var(--muted); margin-bottom: 8px; }
   .b-card p { font-size: 34px; line-height: 1.32; font-weight: 700; color: var(--muted); }
   .b-card s { text-decoration-color: #ff2e7e; text-decoration-thickness: 4px; }
@@ -62,40 +56,56 @@
   .x::before { transform: translate(-50%,-50%) rotate(45deg); } .x::after { transform: translate(-50%,-50%) rotate(-45deg); }
 
   /* slide 7 */
-  .script { position: absolute; left: 80px; right: 80px; top: 420px; background: var(--card); border: 2px solid var(--line); border-radius: 30px; padding: 8px 34px; }
-  .ln { display: grid; grid-template-columns: 64px 1fr; column-gap: 14px; padding: 18px 0; border-bottom: 2px dashed var(--line); }
+  .script { position: absolute; left: 80px; right: 80px; top: 470px; background: #f6f6f6; border-radius: 30px; padding: 14px 40px; }
+  .ln { display: grid; grid-template-columns: 74px 1fr; column-gap: 16px; padding: 34px 0; border-bottom: 2px dashed #dcdcdc; }
   .ln:last-child { border-bottom: 0; }
-  .ln .n { font-family: "Anton", sans-serif; font-size: 64px; line-height: .9; }
-  .ln .t { font-family: "Anton", sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--muted); margin-bottom: 4px; }
-  .ln p { font-size: 28px; line-height: 1.28; font-weight: 700; }
-  .cta { position: absolute; left: 80px; top: 1010px; width: 560px; }
-  .cta .c2 { font-size: 30px; line-height: 1.3; font-weight: 700; color: var(--muted); margin-top: 12px; }
-  .cta .c2 b { color: var(--fg); }
+  .ln .n { font-family: "Anton", sans-serif; font-size: 78px; line-height: .9; }
+  .ln .t { font-family: "Anton", sans-serif; font-size: 24px; letter-spacing: 2px; color: var(--muted); margin-bottom: 6px; }
+  .ln p { font-size: 35px; line-height: 1.28; font-weight: 700; }
+
+  /* slide 8: Instagram profile card */
+  .ig { position: absolute; left: 140px; width: 800px; top: 560px; background: #fff; border-radius: 40px; padding: 40px 44px 44px;
+        box-shadow: 0 40px 90px rgba(0,0,0,.16), 0 0 0 2px #ececec; transform: rotate(-3deg) scale(1.1); }
+  .ig .row { display: flex; align-items: center; gap: 34px; }
+  .ig .av { flex: none; width: 170px; height: 170px; border-radius: 50%; padding: 7px; background: var(--grad); }
+  .ig .av div { width: 100%; height: 100%; border-radius: 50%; border: 6px solid #fff; background: #012816; display: flex; align-items: center; justify-content: center;
+                font-family: "Anton", sans-serif; font-size: 58px; color: #00d579; letter-spacing: 1px; }
+  .ig .user { font-size: 40px; font-weight: 900; display: flex; align-items: center; gap: 10px; }
+  .ig .tick { width: 34px; height: 34px; border-radius: 50%; background: #0095f6; position: relative; }
+  .ig .tick::after { content: ""; position: absolute; left: 12px; top: 6px; width: 8px; height: 16px; border: solid #fff; border-width: 0 4px 4px 0; transform: rotate(45deg); }
+  .ig .name { font-size: 30px; font-weight: 700; color: var(--muted); margin-top: 6px; }
+  .ig .stat { font-size: 30px; font-weight: 500; margin-top: 14px; } .ig .stat b { font-weight: 900; }
+  .ig .bio { font-size: 28px; line-height: 1.4; font-weight: 500; margin-top: 26px; color: #3a3a3e; }
+  .ig .btns { display: flex; gap: 14px; margin-top: 28px; }
+  .ig .btn { flex: 1; height: 72px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 900; background: #efefef; }
+  .ig .btn.f { background: #0095f6; color: #fff; box-shadow: 0 0 0 8px #fff, 0 0 0 14px #ff4466; }
+  .tap { position: absolute; left: 330px; top: 1010px; width: 120px; height: 120px; border-radius: 50%; border: 6px solid #ff4466; opacity: .9; }
+  .tap::after { content: ""; position: absolute; inset: 22px; border-radius: 50%; background: rgba(255,68,102,.35); }
 </style>
 </head>
 <body>
 
-<!-- 1 COVER (dark) -->
-<section class="slide dark" id="s1">
-  <div class="glow"></div>
-  <img class="hero" src="heroes/phone.png" style="left:40px; top:470px; width:1080px;">
-  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+<!-- 1 COVER -->
+<section class="slide" id="s1">
+  <div class="glow" style="left:60px; top:620px; width:1000px; height:1000px; opacity:.2"></div>
+  <img class="hero" src="heroes/phone.png" style="left:-60px; top:520px; width:1260px;">
+  <div class="label">Content Creation<i></i><span>@theskilledbrains</span></div>
   <div class="head">
     <div class="num">4</div>
     <div class="stack A">
       <div style="font-size:60px; color:var(--muted)">The</div>
       <div class="g" style="font-size:132px">-Line Script</div>
       <div style="font-size:96px">That makes any</div>
-      <div style="font-size:96px">Reel <span class="g">watchable</span> <span class="g">→</span></div>
+      <div style="font-size:96px">Reel watchable <span class="g">→</span></div>
     </div>
   </div>
 </section>
 
-<!-- 2 BEFORE (light) -->
-<section class="slide light" id="s2">
+<!-- 2 BEFORE -->
+<section class="slide" id="s2">
   <div class="glow" style="left:380px; top:640px; width:760px; height:760px"></div>
-  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
-  <div class="head" style="top:170px">
+  <div class="label">Content Creation<i></i><span>@theskilledbrains</span></div>
+  <div class="head" style="top:170px; left:80px">
     <div class="stack A">
       <div class="g" style="font-size:170px">Before</div>
       <div style="font-size:96px">The usual script</div>
@@ -111,11 +121,11 @@
   </div>
 </section>
 
-<!-- 3 HOOK (dark) -->
-<section class="slide dark" id="s3">
+<!-- 3 HOOK -->
+<section class="slide" id="s3">
   <div class="glow"></div>
   <img class="hero" src="heroes/hook.png" style="left:240px; top:610px; width:700px;">
-  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="label">Content Creation<i></i><span>@theskilledbrains</span></div>
   <div class="head">
     <div class="num">1</div>
     <div class="stack A">
@@ -128,11 +138,11 @@
   <div class="quote"><div class="k g">SAY THIS</div><p>“You’re doing Excel the slow way.”</p></div>
 </section>
 
-<!-- 4 PROBLEM (light) -->
-<section class="slide light" id="s4">
+<!-- 4 PROBLEM -->
+<section class="slide" id="s4">
   <div class="glow"></div>
   <img class="hero" src="heroes/grid.png" style="left:100px; top:440px; width:900px;">
-  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="label">Content Creation<i></i><span>@theskilledbrains</span></div>
   <div class="head">
     <div class="num">2</div>
     <div class="stack A">
@@ -145,11 +155,11 @@
   <div class="quote"><div class="k g">SAY THIS</div><p>“Formatting cell by cell, scrolling to add totals: it eats your day.”</p></div>
 </section>
 
-<!-- 5 VALUE (dark) -->
-<section class="slide dark" id="s5">
+<!-- 5 VALUE -->
+<section class="slide" id="s5">
   <div class="glow"></div>
   <img class="hero" src="heroes/keys.png" style="left:90px; top:400px; width:900px;">
-  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="label">Content Creation<i></i><span>@theskilledbrains</span></div>
   <div class="head">
     <div class="num">3</div>
     <div class="stack A">
@@ -162,11 +172,11 @@
   <div class="quote"><div class="k g">SAY THIS</div><p>“Ctrl + T: instant table. Ctrl + Shift + L: filters. Alt + =: sums a column.”</p></div>
 </section>
 
-<!-- 6 CTA (light) -->
-<section class="slide light" id="s6">
+<!-- 6 CTA -->
+<section class="slide" id="s6">
   <div class="glow"></div>
   <img class="hero" src="heroes/save.png" style="left:110px; top:440px; width:900px;">
-  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
+  <div class="label">Content Creation<i></i><span>@theskilledbrains</span></div>
   <div class="head">
     <div class="num">4</div>
     <div class="stack A">
@@ -179,13 +189,12 @@
   <div class="quote"><div class="k g">SAY THIS</div><p>“Save this and try all 3 at work tomorrow.”</p></div>
 </section>
 
-<!-- 7 AFTER + CTA (dark) -->
-<section class="slide dark" id="s7">
-  <div class="glow" style="left:420px; top:780px; width:700px; height:700px"></div>
-  <div class="label">Reel Scripts<i></i><span>@theskilledbrains</span></div>
-  <div class="head" style="top:165px">
+<!-- 7 AFTER -->
+<section class="slide" id="s7">
+  <div class="label">Content Creation<i></i><span>@theskilledbrains</span></div>
+  <div class="head" style="left:80px">
     <div class="stack A">
-      <div class="g" style="font-size:150px">After:</div>
+      <div class="g" style="font-size:170px">After</div>
       <div style="font-size:96px">The full 4-line script</div>
     </div>
   </div>
@@ -195,10 +204,29 @@
     <div class="ln"><div class="n g">3</div><div><div class="t">VALUE · THE MAIN PART</div><p>“Ctrl + T: instant table. Ctrl + Shift + L: filters. Alt + =: sums a column.”</p></div></div>
     <div class="ln"><div class="n g">4</div><div><div class="t">CTA · LAST 3 SEC</div><p>“Save this and try all 3 at work tomorrow.”</p></div></div>
   </div>
-  <img class="hero" src="heroes/bubble.png" style="left:520px; top:930px; width:580px;">
-  <div class="cta">
-    <div class="A" style="font-size:96px; line-height:1">Comment <span class="g">“Script”</span></div>
-    <div class="c2">for the template + 10 hook lines<br>Follow <b>@theskilledbrains</b></div>
+</section>
+
+<!-- 8 COMMENT + FOLLOW -->
+<section class="slide" id="s8">
+  <div class="glow" style="left:90px; top:420px; width:900px; height:900px; opacity:.16"></div>
+  <div class="label">Content Creation<i></i><span>@theskilledbrains</span></div>
+  <div class="A" style="position:absolute; left:0; right:0; top:165px; text-align:center; line-height:.98">
+    <div style="font-size:132px; white-space:nowrap">Comment <span class="g">“Script”</span></div>
+    <div style="font-size:58px; margin-top:10px">For the template + 10 hook lines</div>
+  </div>
+  <div class="ig">
+    <div class="row">
+      <div class="av"><div>TSB</div></div>
+      <div>
+        <div class="user">theskilledbrains <span class="tick"></span></div>
+        <div class="name">The Skilled Brains</div>
+        <div class="stat"><b>11.4K</b> followers</div>
+      </div>
+    </div>
+    <div class="btns"><div class="btn f">Follow</div><div class="btn">Message</div></div>
+  </div>
+  <div class="A" style="position:absolute; left:0; right:0; bottom:80px; text-align:center; font-size:84px; line-height:1">
+    Follow <span class="g">@theskilledbrains</span>
   </div>
 </section>
 
