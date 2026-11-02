@@ -5,7 +5,7 @@
 const { chromium } = require("playwright");
 const path = require("path");
 const fs = require("fs");
-const names = ["cover", "mistake", "hook", "problem", "value", "cta", "together", "comment-follow"]; // heroes come from ../reel-4-line-script (run its render-heroes.cjs first)
+const names = ["cover", "mistake", "hook", "problem", "value", "cta", "together-cta"]; // heroes come from ../reel-4-line-script (run its render-heroes.cjs first)
 (async () => {
   const out = path.resolve(process.argv[2] || path.join(__dirname, "../../../output/4-line-script-study"));
   fs.mkdirSync(out, { recursive: true });
