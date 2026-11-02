@@ -324,8 +324,39 @@ When new reference photos, logos or team members are added:
 
 ---
 
+## 9) Anti-AI design direction (standing rule, user 2026-11-02)
+
+A raw, human, professional look. Reject generic AI layouts, over-polished vectors and template clichés. This section adds to the brief; colours (§3) and typography (§4) stay exactly as they are. Where an older carousel rule conflicts with this section, this section wins.
+
+### The four guardrails (every layout plan, slide blueprint and copy draft)
+
+1. **Asymmetric layouts.** Strict left alignment, generous unexpected margins, deliberate negative space. No centred, perfectly balanced blocks or predictable symmetric grids.
+2. **Typographic contrast.** An aggressive scale jump: a high-character display face for headers against a clean, functional sans or mono for body and micro-copy. Use the brand fonts from §4 for this (Clash Display / Anton-style condensed display for headers, Satoshi for body, Silkscreen for tiny labels); don't add new fonts.
+3. **Organic texture.** Add a subtle 3–5% noise or grain overlay in the final edit to break up sterile, hyper-smooth finishes.
+4. **Real imagery only.** High-contrast real photos (our team first, see §6–§7), crisp software UI screenshots, or raw hand-drawn vector elements. **Banned:** glossy 3D objects, claymorphism, stock photos with artificial studio lighting.
+
+**Keep it clean ("don't make a jungle").** One idea per slide, few elements, lots of air. Texture and hand-drawn marks are accents, not clutter.
+
+### Workflow for any carousel or brand asset
+
+1. **Discovery ("Skill Zero").** Pin down the core problem, the audience's friction points and the value. Stress-test the idea against the user's constraints; no surface-level hacks or fluff.
+2. **System encoding.** Map the mood to tokens (Primary, Secondary, Accent, Neutral) from §3 and set the H1-display vs body rules from §4 for scannability and contrast.
+3. **Information architecture and hooks.** Turn the content into a clear multi-slide story. Write a few human-sounding hook variations that spark curiosity without generic AI bait such as "The secret to…" or "Stop doing X".
+4. **Blueprint.** Before rendering, write a slide-by-slide breakdown with: slide number and job (Hook, Reframe, Core Value, CTA); typography placement (header vs body, left-aligned); the exact visual asset (which photo, screenshot or hand-drawn element); and a layout note naming where the negative space sits.
+
+When presenting this work, skip conversational filler and generic summaries: go straight to the output.
+
+### What this overrides
+
+- The **3D hero object per slide** from the 2026-11-02 carousel look is dropped. Use a real photo, a UI screenshot or a hand-drawn element instead.
+- The **centred** top label and any centred headline blocks give way to left alignment.
+- Still in force from that look: white ground, huge black numeral, condensed all-caps headline with key words in the pink-to-orange gradient, 7 slides max, `COMMENT "WORD"` + Follow CTA with the real IG profile screenshot, DSR on the cover, short copy, and no audience labels like "students" or "learners".
+
+---
+
 ## Changelog
 
 - **2026-10-30** — Brief created. Inventoried 6 studio headshots, 120 photos in `sheetal didi thumbnail images/` (117 of Sheetal + 3 B-roll), `Logo.png`, `all logos.jpeg`, `all photos.jpeg` and the three ChatGPT Codes carousel folders. Logo hex codes sampled from the files.
 - **2026-10-30** — Moved into the GitHub repo as `brand/BRAND_BRIEF.md`, which is now the master copy. Asset paths now resolve under `brand/assets/`; identity grids live in `brand/people/`.
 - **2026-10-31** — User confirmed Ismail is a co-founder; treated as "Smile". Merged the Smile and Ismail entries.
+- **2026-11-02** — Added §9 Anti-AI design direction (asymmetric left-aligned layouts, type contrast, 3–5% grain, real imagery only, 4-step blueprint workflow). Drops the 3D hero; colours and typography unchanged.
