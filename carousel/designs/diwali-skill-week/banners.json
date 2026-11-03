@@ -1,0 +1,8 @@
+[
+ {"id":"01-nov03-skill-discovery","date":"03 NOV","plate":"c03.jpg","dx":96,"off":44,"lines":["GIFT YOURSELF","A <em>NEW SKILL</em>"]},
+ {"id":"02-nov04-ai-skills","date":"04 NOV","plate":"c04.jpg","dx":70,"off":30,"lines":["LEARN AI.","USE IT <em>BETTER.</em>"]},
+ {"id":"03-nov05-mobile-editing","date":"05 NOV","plate":"c05.jpg","off":28,"lines":["CREATE WITH","YOUR <em>PHONE</em>"]},
+ {"id":"04-nov06-content-creation","date":"06 NOV","plate":"c06.jpg","off":24,"lines":["YOUR CREATOR","<em>JOURNEY</em>"]},
+ {"id":"05-nov07-course-bundles","date":"07 NOV","plate":"c07.jpg","off":30,"lines":["BUILD YOUR","<em>SKILL SET</em>"],"cards":true},
+ {"id":"06-nov08-happy-diwali","date":"08 NOV","plate":"c08.jpg","off":30,"lines":["HAPPY","<em>DIWALI</em>"],"dark":true,"small":"The Skilled Brains"}
+]
