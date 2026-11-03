@@ -253,6 +253,27 @@ const banners={
 };
 
 
+// ---------------- COHORT UPSELL (standalone, 3 Nov brief) ----------------
+banners['u1-cohort-upsell']={
+ land:()=>`${base(1024,512)}<style>body{background:#F4ECDE}
+  h1{position:absolute;left:48px;top:100px;font-size:44px;line-height:1.0}
+  .sub{position:absolute;left:50px;top:258px;font-size:15px}
+  .cta{left:48px;top:420px;height:48px;padding:0 8px 0 24px;font-size:14px;gap:14px}.cta b{width:34px;height:34px;font-size:18px}
+  .side{position:absolute;left:790px;top:36px;width:234px;height:476px;border-radius:30px 0 0 0;background:radial-gradient(110% 60% at 50% 25%,${C.forest2},${C.forest});overflow:hidden;z-index:4}
+ </style>
+ ${plate('c-u1-desk.jpg',977,-112,-33)}
+ <svg style="position:absolute;left:286px;top:268px;z-index:5" width="70" height="56" viewBox="0 0 70 56"><path d="M6 50 C 8 22, 30 10, 60 12" fill="none" stroke="${C.orange}" stroke-width="2.2" stroke-dasharray="5 5" stroke-linecap="round"/><path d="M52 5 L62 12 L52 19" fill="none" stroke="${C.orange}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <img class="logo" src="brand/logo-forest.png" style="left:48px;top:30px;height:38px">
+ <h1>From basic<br>editing to<br><em>pro skills</em></h1>
+ <div class="sub">3-Month Video Editing Cohort</div>
+ <div class="side"><img class="ph" src="people/dsr.png" style="left:-14px;bottom:0;height:300px;filter:brightness(.97)"></div>
+ <img class="ph" src="people/ujjwal.png" style="left:612px;bottom:0;height:372px;z-index:8;filter:drop-shadow(10px 0 18px rgba(1,40,22,.35))">
+ ${cap('Ujjwal Jain','Senior Video Editor &amp; Mentor','left:628px;top:450px',12)}
+ ${cap('Digraj Sir','Founder','right:16px;top:150px',11)}
+ <div class="cta">EXPLORE THE COHORT <b>→</b></div>
+ <div class="grain"></div>`,
+};
+
 (async()=>{const br=await chromium.launch(); fs.mkdirSync(__dirname+'/out',{recursive:true});
 for(const [id,b] of Object.entries(banners)){ if(only&&!id.startsWith(only))continue;
  for(const [k,w,h] of [['land',1024,512],['port',1080,1350]]){ if(!b[k])continue;

@@ -1,0 +1,31 @@
+<html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=block" rel="stylesheet"><style>
+*{margin:0;box-sizing:border-box}body{width:720px;height:1366px;background:#121212;font-family:Poppins;color:#fff;overflow:hidden;position:relative}
+.top{height:120px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 34px 18px;font:600 26px Poppins}
+.exp{background:#00D579;color:#012816;padding:10px 26px;border-radius:999px;font:700 24px Poppins}
+.prev{margin:10px 34px;height:600px;border-radius:24px;background:url(thumbs/v-diyas.jpg) center/cover;position:relative;overflow:hidden}
+.cap{position:absolute;left:0;right:0;bottom:60px;text-align:center}
+.cap span{background:#fff;color:#111;font:800 40px Poppins;padding:6px 16px;border-radius:10px;box-decoration-break:clone}
+.cap span em{font-style:normal;color:#C2601A}
+.time{display:flex;justify-content:space-between;padding:16px 40px;font:500 22px Poppins;color:#bbb}
+.tl{position:absolute;left:0;right:0;top:800px;bottom:0;background:#1C1C1C;padding:30px 0 0 30px}
+.trk{display:flex;gap:6px;height:118px;margin-bottom:14px}
+.clip{width:200px;border-radius:12px;background-size:cover;background-position:center;border:3px solid transparent}
+.clip.sel{border-color:#F5B841}
+.txt{height:54px;border-radius:10px;background:#7D8CF0;font:600 22px Poppins;display:flex;align-items:center;padding:0 16px;margin-bottom:14px;width:430px;margin-left:120px}
+.aud{height:70px;border-radius:10px;background:#0E5C3A;margin-bottom:14px;width:660px;display:flex;align-items:center;gap:4px;padding:0 10px;overflow:hidden}
+.aud i{display:block;width:5px;background:#00D579;border-radius:3px}
+.ph{position:absolute;left:300px;top:790px;bottom:130px;width:4px;background:#fff}
+.ph:before{content:'';position:absolute;top:-6px;left:-10px;width:24px;height:24px;border-radius:50%;background:#fff}
+.tools{position:absolute;bottom:0;left:0;right:0;height:120px;background:#121212;display:flex;justify-content:space-around;align-items:center;font:500 20px Poppins;color:#aaa}
+</style></head><body>
+<div class="top"><span>✕</span><span style="font-weight:500;color:#bbb">1080p · 30fps</span><span class="exp">Export</span></div>
+<div class="prev"><div class="cap"><span>Diwali at <em>home</em></span></div></div>
+<div class="time"><span>00:07 / 00:15</span><span>▶</span><span>↶ ↷</span></div>
+<div class="tl">
+ <div class="trk"><div class="clip" style="background-image:url(thumbs/v-gift.jpg)"></div><div class="clip sel" style="background-image:url(thumbs/v-diyas.jpg)"></div><div class="clip" style="background-image:url(thumbs/v-marigold.jpg)"></div><div class="clip" style="background-image:url(thumbs/v-cards.jpg)"></div></div>
+ <div class="txt">T&nbsp; Diwali at home</div>
+ <div class="aud" id="a"></div>
+</div><div class="ph"></div>
+<div class="tools"><span>Split</span><span>Speed</span><span>Text</span><span>Audio</span><span>Filters</span></div>
+<script>const a=document.getElementById('a');for(let i=0;i<70;i++){const e=document.createElement('i');e.style.height=(10+Math.abs(Math.sin(i*0.7)*Math.cos(i*0.23))*48)+'px';a.appendChild(e)}</script>
+</body></html>

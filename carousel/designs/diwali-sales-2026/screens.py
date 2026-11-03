@@ -1,9 +1,9 @@
 """Find the chroma-green screen in each plate and report its corner quad + mask (used by composite.py)."""
 import cv2, numpy as np, json, sys
-def find(plate):
+def find(plate, k=0):
     P=cv2.imread(f'plates/{plate}'); hsv=cv2.cvtColor(P,cv2.COLOR_BGR2HSV)
     m=cv2.inRange(hsv,(40,120,90),(85,255,255))
-    n,lab,st,_=cv2.connectedComponentsWithStats(m); i=1+np.argmax(st[1:,4]); m=(lab==i).astype(np.uint8)*255
+    n,lab,st,_=cv2.connectedComponentsWithStats(m); i=1+np.argsort(-st[1:,4])[k]; m=(lab==i).astype(np.uint8)*255
     m=cv2.morphologyEx(m,cv2.MORPH_CLOSE,np.ones((9,9),np.uint8))
     cs,_=cv2.findContours(m,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE); c=max(cs,key=cv2.contourArea)
     pts=c[:,0,:].astype(np.float32); s=pts.sum(1); d=pts[:,0]-pts[:,1]

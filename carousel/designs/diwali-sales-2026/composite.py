@@ -1,8 +1,8 @@
 """Warp ui/*.png onto the chroma-green screens of plates/*.jpg -> plates/c-*.jpg. Run `node ui/render-ui.cjs` first."""
 import cv2, numpy as np
 from screens import find
-def warp(plate, ui, out, inset=3):
-    P=cv2.imread(f'plates/{plate}').astype(np.float32); q,m=find(plate)
+def warp(plate, ui, out, inset=3, k=0, src=None):
+    P=cv2.imread(f'plates/{src or plate}').astype(np.float32); q,m=find(plate,k)
     U=cv2.imread(f'ui/{ui}').astype(np.float32); h,w=U.shape[:2]
     c=np.mean(q,0); q2=[list(np.array(p)+(c-np.array(p))/np.linalg.norm(c-np.array(p))*0) for p in q]
     M=cv2.getPerspectiveTransform(np.float32([[0,0],[w,0],[w,h],[0,h]]),np.float32(q2))
@@ -19,3 +19,5 @@ def warp(plate, ui, out, inset=3):
 warp('d2-laptop.jpg','laptop.png','c-d2-laptop.jpg')
 warp('d3-phone.jpg','phone.png','c-d3-phone.jpg')
 warp('d5-workstation.jpg','monitor.png','c-d5-workstation.jpg')
+warp('u1-desk.jpg','monitor-pro.png','c-u1-desk.jpg',k=0)
+warp('u1-desk.jpg','phone-basic.png','c-u1-desk.jpg',k=1,src='c-u1-desk.jpg')
