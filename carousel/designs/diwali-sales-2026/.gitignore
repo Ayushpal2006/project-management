@@ -1,0 +1,8 @@
+out/
+people/
+brand/
+fonts/
+ui/*.png
+plates/c-*.jpg
+.*.html
+__pycache__/

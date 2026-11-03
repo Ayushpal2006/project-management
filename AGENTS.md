@@ -60,7 +60,7 @@ Third-party video skills (effects, watch-skill, GSAP, Three.js) are pinned in `v
 | Smile | Ismail | Co-founder (`Ismail.png`) |
 | Ujjwal | Ujjwal Jain | Editor / senior editor |
 
-Also in the photos, role unconfirmed: Yash (`Yash V.png`). Use them in team posts only until the user confirms.
+Yash (`Yash V.png`) is very likely **Yash Verma**, whom theskilledbrains.com lists as the instructor of Master Mobile Video Editing (checked 2026-11-03). Ask the user to confirm the photo is him.
 
 ## Hard rules
 
