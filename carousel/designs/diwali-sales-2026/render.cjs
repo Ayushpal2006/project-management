@@ -274,6 +274,30 @@ banners['u1-cohort-upsell']={
  <div class="grain"></div>`,
 };
 
+// v2 (user 13:16: simpler, bolder text, Digraj Sir larger, Ujjwal smaller)
+banners['u2-cohort-upsell']={
+ land:()=>`${base(1024,512)}<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=block" rel="stylesheet"><style>body{background:${C.ivory}}
+  h1{position:absolute;left:48px;top:92px;font-size:58px;font-weight:900;line-height:.98;letter-spacing:-.015em}
+  .sub{position:absolute;left:50px;top:282px;font-size:19px;font-weight:700;opacity:1}
+  .cta{left:48px;top:412px;height:58px;padding:0 9px 0 28px;font-size:17px;font-weight:800;gap:16px}.cta b{width:42px;height:42px;font-size:22px}
+  .panel{position:absolute;left:548px;top:0;width:476px;height:512px;background:radial-gradient(90% 70% at 66% 30%,${C.forest2},${C.forest} 75%)}
+  .ring{position:absolute;left:660px;top:34px;width:400px;height:400px;border-radius:50%;border:1.5px solid rgba(217,164,65,.5)}
+  .tl{position:absolute;left:50px;top:330px;width:330px;display:grid;gap:6px}
+  .tl i{display:block;height:9px;border-radius:5px}
+ </style>
+ <img class="logo" src="brand/logo-forest.png" style="left:48px;top:30px;height:38px">
+ <h1>From basic<br>editing to<br><em>pro skills</em></h1>
+ <div class="sub">3-Month Video Editing Cohort</div>
+ <div class="tl"><i style="width:58%;margin-left:22%;background:#7E4FB0"></i><i style="width:100%;background:linear-gradient(90deg,#3B5BA9 0 30%,#F5EFE4 30% 31%,#C2601A 31% 64%,#F5EFE4 64% 65%,#3B5BA9 65%)"></i><i style="width:100%;background:repeating-linear-gradient(90deg,#00A862 0 3px,transparent 3px 5px)"></i></div>
+ <div class="panel"></div><div class="ring"></div>
+ <img class="ph" src="people/dsr.png" style="left:640px;bottom:0;height:470px">
+ <img class="ph" src="people/ujjwal.png" style="left:560px;bottom:0;height:250px;z-index:9;filter:drop-shadow(8px 0 14px rgba(0,0,0,.35))">
+ ${cap('Digraj Sir','Founder','right:22px;top:30px',13)}
+ ${cap('Ujjwal Jain','Video Editing Mentor','left:566px;top:456px',11.5)}
+ <div class="cta">EXPLORE THE COHORT <b>→</b></div>
+ <div class="grain"></div>`,
+};
+
 (async()=>{const br=await chromium.launch(); fs.mkdirSync(__dirname+'/out',{recursive:true});
 for(const [id,b] of Object.entries(banners)){ if(only&&!id.startsWith(only))continue;
  for(const [k,w,h] of [['land',1024,512],['port',1080,1350]]){ if(!b[k])continue;
