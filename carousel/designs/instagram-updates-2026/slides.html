@@ -2,16 +2,15 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>5 Instagram rules that changed in 2026</title>
+<title>Instagram changed. Did you? (2026 updates)</title>
 <!--
-  2026-11-03. Inspired by a "6 Instagram updates for 2026" carousel the user shared (concept only, no copied layout or copy).
-  White look + Anti-AI direction (brief §9): left-aligned asymmetric layouts, huge black numeral, Anton caps with
-  pink-to-orange gradient key words, recreated Instagram UI cards and hand-drawn marker marks instead of 3D icons,
-  4% grain. 7 slides. 1080x1350, 80 px safe margin. Open with #s1 ... #s7.
-  Local only (gitignored): fonts/ (Satoshi, Silkscreen) and people/dsr-cutout.png (DSR, rembg isnet-general-use).
-  Facts checked 2026-11-03: 5-hashtag cap (Dec 2025), carousel reorder after posting (Mar 2026),
-  Trial Reels scheduling (2026), sends/DM shares as a top ranking signal (Mosseri, Jan 2025),
-  repost-heavy accounts not recommended (2026).
+  v2, 2026-11-03. v1 (plain white + small UI cards) was rejected by the user as too weak; see git history.
+  Direction: editorial poster. Giant black numeral + Anton headline top-left on white, an angled pink-to-orange
+  gradient panel across the lower half, and a large phone showing a recreated Instagram screen that bleeds off
+  the bottom edge. Hand-drawn white marker marks on the panel, 5% grain. No 3D (brief §9).
+  Cover hook: "Instagram changed. Did you?". Other hook options + ChatGPT fallback prompts: CHATGPT_PROMPTS.md.
+  Local only (gitignored): fonts/ (Satoshi, Silkscreen) and people/dsr-cutout.png (DSR).
+  1080x1350, 80 px safe margin. Open with #s1 ... #s7.
 -->
 <style>
   @font-face { font-family: "Anton"; src: url("../../../video-skills/vendor/effects/fonts/Anton-Regular.ttf") format("truetype"); }
@@ -20,37 +19,51 @@
   @font-face { font-family: "Satoshi"; font-weight: 900; src: url("fonts/Satoshi-Black.woff2") format("woff2"); }
   @font-face { font-family: "Silkscreen"; src: url("fonts/Silkscreen.woff2"); }
 
-  :root { --grad: linear-gradient(90deg, #e8338f 0%, #ff4466 50%, #ff7a1a 100%); --fg: #1f1f1f; --muted: #6b6b70; --line: #e7e7ea; --ig: #00376b; }
+  :root { --grad: linear-gradient(90deg, #e8338f 0%, #ff4466 50%, #ff7a1a 100%);
+          --panel: linear-gradient(120deg, #e8338f 0%, #ff4466 45%, #ff7a1a 100%);
+          --fg: #161616; --muted: #6b6b70; --line: #ececef; --ig: #00376b; --blue: #0095f6; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 1080px; height: 1350px; overflow: hidden; background: #fff; }
   body { font-family: "Satoshi", sans-serif; -webkit-font-smoothing: antialiased; color: var(--fg); }
   .slide { position: absolute; inset: 0; display: none; overflow: hidden; background: #fff; }
   .slide.on { display: block; }
-  .grain { position: absolute; inset: 0; background: url("assets/grain.png"); background-size: 256px; opacity: .045; mix-blend-mode: multiply; pointer-events: none; z-index: 50; }
+  .grain { position: absolute; inset: 0; background: url("assets/grain.png"); background-size: 256px; opacity: .05; mix-blend-mode: multiply; pointer-events: none; z-index: 50; }
+  .grain.lt { mix-blend-mode: overlay; opacity: .09; }
 
-  .label { position: absolute; left: 80px; top: 80px; font-family: "Silkscreen", monospace; font-size: 22px; letter-spacing: 1px; color: var(--fg); }
+  .label { position: absolute; left: 80px; top: 72px; font-family: "Silkscreen", monospace; font-size: 22px; letter-spacing: 1px; z-index: 6; }
   .label span { color: var(--muted); margin-left: 18px; }
-
   .A { font-family: "Anton", sans-serif; text-transform: uppercase; font-weight: 400; letter-spacing: .5px; }
   .g { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .head { position: absolute; left: 66px; top: 150px; display: flex; align-items: flex-start; gap: 26px; }
-  .num { font-family: "Anton", sans-serif; font-size: 380px; line-height: .78; color: var(--fg); }
-  .stack { padding-top: 6px; }
-  .stack div { line-height: .98; white-space: nowrap; }
-  .line { position: absolute; left: 80px; width: 560px; font-size: 36px; line-height: 1.25; font-weight: 700; color: var(--fg); }
-  .line b { font-weight: 900; }
-  .mark { position: absolute; overflow: visible; pointer-events: none; z-index: 5; }
+  .head { position: absolute; left: 62px; top: 130px; display: flex; align-items: flex-start; gap: 24px; z-index: 4; }
+  .num { font-family: "Anton", sans-serif; font-size: 430px; line-height: .78; color: var(--fg); }
+  .stack { padding-top: 8px; }
+  .stack div { line-height: .96; white-space: nowrap; }
+
+  .panel { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); clip-path: polygon(0 9%, 100% 0, 100% 100%, 0 100%); z-index: 1; }
+  .copy { position: absolute; left: 80px; width: 430px; color: #fff; font-size: 46px; line-height: 1.12; font-weight: 900; z-index: 5; }
+  .copy small { display: block; font-family: "Silkscreen", monospace; font-size: 20px; letter-spacing: 1px; font-weight: 400; opacity: .9; margin-bottom: 18px; }
+
+  .mark { position: absolute; overflow: visible; pointer-events: none; z-index: 7; }
   .mark path, .mark ellipse, .mark rect { fill: none; stroke-linecap: round; stroke-linejoin: round; filter: url(#rough); }
 
-  /* recreated Instagram UI */
-  .card { position: absolute; background: #fff; border-radius: 34px; box-shadow: 0 30px 80px rgba(0,0,0,.10), 0 0 0 2px var(--line); }
-  .who { display: flex; align-items: center; gap: 18px; }
-  .ava { width: 64px; height: 64px; border-radius: 50%; background: url("../reel-4-line-script/assets/ig-profile.png") -11px -12px / 377px auto; flex: none; }
-  .uname { font-size: 30px; font-weight: 900; }
-  .tick { display: inline-block; width: 26px; height: 26px; border-radius: 50%; background: #3897f0; margin-left: 6px; vertical-align: -3px; position: relative; }
-  .tick::after { content: ""; position: absolute; left: 9px; top: 5px; width: 6px; height: 12px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg); }
-  .tags { font-size: 32px; line-height: 1.5; color: var(--ig); font-weight: 700; }
+  /* phone with a recreated Instagram screen */
+  .phone { position: absolute; width: 540px; height: 1100px; border-radius: 86px; background: #0f0f10; padding: 16px;
+           box-shadow: 0 50px 100px rgba(80,0,30,.35), inset 0 0 0 3px #2a2a2c; z-index: 3; }
+  .screen { position: relative; width: 100%; height: 100%; border-radius: 72px; background: #fff; overflow: hidden; }
+  .notch { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); width: 150px; height: 42px; border-radius: 24px; background: #0f0f10; z-index: 2; }
+  .bar { display: flex; justify-content: space-between; padding: 24px 46px 0; font-size: 24px; font-weight: 900; height: 76px; }
+  .top { display: flex; align-items: center; gap: 16px; padding: 18px 28px; font-size: 26px; font-weight: 900; border-bottom: 1px solid var(--line); }
+  .ava { width: 56px; height: 56px; border-radius: 50%; background: url("../reel-4-line-script/assets/ig-profile.png") -10px -10px / 330px auto; flex: none; }
+  .tick { display: inline-block; width: 24px; height: 24px; border-radius: 50%; background: #3897f0; margin-left: 6px; vertical-align: -3px; position: relative; }
+  .tick::after { content: ""; position: absolute; left: 8px; top: 4px; width: 6px; height: 12px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg); }
+  .pimg { width: 100%; display: block; }
+  .acts { display: flex; align-items: center; gap: 30px; padding: 22px 28px 10px; }
+  .acts svg { width: 58px; height: 58px; }
+  .cap { padding: 6px 28px; font-size: 25px; line-height: 1.4; }
+  .tags { color: var(--ig); font-weight: 700; }
   .mono { font-family: "Silkscreen", monospace; }
+  .row { display: flex; align-items: center; padding: 30px 32px; border-bottom: 1px solid var(--line); font-size: 28px; font-weight: 900; }
+  .row .s { font-size: 22px; color: var(--muted); font-weight: 500; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -60,33 +73,32 @@
       <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="n"/>
       <feDisplacementMap in="SourceGraphic" in2="n" scale="6"/>
     </filter>
-    <linearGradient id="mk" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#e8338f"/><stop offset=".5" stop-color="#ff4466"/><stop offset="1" stop-color="#ff7a1a"/>
-    </linearGradient>
+    <linearGradient id="mk" x1="0" x2="1"><stop offset="0" stop-color="#e8338f"/><stop offset=".5" stop-color="#ff4466"/><stop offset="1" stop-color="#ff7a1a"/></linearGradient>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.8-8-10.6A4.4 4.4 0 0 1 12 7.3a4.4 4.4 0 0 1 8 2.6c0 5.8-8 10.6-8 10.6z" fill="none" stroke="#161616" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-com" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 1 1-3.2-6.6A8.5 8.5 0 0 1 20.5 12zm0 0 .5 8-4.6-2.5" fill="none" stroke="#161616" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M21.5 3 2.8 9.4l7.4 3.3L21.5 3zm0 0-8 18.2-3.3-8.5" fill="none" stroke="#161616" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1z" fill="none" stroke="#161616" stroke-width="1.8" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 
-<!-- 1 COVER -->
+<!-- 1 COVER: Instagram changed. Did you? -->
 <section class="slide" id="s1">
-  <img src="people/dsr-cutout.png" style="position:absolute; right:-120px; bottom:-130px; width:760px; z-index:1" onerror="this.remove()">
+  <div class="panel" style="top:640px"></div>
+  <img src="people/dsr-cutout.png" style="position:absolute; right:-170px; bottom:-90px; width:860px; z-index:2" onerror="this.remove()">
   <div class="label">@theskilledbrains <span>2026 edition</span></div>
-  <div class="head" style="top:160px">
-    <div class="num" style="font-size:560px">5</div>
-    <div class="stack A" style="padding-top:14px">
-      <div style="font-size:84px; color:var(--muted)">Instagram</div>
-      <div style="font-size:120px">rules that</div>
-      <div class="g" style="font-size:170px">changed</div>
-      <div style="font-size:120px">in 2026</div>
-    </div>
+  <div class="A" style="position:absolute; left:74px; top:140px; z-index:4; line-height:.92">
+    <div style="font-size:150px">Instagram</div>
+    <div class="g" style="font-size:228px">changed.</div>
   </div>
-  <svg class="mark" style="left:370px; top:640px" width="360" height="40" viewBox="0 0 440 40">
-    <path d="M6 26 C 120 10, 260 8, 432 18" stroke="url(#mk)" stroke-width="11"/>
+  <div class="A" style="position:absolute; left:80px; top:800px; z-index:4; color:#fff; line-height:.92">
+    <div style="font-size:190px">Did</div>
+    <div style="font-size:190px">you?</div>
+  </div>
+  <svg class="mark" style="left:62px; top:1150px" width="330" height="120" viewBox="0 0 330 120">
+    <path d="M8 60 C 90 92, 200 90, 296 44" stroke="#fff" stroke-width="8"/>
+    <path d="M258 26 L 300 44 L 268 80" stroke="#fff" stroke-width="8"/>
   </svg>
-  <div class="line" style="top:1010px; width:400px; font-size:38px; z-index:2">Check them before your next post.</div>
-  <svg class="mark" style="left:80px; top:1150px" width="300" height="90" viewBox="0 0 300 90">
-    <path d="M8 40 C 80 70, 170 66, 270 34" stroke="#1f1f1f" stroke-width="7"/>
-    <path d="M236 18 L 274 34 L 244 64" stroke="#1f1f1f" stroke-width="7"/>
-  </svg>
+  <div class="mono" style="position:absolute; left:80px; top:1260px; color:#fff; font-size:22px; z-index:5">5 updates. swipe.</div>
   <div class="grain"></div>
 </section>
 
@@ -96,24 +108,28 @@
   <div class="head">
     <div class="num">1</div>
     <div class="stack A">
-      <div style="font-size:150px">5 hashtags</div>
-      <div class="g" style="font-size:150px">Max</div>
+      <div style="font-size:160px">Hashtags</div>
+      <div class="g" style="font-size:160px">capped at 5</div>
     </div>
   </div>
-  <div class="line" style="top:520px">Pick 3 to 5 that say what the post is about.</div>
-  <div class="card" style="left:220px; top:740px; width:940px; padding:44px 48px">
-    <div class="who"><div class="ava"></div><div class="uname">theskilledbrains<span class="tick"></span></div></div>
-    <p style="font-size:32px; line-height:1.4; margin:26px 0 10px; font-weight:500">5 Instagram rules that changed this year.</p>
-    <p class="tags">#instagramtips #contentcreator #reels<br>#socialmedia #creatorgrowth <span style="color:#9a9aa0">#explorepage</span></p>
-    <div class="mono" style="position:absolute; right:230px; top:52px; font-size:22px; color:var(--muted)">5/5</div>
+  <div class="panel" style="top:600px"></div>
+  <div class="copy" style="top:760px"><small>since dec 2025</small>Pick 3 to 5 that say what the post is about.</div>
+  <div class="phone" style="left:500px; top:590px; transform:rotate(5deg)">
+    <div class="screen"><div class="notch"></div>
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="top"><div class="ava"></div>theskilledbrains<span class="tick"></span></div>
+      <img class="pimg" src="assets/thumb1.jpg" style="height:230px; object-fit:cover; object-position:top">
+      <div class="acts"><svg><use href="#i-heart"/></svg><svg><use href="#i-com"/></svg><svg><use href="#i-send"/></svg><svg style="margin-left:auto"><use href="#i-save"/></svg></div>
+      <div class="cap"><b>theskilledbrains</b> 5 rules that changed this year.<br>
+        <span class="tags">#instagramtips #contentcreator #reels #socialmedia #creatorgrowth</span> <span style="color:#a0a0a6; position:relative">#explorepage
+        <svg class="mark" style="left:-6px; top:4px" width="190" height="34" viewBox="0 0 190 34"><path d="M4 22 C 60 12, 120 16, 186 8" stroke="url(#mk)" stroke-width="6"/></svg></span></div>
+    </div>
   </div>
-  <svg class="mark" style="left:712px; top:972px" width="230" height="60" viewBox="0 0 250 60">
-    <path d="M8 34 C 70 26, 150 30, 238 22" stroke="url(#mk)" stroke-width="9"/>
-    <path d="M14 22 C 90 34, 170 40, 236 38" stroke="url(#mk)" stroke-width="7"/>
+  <svg class="mark" style="left:330px; top:1010px" width="200" height="150" viewBox="0 0 200 150">
+    <path d="M10 130 C 60 140, 150 110, 180 40" stroke="#fff" stroke-width="7"/>
+    <path d="M150 52 L 182 34 L 196 72" stroke="#fff" stroke-width="7"/>
   </svg>
-  <svg class="mark" style="left:858px; top:752px" width="140" height="90" viewBox="0 0 140 90">
-    <ellipse cx="70" cy="45" rx="60" ry="34" stroke="url(#mk)" stroke-width="7"/>
-  </svg>
+  <div class="mono" style="position:absolute; left:80px; top:1230px; color:#fff; font-size:22px; z-index:5; line-height:1.4">6th tag?<br>not allowed.</div>
   <div class="grain"></div>
 </section>
 
@@ -123,25 +139,27 @@
   <div class="head">
     <div class="num">2</div>
     <div class="stack A">
-      <div class="g" style="font-size:150px">Sends</div>
-      <div style="font-size:150px">beat likes</div>
+      <div class="g" style="font-size:160px">Sends</div>
+      <div style="font-size:160px">beat likes</div>
     </div>
   </div>
-  <div class="line" style="top:520px">Make posts people DM to a friend.</div>
-  <div class="card" style="left:260px; top:760px; width:900px; height:300px; padding:0 60px; display:flex; align-items:center; gap:64px">
-    <svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.5s-8-4.8-8-10.6A4.4 4.4 0 0 1 12 7.3a4.4 4.4 0 0 1 8 2.6c0 5.8-8 10.6-8 10.6z"/></svg>
-    <svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" stroke-width="1.8" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 1 1-3.2-6.6A8.5 8.5 0 0 1 20.5 12zm0 0 .5 8-4.6-2.5"/></svg>
-    <svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" stroke-width="1.8" stroke-linejoin="round"><path d="M21.5 3 2.8 9.4l7.4 3.3L21.5 3zm0 0-8 18.2-3.3-8.5"/></svg>
-    <svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" stroke-width="1.8" stroke-linejoin="round" style="margin-left:auto"><path d="M19 21l-7-5-7 5V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1z"/></svg>
+  <div class="panel" style="top:600px"></div>
+  <div class="copy" style="top:760px"><small>top ranking signal</small>Make posts people DM to a friend.</div>
+  <div class="phone" style="left:500px; top:590px; transform:rotate(5deg)">
+    <div class="screen"><div class="notch"></div>
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="top"><div class="ava"></div>theskilledbrains<span class="tick"></span></div>
+      <img class="pimg" src="assets/thumb3.jpg" style="height:300px; object-fit:cover; object-position:top">
+      <div class="acts" style="gap:38px; padding-top:30px"><svg style="width:70px;height:70px"><use href="#i-heart"/></svg><svg style="width:70px;height:70px"><use href="#i-com"/></svg><svg style="width:70px;height:70px"><use href="#i-send"/></svg><svg style="width:70px;height:70px; margin-left:auto"><use href="#i-save"/></svg></div>
+    </div>
   </div>
-  <svg class="mark" style="left:586px; top:820px" width="200" height="180" viewBox="0 0 200 180">
-    <path d="M30 96 C 18 38, 90 10, 150 30 C 200 50, 196 140, 120 160 C 60 174, 20 140, 26 90" stroke="url(#mk)" stroke-width="9"/>
+  <svg class="mark" style="left:735px; top:1068px; transform:rotate(5deg)" width="150" height="130" viewBox="0 0 150 130">
+    <path d="M24 70 C 14 26, 70 6, 112 22 C 150 40, 146 100, 90 116 C 46 126, 16 100, 20 62" stroke="url(#mk)" stroke-width="8"/>
   </svg>
-  <svg class="mark" style="left:290px; top:1080px" width="300" height="120" viewBox="0 0 300 120">
-    <path d="M14 96 C 110 104, 220 80, 276 14" stroke="#1f1f1f" stroke-width="6"/>
-    <path d="M238 20 L 278 12 L 280 54" stroke="#1f1f1f" stroke-width="6"/>
+  <svg class="mark" style="left:330px; top:1030px" width="420" height="200" viewBox="0 0 420 200">
+    <path d="M10 150 C 120 196, 300 190, 400 130" stroke="#fff" stroke-width="7"/>
+    <path d="M362 112 L 404 128 L 380 168" stroke="#fff" stroke-width="7"/>
   </svg>
-  <div class="mono" style="position:absolute; left:80px; top:1180px; font-size:22px; color:var(--muted); width:200px; line-height:1.4">this one<br>counts most</div>
   <div class="grain"></div>
 </section>
 
@@ -151,24 +169,28 @@
   <div class="head">
     <div class="num">3</div>
     <div class="stack A">
-      <div style="font-size:128px">Reorder</div>
-      <div class="g" style="font-size:128px">after posting</div>
+      <div style="font-size:136px">Reorder</div>
+      <div class="g" style="font-size:136px">after posting</div>
     </div>
   </div>
-  <div class="line" style="top:520px">Weak first slide? Long-press, drag, done.</div>
-  <div class="card" style="left:200px; top:790px; width:980px; height:440px; padding:40px 44px">
-    <div style="display:flex; justify-content:space-between; font-size:28px; font-weight:900; margin-bottom:34px"><span>Edit carousel</span><span style="color:#3897f0; margin-right:110px">Done</span></div>
-    <div style="display:flex; gap:22px; align-items:flex-start">
-      <img src="assets/thumb2.jpg" style="width:180px; border-radius:14px; box-shadow:0 0 0 2px var(--line)">
-      <div style="width:180px; height:225px; border-radius:14px; border:3px dashed #cfcfd4"></div>
-      <img src="assets/thumb3.jpg" style="width:180px; border-radius:14px; box-shadow:0 0 0 2px var(--line)">
-      <img src="assets/thumb4.jpg" style="width:180px; border-radius:14px; box-shadow:0 0 0 2px var(--line)">
+  <div class="panel" style="top:600px"></div>
+  <div class="copy" style="top:760px"><small>new in 2026</small>Weak first slide? Long-press. Drag. Done.</div>
+  <div class="phone" style="left:500px; top:590px; transform:rotate(5deg)">
+    <div class="screen"><div class="notch"></div>
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="top" style="justify-content:space-between"><span>Edit carousel</span><span style="color:var(--blue)">Done</span></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:26px">
+        <img src="assets/thumb2.jpg" style="width:100%; border-radius:14px; box-shadow:0 0 0 2px var(--line)">
+        <div style="border-radius:14px; border:4px dashed #ff4466; background:#fff4f6"></div>
+        <img src="assets/thumb3.jpg" style="width:100%; border-radius:14px; box-shadow:0 0 0 2px var(--line)">
+        <img src="assets/thumb4.jpg" style="width:100%; border-radius:14px; box-shadow:0 0 0 2px var(--line)">
+      </div>
     </div>
   </div>
-  <img src="assets/thumb1.jpg" style="position:absolute; left:470px; top:690px; width:200px; border-radius:16px; transform:rotate(-6deg); box-shadow:0 30px 60px rgba(0,0,0,.22); z-index:3">
-  <svg class="mark" style="left:130px; top:640px" width="330" height="240" viewBox="0 0 330 240">
-    <path d="M150 226 C 40 200, 30 90, 120 50 C 190 20, 260 30, 310 60" stroke="url(#mk)" stroke-width="8"/>
-    <path d="M270 34 L 312 62 L 274 92" stroke="url(#mk)" stroke-width="8"/>
+  <img src="assets/thumb1.jpg" style="position:absolute; left:620px; top:600px; width:240px; border-radius:18px; transform:rotate(-8deg); box-shadow:0 40px 70px rgba(0,0,0,.3); z-index:6">
+  <svg class="mark" style="left:330px; top:1010px" width="300" height="180" viewBox="0 0 300 180">
+    <path d="M10 150 C 120 180, 250 120, 280 30" stroke="#fff" stroke-width="7"/>
+    <path d="M248 46 L 282 26 L 296 66" stroke="#fff" stroke-width="7"/>
   </svg>
   <div class="grain"></div>
 </section>
@@ -179,27 +201,25 @@
   <div class="head">
     <div class="num">4</div>
     <div class="stack A">
-      <div style="font-size:124px">Trial Reels</div>
-      <div class="g" style="font-size:124px">on a schedule</div>
+      <div style="font-size:132px">Trial Reels</div>
+      <div class="g" style="font-size:132px">on schedule</div>
     </div>
   </div>
-  <div class="line" style="top:520px; width:600px">Test on non-followers first. Now you can schedule it.</div>
-  <div class="card" style="left:240px; top:760px; width:940px; padding:18px 0">
-    <div style="display:flex; align-items:center; padding:30px 48px; border-bottom:2px solid var(--line)">
-      <div style="flex:1"><div style="font-size:32px; font-weight:900">Trial</div><div style="font-size:25px; color:var(--muted); font-weight:500; margin-top:4px">Shown to non-followers first</div></div>
-      <div style="width:96px; height:56px; border-radius:30px; background:#1f1f1f; position:relative; margin-right:110px"><div style="position:absolute; right:6px; top:6px; width:44px; height:44px; border-radius:50%; background:#fff"></div></div>
+  <div class="panel" style="top:600px"></div>
+  <div class="copy" style="top:760px"><small>test before you post</small>Non-followers see it first. Now you can schedule it.</div>
+  <div class="phone" style="left:500px; top:590px; transform:rotate(5deg)">
+    <div class="screen"><div class="notch"></div>
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="top" style="justify-content:center">New reel</div>
+      <img class="pimg" src="assets/thumb4.jpg" style="width:150px; margin:22px 0 6px 32px; border-radius:14px; box-shadow:0 0 0 2px var(--line)">
+      <div class="row"><div style="flex:1">Trial<div class="s">Shown to non-followers first</div></div>
+        <div style="width:92px; height:54px; border-radius:30px; background:var(--panel); position:relative"><div style="position:absolute; right:6px; top:6px; width:42px; height:42px; border-radius:50%; background:#fff"></div></div></div>
+      <div class="row"><div style="flex:1">Schedule</div><span style="font-size:23px; color:var(--muted); font-weight:700">Tomorrow, 7:30 PM</span></div>
+      <div style="padding:30px 32px"><div style="height:76px; border-radius:16px; background:var(--blue); color:#fff; font-size:28px; font-weight:900; display:flex; align-items:center; justify-content:center">Schedule</div></div>
     </div>
-    <div style="display:flex; align-items:center; padding:30px 48px; border-bottom:2px solid var(--line)">
-      <div style="flex:1; font-size:32px; font-weight:900">Schedule</div>
-      <div style="font-size:28px; color:var(--muted); font-weight:700; margin-right:110px">Tomorrow, 7:30 PM</div>
-    </div>
-    <div style="padding:30px 48px 18px"><div style="width:520px; height:74px; border-radius:16px; background:#3897f0; color:#fff; font-size:30px; font-weight:900; display:flex; align-items:center; justify-content:center">Schedule Reel</div></div>
   </div>
-  <svg class="mark" style="left:880px; top:770px" width="180" height="140" viewBox="0 0 180 140">
-    <ellipse cx="90" cy="70" rx="80" ry="56" stroke="url(#mk)" stroke-width="8"/>
-  </svg>
-  <svg class="mark" style="left:756px; top:990px" width="280" height="40" viewBox="0 0 340 40">
-    <path d="M6 22 C 100 12, 220 30, 330 16" stroke="url(#mk)" stroke-width="8"/>
+  <svg class="mark" style="left:850px; top:960px; transform:rotate(5deg)" width="170" height="120" viewBox="0 0 170 120">
+    <ellipse cx="85" cy="60" rx="74" ry="48" stroke="url(#mk)" stroke-width="8"/>
   </svg>
   <div class="grain"></div>
 </section>
@@ -210,47 +230,53 @@
   <div class="head">
     <div class="num">5</div>
     <div class="stack A">
-      <div class="g" style="font-size:150px">Original</div>
-      <div style="font-size:150px">gets pushed</div>
+      <div class="g" style="font-size:160px">Original</div>
+      <div style="font-size:160px">gets pushed</div>
     </div>
   </div>
-  <div class="line" style="top:520px; width:600px">Mostly reposts? Instagram stops recommending you.</div>
-  <svg class="mark" style="left:380px; top:760px; transform:rotate(-8deg)" width="640" height="300" viewBox="0 0 640 300">
-    <rect x="14" y="14" width="612" height="272" rx="40" stroke="url(#mk)" stroke-width="10"/>
-    <rect x="38" y="38" width="564" height="224" rx="26" stroke="url(#mk)" stroke-width="5"/>
+  <div class="panel" style="top:600px"></div>
+  <div class="copy" style="top:760px"><small>reposts lose reach</small>Mostly reposts? You stop getting recommended.</div>
+  <div class="phone" style="left:500px; top:590px; transform:rotate(5deg)">
+    <div class="screen"><div class="notch"></div>
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="top"><div class="ava"></div>theskilledbrains<span class="tick"></span></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; padding-top:4px">
+        <img src="assets/thumb1.jpg" style="width:100%"><img src="assets/thumb2.jpg" style="width:100%"><img src="assets/thumb3.jpg" style="width:100%">
+        <img src="assets/thumb4.jpg" style="width:100%"><img src="assets/thumb2.jpg" style="width:100%"><img src="assets/thumb1.jpg" style="width:100%">
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; left:560px; top:1010px; transform:rotate(-9deg); z-index:8; background:#fff; padding:18px 34px; border-radius:24px; box-shadow:0 24px 50px rgba(0,0,0,.25)">
+    <div class="A g" style="font-size:96px; line-height:1; filter:url(#rough)">Original</div>
+  </div>
+  <svg class="mark" style="left:546px; top:996px; transform:rotate(-9deg); z-index:9" width="420" height="160" viewBox="0 0 420 160">
+    <rect x="6" y="6" width="400" height="140" rx="30" stroke="url(#mk)" stroke-width="6"/>
   </svg>
-  <div class="A g" style="position:absolute; left:380px; top:760px; width:640px; height:300px; display:flex; align-items:center; justify-content:center; font-size:150px; transform:rotate(-8deg); filter:url(#rough)">Original</div>
-  <div style="position:absolute; left:80px; top:1130px; display:flex; align-items:center; gap:22px">
-    <div style="position:relative; width:80px; height:80px">
-      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#9a9aa0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></svg>
-      <svg class="mark" style="left:-10px; top:-6px" width="100" height="92" viewBox="0 0 100 92"><path d="M8 84 L 92 8" stroke="url(#mk)" stroke-width="8"/></svg>
-    </div>
-    <div class="mono" style="font-size:22px; color:var(--muted); line-height:1.4">repost-only<br>accounts</div>
-  </div>
   <div class="grain"></div>
 </section>
 
 <!-- 7 SAVE + COMMENT + FOLLOW -->
 <section class="slide" id="s7">
   <div class="label">@theskilledbrains <span>save for later</span></div>
-  <div class="A" style="position:absolute; left:80px; top:150px; line-height:.98">
-    <div class="g" style="font-size:170px">Save this</div>
-    <div style="font-size:84px; color:var(--muted)">for your next post</div>
+  <div class="A" style="position:absolute; left:74px; top:130px; line-height:.94; z-index:4">
+    <div class="g" style="font-size:200px">Save this</div>
+    <div style="font-size:92px">before your next post</div>
   </div>
-  <div class="A" style="position:absolute; left:80px; top:500px; line-height:1">
-    <div style="font-size:120px; white-space:nowrap">Comment <span class="g">“Rules”</span></div>
-    <div style="font-family:Satoshi, sans-serif; text-transform:none; font-size:34px; font-weight:700; color:var(--muted); margin-top:12px">I’ll DM you the full 2026 checklist.</div>
+  <div class="panel" style="top:560px"></div>
+  <div class="A" style="position:absolute; left:80px; top:690px; z-index:4; color:#fff; line-height:1">
+    <div style="font-size:128px; white-space:nowrap">Comment <span style="color:#161616">“Rules”</span></div>
+    <div style="font-family:Satoshi, sans-serif; text-transform:none; font-size:36px; font-weight:900; margin-top:10px">I’ll DM you the full 2026 checklist.</div>
   </div>
-  <div class="card" style="left:80px; top:820px; width:800px; padding:24px; border-radius:30px; transform:rotate(-2deg); z-index:2">
-    <img src="../reel-4-line-script/assets/ig-profile.png" style="display:block; width:752px" alt="Instagram profile of @theskilledbrains">
+  <div style="position:absolute; left:80px; top:960px; width:700px; padding:22px; background:#fff; border-radius:30px; transform:rotate(-2deg); z-index:4; box-shadow:0 40px 80px rgba(80,0,30,.3)">
+    <img src="../reel-4-line-script/assets/ig-profile.png" style="display:block; width:656px" alt="Instagram profile of @theskilledbrains">
   </div>
-  <svg class="mark" style="left:60px; top:1056px; transform:rotate(-2deg); z-index:3" width="460" height="120" viewBox="0 0 460 120">
-    <ellipse cx="226" cy="60" rx="210" ry="48" stroke="url(#mk)" stroke-width="8"/>
+  <svg class="mark" style="left:74px; top:1150px; transform:rotate(-2deg)" width="360" height="100" viewBox="0 0 360 100">
+    <ellipse cx="180" cy="50" rx="168" ry="38" stroke="url(#mk)" stroke-width="8"/>
   </svg>
-  <div class="A" style="position:absolute; left:560px; top:1180px; font-size:72px; z-index:3">+ Follow</div>
-  <svg class="mark" style="left:440px; top:1170px; z-index:3" width="120" height="80" viewBox="0 0 120 80">
-    <path d="M110 50 C 80 60, 40 50, 14 20" stroke="#1f1f1f" stroke-width="6"/>
-    <path d="M12 52 L 12 18 L 44 16" stroke="#1f1f1f" stroke-width="6"/>
+  <div class="A" style="position:absolute; left:820px; top:990px; font-size:72px; color:#fff; z-index:5; line-height:1">+<br>Follow</div>
+  <svg class="mark" style="left:430px; top:1140px" width="420" height="120" viewBox="0 0 420 120">
+    <path d="M400 20 C 360 100, 200 110, 30 74" stroke="#fff" stroke-width="7"/>
+    <path d="M62 46 L 26 72 L 58 104" stroke="#fff" stroke-width="7"/>
   </svg>
   <div class="grain"></div>
 </section>
