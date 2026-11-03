@@ -2,7 +2,7 @@
 
 Six push notification banners, 1024 × 512 px, dated 3–8 November 2026. Use these if you want to regenerate a banner in ChatGPT instead of the cloud render.
 
-**Attach to every prompt:** the Skilled Brains logo file (forest green on ivory, or white on dark for Nov 8), plus the matching photo plate from this folder (`d03.jpg` … `d08.jpg`) if you want to keep the same scene.
+**Attach to every prompt:** the Skilled Brains logo (`logo-forest.png` in this folder; `logo-ivory.png` for Nov 8) (forest green on ivory, or white on dark for Nov 8), plus the matching photo plate from this folder (`d03.jpg` … `d08.jpg`) if you want to keep the same scene.
 
 **Shared design system (paste at the top of each prompt):**
 
