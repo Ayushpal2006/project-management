@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>30-day plan: 3 new directions</title>
+<!--
+  2026-11-03. The user asked for carousels to stop sharing one design. Three style frames (cover + one inner slide each)
+  for the user to pick from: A = planner calendar, B = Swiss editorial, C = dark research board.
+  Brand fonts only (Clash Display, Anton, Satoshi, Playfair Display, Silkscreen). Hand-drawn marks are SVG.
+  Open with #a1 #a2 #b1 #b2 #c1 #c2. Local only (gitignored): fonts/, people/.
+-->
+<style>
+  @font-face { font-family: "Anton"; src: url("../../../video-skills/vendor/effects/fonts/Anton-Regular.ttf"); }
+  @font-face { font-family: "Clash"; src: url("fonts/ClashDisplay-Bold.woff2"); }
+  @font-face { font-family: "Playfair"; font-style: normal; src: url("fonts/PlayfairDisplay-Black.ttf"); }
+  @font-face { font-family: "Playfair"; font-style: italic; src: url("fonts/PlayfairDisplay-BlackItalic.ttf"); }
+  @font-face { font-family: "Satoshi"; font-weight: 500; src: url("fonts/Satoshi-Medium.woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 700; src: url("fonts/Satoshi-Bold.woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 900; src: url("fonts/Satoshi-Black.woff2"); }
+  @font-face { font-family: "Silkscreen"; src: url("fonts/Silkscreen.woff2"); }
+  :root { --grad: linear-gradient(90deg, #e8338f, #ff4466 50%, #ff7a1a); --fg: #161616; --muted: #77777c; --yel: #f5e642; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body { font-family: "Satoshi", sans-serif; -webkit-font-smoothing: antialiased; color: var(--fg); }
+  .slide { position: absolute; inset: 0; display: none; overflow: hidden; }
+  .slide.on { display: block; }
+  .grain { position: absolute; inset: 0; background: url("assets/grain.png"); background-size: 256px; opacity: .05; mix-blend-mode: multiply; pointer-events: none; z-index: 50; }
+  .grain.lt { mix-blend-mode: screen; opacity: .07; }
+  .mono { font-family: "Silkscreen", monospace; font-size: 22px; letter-spacing: 1px; }
+  .lab { position: absolute; left: 80px; top: 72px; z-index: 6; }
+  .lab span { color: var(--muted); margin-left: 18px; }
+  .clash { font-family: "Clash", sans-serif; word-spacing: .14em; letter-spacing: -1px; }
+  .anton { font-family: "Anton", sans-serif; text-transform: uppercase; }
+  .pf { font-family: "Playfair", serif; }
+  .g { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .mark { position: absolute; overflow: visible; pointer-events: none; z-index: 7; }
+  .mark path, .mark ellipse, .mark rect, .mark line { fill: none; stroke-linecap: round; stroke-linejoin: round; filter: url(#rough); }
+  .abs { position: absolute; }
+
+  /* A: planner */
+  .paper { background: #faf7f2 radial-gradient(#d9d3c8 1.4px, transparent 1.6px) 0 0 / 36px 36px; }
+  .cal { position: absolute; display: grid; grid-template-columns: repeat(7, 118px); grid-auto-rows: 118px; border-left: 3px solid #161616; border-top: 3px solid #161616; }
+  .cal div { position: relative; border-right: 3px solid #161616; border-bottom: 3px solid #161616; font-family: "Satoshi"; font-weight: 900; font-size: 26px; padding: 10px 12px; background: #fff; }
+  .cal svg { position: absolute; inset: 10px; width: 80px; height: 80px; overflow: visible; }
+  .cal svg path { fill: none; stroke-linecap: round; stroke-width: 7; filter: url(#rough); }
+  .polaroid { position: absolute; background: #fff; padding: 16px 16px 60px; box-shadow: 0 24px 50px rgba(0,0,0,.18); z-index: 5; }
+  .polaroid img { display: block; object-fit: cover; }
+  .tape { position: absolute; width: 150px; height: 44px; background: rgba(245,230,66,.75); z-index: 6; }
+
+  /* B: swiss */
+  .rule { position: absolute; background: #161616; z-index: 3; }
+  .row { display: grid; grid-template-columns: 90px 1fr; align-items: baseline; border-top: 2px solid #161616; padding: 22px 0; font-size: 36px; font-weight: 900; line-height: 1.15; }
+  .row .mono { font-size: 20px; }
+
+  /* C: board */
+  .dark { background: #0e0e0f; color: #fff; }
+  .card { position: absolute; background: #fff; color: #161616; border-radius: 22px; padding: 18px; box-shadow: 0 30px 60px rgba(0,0,0,.5); z-index: 4; }
+  .reels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+  .reel { position: relative; aspect-ratio: 3/4; background: #ececef center / cover; }
+  .reel .v { position: absolute; left: 8px; bottom: 6px; color: #fff; font-size: 19px; font-weight: 900; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+  .reel .v::before { content: "▶ "; font-size: 13px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6"/></filter>
+  <linearGradient id="mk" x1="0" x2="1"><stop offset="0" stop-color="#e8338f"/><stop offset=".5" stop-color="#ff4466"/><stop offset="1" stop-color="#ff7a1a"/></linearGradient>
+</defs></svg>
+
+<!-- ============ A1: PLANNER COVER ============ -->
+<section class="slide paper" id="a1">
+  <div class="mono lab">@theskilledbrains <span>the 30-day plan</span></div>
+  <div class="clash abs" style="left:76px; top:140px; font-size:150px; line-height:.95; z-index:4">Don’t post<br><span class="g">yet.</span></div>
+  <div class="abs" style="left:80px; top:470px; font-size:40px; font-weight:900; z-index:4">Do this for <span class="pf" style="font-style:italic; font-size:64px">21</span> days first.</div>
+  <div class="polaroid" style="left:690px; top:300px; transform:rotate(5deg)"><img src="people/dsr-headshot.png" style="width:300px; height:330px; object-position:center 25%"></div>
+  <div class="tape" style="left:770px; top:282px; transform:rotate(-4deg)"></div>
+  <div class="cal" id="calA" style="left:80px; top:700px; grid-template-columns:repeat(7,104px); grid-auto-rows:100px"></div>
+  <div class="grain"></div>
+</section>
+
+<!-- ============ A2: PLANNER INNER (days 1-7) ============ -->
+<section class="slide paper" id="a2">
+  <div class="mono lab">@theskilledbrains <span>week 1</span></div>
+  <div class="abs" style="left:66px; top:110px; line-height:.8; z-index:4"><span class="pf g" style="font-style:italic; font-size:330px">1–7</span></div>
+  <div class="clash abs" style="left:80px; top:410px; font-size:120px; line-height:.95; z-index:4">Find the<br>outliers.</div>
+  <div class="cal" id="calA2" style="left:80px; top:690px; grid-template-rows:118px"></div>
+  <div class="abs" style="left:80px; top:880px; width:520px; z-index:4">
+    <div style="font-size:36px; font-weight:900; line-height:1.2; margin-bottom:22px">Pick 5 creators in your niche.</div>
+    <div style="font-size:36px; font-weight:900; line-height:1.2; margin-bottom:22px">Spot videos with way more views than usual.</div>
+    <div style="font-size:36px; font-weight:900; line-height:1.2">Save 20 of them.</div>
+  </div>
+  <div class="polaroid" style="left:650px; top:860px; padding:12px 12px 50px; transform:rotate(-4deg)">
+    <div class="reels" style="width:330px">
+      <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="v">14K</span></div>
+      <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="v">9K</span></div>
+      <div class="reel" style="background-image:url(assets/thumb4.jpg)"><span class="v">2.1M</span></div>
+      <div class="reel" style="background-image:url(assets/thumb3.jpg)"><span class="v">11K</span></div>
+      <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="v">8K</span></div>
+      <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="v">12K</span></div>
+    </div>
+  </div>
+  <div class="tape" style="left:740px; top:840px; transform:rotate(3deg)"></div>
+  <svg class="mark" style="left:860px; top:850px; transform:rotate(-4deg)" width="140" height="170" viewBox="0 0 140 170"><ellipse cx="68" cy="84" rx="62" ry="78" stroke="url(#mk)" stroke-width="8"/></svg>
+  <div class="grain"></div>
+</section>
+
+<!-- ============ B1: SWISS COVER ============ -->
+<section class="slide" id="b1" style="background:#fff">
+  <div class="mono lab" style="top:72px">@theskilledbrains</div>
+  <div class="mono abs" style="right:80px; top:72px; color:var(--muted)">01 / 07</div>
+  <div class="rule" style="left:80px; right:80px; top:120px; height:3px"></div>
+  <div class="anton abs" style="left:76px; top:150px; font-size:210px; line-height:.9; z-index:4">Don’t<br>post yet.</div>
+  <div class="pf g abs" style="left:430px; top:470px; font-size:820px; line-height:1; letter-spacing:-20px; z-index:1">21</div>
+  <img src="people/dsr-headshot.png" class="abs" style="left:80px; top:700px; width:400px; height:520px; object-fit:cover; object-position:center 20%; filter:grayscale(1) contrast(1.1); z-index:4">
+  <div class="rule" style="left:80px; right:80px; top:1240px; height:3px"></div>
+  <div class="abs" style="left:520px; top:1080px; width:420px; font-size:40px; font-weight:900; line-height:1.1; z-index:5; background:#fff; padding:14px 0 14px 18px">Do this for 21 days first.</div>
+  <div class="mono abs" style="left:80px; top:1262px; font-size:20px">the 30-day plan</div>
+  <div class="mono abs" style="right:80px; top:1262px; font-size:20px; color:var(--muted)">swipe →</div>
+  <div class="grain"></div>
+</section>
+
+<!-- ============ B2: SWISS INNER ============ -->
+<section class="slide" id="b2" style="background:#fff">
+  <div class="mono lab">@theskilledbrains</div>
+  <div class="mono abs" style="right:80px; top:72px; color:var(--muted)">03 / 07</div>
+  <div class="rule" style="left:80px; right:80px; top:120px; height:3px"></div>
+  <div class="mono abs" style="left:80px; top:150px; font-size:20px">days 1-7</div>
+  <div class="pf g abs" style="left:60px; top:150px; font-size:520px; line-height:1; z-index:1">1</div>
+  <div class="anton abs" style="left:400px; top:200px; font-size:150px; line-height:.9; z-index:4">Find the<br>outliers</div>
+  <div class="abs" style="left:400px; top:530px; width:600px; z-index:4">
+    <div class="row"><span class="mono">01</span><span>Pick 5 creators in your niche.</span></div>
+    <div class="row"><span class="mono">02</span><span>Spot videos with way more views than usual.</span></div>
+    <div class="row" style="border-bottom:2px solid #161616"><span class="mono">03</span><span>Save 20 of them.</span></div>
+  </div>
+  <div class="reels abs" style="left:80px; top:900px; width:920px; grid-template-columns:repeat(6,1fr); gap:10px; z-index:4">
+    <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="v">14K</span></div>
+    <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="v">9K</span></div>
+    <div class="reel" style="background-image:url(assets/thumb3.jpg)"><span class="v">11K</span></div>
+    <div class="reel" style="background-image:url(assets/thumb4.jpg); outline:8px solid #ff4466; outline-offset:4px"><span class="v">2.1M</span></div>
+    <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="v">8K</span></div>
+    <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="v">12K</span></div>
+  </div>
+  <div class="mono abs" style="left:542px; top:1140px; font-size:20px; color:#e8338f">↑ the outlier. save it.</div>
+  <div class="rule" style="left:80px; right:80px; top:1240px; height:3px"></div>
+  <div class="mono abs" style="left:80px; top:1262px; font-size:20px">the 30-day plan</div>
+  <div class="grain"></div>
+</section>
+
+<!-- ============ C1: DARK BOARD COVER ============ -->
+<section class="slide dark" id="c1">
+  <div class="mono lab" style="color:#fff">@theskilledbrains <span style="color:#8a8a90">the 30-day plan</span></div>
+  <img src="people/dsr-cutout.png" class="abs" style="right:-130px; bottom:-40px; width:760px; z-index:2">
+  <div class="clash abs" style="left:76px; top:150px; font-size:168px; line-height:.92; z-index:4">Don’t<br>post<br><span style="position:relative">yet.<svg class="mark" style="left:-10px; top:120px" width="360" height="60" viewBox="0 0 360 60"><path d="M6 30 C 120 50, 240 14, 350 30" stroke="#f5e642" stroke-width="14"/></svg></span></div>
+  <div class="abs" style="left:80px; top:820px; z-index:4; line-height:.9">
+    <div style="font-size:40px; font-weight:900">Do this for</div>
+    <div class="pf" style="font-style:italic; font-size:280px; color:var(--yel)">21</div>
+    <div style="font-size:40px; font-weight:900">days first.</div>
+  </div>
+  <svg class="mark" style="left:320px; top:900px" width="300" height="160" viewBox="0 0 300 160"><path d="M10 140 C 90 150, 200 110, 270 30" stroke="#fff" stroke-width="6"/><path d="M236 40 L 272 26 L 282 66" stroke="#fff" stroke-width="6"/></svg>
+  <div class="grain lt"></div>
+</section>
+
+<!-- ============ C2: DARK BOARD INNER ============ -->
+<section class="slide dark" id="c2">
+  <div class="mono lab" style="color:#fff">@theskilledbrains <span style="color:#8a8a90">days 1-7</span></div>
+  <div class="pf abs" style="left:64px; top:110px; font-size:400px; line-height:1; color:var(--yel); font-style:italic">1</div>
+  <div class="clash abs" style="left:330px; top:170px; font-size:120px; line-height:.95">Find the<br><span style="color:#ff4466">outliers.</span></div>
+  <div class="abs" style="left:330px; top:440px; width:620px; font-size:34px; font-weight:700; line-height:1.3; color:#d8d8dc">Pick 5 creators in your niche. Spot the videos with way more views than usual. Save 20.</div>
+  <div class="card" style="left:80px; top:720px; width:560px; transform:rotate(-3deg)">
+    <div class="mono" style="font-size:18px; margin-bottom:12px">creator_in_your_niche · reels</div>
+    <div class="reels">
+      <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="v">14K</span></div>
+      <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="v">9K</span></div>
+      <div class="reel" style="background-image:url(assets/thumb4.jpg)"><span class="v">2.1M</span></div>
+      <div class="reel" style="background-image:url(assets/thumb3.jpg)"><span class="v">11K</span></div>
+      <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="v">8K</span></div>
+      <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="v">12K</span></div>
+    </div>
+  </div>
+  <div class="tape" style="left:300px; top:700px; transform:rotate(-6deg)"></div>
+  <svg class="mark" style="left:440px; top:770px; transform:rotate(-3deg)" width="200" height="240" viewBox="0 0 200 240"><ellipse cx="100" cy="120" rx="88" ry="110" stroke="#ff4466" stroke-width="9"/></svg>
+  <svg class="mark" style="left:640px; top:820px" width="280" height="200" viewBox="0 0 280 200"><path d="M10 60 C 100 10, 200 40, 250 160" stroke="#fff" stroke-width="6"/><path d="M214 140 L 252 166 L 266 122" stroke="#fff" stroke-width="6"/></svg>
+  <div class="anton abs" style="left:760px; top:1050px; font-size:90px; color:var(--yel); transform:rotate(-5deg); line-height:.95">Save<br>it.</div>
+  <div class="grain lt"></div>
+</section>
+
+<script>
+  // 30-day calendar for A1 (days 1-21 crossed, 22 circled outside) and A2 (week 1 only)
+  const X = '<svg viewBox="0 0 90 90"><path d="M8 10 L82 80 M80 12 L10 82" stroke="url(#mk)"/></svg>';
+  const a = document.getElementById("calA");
+  const O = '<svg viewBox="0 0 90 90" style="inset:-6px; width:110px; height:104px"><ellipse cx="45" cy="45" rx="50" ry="44" fill="none" stroke-width="7" stroke="url(#mk)" style="filter:url(#rough)"/></svg><span class="mono" style="position:absolute; left:14px; bottom:10px; font-size:14px; color:#e8338f">post!</span>';
+  for (let d = 1; d <= 30; d++) a.insertAdjacentHTML("beforeend", `<div>${d}${d <= 21 ? X : d === 22 ? O : ""}</div>`);
+  const b = document.getElementById("calA2");
+  for (let d = 1; d <= 7; d++) b.insertAdjacentHTML("beforeend", `<div style="background:#fff6d1">${d}${d <= 3 ? X : ""}</div>`);
+  function show() { const id = (location.hash || "#a1").slice(1); document.querySelectorAll(".slide").forEach(s => s.classList.toggle("on", s.id === id)); }
+  window.addEventListener("hashchange", show); show();
+</script>
+</body>
+</html>
