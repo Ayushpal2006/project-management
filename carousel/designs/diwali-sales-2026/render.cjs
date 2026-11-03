@@ -115,10 +115,8 @@ const banners={
  <img class="logo" src="brand/logo-forest.png" style="left:48px;top:30px;height:38px">
  <h1>Learn AI <em>the practical way</em></h1>
  <div class="sub">${logos(16,14)}</div>
- <div class="side"><img class="ph" src="people/sheetal.png" style="left:-40px;bottom:0;height:400px"></div>
- ${cap('Sheetal Singh','AI Course Mentor','left:806px;top:446px',12.5)}
- ${disc('people/dsr.png',84,'left:52px;top:230px')}
- ${cap('Digraj Sir','Founder','left:146px;top:250px',11.5,false)}
+ <div class="side"><img class="ph" src="people/dsr.png" style="left:-46px;bottom:0;height:400px"></div>
+ ${cap('Digraj Sir','Founder','left:806px;top:452px',12.5)}
  <div class="cta">START LEARNING <b>→</b></div>
  <div class="grain"></div>`,
  port:()=>`${base(1080,1350)}<style>body{background:#F8F1E2}
@@ -132,10 +130,8 @@ const banners={
  <img class="logo" src="brand/logo-forest.png" style="left:72px;top:72px;height:66px">
  <h1>Learn AI the<br><em>practical way</em></h1>
  <div class="sub">${logos(32,26)}</div>
- <img class="ph" src="people/sheetal.png" style="right:-60px;bottom:0;height:560px;z-index:8">
- ${cap('Sheetal Singh','AI Course Mentor','right:40px;top:1250px',22)}
- ${disc('people/dsr.png',132,'left:72px;top:952px')}
- ${cap('Digraj Sir','Founder','left:222px;top:990px',20,false)}
+ <img class="ph" src="people/dsr.png" style="right:-60px;bottom:0;height:560px;z-index:8">
+ ${cap('Digraj Sir','Founder','right:40px;top:1250px',22)}
  <div class="cta">START LEARNING <b>→</b></div>
  <div class="grain"></div>`,
 },
@@ -155,9 +151,8 @@ const banners={
  <div class="sub">All You Need Is Your Phone</div>
  ${vframes(50,10,'left:52px;top:252px')}
  <div class="arw"></div>
- <div class="card"><img class="ph" src="people/yash-verma.png" style="left:-34px;bottom:0;height:392px"></div>
- ${cap('Yash Verma','Mobile Editing Instructor','left:786px;top:444px',12.5)}
- ${disc('people/dsr.png',74,'left:728px;top:22px')}
+ <div class="card"><img class="ph" src="people/dsr.png" style="left:-40px;bottom:0;height:392px"></div>
+ ${cap('Digraj Sir','Founder','left:786px;top:452px',12.5)}
  <div class="cta">LEARN MOBILE EDITING <b>→</b></div>
  <div class="grain"></div>`,
  port:()=>`${base(1080,1350)}<style>body{background:#EFDDC4}
@@ -173,9 +168,8 @@ const banners={
  <div class="sub">All You Need Is Your Phone</div>
  ${vframes(84,14,'left:690px;top:520px')}
  <div style="position:absolute;left:640px;top:690px;font:800 80px Poppins;color:${C.orange};z-index:7;transform:rotate(45deg)">↓</div>
- <div class="card"><img class="ph" src="people/yash-verma.png" style="left:-40px;bottom:0;height:500px"></div>
- ${cap('Yash Verma','Mobile Editing Instructor','right:36px;top:1240px',21)}
- ${disc('people/dsr.png',120,'left:72px;top:1060px')}
+ <div class="card"><img class="ph" src="people/dsr.png" style="left:-40px;bottom:0;height:500px"></div>
+ ${cap('Digraj Sir','Founder','right:36px;top:1240px',21)}
  <div class="cta">LEARN MOBILE EDITING <b>→</b></div>
  <div class="grain"></div>`,
 },
@@ -234,10 +228,8 @@ const banners={
  <img class="logo" src="brand/logo-ivory.png" style="left:48px;top:30px;height:38px">
  <h1>Your video editing<br>journey <em>starts here</em></h1>
  <div class="sub">3-Month Video Editing Cohort</div>
- <img class="ph" src="people/ujjwal.png" style="left:420px;bottom:0;height:380px;filter:drop-shadow(-6px 0 18px rgba(217,164,65,.28)) brightness(.96);z-index:8">
- ${cap('Ujjwal Jain','Video Editing Mentor','left:452px;top:446px',12.5)}
- ${disc('people/dsr.png',92,'left:880px;top:352px')}
- ${cap('Digraj Singh Rajput','Founder &amp; Lead Mentor','left:812px;top:452px',11)}
+ <img class="ph" src="people/dsr.png" style="left:410px;bottom:0;height:380px;filter:drop-shadow(-6px 0 18px rgba(217,164,65,.28)) brightness(.96);z-index:8">
+ ${cap('Digraj Singh Rajput','Founder &amp; Lead Mentor','left:440px;top:446px',12.5)}
  <div class="cta">EXPLORE THE COHORT <b>→</b></div>
  <div class="grain" style="mix-blend-mode:screen;opacity:.05"></div>`,
  port:()=>`${base(1080,1350)}<style>body{background:#1b1e1b;color:${C.ivory}}
@@ -252,22 +244,14 @@ const banners={
  <img class="logo" src="brand/logo-ivory.png" style="left:72px;top:72px;height:66px">
  <h1>Your video<br>editing journey<br><em>starts here</em></h1>
  <div class="sub">3-Month Video Editing Cohort</div>
- <img class="ph" src="people/ujjwal.png" style="left:-40px;bottom:0;height:640px;filter:drop-shadow(8px 0 26px rgba(217,164,65,.3)) brightness(.96);z-index:8">
- ${cap('Ujjwal Jain','Video Editing Mentor','left:72px;top:1112px',21)}
- ${disc('people/dsr.png',150,'left:870px;top:1000px')}
- ${cap('Digraj Singh Rajput','Founder &amp; Lead Mentor','right:40px;top:1168px',19)}
+ <img class="ph" src="people/dsr.png" style="left:-40px;bottom:0;height:640px;filter:drop-shadow(8px 0 26px rgba(217,164,65,.3)) brightness(.96);z-index:8">
+ ${cap('Digraj Singh Rajput','Founder &amp; Lead Mentor','left:72px;top:1112px',21)}
  <div class="cta" style="left:auto;right:40px;top:1250px;height:72px;font-size:21px">EXPLORE THE COHORT <b style="width:54px;height:54px">→</b></div>
  <div class="grain" style="mix-blend-mode:screen;opacity:.05"></div>`,
 },
 
 };
 
-// Fallback for Day 2 while Sheetal's course role is unconfirmed: clean "Verified Course Mentor" placeholder.
-const PH=(h)=>`<div style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:${h*.78}px;height:${h}px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:${h*.04}px;padding-bottom:${h*.3}px;color:rgba(246,240,228,.7);font:600 ${h*.03}px Poppins;letter-spacing:.08em;white-space:nowrap"><svg viewBox="0 0 100 110" width="${h*.42}" fill="none" stroke="rgba(246,240,228,.45)" stroke-width="3" stroke-dasharray="6 5"><circle cx="50" cy="34" r="22"/><path d="M8 108c4-26 21-40 42-40s38 14 42 40"/></svg>VERIFIED COURSE MENTOR</div>`;
-banners['d2-ai-courses-placeholder']={
- land:()=>banners['d2-ai-courses'].land().replace(/<img class="ph" src="people\/sheetal.png"[^>]*>/,PH(400)).replace('Sheetal Singh','Verified Course Mentor').replace('AI Course Mentor','Name to confirm'),
- port:()=>banners['d2-ai-courses'].port().replace(/<img class="ph" src="people\/sheetal.png"[^>]*>/,`<div style="position:absolute;right:40px;bottom:0;width:420px;height:600px;z-index:8;background:radial-gradient(110% 60% at 50% 25%,${C.forest2},#08301C);border-radius:40px 40px 0 0;box-shadow:0 0 0 2px rgba(217,164,65,.5)">${PH(560)}</div>`).replace('Sheetal Singh','Verified Course Mentor').replace('AI Course Mentor','Name to confirm'),
-};
 
 (async()=>{const br=await chromium.launch(); fs.mkdirSync(__dirname+'/out',{recursive:true});
 for(const [id,b] of Object.entries(banners)){ if(only&&!id.startsWith(only))continue;
