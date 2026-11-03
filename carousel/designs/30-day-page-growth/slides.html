@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Don't post yet: the 30-day page growth plan</title>
+<!--
+  2026-11-03. Built from the user's own copy (hook 1: "DON'T POST YET · Do this for 21 days first").
+  Same bold v2 system as carousel/designs/instagram-updates-2026: giant black numeral + Anton headline top-left
+  on white, angled pink-to-orange panel on the lower half, tilted phone with a recreated Instagram screen,
+  white/gradient hand-drawn marks, 5% grain. No 3D (brief §9). ChatGPT fallback: CHATGPT_PROMPTS.md.
+  Local only (gitignored): fonts/ (Satoshi, Silkscreen) and people/dsr-cutout.png (DSR).
+  1080x1350, 80 px safe margin. Open with #s1 ... #s7.
+-->
+<style>
+  @font-face { font-family: "Anton"; src: url("../../../video-skills/vendor/effects/fonts/Anton-Regular.ttf") format("truetype"); }
+  @font-face { font-family: "Satoshi"; font-weight: 500; src: url("fonts/Satoshi-Medium.woff2") format("woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 700; src: url("fonts/Satoshi-Bold.woff2") format("woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 900; src: url("fonts/Satoshi-Black.woff2") format("woff2"); }
+  @font-face { font-family: "Silkscreen"; src: url("fonts/Silkscreen.woff2"); }
+
+  :root { --grad: linear-gradient(90deg, #e8338f 0%, #ff4466 50%, #ff7a1a 100%);
+          --panel: linear-gradient(120deg, #e8338f 0%, #ff4466 45%, #ff7a1a 100%);
+          --fg: #161616; --muted: #6b6b70; --line: #ececef; --ig: #00376b; --blue: #0095f6; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #fff; }
+  body { font-family: "Satoshi", sans-serif; -webkit-font-smoothing: antialiased; color: var(--fg); }
+  .slide { position: absolute; inset: 0; display: none; overflow: hidden; background: #fff; }
+  .slide.on { display: block; }
+  .grain { position: absolute; inset: 0; background: url("assets/grain.png"); background-size: 256px; opacity: .05; mix-blend-mode: multiply; pointer-events: none; z-index: 50; }
+  .grain.lt { mix-blend-mode: overlay; opacity: .09; }
+
+  .label { position: absolute; left: 80px; top: 72px; font-family: "Silkscreen", monospace; font-size: 22px; letter-spacing: 1px; z-index: 6; }
+  .label span { color: var(--muted); margin-left: 18px; }
+  .A { font-family: "Anton", sans-serif; text-transform: uppercase; font-weight: 400; letter-spacing: .5px; }
+  .g { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .head { position: absolute; left: 62px; top: 130px; display: flex; align-items: flex-start; gap: 24px; z-index: 4; }
+  .num { font-family: "Anton", sans-serif; font-size: 430px; line-height: .78; color: var(--fg); }
+  .stack { padding-top: 8px; }
+  .stack div { line-height: .96; white-space: nowrap; }
+
+  .panel { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); clip-path: polygon(0 9%, 100% 0, 100% 100%, 0 100%); z-index: 1; }
+  .copy { position: absolute; left: 80px; width: 430px; color: #fff; font-size: 46px; line-height: 1.12; font-weight: 900; z-index: 5; }
+  .copy small { display: block; font-family: "Silkscreen", monospace; font-size: 20px; letter-spacing: 1px; font-weight: 400; opacity: .9; margin-bottom: 18px; }
+
+  .mark { position: absolute; overflow: visible; pointer-events: none; z-index: 7; }
+  .mark path, .mark ellipse, .mark rect { fill: none; stroke-linecap: round; stroke-linejoin: round; filter: url(#rough); }
+
+  /* phone with a recreated Instagram screen */
+  .phone { position: absolute; width: 540px; height: 1100px; border-radius: 86px; background: #0f0f10; padding: 16px;
+           box-shadow: 0 50px 100px rgba(80,0,30,.35), inset 0 0 0 3px #2a2a2c; z-index: 3; }
+  .screen { position: relative; width: 100%; height: 100%; border-radius: 72px; background: #fff; overflow: hidden; }
+  .notch { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); width: 150px; height: 42px; border-radius: 24px; background: #0f0f10; z-index: 2; }
+  .bar { display: flex; justify-content: space-between; padding: 24px 46px 0; font-size: 24px; font-weight: 900; height: 76px; }
+  .top { display: flex; align-items: center; gap: 16px; padding: 18px 28px; font-size: 26px; font-weight: 900; border-bottom: 1px solid var(--line); }
+  .ava { width: 56px; height: 56px; border-radius: 50%; background: url("../reel-4-line-script/assets/ig-profile.png") -10px -10px / 330px auto; flex: none; }
+  .tick { display: inline-block; width: 24px; height: 24px; border-radius: 50%; background: #3897f0; margin-left: 6px; vertical-align: -3px; position: relative; }
+  .tick::after { content: ""; position: absolute; left: 8px; top: 4px; width: 6px; height: 12px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg); }
+  .pimg { width: 100%; display: block; }
+  .acts { display: flex; align-items: center; gap: 30px; padding: 22px 28px 10px; }
+  .acts svg { width: 58px; height: 58px; }
+  .cap { padding: 6px 28px; font-size: 25px; line-height: 1.4; }
+  .tags { color: var(--ig); font-weight: 700; }
+  .mono { font-family: "Silkscreen", monospace; }
+  .row { display: flex; align-items: center; padding: 30px 32px; border-bottom: 1px solid var(--line); font-size: 28px; font-weight: 900; }
+  .row .s { font-size: 22px; color: var(--muted); font-weight: 500; margin-top: 4px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6"/>
+    </filter>
+    <linearGradient id="mk" x1="0" x2="1"><stop offset="0" stop-color="#e8338f"/><stop offset=".5" stop-color="#ff4466"/><stop offset="1" stop-color="#ff7a1a"/></linearGradient>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.8-8-10.6A4.4 4.4 0 0 1 12 7.3a4.4 4.4 0 0 1 8 2.6c0 5.8-8 10.6-8 10.6z" fill="none" stroke="#161616" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-com" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 1 1-3.2-6.6A8.5 8.5 0 0 1 20.5 12zm0 0 .5 8-4.6-2.5" fill="none" stroke="#161616" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M21.5 3 2.8 9.4l7.4 3.3L21.5 3zm0 0-8 18.2-3.3-8.5" fill="none" stroke="#161616" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1z" fill="none" stroke="#161616" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+<style>
+  .reels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+  .reel { position: relative; aspect-ratio: 3/4; background: #ececef center / cover; }
+  .reel .v { position: absolute; left: 10px; bottom: 8px; color: #fff; font-size: 21px; font-weight: 900; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+  .reel .v::before { content: "▶ "; font-size: 15px; }
+  .tabs { display: flex; justify-content: space-around; padding: 14px 0; font-size: 22px; font-weight: 900; color: var(--muted); border-bottom: 1px solid var(--line); }
+  .tabs b { color: var(--fg); border-bottom: 3px solid var(--fg); padding-bottom: 10px; }
+  .steps { position: absolute; left: 80px; width: 440px; color: #fff; z-index: 5; }
+  .steps small { display: block; font-family: "Silkscreen", monospace; font-size: 20px; letter-spacing: 1px; opacity: .9; margin-bottom: 22px; }
+  .steps .st { display: flex; gap: 18px; align-items: baseline; font-size: 36px; line-height: 1.12; font-weight: 900; margin-bottom: 26px; }
+  .steps .st i { font-style: normal; font-family: "Anton", sans-serif; font-size: 44px; color: #161616; min-width: 30px; }
+  .chip { display: inline-block; background: #fff; color: #161616; font-weight: 900; font-size: 30px; padding: 12px 24px; border-radius: 40px; box-shadow: 0 16px 30px rgba(80,0,30,.25); }
+  .tag { position: absolute; left: 8px; top: 8px; font-family: "Silkscreen", monospace; font-size: 15px; padding: 4px 8px; border-radius: 6px; background: #161616; color: #fff; }
+  .tag.t { background: #fff; color: #161616; box-shadow: 0 0 0 2px #ff4466; }
+</style>
+
+<!-- 1 COVER: DON'T POST YET · Do this for 21 days first -->
+<section class="slide" id="s1">
+  <div class="panel" style="top:600px"></div>
+  <img src="people/dsr-cutout.png" style="position:absolute; right:-150px; bottom:-60px; width:820px; z-index:2" onerror="this.remove()">
+  <div class="label">@theskilledbrains <span>the 30-day plan</span></div>
+  <div class="A" style="position:absolute; left:74px; top:132px; z-index:4; line-height:.9">
+    <div style="font-size:236px">Don’t</div>
+    <div class="g" style="font-size:236px; white-space:nowrap">post yet.</div>
+  </div>
+  <div class="A" style="position:absolute; left:80px; top:745px; z-index:4; color:#fff; line-height:.86">
+    <div style="font-size:78px; line-height:1">Do this for</div>
+    <div style="font-size:330px; line-height:1.02; margin-top:6px">21</div>
+    <div style="font-size:78px; line-height:1">days first</div>
+  </div>
+  <div class="mono" style="position:absolute; left:80px; top:1266px; color:#fff; font-size:22px; z-index:5">swipe for the plan →</div>
+  <div class="grain"></div>
+</section>
+
+<!-- 2 THE MISTAKE -->
+<section class="slide" id="s2">
+  <div class="label">@theskilledbrains <span>the mistake</span></div>
+  <div class="A" style="position:absolute; left:74px; top:130px; z-index:4; line-height:.94">
+    <div style="font-size:128px">Post on day 1.</div>
+    <div class="g" style="font-size:200px">Hope.</div>
+  </div>
+  <div class="panel" style="top:600px"></div>
+  <div class="copy" style="top:770px"><small>what most beginners do</small>Guessing is the slowest way to grow.</div>
+  <div class="phone" style="left:500px; top:590px; transform:rotate(5deg)">
+    <div class="screen"><div class="notch"></div>
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="top"><div style="width:56px;height:56px;border-radius:50%;background:#ececef"></div>my_new_page</div>
+      <div class="tabs"><span>Posts</span><b>Reels</b><span>Tagged</span></div>
+      <div class="reels">
+        <div class="reel" style="background-color:#f3e9e2"><span class="v">41</span></div>
+        <div class="reel" style="background-color:#e6e9ef"><span class="v">63</span></div>
+        <div class="reel" style="background-color:#efe6ec"><span class="v">28</span></div>
+        <div class="reel" style="background-color:#e9efe8"><span class="v">35</span></div>
+        <div class="reel" style="background-color:#f1ece1"><span class="v">19</span></div>
+        <div class="reel" style="background-color:#e8e6ef"><span class="v">52</span></div>
+      </div>
+    </div>
+  </div>
+  <svg class="mark" style="left:600px; top:830px; transform:rotate(5deg)" width="420" height="320" viewBox="0 0 420 320">
+    <path d="M40 60 C 40 20, 100 20, 100 56 C 100 90, 70 90, 70 120" stroke="url(#mk)" stroke-width="9"/><path d="M70 150 l0 2" stroke="url(#mk)" stroke-width="12"/>
+    <path d="M330 190 C 330 150, 390 150, 390 186 C 390 220, 360 220, 360 250" stroke="url(#mk)" stroke-width="9"/><path d="M360 280 l0 2" stroke="url(#mk)" stroke-width="12"/>
+  </svg>
+  <svg class="mark" style="left:70px; top:1010px" width="380" height="60" viewBox="0 0 380 60">
+    <path d="M6 30 C 120 46, 260 18, 370 34" stroke="#fff" stroke-width="7"/>
+  </svg>
+  <div class="grain"></div>
+</section>
+
+<!-- 3 DAYS 1-7: FIND THE OUTLIERS -->
+<section class="slide" id="s3">
+  <div class="label">@theskilledbrains <span>days 1-7</span></div>
+  <div class="head">
+    <div class="num">1</div>
+    <div class="stack A">
+      <div style="font-size:150px">Find the</div>
+      <div class="g" style="font-size:168px">outliers</div>
+    </div>
+  </div>
+  <div class="panel" style="top:600px"></div>
+  <div class="steps" style="top:740px"><small>days 1-7</small>
+    <div class="st"><i>1</i><span>Pick 5 creators in your niche.</span></div>
+    <div class="st"><i>2</i><span>Spot videos with way more views than usual.</span></div>
+    <div class="st"><i>3</i><span>Save 20 of them.</span></div>
+  </div>
+  <div class="phone" style="left:530px; top:590px; transform:rotate(5deg)">
+    <div class="screen"><div class="notch"></div>
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="top"><div style="width:56px;height:56px;border-radius:50%;background:var(--panel)"></div>creator_in_your_niche</div>
+      <div class="tabs"><span>Posts</span><b>Reels</b><span>Tagged</span></div>
+      <div class="reels">
+        <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="v">14K</span></div>
+        <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="v">9.2K</span></div>
+        <div class="reel" style="background-image:url(assets/thumb3.jpg)"><span class="v">11K</span></div>
+        <div class="reel" style="background-image:url(assets/thumb4.jpg)"><span class="v">2.1M</span></div>
+        <div class="reel" style="background-image:url(assets/thumb3.jpg)"><span class="v">8.7K</span></div>
+        <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="v">12K</span></div>
+      </div>
+    </div>
+  </div>
+  <svg class="mark" style="left:545px; top:1050px; transform:rotate(5deg)" width="210" height="250" viewBox="0 0 210 250">
+    <path d="M40 30 C 120 4, 200 30, 196 130 C 192 226, 70 244, 26 190 C -6 146, 6 60, 76 24" stroke="#fff" stroke-width="12"/>
+    <path d="M40 30 C 120 4, 200 30, 196 130 C 192 226, 70 244, 26 190 C -6 146, 6 60, 76 24" stroke="url(#mk)" stroke-width="7"/>
+  </svg>
+  <div class="A" style="position:absolute; left:300px; top:1190px; z-index:8; font-size:58px; color:#fff; transform:rotate(-6deg); line-height:1">save it.</div>
+  <div class="grain"></div>
+</section>
+
+<!-- 4 WHY DID THIS ONE WORK? -->
+<section class="slide" id="s4">
+  <div class="label">@theskilledbrains <span>days 1-7</span></div>
+  <div class="head">
+    <div class="num" style="font-size:520px">?</div>
+    <div class="stack A">
+      <div style="font-size:132px">Why did</div>
+      <div class="g" style="font-size:132px">this one</div>
+      <div class="g" style="font-size:132px">work?</div>
+    </div>
+  </div>
+  <div class="panel" style="top:600px"></div>
+  <div class="steps" style="top:740px"><small>ask one question. check:</small>
+    <div class="st"><i>✓</i><span>Topic</span></div>
+    <div class="st"><i>✓</i><span>Hook (first 3 sec)</span></div>
+    <div class="st"><i>✓</i><span>Thumbnail or first frame</span></div>
+    <div class="st"><i>✓</i><span>Length</span></div>
+    <div class="st"><i>✓</i><span>Format</span></div>
+  </div>
+  <div class="phone" style="left:560px; top:590px; transform:rotate(5deg)">
+    <div class="screen" style="background:#111"><div class="notch"></div>
+      <div style="position:absolute; inset:0; background:url(people/dsr-headshot.png) center 20% / cover"></div>
+      <div style="position:absolute; left:0; right:0; bottom:0; height:700px; background:linear-gradient(transparent, rgba(0,0,0,.75))"></div>
+      <div style="position:absolute; left:30px; top:110px; color:#fff; font-size:30px; font-weight:900; text-shadow:0 2px 8px rgba(0,0,0,.6)">Reels</div>
+      <div style="position:absolute; left:30px; right:30px; top:560px; height:8px; border-radius:4px; background:rgba(255,255,255,.35)"><div style="width:14%; height:100%; border-radius:4px; background:#fff"></div></div>
+      <div style="position:absolute; left:30px; top:590px; color:#fff; font-size:24px; font-weight:900">0:03 / 0:28</div>
+      <div style="position:absolute; left:30px; top:636px; color:#fff; font-size:26px; font-weight:900">▶ 2.1M views</div>
+    </div>
+  </div>
+  <svg class="mark" style="left:612px; top:1166px; transform:rotate(5deg)" width="200" height="70" viewBox="0 0 200 70">
+    <ellipse cx="100" cy="35" rx="92" ry="28" stroke="url(#mk)" stroke-width="7"/>
+  </svg>
+  <div class="grain"></div>
+</section>
+
+<!-- 5 DAYS 8-21: FIND THE PATTERN -->
+<section class="slide" id="s5">
+  <div class="label">@theskilledbrains <span>days 8-21</span></div>
+  <div class="head">
+    <div class="num">2</div>
+    <div class="stack A">
+      <div style="font-size:150px">Find the</div>
+      <div class="g" style="font-size:168px">pattern</div>
+    </div>
+  </div>
+  <div class="panel" style="top:600px"></div>
+  <div class="copy" style="top:745px; font-size:40px; width:440px"><small>days 8-21</small>What do your 20 saved videos have in common?</div>
+  <div style="position:absolute; left:80px; top:990px; z-index:6; display:flex; flex-direction:column; align-items:flex-start; gap:18px">
+    <div class="mono" style="color:#fff; font-size:20px">pick one format:</div>
+    <span class="chip" style="transform:rotate(-3deg)">before/after</span>
+    <span class="chip" style="transform:rotate(2deg)">3 tips in 30 sec</span>
+    <span class="chip" style="transform:rotate(-2deg)">myth vs truth</span>
+  </div>
+  <svg class="mark" style="left:50px; top:1002px; transform:rotate(-3deg)" width="330" height="120" viewBox="0 0 330 120">
+    <ellipse cx="165" cy="60" rx="156" ry="50" stroke="#161616" stroke-width="6"/>
+  </svg>
+  <div class="phone" style="left:530px; top:590px; transform:rotate(5deg)">
+    <div class="screen"><div class="notch"></div>
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="top" style="justify-content:space-between"><span>Saved</span><span style="color:var(--muted); font-size:22px">20 reels</span></div>
+      <div class="reels" style="grid-template-columns:1fr 1fr 1fr 1fr">
+        <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="tag t">b/a</span></div>
+        <div class="reel" style="background-image:url(assets/thumb2.jpg)"></div>
+        <div class="reel" style="background-image:url(assets/thumb3.jpg)"><span class="tag t">b/a</span></div>
+        <div class="reel" style="background-image:url(assets/thumb4.jpg)"></div>
+        <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="tag t">b/a</span></div>
+        <div class="reel" style="background-image:url(assets/thumb4.jpg)"></div>
+        <div class="reel" style="background-image:url(assets/thumb1.jpg)"></div>
+        <div class="reel" style="background-image:url(assets/thumb3.jpg)"><span class="tag t">b/a</span></div>
+        <div class="reel" style="background-image:url(assets/thumb4.jpg)"><span class="tag t">b/a</span></div>
+        <div class="reel" style="background-image:url(assets/thumb3.jpg)"></div>
+        <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="tag t">b/a</span></div>
+        <div class="reel" style="background-image:url(assets/thumb1.jpg)"></div>
+        <div class="reel" style="background-image:url(assets/thumb3.jpg)"></div>
+        <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="tag t">b/a</span></div>
+        <div class="reel" style="background-image:url(assets/thumb4.jpg)"></div>
+        <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="tag t">b/a</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- 6 DAYS 22-30: THE 50/50 RULE -->
+<section class="slide" id="s6">
+  <div class="label">@theskilledbrains <span>days 22-30</span></div>
+  <div class="head">
+    <div class="num">3</div>
+    <div class="stack A">
+      <div style="font-size:132px">Start posting</div>
+      <div class="g" style="font-size:168px">50/50 rule</div>
+    </div>
+  </div>
+  <div class="panel" style="top:600px"></div>
+  <div class="steps" style="top:730px; width:460px"><small>days 22-30</small>
+    <div class="A" style="font-size:120px; line-height:.9">50%</div>
+    <div style="font-size:34px; font-weight:900; line-height:1.12; margin:8px 0 34px">Your proven format. Same structure, new topic.</div>
+    <div class="A" style="font-size:120px; line-height:.9; color:#161616">50%</div>
+    <div style="font-size:34px; font-weight:900; line-height:1.12; margin-top:8px">Test something new to find your next winner.</div>
+  </div>
+  <div class="phone" style="left:560px; top:590px; transform:rotate(5deg)">
+    <div class="screen"><div class="notch"></div>
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="top"><div style="width:56px;height:56px;border-radius:50%;background:#ececef"></div>my_page</div>
+      <div class="tabs"><span>Posts</span><b>Reels</b><span>Tagged</span></div>
+      <div class="reels">
+        <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="tag">proven</span></div>
+        <div class="reel" style="background-image:url(assets/thumb4.jpg)"><span class="tag t">test</span></div>
+        <div class="reel" style="background-image:url(assets/thumb2.jpg)"><span class="tag">proven</span></div>
+        <div class="reel" style="background-image:url(assets/thumb3.jpg)"><span class="tag t">test</span></div>
+        <div class="reel" style="background-image:url(assets/thumb1.jpg)"><span class="tag">proven</span></div>
+        <div class="reel" style="background-image:url(assets/thumb4.jpg)"><span class="tag t">test</span></div>
+      </div>
+    </div>
+  </div>
+  <svg class="mark" style="left:880px; top:1060px; transform:rotate(5deg)" width="200" height="250" viewBox="0 0 200 250">
+    <path d="M40 30 C 120 4, 196 30, 192 130 C 188 226, 70 244, 26 190 C -6 146, 6 60, 76 24" stroke="url(#mk)" stroke-width="8"/>
+  </svg>
+  <div class="grain"></div>
+</section>
+
+<!-- 7 THE LOOP + COMMENT + FOLLOW -->
+<section class="slide" id="s7">
+  <div class="label">@theskilledbrains <span>the loop</span></div>
+  <div class="A" style="position:absolute; left:74px; top:124px; line-height:.98; z-index:4; font-size:92px">
+    <div>Better research</div>
+    <div><span style="color:#ff4466">→</span> better decisions</div>
+    <div><span style="color:#ff4466">→</span> better content</div>
+    <div class="g">→ faster growth</div>
+  </div>
+  <svg class="mark" style="left:790px; top:150px" width="250" height="330" viewBox="0 0 250 330">
+    <path d="M40 300 C 200 300, 240 200, 226 130 C 210 50, 130 20, 40 34" stroke="url(#mk)" stroke-width="8"/>
+    <path d="M78 6 L 36 34 L 76 66" stroke="url(#mk)" stroke-width="8"/>
+  </svg>
+  <div class="panel" style="top:560px"></div>
+  <div class="A" style="position:absolute; left:80px; top:690px; z-index:4; color:#fff; line-height:1">
+    <div style="font-size:128px; white-space:nowrap">Comment <span style="color:#161616">“Plan”</span></div>
+    <div style="font-family:Satoshi, sans-serif; text-transform:none; font-size:36px; font-weight:900; margin-top:10px">for the free 30-day tracker.</div>
+  </div>
+  <div style="position:absolute; left:80px; top:960px; width:700px; padding:22px; background:#fff; border-radius:30px; transform:rotate(-2deg); z-index:4; box-shadow:0 40px 80px rgba(80,0,30,.3)">
+    <img src="../reel-4-line-script/assets/ig-profile.png" style="display:block; width:656px" alt="Instagram profile of @theskilledbrains">
+  </div>
+  <svg class="mark" style="left:74px; top:1150px; transform:rotate(-2deg)" width="360" height="100" viewBox="0 0 360 100">
+    <ellipse cx="180" cy="50" rx="168" ry="38" stroke="url(#mk)" stroke-width="8"/>
+  </svg>
+  <div class="A" style="position:absolute; left:820px; top:990px; font-size:72px; color:#fff; z-index:5; line-height:1">+<br>Follow</div>
+  <svg class="mark" style="left:430px; top:1140px" width="420" height="120" viewBox="0 0 420 120">
+    <path d="M400 20 C 360 100, 200 110, 30 74" stroke="#fff" stroke-width="7"/>
+    <path d="M62 46 L 26 72 L 58 104" stroke="#fff" stroke-width="7"/>
+  </svg>
+  <div class="grain"></div>
+</section>
+
+<script>
+  function show() {
+    const id = (location.hash || "#s1").slice(1);
+    document.querySelectorAll(".slide").forEach(s => s.classList.toggle("on", s.id === id));
+  }
+  window.addEventListener("hashchange", show); show();
+</script>
+</body>
+</html>
