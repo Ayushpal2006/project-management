@@ -11,6 +11,7 @@ Do not use or cite skilledbrains.com: it belongs to an unrelated firm.
 ## Start here, every time
 
 1. Read `brand/BRAND_BRIEF.md` before making any brand content.
+   For carousels, also read `brand/CONTENT_STRATEGY.md`: it says whose photo goes on the cover (the pillar owner) and the creative formula.
 2. Pick the skills for the job from the table below and follow them.
 3. Before anything is scheduled, run the pre-publish checklist in `skills/skilled-brains-carousel/SKILL.md`.
 
@@ -42,6 +43,7 @@ Third-party video skills (effects, watch-skill, GSAP, Three.js) are pinned in `v
 | `brand/BRAND_BRIEF.md` | The brand brief (master copy) |
 | `brand/people/<slug>/identity.md` | Each person's face checklist and identity grid |
 | `brand/assets/` | Logo, team photos, Shital's shoot, past carousels. Local only (not in git) while the repo is public. Copy the local `The Skilled brains/` folder's contents here. |
+| `brand/CONTENT_STRATEGY.md` | Pillars, owners (who goes on the cover), creative formula, publishing system; source board in `brand/strategy/` |
 | `brand/references/INDEX.md` | References the user liked and what we took from them |
 | `brand/hero-thumbnails/` | Approved hero thumbnails (images local only) and what we learned |
 | `carousel/` | Node tool that publishes carousels through Zernio |
@@ -72,8 +74,9 @@ Also in the photos, role unconfirmed: Yash (`Yash V.png`). Use them in team post
 
 ## Working preferences
 
-- **Carousel look (user, 2026-11-02; replaces the 2026-10-31 dark/light rule):** no dark/light alternation. Use one consistent white look: white ground, huge black numeral beside a condensed all-caps headline (Anton) with key words in a pink-to-orange gradient, a small centred top label with just "@theskilledbrains" (no topic words like "Reel Scripts" or "Communication Skills"), 7 slides max with the Comment + Follow CTA (real IG profile screenshot) on the last slide, Digraj sir (DSR) as the cover figure when his photo is available, ~~and a 3D hero object per slide~~ (dropped by the Anti-AI rule below). Reference: `carousel/designs/reel-4-line-script`.
+- **Carousel look (user, 2026-11-02; replaces the 2026-10-31 dark/light rule):** no dark/light alternation. Use one consistent white look: white ground, huge black numeral beside a condensed all-caps headline (Anton) with key words in a pink-to-orange gradient, a small centred top label with just "@theskilledbrains" (no topic words like "Reel Scripts" or "Communication Skills"), 7 slides max with the Comment + Follow CTA (real IG profile screenshot) on the last slide, ~~Digraj sir (DSR) as the cover figure when his photo is available~~ (replaced 2026-11-03: the pillar owner from `brand/CONTENT_STRATEGY.md` is the cover face; DSR only for founder or brand-wide posts), ~~and a 3D hero object per slide~~ (dropped by the Anti-AI rule below). Reference: `carousel/designs/reel-4-line-script`.
 - **Anti-AI design direction (user, 2026-11-02; wins over the carousel look above where they conflict):** full rules and the 4-step blueprint workflow are in `brand/BRAND_BRIEF.md` §9. In short: asymmetric, strictly left-aligned layouts with deliberate negative space; aggressive display-vs-sans/mono type contrast using the existing brand fonts; a subtle 3-5% grain in the final edit; real photos, UI screenshots or hand-drawn elements only, never glossy 3D, claymorphism or studio-lit stock. Keep it clean, not a jungle. Brand colours and typography stay unchanged. Write a slide-by-slide blueprint before rendering, and hooks must avoid AI bait like "The secret to..." or "Stop doing X".
+- **Vary the design (user, 2026-11-03):** don't make every carousel in the same design. Propose 2-3 fresh directions as style frames, get the user's pick, then build. See `brand/CONTENT_STRATEGY.md`.
 - **Less text, more visuals; no audience labels (user, 2026-11-02):** keep each slide to a headline plus at most one short line or card, and let the visual (real photo, UI screenshot or hand-drawn element) carry it. Never write "students", "student", "learners", "learner" or any similar label for the audience (say "people" or drop the line).
 - **Render in the cloud (user, 2026-10-31):** render videos and carousels in the cloud session, not on the user's Mac. Share previews from the cloud. Copy a file to the Mac only when the user says so.
 - **Clean the Mac after a piece is final (user, 2026-10-31):** once the user finalises a video or carousel, clear its references, source files and intermediates (renders, frames, drafts) from the Mac and keep only the final file. Move them to the Trash, never hard-delete. Never touch files another running task is still using, and never touch `brand/assets/` or anything outside that piece's own working files.
