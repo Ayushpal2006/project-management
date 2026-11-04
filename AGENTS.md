@@ -85,12 +85,13 @@ Yash (`Yash V.png`) is very likely **Yash Verma**, whom theskilledbrains.com lis
 ## Tools
 
 - **Publishing and scheduling:** Zernio (confirmed 2026-10-30; the user sometimes calls it "Journeyo"). Use `carousel/` (API key in `carousel/.env`) or the Zernio connector. As of 2026-10-30 the only connected account is YouTube `ayushpal-o9z`; Instagram is not connected yet.
+- **Channels (confirmed 2026-11-04):** YouTube `youtube.com/channel/UCQepwC7BNXg-QLWDmYNtf1g` (started 1 Jul 2026), Instagram `@theskilledbrains`. Most Instagram Reels are cross-posts of YouTube Shorts, so the Short's captions double as the Reel's transcript.
+- **Channel research:** `research/` holds the content database (`content_database.csv`/`.sqlite`, rebuilt by `research/build_db.py`), transcripts, tool report and progress log. Voice profiles for the `ig-*` and `yt-*` skill packs are in `~/.claude/instagram/voice.md` and `~/.claude/youtube/voice.md`. Scripts in the connected Drive are for other projects, not this brand.
 - **Editing:** Premiere Pro and After Effects; deliver editable project files.
 - **B-roll:** team Google Drive library first, see `skilled-brains-editing-tools`.
 
 ## Open questions for the user
 
-- Instagram and YouTube channel links, so past content can be studied and logged.
 - "OS" (installed) and "Real Studio" (for video): what they are and their links.
 - The movie / image archive for B-roll: link.
 - Whether the repo should become private, so team photos can be committed and a new laptop gets them with the clone.

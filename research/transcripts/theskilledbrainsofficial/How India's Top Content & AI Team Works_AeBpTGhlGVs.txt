@@ -1,0 +1,606 @@
+Title:     How India's Top Content & AI Team Works?
+URL:       https://www.youtube.com/watch?v=AeBpTGhlGVs
+Language:  en-US (auto-generated)
+Extracted: 2026-11-04T08:24:34.471992+00:00
+────────────────────────────────────────────────────────────
+
+Which team is using which AI tool with
+ what efficiency? Pratik, which tool are
+ you using?
+ What plans do you have for Cloud?
+ Cloud.
+ Cloud is everyone's favorite tool. So,
+ let's understand from Yash how we're
+ using AI tools in video editing. How
+ are we leveraging them?
+ First of all, Didi, what is it? It
+ comes in our Google Flow. I used this
+ from Digraj Sir.
+ Yash, I heard you created a short form
+ clipper using Cloud. Show me once. I've
+ heard its output is pretty crazy. And
+ there's
+ an editor I've created for fan page
+ edits. I
+ mean, the market price of a thumbnail
+ design. He created Crousal with the
+ help of AI. Which is again an
+ interesting part. So, we're going to
+ see what he's created. We spend over 1
+ lakh on tools. And from that, we're
+ investing the maturity of the
+ expenditure in AI tools. There are many
+ tools. All departments use different AI
+ tools for various use cases. Now, let's
+ understand which team is using which AI
+ tool with what efficiency on a daily
+ basis, and how much better output they
+ are getting from it. First, let's start
+ with the scriptwriting team. So, we
+ have Pratik. You can see Pratik is
+ already using an AI tool. Pratik, which
+ tool are you using?
+ Cloud.
+ What plan do you have with Cloud?
+ Max
+ Guys Max Plan, which is the largest
+ plan for individuals. It's a 10,000
+ plan. Okay, so what do you get Cloud to
+ do? Specifically in scripting.
+ Research, drafting, outlines, and
+ almost everything. So, let's imagine
+ that you don't have Cloud. Okay? If you
+ wrote a script without AI, how much
+ time would it take you? And how much
+ time is it taking you now?
+ So, two days is mostly six hours. If I
+ write in one second, six hours.
+ Otherwise, two days. Two days means how
+ many hours? 18-20 hours. Correct? So,
+ we've achieved 1/3 efficiency. So, with
+ this efficiency, how many scripts are
+ we producing overall per month?
+ 80-plus. So, how many teams are we
+ using to do this? I
+ mean, if it wasn't
+ for Four AI, how many people would it
+ take?
+ I think eight would be required.
+ Eight would be almost double.
+ Right. So, besides the cloud, what
+ other tools are you using?
+ Besides the cloud, we're using Gemini.
+ What is Gemini for? Basically, it
+ collects all the resources in one place
+ and all the information is put out on
+ point. And we also use chat.jpeg and
+ complexity, depending on what is needed
+ from where.
+ Okay? What do you use Perplexity for?
+ Mostly, research and writing quality
+ sources, I think, are better available
+ with Perplexity.
+ I think the deep research part is
+ helpful. Okay? So, we must have gotten
+ the idea for scripting. I'll get one
+ more scripting validation from Miss
+ Khushi. So, tell me, which tools do you
+ use?
+ Claude.
+ Claude is everyone's favorite tool. At
+ least Claude in the scripting
+ department. I
+ mean, how have you gained speed from
+ Claude, quality, and overall, how much
+ has Claude helped from a writing
+ perspective? It's helped a lot because
+ it used to take us a lot of time to do
+ research. Now, it's comparatively much
+ shorter, and outlines come out quickly.
+ Drafting is done quickly. So, our time
+ has been reduced significantly compared
+ to what it used to take before, but
+ good tools.
+ Okay? So, anyone who's watching this
+ video? So basically, we're conducting a
+ workshop on September 27th at 5:00 PM,
+ where I'll explain the use cases of AI
+ tools. I mean, I'll explain. So, what
+ do you want to say? What should they do
+ with them? Of course, they should join
+ because the use we're using is very
+ useful for those of you who want to get
+ started or are in the initial stages of
+ getting started. So, go for it. It's
+ very helpful. It's very useful and
+ valuable. Khushi has also given her
+ validation. You'll learn a lot in the
+ workshop. We'll cover all the use cases
+ you've heard so far and the ones we're
+ going to hear about. You'll find the
+ link to the workshop in the description
+ of this video and also in the channel's
+ description box. Go check it out there.
+ Give it a look. So, this is the entire
+ row of editors. And guys, these are
+ long-form editors. It's lunchtime, so
+ everyone has gone to eat. So, there's
+ Yash, our hardworking kid, who's been
+ editing videos. So, let's understand
+ from Yash how we're using AI tools in
+ video editing. How we're leveraging
+ them. Yes, Yash. Didi, we mainly use AI
+ in documentaries for storytelling,
+ video generation, and photo generation.
+ Let's
+ understand one by one. Storytelling is
+ like you give a script and get the
+ storytelling done in which flow you
+ think is best. Yes, with a little
+ AI, I mean, we give the script a cloud
+ and get some ideas from it about what
+ kind of storytelling we can do in it.
+ The cloud gives us some ideas about how
+ we can do it. And we put some human
+ testing on it. So, we get a pretty good
+ output, like in documentaries.
+ Do you think this has a huge impact on
+ video editing and storytelling. It
+ saves a lot of time, which allows us to
+ have more impact. I can put more effort
+ into graphics. By saving my time on
+ storytelling, I can put more effort
+ into other areas.
+ Okay?
+ Besides storyboarding, we also use
+ Google Flow for video generation and
+ photo generation.
+ Okay? What tools are we using? You
+ mentioned Kludge. We
+ use Kludge, Envato's AI.
+ What are we using Envato's AI for?
+ For photo and video generation. We also
+ use Kludge for video and photo
+ generation. We use Kludge for
+ storytelling.
+ We use End Flow to generate B-rolls.
+ Yes, B-rolls, AI video generation,
+ photo generation, storytelling, and the
+ whole Digraj Sir's videos have the
+ AnyWay style theme. We have
+ two factors in video editing. One is
+ speed, the speed with which we are able
+ to edit videos with AI tools. Second,
+ I'd like to see the
+ overall video quality improve. They
+ feel relatable. We didn't get such
+ relatable B-rolls before. Making such
+ movies meant a lot of time wasted. AI
+ has saved a lot of time. So should they
+ learn AI tools?
+ Absolutely, you can bring whatever's on
+ your mind. Thinking about wanting
+ something to move like this, wanting
+ something to move in 3D, you can get it
+ done with AI. It's quite normal.
+ So, should they join a workshop?
+ Absolutely. I'll do it again.
+ Okay. So, Yash, the most interesting
+ part of this is how AI generates
+ B-rolls. So, show us how you extracted
+ B-roll videos using Flow.
+ First, Didi, what's that? Brother,
+ let's jump into our Google Flow. I
+ generated B-rolls for Digraj Sir's
+ water crisis video. This is a scene
+ from India, a hospital. I first
+ extracted a photo of that scene from
+ Google.
+ How about a little show?
+ Yes, I'm like, I want a scene from
+ Jharkhand here. For example, I have any
+ scene, like this village.
+ Okay. I've
+ taken a photo. Yes, I'll save
+ this photo first. Now I want to create
+ a related scene from this.
+ Okay.
+ So first, I'll save it here. Then I'll
+ go from here and drag and drop it
+ directly into Google Frame.
+ Now, give it a print.
+ Now, I'll make it a proper image
+ because images are free on Flow.
+ They're free for everyone. So, first,
+ I'll get my desired result from the
+ image, exactly what I want. So, what
+ will I do here? Create this reference
+ image, create a similar image. Now,
+ I'll get a similar output from it,
+ whichever image Flow creates for me.
+ Okay? So, technically, what we're
+ learning is how to generate B-rolls of
+ videos. For this, we're using Google
+ Flow. Google for images. First, we'll
+ extract the images. Then, we generate a
+ video from the image we get our desired
+ result in.
+ So, are we adding similar visuals to
+ every video?
+ Yes, we add Digraj Sir's videos to
+ almost all of our clients 'videos. Look
+, it produced a similar result. We
+ extracted all the photos we had from
+ here, similar and in the highest
+ quality. I added it to prep from here.
+ Now, I selected it in my video section
+ and did my desired camera panning. What
+ I wanted to do was zoom in. Show me a
+ drone shot, show me
+ a top view
+ drone shot,
+ create a camera zoom in this scene,
+ let's take a drone shot.
+ Okay,
+ now I'll add a simple prompt because
+ Flow understands it very easily. We
+ don't need to speak advanced English.
+ Simply enter the keywords and Flow
+ understands what we want. Now, I think
+ even if you can't figure it out,
+ there's a little context or chat that
+ we can give to GPT and extract the
+ prompt from it.
+ Yes, we can definitely do that too.
+ Okay, so we've got the output guys! The
+ drone shot is here. Now let's take a
+ look. Just look at this,
+ if we want to tell a story, like we're
+ doing some storytelling in a village in
+ Jharkhand, we start directly with this,
+ even though we don't have a shot. We're
+ already thinking about a shot. So,
+ before we take an image, we'll get the
+ desired result, give the camera
+ movement, and then we need to know the
+ keywords: camera movement, panning, and
+ what we need to implement. This way, we
+ get our desired result.
+ Right? So, this is one use case that
+ we're going to cover in our workshop.
+ Now, let me show you another
+ interesting thing. A: Mr. Yash, there's
+ no need to introduce yourself. Yash, I
+ heard you created a short-form clipper
+ with Cloud's help. Please show me one.
+ I've heard its output is pretty crazy.
+ And it's purely with the help of AI.
+ Yes, it's working, that's why I was
+ running Reels. You see, a human is
+ running Reels using Cloud. Technically,
+ you also have Cloud's Max plan for this
+.
+ Yes, Cloud's Max plan is required. But
+ if you look at it from a calculation
+ perspective, for example, the Max plan
+ of the editor I created costs ₹
+ 10,000. So, it can produce 50 clips a
+ day and 20-25 highly edited videos.
+ What's the cost of a highly edited
+ video, which you're talking about,
+ which has a market price of 500 to 700,
+ for example. So, if I multiply 20 by
+ 500, how much would that be? It's ₹
+ 10,000.
+ So even if I work for 25 days, I can
+ get work done worth ₹ 5 lakh with
+ this ₹ 1,000 plan. And if there's an
+ editor, because it's slightly
+ complicated, the final client might not
+ be able to create it. So, at least the
+ editor can basically make a lot of
+ money using it. I've created fan edits.
+ So, basically, it's working right now.
+ I gave it this file. If I show you the
+ file, here's my RAW file.
+ So, this is a RAW file in landscape,
+ where we're having a discussion for my
+ channel. It will output it. For example
+, it's editing right now. I'll show you
+ the previous output. It will output
+ something like this. This is the first
+ distraction in JE preparation.
+ Okay. Thinking
+ okay. The
+ AI edited it. The
+ AI did it, and
+ guys, this is the Claude edit. For
+ example, look at this, I've put it in
+ landscape, but Claude edited it.
+ He even added the "Boss Destruction"
+ himself.
+ Social media addiction: porn and
+ handwash latent, Bigg Boss, and reality
+ shows. I've
+ also fetched the latent image for him.
+ So, this is one editor. I created an
+ editor for fan page edits. So, I give
+ him a 202-minute long-form video. He
+ creates his own fan page edits.
+ This one word is the solution to all
+ your problems.
+ Okay? Then, the social skills brain,
+ our recent shots are going out. That's
+ also an editor that I created. For
+ example, if you look at it, this is
+ also
+ a video that Secret AI is editing. This
+ video has 2.5 million views. But the
+ interesting part is that this video is
+ still getting views. If you look at it,
+ it's been almost 600 days since this
+ video was uploaded. People tell you to
+ make shots. But it's
+ cluttering up the graphs and all that.
+ Now, how did I do this? Basically, it's
+ like this. So I trained him a lot, but
+ this isn't complex. I don't know coding
+. I don't know anything. It all started
+ when I told him, "Brother, I'm going
+ way back, I want to develop a local
+ video editor that can edit my videos
+ based on the reference style guide I
+ gave you."
+ Okay? So, he basically told me what it
+ takes to make a video editor, what
+ tools he needs. He told me that he
+ needs motion tools, transcription tools
+. Okay? So, he needs different FM/PGs,
+ basically an encoder. So, I said, okay,
+ make it. So, he made it. Then I gave
+ him a sample, which, if you look at it,
+ I had earned over ₹ 100,000 by the
+ time I finished college. Yes.
+ He just did a terrible edit. It's very
+ normal. He hasn't done anything good.
+ It's
+ just text. Nothing else.
+ So then I gave him a style guide. So I
+ asked him, brother, I gave him a
+ complete style guide, that I have to do
+ editing in this way. He made this style
+ guide also. I gave him a video YouTube
+ channel. I told him to look at all his
+ edits, review them and make a style
+ guide for me. So after making the style
+ guide, he improved himself a bit. Then
+ he did all the other things and made
+ all the edits. Then I gave him more
+ channels and said, "Look, watch this
+ video. Our long-form team made a video.
+" I told him to come and watch this
+ video and see what it was. He's saying,
+ "We don't have footage here. There's
+ footage here that he doesn't have to
+ edit.
+ He told me that,
+ correct?" So what I told him was, "
+Brother, for images, you access ChatGDP
+. I'll give you my personal photos. For
+ background music, we'll use an API for
+ Epidemic Music. From here, he made API
+ calls and integrated everything. So,
+ like a human editor does, they go to a
+ music website and download music. So,
+ he basically kept that API. He gets it
+ himself. A normal editor downloads
+ photos from Google. He's downloading
+ photos from Google. Then he can extract
+ articles. Like, I'll show you a video.
+ Like this one.
+ Recently, ChatGDP explored.
+ Then I told him to fetch the articles
+ and show proof of what I was saying.
+ So he
+ fetched the articles himself. So it's
+ all about how you can use AI. So this
+ is one of the use cases. Now these bots
+ have been created. I created two or
+ three bots. This bot is a video bot.
+ Then this one is a fan page editing bot
+. So it does all the clipping and fan
+ page editing from here. So I don't have
+ to give it anything. I just provide
+ references and give it the raw file,
+ like this is the raw file. This is
+ basically a raw file. You clip it. I'm
+ giving it three raw files at once. How
+ much output has it given me? It gave me
+ 9, 18, and 26 clips. I gave us
+ three profiles. It's finally giving me
+ 26 clips. It's even telling me, look,
+ this is its packaging.
+ Very nice, very very nice. And we're
+ also going to cover all these things in
+ the workshop, which is going to be held
+ on September 27th, again and again, I'm
+ saying, at 5:00 PM. Do join because no
+ one can possibly imagine the way AI is
+ changing things. So you'll have to
+ evolve yourself. So do join the
+ workshop. You'll find the link in the
+ description. If you're okay, let's
+ understand the thumbnail. Hey Javed
+ Bhai, this is from this other team, but
+ it also uses AI.
+ Yes, I do. It's an
+ AI workshop. Tell us to join on the
+ 27th.
+ Join, guys. The AI workshop is on the
+ 27th. Remembering?
+ Yes, man.
+ Drink some water. Come on. Okay, guys.
+ Let's understand the thumbnail part. Hi
+ Saurav. Hello. Hello.
+ So, basically, Saurav oversees
+ post-production on our team and also
+ handles the thumbnail team, and he's
+ providing an overview of many things in
+ the thumbnail section. Saurav, what AI
+ tools are we currently using for the
+ thumbnail section? For the thumbnail
+ section, we mostly use ChatJPT and
+ Gemini. Gemini helps us a lot with
+ image generation, and ChatJPT helps a
+ lot with ideation. So,
+ in terms of image generation, can you
+ show me a video that you recently
+ generated with Gemini? Yes, here it is,
+ this entire thumbnail. This one has
+ 1.2 million views,
+ and we generated this entire thumbnail
+ with Gemini. We've given it proper
+ props, including what we need and how,
+ what setup, what elements we need in
+ the image. So he has generated this
+ thumbnail for us and we have got 1.2
+ million views on this thumbnail.
+ And this video, this video,
+ yes, yes, in this video also, we took
+ the part of the sir, the image of the
+ sir from the sir, but whatever you can
+ see in the background, the
+ idol of Ganpati ji that we have placed
+ by emphasizing it, all of that is AI
+ generated, and this one also has around
+ 1.6 million views.
+ So, we are using AI in almost every
+ thumbnail. We are
+ using AI for the creator's images as
+ well. We need shocking expressions. So
+ for shocking expressions and whatever
+ expressions we need, that is, we see
+ that according to the video. So, we
+ generate it according to that. It
+ generates good images for the creator.
+ Plus, AI helps a lot in ideation as
+ well.
+ So, tell me one more thing: how many
+ thumbnails are our thumbnail designers
+ creating right now?
+ They're making five to six a day. Right
+ now.
+ Yes,
+ and they're doing it with the help of
+ AI.
+ If it weren't for AI, how many? With
+ AI, they'd only be able to make two or
+ three, because editing takes up a lot
+ of their time. And thinking about text
+ also takes up a lot of their time.
+ This is the reason our thumbnail
+ designers are earning more because
+ they're creating more thumbnails. Which
+ is obvious, guys, there's no doubt. So
+ this simply shows that AI's help helps
+ you a lot in thumbnail designing. On an
+ average, what's the market price of a
+ thumbnail design? The
+ market price is around ₹ 300 to ₹
+ 400 for a thumbnail. And if they're
+ creating five or six thumbnails a day,
+ they're making around ₹ 1,500 per day
+.
+ Well, this is the beginner segment. As
+ experience increases, it's
+ fine. So, on a monthly basis,
+ he can easily make around 40,000 rupees
+. I mean, I'm talking about the basics,
+ of course.
+ And I think packaging is the most
+ important part.
+ Yes, packaging is the most important
+ part. It's what makes a video stand out
+. People first see what's in the video,
+ and only then do they go and watch it.
+ Okay? Done. And besides, we're also
+ using AI for titles.
+ Titles are needed for titles too.
+ Okay? Done. So guys, we've got an idea
+ that we're using AI for thumbnail
+ design as well. Thumbnail design
+ involves different parts. The
+ background element that you saw in the
+ Ganpati video, those huge idols in the
+ background, was generated by AI. In the
+ text, we're taking the help of Chat GPT
+. And in changing expressions. So, AI
+ is being used in every possible part of
+ the thumbnail. And with the help of all
+ these tools, our team is working, as
+ you can clearly see. So, yes, I hope
+ you have enough reasons to convince
+ yourself how important AI is. Almost
+ every person is there in this office.
+ Not just this one. Let me show you
+ another office. I'm just mentioning
+ this because it's not just a few people
+ who are using AI. There are other
+ people as well. Almost lunchtime is
+ going on here too. Everyone has gone
+ for lunch. Because it's lunch time. But
+ everyone sitting here is using AI too.
+ This is Akanksha. She looks at
+ short-form content. Do you use AI?
+ Yes.
+ How much time does AI save you?
+ A lot.
+ Especially for basic operations work.
+ For example, have you seen one example?
+ What did you use AI for, lately? It was
+ to
+ create carousels. Technically, Akanksha
+ leads the short-form department. She
+ handles our YouTube shots and Instagram
+ reels. So, she created a carousel using
+ AI, which is again an interesting part.
+ So, we're going to see what she created
+. These are carousels. Basically, let's
+ enlarge it once. This is the first page
+ she created.
+ Yes, like we create very clear
+ carousels for medical students. It's
+ more text-heavy. So, I guess it didn't
+ take me even five minutes to create a
+ nine-slide carousel.
+ And I think she did a pretty good job
+ design-wise. This is slide one, then
+ two, she created the pie charts all by
+ herself.
+ I just gave her the data, all the
+ information, and the pie charts were
+ created, and she created the gradings,
+ etc. In this, we're going to post on
+ our Instagram profile.
+ Yes, and we're going to get good
+ engagement. Obviously, we're getting
+ lots and lots of views on our posts.
+ Right now,
+ the proof of validation. Now, you can
+ also do designing with AI. So, yes, one
+ of the use cases of AI, especially the
+ cloud, is generating social media
+ graphics. Apart from that, it also
+ helps in writing captions. There are so
+ many use cases. Okay? So, you get the
+ idea. Right? So, yes, my last point is
+ that AI is genuinely changing the space
+. So, make sure you don't get left
+ behind. It's going to be very difficult
+ because gradually, more and more things
+ are evolving in the AI space. You
+ should also evolve. This workshop is
+ going to be your first start. It's a
+ small step. Take it today. The workshop
+ link is in the video description. Go,
+ check out, and join now.

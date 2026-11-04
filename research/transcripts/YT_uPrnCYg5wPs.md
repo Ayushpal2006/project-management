@@ -1,0 +1,9 @@
+# 3 Biggest Surprises for you on Independence Day 🇮🇳❤️
+
+- URL: https://www.youtube.com/watch?v=uPrnCYg5wPs
+- Source: YouTube auto-generated captions (hi-orig)
+- Retrieved: 2026-11-04
+- Confidence: medium. Hindi ASR writes English words in Devanagari; names, tool names and numbers can be wrong (e.g. '₹ लाख' with the figure dropped). Not reviewed against the video unless noted.
+- This is a transcript, NOT an original script.
+
+एक नहीं दो नहीं हमने पूरे पूरे तीन सरप्राइजेस आप लोगों के लिए प्लान किए हैं। बंडल आपको ट्रिपल9 पे वापस मिल जाएगा। ग्रोथ बंडल आपको वापस से 149 में मिल जाएगा। कोर्सर्सेस जो 39 में हो गए थे वो अब आप 29 में एक इंडिविजुअल कोर्स ले सकते हो। राइट? अब इसमें मोबाइल वीडियो एडिटिंग है, एआईस्ट है एंड उसके बाद जो ग्रोथ कोर्सेस है जो कि 1119 के थे। हाउ मच वी हैव डन दिस?9 गाइस 9 का ये हमने कर दिया है। सारे जितने स्किल रेस ने कोर्सेस बनाए हैं अभी तक वो सारे कोर्सेस 1947 में मिल जाएंगे।

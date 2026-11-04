@@ -1,0 +1,9 @@
+# Is Video Editing better than Engineering? #videoediting
+
+- URL: https://www.youtube.com/watch?v=mRASYn1YVcs
+- Source: YouTube auto-generated captions (hi-orig)
+- Retrieved: 2026-11-04
+- Confidence: medium. Hindi ASR writes English words in Devanagari; names, tool names and numbers can be wrong (e.g. '₹ लाख' with the figure dropped). Not reviewed against the video unless noted.
+- This is a transcript, NOT an original script.
+
+वीडियो एडिटिंग  इज दी नेक्स्ट सॉफ्टवेयर इंजीनियरिंग। क्या ऐसा हो गया? स्पेसिफिकली मैं जो खुद एक आईआईटी बैकग्राउंड से आता हूं। मेरे दोस्त Uber, Google, Amazon ऐसी जैसी कंपनियों में  सॉफ्टवेयर इंजीनियरिंग की जॉब कर रहे हैं। क्या सच्ची में उनकी इंडस्ट्री जैसी कंपेरेबल हो गई है ये इंडस्ट्री? तो मैं ये बोलूंगा कि अगर आप ऐसे कंपेयर करोगे कि यार Google मेटा का इंजीनियर जो वंस ईयर का पैकेज रखता है उसके आसपास वीडियो एडिटिंग इंडस्ट्री में कोई बच्चा तीन साल में पहुंच जाएगा तो वैसा नहीं है। बट आपको ये समझना पड़ेगा कि पोटेंशियल बहुत आगे है। 1 करोड़ 2 करोड़ की सैलरी बड़े-बड़े एनिमेटर्स एंड वीएफएक्स डिज़र्स कर रहे हैं। द गुड थिंग इज कि आज के टाइम पे अगर ये आपका पैशन है तो दिस हैज़ बिकम अ फुल फ्लेजेड रोल। ये एक फुल फ्लेजेड रोल है जिसके लिए कंपनीज़ हायर करती हैं। द दूसरे थिंग है जो  सॉफ्टवेयर इंजीनियर हो गया बाकी फील्ड्स हो गए जो बहुत क्राउडेड हो गए। दिस इज नॉट वेरी क्राउडेड।
