@@ -4,6 +4,8 @@ The carousel shows a real "before" photo of YRM or Sheetal and an AI "after" of 
 
 **Return each result as a PNG named like `after-01-diya-balcony.png` and upload it to the thread.**
 
+Sheetal's lines come from `brand/people/shital/identity.md`.
+
 Rules for every prompt (already written into each one):
 - Keep the face exactly: same features, skin tone (never lighten), hair, beard and glasses.
 - 4:5 portrait, 1080x1350 or larger.
@@ -16,7 +18,7 @@ Rules for every prompt (already written into each one):
 ## 01 · Diya balcony glow (Sheetal) — also the cover
 Upload: `sheetal-soft-smile.jpg`. Save as `after-01-diya-balcony.png`.
 
-> Use the uploaded photo of this woman as the exact identity reference. Keep her face, features, skin tone, hair and expression exactly as in the photo; do not beautify, slim or lighten her. Create a candid, real photograph of her on a small Indian apartment balcony on Diwali evening. She stands at the railing, three-quarter angle toward the camera, smiling softly, wearing an elegant ivory silk kurta with a thin gold border and small gold earrings. A row of lit clay diyas lines the railing, an orange and yellow marigold toran hangs across the top, and soft blurred city lights glow in a dusk-blue sky behind. Warm golden diya light on her face against cool blue dusk. 50mm lens at eye level, shallow depth of field, natural film grain, real skin texture. Keep the top-left area calm and darker. No text, no logo, no fireworks, no sparkle effects, no deities. 4:5 portrait, fill the frame edge to edge.
+> Use the uploaded photo of this woman (Sheetal) as the exact identity reference and keep her face exactly as it is: soft oval-to-round face, full cheeks, rounded chin, medium wheatish-brown skin with a warm golden undertone and natural texture, dark brown almond eyes, thick natural brows, long dark centre-parted hair in soft loose waves, small gold hoop earrings. No bindi, no nose ring, no glasses. Do not beautify, slim, lighten or mirror her. Create a candid, real photograph of her on a small Indian apartment balcony on Diwali evening. She stands at the railing, three-quarter angle toward the camera, smiling softly, wearing an elegant ivory silk kurta with a thin gold border and small gold earrings. A row of lit clay diyas lines the railing, an orange and yellow marigold toran hangs across the top, and soft blurred city lights glow in a dusk-blue sky behind. Warm golden diya light on her face against cool blue dusk. 50mm lens at eye level, shallow depth of field, natural film grain, real skin texture. Keep the top-left area calm and darker. No text, no logo, no fireworks, no sparkle effects, no deities. 4:5 portrait, fill the frame edge to edge.
 
 ## 02 · Sparkler rooftop (YRM)
 Upload: YRM photo (being added to this pack). Save as `after-02-sparkler-rooftop.png`.
@@ -26,7 +28,7 @@ Upload: YRM photo (being added to this pack). Save as `after-02-sparkler-rooftop
 ## 03 · Marigold toran doorway (Sheetal)
 Upload: `sheetal-smile-arms.jpg`. Save as `after-03-marigold-doorway.png`.
 
-> Use the uploaded photo of this woman as the exact identity reference. Keep her face, features, skin tone, hair and expression exactly as in the photo; do not beautify or lighten her. Create a candid, real photograph of her standing in the doorway of a traditional Indian home on Diwali evening, framed by a thick marigold toran in orange and yellow with mango leaves. She wears a burnt-orange saree with a gold border and smiles at the camera, one hand resting on the door frame. Lit diyas sit on the doorstep and a small rangoli is at her feet. Warm, soft golden light from inside the house, gentle evening shadows. 50mm lens at eye level, natural film grain, real textures. Keep the top-left area calm. No text, no logo, no sparkle effects, no deities. 4:5 portrait, fill the frame edge to edge.
+> Use the uploaded photo of this woman (Sheetal) as the exact identity reference and keep her face exactly as it is: soft oval-to-round face, full cheeks, rounded chin, medium wheatish-brown skin with a warm golden undertone and natural texture, dark brown almond eyes, thick natural brows, long dark centre-parted hair in soft loose waves, small gold hoop earrings. No bindi, no nose ring, no glasses. Do not beautify, slim, lighten or mirror her. Create a candid, real photograph of her standing in the doorway of a traditional Indian home on Diwali evening, framed by a thick marigold toran in orange and yellow with mango leaves. She wears a burnt-orange saree with a gold border and smiles at the camera, one hand resting on the door frame. Lit diyas sit on the doorstep and a small rangoli is at her feet. Warm, soft golden light from inside the house, gentle evening shadows. 50mm lens at eye level, natural film grain, real textures. Keep the top-left area calm. No text, no logo, no sparkle effects, no deities. 4:5 portrait, fill the frame edge to edge.
 
 ## 04 · Rangoli at night (YRM)
 Upload: YRM photo. Save as `after-04-rangoli-night.png`.
