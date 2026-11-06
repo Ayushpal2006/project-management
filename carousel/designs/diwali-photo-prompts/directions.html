@@ -1,0 +1,142 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Silkscreen&family=Playfair+Display:ital,wght@0,800;1,800&display=block" rel="stylesheet">
+<style>
+@font-face{font-family:Clash;src:url(fonts/ClashDisplay-Bold.woff2)}
+@font-face{font-family:Satoshi;font-weight:500;src:url(fonts/Satoshi-Medium.woff2)}
+@font-face{font-family:Satoshi;font-weight:700;src:url(fonts/Satoshi-Bold.woff2)}
+@font-face{font-family:Satoshi;font-weight:900;src:url(fonts/Satoshi-Black.woff2)}
+:root{--forest:#012816;--ivory:#F6F0E4;--orange:#C2601A;--gold:#D9A441;--mint:#00D579;--pink:#FF2E7E;--org2:#FF8A00}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888;display:flex;flex-wrap:wrap;gap:40px;padding:40px}
+.frame{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:Satoshi}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.chip{font-family:Silkscreen;font-size:26px;letter-spacing:.04em;padding:10px 18px;border-radius:10px;display:inline-block}
+.handle{font-family:Satoshi;font-weight:700;font-size:24px;letter-spacing:.02em}
+.photo{background-size:cover;background-position:center}
+.count{font-family:Silkscreen;font-size:22px}
+
+/* ---------- A: Ivory print ---------- */
+.A{background:var(--ivory);color:var(--forest)}
+.A .logo{position:absolute;left:72px;top:64px;height:64px}
+.A .count{position:absolute;right:72px;top:84px;color:var(--forest)}
+.A h1{position:absolute;left:72px;top:190px;font-family:Clash;font-size:132px;line-height:.92;word-spacing:.14em;letter-spacing:-.01em;text-transform:uppercase}
+.A h1 em{font-style:normal;color:var(--orange)}
+.A .sub{position:absolute;left:76px;top:600px;font-size:34px;font-weight:500;max-width:520px;line-height:1.25}
+.A .after{position:absolute;right:-40px;bottom:-30px;width:640px;height:700px;border:14px solid #fff;box-shadow:0 30px 60px rgba(1,40,22,.25);transform:rotate(-2deg)}
+.A .before{position:absolute;left:96px;bottom:150px;width:320px;height:400px;border:12px solid #fff;border-bottom-width:60px;box-shadow:0 20px 40px rgba(1,40,22,.25);transform:rotate(4deg)}
+.A .tape{position:absolute;width:150px;height:44px;background:rgba(217,164,65,.55);}
+.A .lbl-b{position:absolute;left:150px;bottom:162px;transform:rotate(4deg);font-family:Silkscreen;font-size:24px;color:var(--forest)}
+.A .lbl-a{position:absolute;right:60px;bottom:60px}
+.A .num{position:absolute;left:66px;top:170px;font-family:'Playfair Display';font-weight:800;font-size:260px;line-height:1;color:var(--orange)}
+.A .look{position:absolute;left:76px;top:440px;font-family:Clash;font-size:84px;line-height:.95;text-transform:uppercase;word-spacing:.14em;max-width:520px}
+.A .line{position:absolute;left:78px;top:740px;font-size:30px;font-weight:500;max-width:400px;line-height:1.3}
+.A .handlebar{position:absolute;left:72px;bottom:56px}
+
+/* ---------- B: Full-bleed night ---------- */
+.B{background:#0b0b0c;color:#fff}
+.B .bg{position:absolute;inset:0}
+.B .scrim{position:absolute;left:0;right:0;bottom:0;height:640px;background:linear-gradient(to top,rgba(1,40,22,.96) 0%,rgba(1,40,22,.75) 45%,rgba(1,40,22,0) 100%)}
+.B .inset{position:absolute;left:64px;top:150px;width:330px;height:420px;border-radius:28px;border:10px solid #fff;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.B .inset .chip{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);background:var(--forest);color:var(--mint)}
+.B .logo{position:absolute;left:64px;top:58px;height:56px}
+.B .count{position:absolute;right:64px;top:76px;color:#fff}
+.B h1{position:absolute;left:64px;bottom:190px;font-family:Clash;font-size:150px;line-height:.9;text-transform:uppercase;word-spacing:.14em}
+.B h1 em{font-style:normal;color:var(--gold)}
+.B .sub{position:absolute;left:68px;bottom:120px;font-size:32px;font-weight:500;color:rgba(255,255,255,.85)}
+.B .handlebar{position:absolute;right:64px;bottom:64px;color:rgba(255,255,255,.8)}
+.B .look{position:absolute;left:64px;bottom:170px;font-family:Clash;font-size:96px;line-height:.92;text-transform:uppercase;word-spacing:.14em}
+.B .look small{display:block;font-family:Silkscreen;font-size:28px;color:var(--gold);margin-bottom:18px;letter-spacing:.05em}
+.B .afterchip{position:absolute;right:64px;top:150px;background:var(--gold);color:var(--forest)}
+
+/* ---------- C: House white ---------- */
+.C{background:#fff;color:#000}
+.C .top{position:absolute;left:72px;top:64px;display:flex;align-items:center;gap:18px}
+.C .top img{height:52px}
+.C .count{position:absolute;right:72px;top:80px}
+.C .bignum{position:absolute;left:52px;top:150px;font-family:Anton;font-size:420px;line-height:1}
+.C h1{position:absolute;left:72px;top:160px;font-family:Anton;font-size:128px;line-height:.95;text-transform:uppercase}
+.C .grad{background:linear-gradient(90deg,var(--pink),var(--org2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.C .look{position:absolute;left:330px;top:190px;font-family:Anton;font-size:104px;line-height:.95;text-transform:uppercase;max-width:700px}
+.C .card{position:absolute;border-radius:24px;overflow:hidden}
+.C .cb{left:72px;bottom:110px;width:330px;height:440px;filter:saturate(.85)}
+.C .ca{right:72px;bottom:110px;width:560px;height:660px}
+.C .card .chip{position:absolute;left:20px;top:20px;background:#000;color:#fff}
+.C .ca .chip{background:linear-gradient(90deg,var(--pink),var(--org2))}
+.C .arrow{position:absolute;left:400px;bottom:330px;width:110px}
+.C .handlebar{position:absolute;left:72px;bottom:48px}
+.C .sub{position:absolute;left:640px;top:200px;font-size:32px;font-weight:500;max-width:420px}
+</style></head><body>
+
+<!-- A1 cover -->
+<div class="frame A grain" id="a1">
+  <img class="logo" src="brand/logo-forest.png">
+  <div class="count">01/07</div>
+  <h1>Diwali<br>photo<br><em>prompts</em></h1>
+  <div class="sub">Your normal photo in. A Diwali portrait out.</div>
+  <div class="after photo" style="background-image:url(plates/balcony.jpg)"></div>
+  <div class="before photo" style="background-image:url(people/sheetal-thinking.jpg)"></div>
+  <div class="tape" style="left:190px;bottom:520px;transform:rotate(-6deg)"></div>
+  <div class="lbl-b">BEFORE</div>
+  <div class="chip lbl-a" style="background:var(--forest);color:var(--gold)">AFTER</div>
+</div>
+<!-- A2 inner -->
+<div class="frame A grain" id="a2">
+  <img class="logo" src="brand/logo-forest.png">
+  <div class="count">02/07</div>
+  <div class="num">01</div>
+  <div class="look">Diya balcony glow</div>
+  <div class="line">Golden diya light, city at dusk.</div>
+  <div class="after photo" style="background-image:url(plates/balcony.jpg)"></div>
+  <div class="before photo" style="width:260px;height:330px;bottom:120px;left:110px;background-image:url(people/sheetal-thinking.jpg)"></div>
+  <div class="lbl-b" style="bottom:132px;left:150px">BEFORE</div>
+  <div class="handlebar handle" style="display:none">@theskilledbrains</div>
+</div>
+
+<!-- B1 cover -->
+<div class="frame B grain" id="b1">
+  <div class="bg photo" style="background-image:url(plates/balcony.jpg)"></div>
+  <div class="scrim"></div>
+  <img class="logo" src="brand/logo-ivory.png">
+  <div class="count">01/07</div>
+  <div class="inset photo" style="background-image:url(people/sheetal-thinking.jpg)"><span class="chip">BEFORE</span></div>
+  <h1>Diwali<br><em>prompts</em></h1>
+  <div class="sub">5 photo prompts. Same face, festive frame.</div>
+  <div class="handlebar handle">@theskilledbrains</div>
+</div>
+<!-- B2 inner -->
+<div class="frame B grain" id="b2">
+  <div class="bg photo" style="background-image:url(plates/rooftop.jpg)"></div>
+  <div class="scrim"></div>
+  <img class="logo" src="brand/logo-ivory.png">
+  <div class="count">03/07</div>
+  <div class="inset photo" style="background-image:url(people/sheetal-thinking.jpg)"><span class="chip">BEFORE</span></div>
+  <span class="chip afterchip">AFTER</span>
+  <div class="look"><small>PROMPT 02</small>Sparkler<br>rooftop</div>
+  <div class="handlebar handle">@theskilledbrains</div>
+</div>
+
+<!-- C1 cover -->
+<div class="frame C grain" id="c1">
+  <div class="top"><img src="brand/logo-forest.png"></div>
+  <div class="count">01/07</div>
+  <h1>Diwali<br><span class="grad">photo<br>prompts</span></h1>
+  <div class="sub">Upload your photo. Paste the prompt. Done.</div>
+  <div class="card cb photo" style="background-image:url(people/sheetal-thinking.jpg)"><span class="chip">BEFORE</span></div>
+  <svg class="arrow" viewBox="0 0 120 60" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"><path d="M6 40 C 40 10, 80 10, 108 30"/><path d="M92 16 L110 31 L90 42"/></svg>
+  <div class="card ca photo" style="background-image:url(plates/balcony.jpg)"><span class="chip">AFTER</span></div>
+  <div class="handlebar handle">@theskilledbrains</div>
+</div>
+<!-- C2 inner -->
+<div class="frame C grain" id="c2">
+  <div class="top"><img src="brand/logo-forest.png"></div>
+  <div class="count">03/07</div>
+  <div class="bignum">2</div>
+  <div class="look">Sparkler<br><span class="grad">rooftop</span></div>
+  <div class="card cb photo" style="background-image:url(people/sheetal-thinking.jpg)"><span class="chip">BEFORE</span></div>
+  <svg class="arrow" viewBox="0 0 120 60" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"><path d="M6 40 C 40 10, 80 10, 108 30"/><path d="M92 16 L110 31 L90 42"/></svg>
+  <div class="card ca photo" style="background-image:url(plates/rooftop.jpg)"><span class="chip">AFTER</span></div>
+  <div class="handlebar handle">@theskilledbrains</div>
+</div>
+</body></html>
