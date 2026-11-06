@@ -3,18 +3,17 @@
 // Needs (all gitignored): fonts/ (Clash Display Bold, Satoshi), brand/ logos, people/ before photos,
 // after/after-0N-*.png (the user's ChatGPT renders). Missing after PNGs fall back to the stand-in plates/.
 const { chromium } = require("playwright"); const path = require("path"); const fs = require("fs");
-const names = ["cover", "diya-balcony", "sparkler-rooftop", "marigold-doorway", "rangoli-night", "star-lantern", "cta"];
+const names = ["cover", "living-room", "sparkler", "marigold-doorway", "star-lantern", "cta"];
 const here = (...p) => path.join(__dirname, ...p);
 const pick = (...c) => { for (const f of c) if (f && fs.existsSync(here(f))) return { src: f }; return null; };
-const after = (n, plate) => pick(...fs.readdirSync(here("after")).filter(f => f.startsWith(`after-0${n}`)).map(f => "after/" + f), "plates/" + plate);
+const after = (n) => pick(...fs.readdirSync(here("after")).filter(f => f.startsWith(`after-0${n}`)).map(f => "after/" + f));
 const IMG = {
-  before1: { ...pick("people/sheetal-soft-smile.jpg"), pos: "center 30%" },
-  before2: { ...pick("people/yrm-1.jpg"), pos: "center 35%" },
-  before3: { ...pick("people/sheetal-smile-arms.jpg"), pos: "center 25%" },
-  before4: { ...pick("people/yrm-2.jpg"), pos: "center 30%" },
-  before5: { ...pick("people/yrm-3.jpg"), pos: "center 30%" },
-  after1: after(1, "balcony.jpg"), after2: after(2, "rooftop.jpg"), after3: after(3, "toran.jpg"),
-  after4: after(4, "rangoli.jpg"), after5: after(5, "lantern.jpg"),
+  before1: { ...pick("people/yrm-cover.jpg"), pos: "center 30%" },
+  before2: { ...pick("people/sheetal-candid-smile.jpg"), pos: "center 25%" },
+  before3: { ...pick("people/yrm-3.jpg"), pos: "center 30%" },
+  before4: { ...pick("people/sheetal-candid-look-away.jpg"), pos: "center 25%" },
+  before5: { ...pick("people/yrm-1.jpg"), pos: "center 30%" },
+  after1: after(1), after2: after(2), after3: after(3), after4: after(4), after5: after(5),
 };
 for (const k in IMG) if (IMG[k] && !IMG[k].src) IMG[k] = null;
 (async () => {
