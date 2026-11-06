@@ -8,12 +8,12 @@ const here = (...p) => path.join(__dirname, ...p);
 const pick = (...c) => { for (const f of c) if (f && fs.existsSync(here(f))) return { src: f }; return null; };
 const after = (n) => pick(...fs.readdirSync(here("after")).filter(f => f.startsWith(`after-0${n}`)).map(f => "after/" + f));
 const IMG = {
-  before1: { ...pick("people/yrm-cover.jpg"), pos: "center 48%" },
+  before1: { ...pick("hq/yrm-cover-clean.jpg", "people/yrm-cover.jpg"), pos: "center 48%" },
   before5: { ...pick("people/sheetal-card-smile.jpg"), pos: "center 25%" },
   before3: { ...pick("people/yrm-3.jpg"), pos: "center 30%" },
   before4: { ...pick("people/sheetal-warm-smile.jpg"), pos: "center 22%" },
   before2: { ...pick("people/yrm-1.jpg"), pos: "center 30%" },
-  after1: { ...after(1), pos: "center 50%" }, after2: after(5), after3: after(3), after4: after(4), after5: after(2),
+  after1: { ...(pick("hq/after-01-cover-2x.png") || after(1)), pos: "center 50%" }, after2: after(5), after3: after(3), after4: after(4), after5: after(2),
 };
 for (const k in IMG) if (IMG[k] && !IMG[k].src) IMG[k] = null;
 (async () => {
