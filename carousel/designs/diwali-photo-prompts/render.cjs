@@ -3,17 +3,17 @@
 // Needs (all gitignored): fonts/ (Clash Display Bold, Satoshi), brand/ logos, people/ before photos,
 // after/after-0N-*.png (the user's ChatGPT renders). Missing after PNGs fall back to the stand-in plates/.
 const { chromium } = require("playwright"); const path = require("path"); const fs = require("fs");
-const names = ["cover", "living-room", "sparkler", "marigold-doorway", "star-lantern", "cta"];
+const names = ["cover", "follow-card", "sparkler", "marigold-doorway", "star-lantern", "cta"];
 const here = (...p) => path.join(__dirname, ...p);
 const pick = (...c) => { for (const f of c) if (f && fs.existsSync(here(f))) return { src: f }; return null; };
 const after = (n) => pick(...fs.readdirSync(here("after")).filter(f => f.startsWith(`after-0${n}`)).map(f => "after/" + f));
 const IMG = {
-  before1: { ...pick("people/yrm-cover.jpg"), pos: "center 38%" },
-  before2: { ...pick("people/sheetal-candid-smile.jpg"), pos: "center 25%" },
+  before1: { ...pick("people/yrm-cover.jpg"), pos: "center 40%" },
+  before2: { ...pick("people/sheetal-card-smile.jpg"), pos: "center 25%" },
   before3: { ...pick("people/yrm-3.jpg"), pos: "center 30%" },
-  before4: { ...pick("people/sheetal-candid-look-away.jpg"), pos: "center 25%" },
+  before4: { ...pick("people/sheetal-warm-smile.jpg"), pos: "center 22%" },
   before5: { ...pick("people/yrm-1.jpg"), pos: "center 30%" },
-  after1: after(1), after2: after(2), after3: after(3), after4: after(4), after5: after(5),
+  after1: { ...after(1), pos: "center 70%" }, after2: after(2), after3: after(3), after4: after(4), after5: after(5),
 };
 for (const k in IMG) if (IMG[k] && !IMG[k].src) IMG[k] = null;
 (async () => {
