@@ -9,10 +9,10 @@ const pick = (...c) => { for (const f of c) if (f && fs.existsSync(here(f))) ret
 const after = (n, plate) => pick(...fs.readdirSync(here("after")).filter(f => f.startsWith(`after-0${n}`)).map(f => "after/" + f), "plates/" + plate);
 const IMG = {
   before1: { ...pick("people/sheetal-soft-smile.jpg"), pos: "center 30%" },
-  before2: pick("people/yrm-1.jpg"),
+  before2: { ...pick("people/yrm-1.jpg"), pos: "center 35%" },
   before3: { ...pick("people/sheetal-smile-arms.jpg"), pos: "center 25%" },
-  before4: pick("people/yrm-2.jpg"),
-  before5: pick("people/yrm-3.jpg"),
+  before4: { ...pick("people/yrm-2.jpg"), pos: "center 30%" },
+  before5: { ...pick("people/yrm-3.jpg"), pos: "center 30%" },
   after1: after(1, "balcony.jpg"), after2: after(2, "rooftop.jpg"), after3: after(3, "toran.jpg"),
   after4: after(4, "rangoli.jpg"), after5: after(5, "lantern.jpg"),
 };
