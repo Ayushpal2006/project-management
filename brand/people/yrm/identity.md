@@ -44,19 +44,21 @@ Checked against the clearest close-ups: #239, #226, #48, #225, #33, #205.
 
 ## Angle and pose grid
 
-Cells follow `skills/skilled-brains-face-identity`. "Frame left/right" means the side of the picture he faces.
+Cells follow `skills/skilled-brains-face-identity`. "Facing frame left/right" means the side of the picture his nose points to.
 
-| Cell | Best source | Backup | Notes |
-|---|---|---|---|
-| top-left (3/4, chin up, facing frame left) | #18 (Bali trip/20251111_081841) | none | Near-front, chin slightly up, sunglasses. **Gap:** no true chin-up 3/4 to frame left |
-| top-centre (front, chin up) | #200 (New iphone 17/IMG_1540) | #13 | Low selfie angle, night |
-| top-right (3/4, chin up, facing frame right) | #19 (Bali trip/20251111_081855) | #35 | Sunglasses on; no chin-up 3/4 with his own glasses yet |
-| middle-left (profile, facing frame left) | #206 (New iphone 17/IMG_1758) | none | Closer to 3/4, looking down-left. **Gap:** no true left profile |
-| **middle-centre (master)** | **#239 (Solo/20250902_180907)** | #226 | Front, relaxed closed-lip smile, black rectangular glasses, teal shirt, soft daylight, blurred background. Use it for every resemblance check |
-| middle-right (profile, facing frame right) | #176 (New iphone 17/IMG_0774) | #74, #77 | #176 is with glasses, looking up at a screen; backups wear sunglasses |
-| bottom-left (3/4, talking, facing frame left) | #297 (tedx/030A9355) | #281 | Mic in hand, glasses |
-| bottom-centre (front, smiling) | #205 (New iphone 17/IMG_1754) | #222, #33 | Big open smile, white shirt, glasses; #33 is without glasses |
-| bottom-right (3/4, talking, facing frame right) | #282 (tedx/030A9324) | #302 (more frontal, open-hand gesture) | Mic in hand |
+Built 2026-11-06 from 2400px downloads: each cell is a 1200x1200 square with the eyes on the upper phi line (0.382) and the face about 60% of the height. Files: `grid/<cell>.jpg` and `grid/sheet.jpg` (gitignored; copies in `/mnt/project-files/people/yrm/grid/`).
+
+| Cell | File | Source photo | Backups | Notes |
+|---|---|---|---|---|
+| top-left (3/4, chin up, facing frame left) | grid/top-left.jpg | #242 (Solo) | #496 | Glasses, slight smile, chin only slightly up |
+| top-centre (front, chin up) | grid/top-centre.jpg | #200 (New iphone 17/IMG_1540) | #13 (sunglasses) | Low selfie angle at night; glasses catch some light |
+| top-right (3/4, chin up, facing frame right) | grid/top-right.jpg | #225 (Solo/20250228_231818) | #19 (true chin-up, sunglasses), #491 | Glasses, smiling; not chin-up. **Gap:** chin-up 3/4 right with glasses |
+| middle-left (profile, facing frame left) | grid/middle-left.jpg | #176 (New iphone 17/IMG_0774) | #74, #77 (sunglasses) | True profile with glasses, mid-sentence at a screen |
+| **middle-centre (master)** | grid/middle-centre.jpg | **#239 (Solo/20250902_180907)** | #226, #362, #487 | Front, relaxed closed-lip smile, glasses, soft daylight. Use for every resemblance check |
+| middle-right (profile, facing frame right) | grid/middle-right.jpg | #16 (Bali trip/20251111_081829) | #15, #35 (sunglasses) | 3/4-to-profile, sunglasses. **Gap:** right profile with his own glasses |
+| bottom-left (3/4, talking, facing frame left) | grid/bottom-left.jpg | #297 (tedx/030A9355) | #281 | On stage, warm light, mouth open mid-word |
+| bottom-centre (front, smiling) | grid/bottom-centre.jpg | #205 (New iphone 17/IMG_1754) | #222, #248, #33 (no glasses) | Big open smile, night city bokeh |
+| bottom-right (3/4, talking, facing frame right) | grid/bottom-right.jpg | #282 (tedx/030A9324) | #302 | On stage, hand gesture |
 
 ## Expression and pose library
 
@@ -102,7 +104,7 @@ How his photos work with `brand/BRAND_BRIEF.md` §4, §6, §9 and the golden-rat
 
 **Symmetry and layout**
 - His face is close to symmetric and his glasses are level, so front shots (#239, #205) sit cleanly on the phi grid: eyes on the upper phi line (0.382 from the top), face about 60% of the crop height.
-- The brief's §9 asks for **asymmetric, left-aligned** layouts. Put him on the right third (or right phi line) facing into the frame, with the headline on the left. When the text sits on the left, use a shot where he faces frame left (#206, #297, #281) so his gaze leads to it; when text sits on the right, use one facing frame right (#176, #19, #282).
+- The brief's §9 asks for **asymmetric, left-aligned** layouts. Put him on the right third (or right phi line) facing into the frame, with the headline on the left. When the text sits on the left, use a shot where he faces frame left (#242, #176, #297) so his gaze leads to it; when text sits on the right, use one facing frame right (#225, #282, #16).
 - **Never mirror him.** The watch (left wrist), threads and kada (right wrist), forearm tattoo (left) and the direction of his hair sweep all flip and look wrong to people who know him. If the layout needs the other side, pick a photo that faces that way or change the layout.
 - Glasses: keep the black rectangular frames on every brand face. Watch for screen glare on the lenses in office shots and choose frames without a white reflection over the eyes.
 
@@ -142,6 +144,6 @@ Use the attached photos of Yash Ranjan Mishra as the identity reference. Keep hi
 ## Missing angles to ask for
 
 - Clean chin-up 3/4 shots (both sides) with his glasses, in plain light.
-- A true side profile both ways with glasses.
+- A right-side profile (facing frame right) with his glasses; the left one exists (#176).
 - Expression shots like Sheetal's shoot: shock / hands on head, finger on lips, holding a card or phone toward camera, shrug.
 - A fresh studio headshot in the team black polo on light grey (to replace or back up `YRM.png`).
