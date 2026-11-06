@@ -60,6 +60,10 @@ Built 2026-11-06 from 2400px downloads: each cell is a 1200x1200 square with the
 | bottom-centre (front, smiling) | grid/bottom-centre.jpg | #205 (New iphone 17/IMG_1754) | #222, #248, #33 (no glasses) | Big open smile, night city bokeh |
 | bottom-right (3/4, talking, facing frame right) | grid/bottom-right.jpg | #282 (tedx/030A9324) | #302 | On stage, hand gesture |
 
+## Identity matrix
+
+The full matrix (angle x expression x light x eyewear x wardrobe, plus how the YouTube channel already shows him) is in the skill `skills/skilled-brains-yrm-identity/SKILL.md`. The one-page sheet is `/mnt/project-files/people/yrm/matrix/matrix.jpg` (not in git).
+
 ## Expression and pose library
 
 | Expression / pose | Photos | Use it for |

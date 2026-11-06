@@ -23,6 +23,7 @@ All our skills are in `skills/`. Inside this repo Claude Code finds them through
 |-------|-------------|
 | `skilled-brains-brand-brief` | Reading, generating or updating the brand brief |
 | `skilled-brains-face-identity` | Any team member's face appears; building angles and identity grids |
+| `skilled-brains-yrm-identity` | YRM (Yash Ranjan Mishra) appears anywhere; his full identity matrix |
 | `skilled-brains-golden-ratio` | Composing any slide, thumbnail or frame; type sizes |
 | `skilled-brains-safe-zones` | Laying out or checking anything for Instagram or YouTube |
 | `skilled-brains-color-type` | Choosing or changing colours, colour theme or font pairing |
