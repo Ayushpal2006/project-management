@@ -3,7 +3,7 @@
 - **Role:** Co-founder
 - **How they're named on screen:** YRM
 - **Appears in:** carousels / thumbnails / long videos / shorts
-- **Photo source:** brand/assets/YRM.png (studio headshot, black polo, light-grey background)
+- **Photo source:** brand/assets/YRM.png (studio headshot, black polo, light-grey background). Additional real portraits are in the team’s private YRM Drive library. Check its `New iphone 17` subfolder first when a newer photo is needed.
 - **Last updated:** 2026-10-30 (from brief §6; grid not built yet, remaining lines to fill from the master photo)
 
 ## Must match (the face checklist)
