@@ -107,7 +107,7 @@ Studio headshots (`DSR.png`, `Ismail.png`, `Sheetal.png`, `Ujjwal.png`, `YRM.png
 | Person | Role | Look (from photos) | How to use |
 |---|---|---|---|
 | **DSR — Digraj Singh Rajput** (full name per label in `all photos.jpeg`) | Founder | Short dark side-parted hair, full neatly trimmed beard, warm wide smile; black polo; white studio bg | Authority / founder voice: "founder explains" covers, intro and outro slides. Cut out and place on near-black with one accent colour. |
-| **YRM — Yash Ranjan Mishra** | Co-founder | Voluminous curly dark hair, black rectangular glasses, short beard, big smile; black polo; light-grey bg (`all photos.jpeg` shows him on a dark-to-green gradient with on-screen text — already on-brand) | Tech/AI explainers, tool reviews. Glasses read well at small thumbnail sizes. |
+| **YRM — Yash Ranjan Mishra** | Co-founder | Rounded oval face, medium-brown warm skin, thick wavy-to-curly dark hair swept up, short full beard, black thick rectangular glasses, big smile. Usually in cream/white or solid shirts; watch on left wrist, threads and kada on right, tattoo inner left forearm (so never mirror). 529 Drive photos reviewed: full face checklist, pose grid and prompt block in `brand/people/yrm/identity.md` | Video Editing (vibe edits, AI clipping) and Gen AI New Tools. Teaching-at-screen, TEDx-on-stage and laptop shots carry tool demos and Keep or Skip verdicts. Newest photos: Drive "New iphone 17" folder. |
 | **Shital / Sheetal ("Shital Didi")** | Co-founder | Long dark wavy hair, warm smile. Headshot: black polo on white. Thumbnail shoot: blush/off-white satin shirt, black trousers, gold watch and bangles; office set with light-wood slatted wall, floating black shelves with gold figurines and red decor, plants, desk with MacBook | The main thumbnail face — 117 expression shots covering every emotion (shock, secret, money, thinking, stress). "Didi" framing suits caring, been-there advice. Full personal brief (face checklist, angle grid, expression library, AI prompt block): `brand/people/shital/identity.md`. See §7. |
 | **Smile — Ismail** (`Ismail.png`) | Co-founder | Purple/lavender rectangular glasses, swept dark hair, beard, very big smile; black polo; white bg | Co-founder voice, team posts. Only one headshot so far: ask for more angles before building the grid. |
 | **Ujjwal — Ujjwal Jain** (full name per label in `all photos.jpeg`) | Editor / Senior editor | Tousled wavy hair with lighter highlights, clean-shaven, big grin; black polo; warm off-white bg | Behind-the-scenes / editing-tips content, team posts. |
@@ -139,6 +139,7 @@ Studio headshots (`DSR.png`, `Ismail.png`, `Sheetal.png`, `Ujjwal.png`, `YRM.png
 | File | Description | Best use |
 |---|---|---|
 | `YRM.png` | Studio headshot, curly hair, black glasses, black polo, light-grey bg | Thumbnail cut-out, team slide |
+| Drive "YRM photos" (529 images, 7 subfolders) | Solo, New iphone 17 (newest), TEDx IITI, Bali trip, Founders, Creatortube Team, Family; indexed in `brand/people/yrm/photo-index.md` | Pose library and grid sources; see `brand/people/yrm/identity.md` |
 
 ### Ujjwal (Jain) — 1 file
 | File | Description | Best use |
@@ -361,3 +362,4 @@ When presenting this work, skip conversational filler and generic summaries: go 
 - **2026-10-31** — User confirmed Ismail is a co-founder; treated as "Smile". Merged the Smile and Ismail entries.
 - **2026-11-02** — Added §9 Anti-AI design direction (asymmetric left-aligned layouts, type contrast, 3–5% grain, real imagery only, 4-step blueprint workflow). Drops the 3D hero; colours and typography unchanged.
 - **2026-11-06** — Reviewed all 120 photos in Sheetal's Drive folder (`1XV1u89C2XZvYmO1pM5snuhiLAPNLFd0E`, same set as the Mac shoot folder) and filled `brand/people/shital/identity.md`: face checklist, signature look, angle grid (master DSC00173; profiles and 3/4 views missing), expression library, brand fit and a prompt block for other LLMs. §6 links to it.
+- **2026-11-06** — YRM personal brief filled from all 529 photos in the Drive folder "YRM photos" (every subfolder): face checklist, angle grid, pose and expression library, wardrobe, lighting, brand fit and an LLM prompt block in `brand/people/yrm/identity.md`; every photo numbered in `brand/people/yrm/photo-index.md`. §6 and §7 updated.
