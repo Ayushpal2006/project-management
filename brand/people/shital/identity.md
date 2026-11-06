@@ -6,7 +6,8 @@ Personal brief for any LLM or designer (Claude Code, Codex, ChatGPT, Gemini) tha
 - **How she's named on screen:** Shital Didi (display name on @theskilledbrains is "Sheetal Singh").
 - **Appears in:** carousels, thumbnails, long videos, shorts.
 - **Photo source:** Google Drive folder `1XV1u89C2XZvYmO1pM5snuhiLAPNLFd0E` (120 JPGs, no subfolders: `DSC00055.JPG` to `DSC00174.JPG`, 7008x4672 Sony, about 6-9 MB each). Same set as the Mac folder `The Skilled brains/sheetal didi thumbnail images/`. Studio headshot `Sheetal.png` (black polo, white background) is in `brand/assets/`, not in the Drive folder. Local copies: `photos/` (1280 px) and `grid/` (local only while the repo is public).
-- **Last updated:** 2026-11-06. Every one of the 120 Drive photos was reviewed for this version.
+- **Video folders (same Drive):** `Sheetal Brolls` (office and cafe B-roll clips IMG_6767-6795), `Dec shorts` (IMG_5230, 5232, 5233: green-screen talking head) and `study brolls` (22 clips, only 2 checked so far). Grid frames were pulled from these at full 1080p.
+- **Last updated:** 2026-11-06. Every one of the 120 Drive photos and about 630 video frames were reviewed for this version.
 
 ## Source set
 
@@ -19,6 +20,15 @@ Personal brief for any LLM or designer (Claude Code, Codex, ChatGPT, Gemini) tha
 | DSC00133-00135 | B-roll (no person) | MacBook showing a YouTube feed (other creators' thumbnails: blur before use), keyboard close-up. |
 
 117 photos of her and 3 B-roll. One shoot, one outfit, one day: everything here is the same look.
+
+### Video looks (from frames, 2026-11-06)
+
+| Look | Where | What it shows |
+|---|---|---|
+| **E. Office B-roll** | `Sheetal Brolls` IMG_6767-6795 | Brown crinkled linen shirt (and a brown button top with small white embroidered dots), cream trousers, gold hoops, watch. Bright office with glass walls, slatted wood, black chairs; cafe counter. Natural, slightly cool daylight. Candid: typing, on the phone, writing, talking to a colleague, a low-angle selfie (IMG_6775). Gives the only real **profile** and **3/4 right** views. |
+| **F. Green-screen talking head** | `Dec shorts` IMG_5230/5232/5233 | Black kurta with a beaded placket and a small round badge, small black **bindi**, oxidised silver jhumka-style drop earrings, rose-gold watch, seated at a light marble-look table, black chair. Front-on, flat bright light. Talking, chin up (thinking), 3/4 left turns. |
+
+Other people appear in some clips (a man in a blue shirt in IMG_6789; a male presenter in `AI_Chat_GPT_3_min`, `Bluehost_2` and `Raw_cut_CUTS_video`). Never use those frames for her.
 
 ## Must match (the face checklist)
 
@@ -34,7 +44,8 @@ Check every published face against `grid/middle-centre.jpg` (DSC00173) and this 
 - **Glasses:** none.
 - **Marks (which side):** a small dark mark on the lower jaw near the chin on her right side (viewer's left in a front photo); scattered small marks on both cheeks. Keep them, and keep them on the same side.
 - **Jewellery (part of her recognisable look):** small gold hoop earrings; a gold wristwatch on her left wrist (two different watches appear across the shoot); a thin red-orange thread (kalava) on her right wrist; a slim ring on her left hand.
-- **Not seen in any photo:** bindi, nose ring, glasses, heavy makeup. Don't add them.
+- **Bindi:** none in the photo shoot or office B-roll; a small black bindi only in the green-screen Dec shorts (look F). Match the look you use; don't add one to looks A-E.
+- **Not seen anywhere:** nose ring, glasses, heavy makeup. Don't add them.
 - **Usual expression on camera:** big, expressive "teacher face". Range runs from a warm smile to exaggerated shock, doubt and stress (see Expression library).
 
 ## Signature look
@@ -47,19 +58,19 @@ Check every published face against `grid/middle-centre.jpg` (DSC00173) and this 
 
 ## Angle and pose grid
 
-Built 2026-11-06 from the Drive set. Crops are local in `grid/` (and `grid/sheet.jpg`).
+Rebuilt 2026-11-06 from the photo shoot plus full-resolution video frames. Crops are local in `grid/` (and `grid/sheet.jpg`); the first version is kept in `grid/old-2026-11-06/`. Real frames only, nothing mirrored. Cells come from three looks, so use the grid to check the face and angle, and for a single piece pick cells from one look (rule 4).
 
-| Cell | File | Source photo | Notes |
-|------|------|--------------|-------|
-| top-left (3/4 left, chin up) | grid/top-left.jpg | DSC00102 | Nearest available: eyes and chin up to frame right, slight head tilt, hand on chin. Not a true 3/4 turn. |
-| top-centre (front, chin up) | grid/top-centre.jpg | none | **Missing.** DSC00145-00147 are low-angle but the face is too small. |
-| top-right (3/4 right, chin up) | grid/top-right.jpg | none | **Missing.** |
-| middle-left (profile left) | grid/middle-left.jpg | DSC00143 | Nearest available: head turned about 30 degrees, eyes to frame left. No real profile exists. |
-| **middle-centre (master)** | grid/middle-centre.jpg | **DSC00173** | Front, neutral, eyes open, sharp close-up. Backup: DSC00174, DSC00111. |
-| middle-right (profile right) | grid/middle-right.jpg | none | **Missing.** |
-| bottom-left (3/4 left, talking) | grid/bottom-left.jpg | DSC00152 | Nearest available: front, mid-sentence, finger raised. Not a 3/4 angle. |
-| bottom-centre (front, smiling) | grid/bottom-centre.jpg | DSC00104 | Open smile, teeth showing. Backup: DSC00105, DSC00110, DSC00059-00060. |
-| bottom-right (3/4 right, talking) | grid/bottom-right.jpg | none | **Missing.** |
+| Cell | File | Source | Look | Notes |
+|------|------|--------|------|-------|
+| top-left (3/4 left, chin up) | grid/top-left.jpg | Dec shorts IMG_5233, t=162 s | F | True 3/4 turn to frame left, chin level, eyes off camera. Nearest to "chin up". Old pick: DSC00102. |
+| top-centre (front, chin up) | grid/top-centre.jpg | Dec shorts IMG_5232, t=12 s | F | Chin raised, eyes up (thinking). Backup with eye contact: `grid/alt-top-centre-lowangle.jpg` (IMG_6775 selfie, low camera, look E). |
+| top-right (3/4 right, chin up) | grid/top-right.jpg | none | - | **Missing.** |
+| middle-left (profile left) | grid/middle-left.jpg | DSC00143 | A-D | Nearest: head turned about 30 degrees to frame left. No real left profile exists yet. |
+| **middle-centre (master)** | grid/middle-centre.jpg | **DSC00173** | D | Front, neutral, eyes open, sharp close-up. Backup: DSC00174, DSC00111. |
+| middle-right (profile right) | grid/middle-right.jpg | Sheetal Brolls IMG_6786, t=21 s | E | True profile to frame right, on the phone. |
+| bottom-left (3/4 left, talking) | grid/bottom-left.jpg | Dec shorts IMG_5232, t=69 s | F | Head turned and tilted to frame left, mid-sentence. Old pick: DSC00152. |
+| bottom-centre (front, smiling) | grid/bottom-centre.jpg | DSC00104 | A | Open smile, teeth showing. Backup: DSC00105, DSC00110, DSC00059-00060, Dec shorts IMG_5230 t=105 s. |
+| bottom-right (3/4 right, talking) | grid/bottom-right.jpg | Sheetal Brolls IMG_6786, t=30 s | E | 3/4 to frame right, talking on the phone, chin slightly up. Face about 320 px tall in the source: fine for checks, small for a cover. |
 
 **Camera angles in the set:** almost all front-on at eye level. Exceptions: high angle (DSC00112-00115), wide low angle (DSC00145-00147), head turned away (DSC00141-00143), eyes up (DSC00101-00103).
 
@@ -123,7 +134,7 @@ Copy this into ChatGPT, Gemini or any image model together with the reference ph
 Subject: Sheetal (Shital Didi), co-founder of The Skilled Brains. Use the attached real photos as the identity reference and keep her face exactly as it is.
 Face: Indian woman, soft oval to round face with full cheeks, rounded chin, soft jaw. Medium wheatish-brown skin with a warm golden undertone and natural texture (a few small dark spots; a small mark on the lower jaw near the chin on her right side). Dark brown almond eyes, slightly heavy lids, fairly thick dark natural brows with a soft arch. Medium nose with a rounded tip. Medium-full lips in muted rose-mauve.
 Hair: long dark brown-black hair past the chest, centre parting, flat at the roots, soft loose waves from the jaw down, worn open over both shoulders, no fringe.
-Accessories: small gold hoop earrings, gold watch on left wrist, thin red-orange thread on right wrist. No glasses, no bindi, no nose ring.
+Accessories: small gold hoop earrings, gold watch on left wrist, thin red-orange thread on right wrist. No glasses, no nose ring, no bindi (except the green-screen Dec shorts look, which has a small black bindi and silver drop earrings).
 Default outfit: blush-ivory satin long-sleeve shirt with a V camp collar, black trousers.
 Light: soft, bright, frontal, slightly warm. Real photo look with natural skin, no beauty filter, no skin lightening, no face slimming, not 3D.
 ```
@@ -132,9 +143,9 @@ Light: soft, bright, frontal, slightly warm. Real photo look with natural skin, 
 
 Ask Sheetal for a short extra shoot (same soft frontal light, plain light background, same blush shirt plus one other outfit):
 
-- Real left and right profiles.
-- 3/4 left and 3/4 right, both neutral and talking.
-- Front, chin slightly up.
+- A real left profile (the right profile now exists only on the phone, in look E).
+- 3/4 right with chin up, and 3/4 left and right in the shoot light (look A-D), neutral and talking.
+- Front, chin slightly up, looking at the camera.
 - A relaxed laugh and a soft closed-mouth smile.
 - At least one other outfit (for variety across carousels), and one outdoor or natural-light photo.
 - A new black-polo headshot from 3/4, to match the team look.
