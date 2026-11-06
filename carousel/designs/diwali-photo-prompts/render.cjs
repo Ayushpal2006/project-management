@@ -8,7 +8,7 @@ const here = (...p) => path.join(__dirname, ...p);
 const pick = (...c) => { for (const f of c) if (f && fs.existsSync(here(f))) return { src: f }; return null; };
 const after = (n) => pick(...fs.readdirSync(here("after")).filter(f => f.startsWith(`after-0${n}`)).map(f => "after/" + f));
 const IMG = {
-  before1: { ...pick("people/yrm-cover.jpg"), pos: "center 30%" },
+  before1: { ...pick("people/yrm-cover.jpg"), pos: "center 38%" },
   before2: { ...pick("people/sheetal-candid-smile.jpg"), pos: "center 25%" },
   before3: { ...pick("people/yrm-3.jpg"), pos: "center 30%" },
   before4: { ...pick("people/sheetal-candid-look-away.jpg"), pos: "center 25%" },

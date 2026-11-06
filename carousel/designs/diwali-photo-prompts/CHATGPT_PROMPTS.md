@@ -17,10 +17,10 @@ Identity lines come from `brand/people/shital/identity.md` and YRM's brief (`bra
 
 ---
 
-## 01 · Cover · Rooftop diya night (YRM)
-Upload `yrm-cover.jpg`. Save as `after-01-rooftop-diya.png`.
+## 01 · Cover · Diya night (YRM)
+Upload `yrm-cover.jpg`. Save as `after-01-cover.png`.
 
-> Edit this exact photo. Keep the same man, the same pose (arms crossed, smiling), the same camera angle, framing and composition. Keep his face exactly as it is: rounded oval face with full cheeks, medium-brown skin with a warm undertone (do not lighten), dark brown eyes, thick dark straight brows, short trimmed beard joined to a moustache, near-black wavy hair swept up, black thick rectangular glasses, watch on his left wrist. Do not mirror the photo. Change only: dress him in an ivory silk kurta with a thin gold border; turn the rooftop into a Diwali night with rows of lit clay diyas on the ledge and tables, marigold garlands on the wooden beams, warm string lights, and soft golden diya light on his face. City lights stay in the background. Real photo look, natural skin texture, gentle film grain. No text, no logo, no fireworks, no deities, no cartoon or 3D. 4:5 portrait.
+> Edit this exact photo. Keep the same man, the same pose (facing the camera, big smile), the same camera angle, framing and composition. Keep his face exactly as it is: rounded oval face with full cheeks, medium-brown skin with a warm undertone (do not lighten), dark brown eyes, thick dark straight brows, short trimmed beard joined to a moustache, near-black wavy hair swept up, black thick rectangular glasses, watch on his left wrist. Do not mirror the photo. Change only: dress him in an ivory silk kurta with a thin gold border; turn the night waterfront behind him into a Diwali night: rows of lit clay diyas on the ledge, marigold garlands and warm string lights overhead, and soft golden diya light on his face. City lights stay softly blurred in the background. Real photo look, natural skin texture, gentle film grain. No text, no logo, no fireworks, no deities, no cartoon or 3D. 4:5 portrait.
 
 ## 02 · Diwali living room (Sheetal)
 Upload `sheetal-candid-smile.jpg`. Save as `after-02-living-room.png`.
