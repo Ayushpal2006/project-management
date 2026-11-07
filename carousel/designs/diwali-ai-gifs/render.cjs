@@ -1,6 +1,6 @@
 // Renders the Diwali AI GIFs carousel.
 //   node render.cjs [outDir] [CTA_WORD]
-// Output: 0N-*.png stills (2160x2700) for every slide, plus 0N-*.mp4 (1080x1350, 24 fps, 3 s loop x2)
+// Output: 0N-*.png stills (2160x2700) for every slide, plus 0N-*.mp4 (1080x1350, 24 fps, 4 s loop x2: real photo -> sparkle reveal -> animated art)
 // and 0N-*.gif (540x675) for the animated slides 1-3. Needs (gitignored): art/ (ChatGPT PNGs),
 // people/ (real photos), assets/ (logo, IG profile screenshot), optional fonts/. Effect positions: fx.json.
 const { chromium } = require("playwright"); const path = require("path"); const fs = require("fs");
@@ -15,15 +15,15 @@ const IMG = {
 };
 const FX = fs.existsSync(here("fx.json")) ? JSON.parse(fs.readFileSync(here("fx.json"))) : {};
 for (const k of Object.keys(FX)) if (k.startsWith("_")) delete FX[k];
-const POS = FX.pos || {}; delete FX.pos; for (const k in POS) if (IMG[k]) IMG[k].pos = POS[k];
-const FPS = 24, SEC = 3, ONLY = process.env.ONLY ? process.env.ONLY.split(",").map(Number) : null;
+const POS = FX.pos || {}; delete FX.pos; const REVEAL = FX.reveal || {}; delete FX.reveal; for (const k in POS) if (IMG[k]) IMG[k].pos = POS[k];
+const FPS = 24, SEC = 4, ONLY = process.env.ONLY ? process.env.ONLY.split(",").map(Number) : null;
 (async () => {
   const out = path.resolve(process.argv[2] || here("out")); fs.mkdirSync(out, { recursive: true });
   const b = await chromium.launch();
-  const mk = async dsf => { const p = await b.newPage({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: dsf });
-    await p.addInitScript(([img, fx, cta]) => { window.IMG = img; window.FX = fx; if (cta) window.CTA = cta; }, [IMG, FX, process.argv[3] || ""]);
+  const mk = async (dsf, anim) => { const p = await b.newPage({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: dsf });
+    await p.addInitScript(([img, fx, rv, anim, cta]) => { window.IMG = img; window.FX = fx; window.REVEAL = rv; window.ANIM = anim; if (cta) window.CTA = cta; }, [IMG, FX, REVEAL, !!anim, process.argv[3] || ""]);
     await p.goto("file://" + here("slides.html"), { waitUntil: "networkidle" }); await p.evaluate(() => document.fonts.ready); return p; };
-  const still = await mk(2), vid = process.env.STILLS ? null : await mk(1);
+  const still = await mk(2), vid = process.env.STILLS ? null : await mk(1, true);
   for (let i = 1; i <= 4; i++) {
     if (ONLY && !ONLY.includes(i)) continue;
     const id = "s" + i, base = path.join(out, `0${i}-${names[i - 1]}`);
@@ -37,7 +37,7 @@ const FPS = 24, SEC = 3, ONLY = process.env.ONLY ? process.env.ONLY.split(",").m
       await vid.screenshot({ path: path.join(fr, `f${String(f).padStart(3, "0")}.png`) });
     }
     const ff = (...a) => execFileSync("ffmpeg", ["-y", "-loglevel", "error", ...a]);
-    // MP4 for Instagram: loop the 3 s cycle twice (6 s), H.264 high quality
+    // MP4 for Instagram: loop the 4 s cycle twice (8 s), H.264 high quality
     ff("-stream_loop", "1", "-framerate", String(FPS), "-i", path.join(fr, "f%03d.png"), "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "16", "-preset", "slow", "-movflags", "+faststart", base + ".mp4");
     // GIF for WhatsApp: 540 px wide, 12 fps, shared palette
     ff("-framerate", String(FPS), "-i", path.join(fr, "f%03d.png"), "-vf", "fps=12,scale=540:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=192[p];[b][p]paletteuse=dither=sierra2_4a", "-loop", "0", base + ".gif");
