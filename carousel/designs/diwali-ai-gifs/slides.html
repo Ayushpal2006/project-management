@@ -1,0 +1,198 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- "Stop sending Diwali photos. Send AI GIFs." 4-slide carousel. 1080x1350.
+     Art (ChatGPT grain-art PNGs) lives in art/, real photos in people/ (both gitignored).
+     render.cjs drives window.setT(t) (t = 0..1 loop position) to capture the animated frames. -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Silkscreen&family=Playfair+Display:ital,wght@1,800;1,900&family=Caveat:wght@700&family=Manrope:wght@500;700;800&display=block" rel="stylesheet">
+<style>
+@font-face{font-family:Clash;src:url(fonts/ClashDisplay-Bold.woff2),local("Anton")}
+@font-face{font-family:Satoshi;font-weight:500;src:url(fonts/Satoshi-Medium.woff2),local("Manrope Medium")}
+@font-face{font-family:Satoshi;font-weight:900;src:url(fonts/Satoshi-Black.woff2),local("Manrope ExtraBold")}
+:root{--forest:#012816;--mint:#00D579;--cream:#F6F0E4;--paper:#FBF8F1;--orange:#F08A24;--gold:#E2AE4A;--ink:#101010;
+ --grad:linear-gradient(90deg,#FF3E8A 0%,#FF7A2F 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:var(--cream)}
+.s{display:none;width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--cream);color:var(--ink);font-family:Satoshi,Manrope,sans-serif}
+.s.on{display:block}
+.art{position:absolute;background-size:cover;background-position:center}
+.ph{position:absolute;background-size:cover;background-position:center}
+.placeholder{display:flex;align-items:center;justify-content:center;background:#e8dcc4;color:#8a7a5a;font-family:Silkscreen;font-size:24px;text-align:center}
+canvas.fx{position:absolute;inset:0;width:1080px;height:1350px;pointer-events:none;z-index:8}
+canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events:none;z-index:40;opacity:.05;mix-blend-mode:overlay}
+.logo{position:absolute;left:64px;top:60px;height:54px;z-index:30}
+.handle{position:absolute;right:64px;top:74px;font-family:Silkscreen;font-size:20px;letter-spacing:.04em;color:var(--forest);z-index:30}
+.count{position:absolute;right:64px;bottom:60px;font-family:Silkscreen;font-size:20px;color:var(--forest);z-index:30}
+.bar{position:absolute;left:64px;bottom:68px;width:220px;height:6px;border-radius:6px;background:rgba(1,40,22,.15);z-index:30}
+.bar i{display:block;height:100%;border-radius:6px;background:var(--forest)}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* polaroid of the real photo */
+.pol{position:absolute;background:var(--paper);padding:16px 16px 70px;box-shadow:0 22px 50px rgba(1,40,22,.28);z-index:20}
+.pol .ph{position:relative;width:100%;height:100%}
+.pol b{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-family:Caveat;font-size:44px;color:var(--orange);font-weight:700}
+/* GIF chip */
+.chip{position:absolute;z-index:25;display:flex;align-items:center;gap:12px;background:var(--forest);color:var(--cream);font-family:Silkscreen;font-size:26px;padding:12px 20px 12px 18px;border-radius:999px}
+.chip i{width:16px;height:16px;border-radius:50%;background:var(--mint);display:block}
+
+/* ---------- 01 cover ---------- */
+#s1 .art{left:0;right:0;top:420px;bottom:0}
+#s1 .fadeTop{position:absolute;left:0;right:0;top:420px;height:140px;background:linear-gradient(var(--cream),rgba(246,240,228,0));z-index:5}
+#s1 .k1{position:absolute;left:64px;top:160px;z-index:30;font-family:Clash,Anton;font-size:58px;line-height:1;text-transform:uppercase;letter-spacing:.005em;color:var(--forest)}
+#s1 .k1 s{text-decoration:none;position:relative}
+#s1 .k1 s::after{content:"";position:absolute;left:-6px;right:-6px;top:52%;height:9px;background:var(--orange);border-radius:6px;transform:rotate(-1.5deg) scaleX(var(--strike,1));transform-origin:left}
+#s1 h1{position:absolute;left:58px;top:228px;z-index:30;font-family:Clash,Anton;font-size:188px;line-height:.86;text-transform:uppercase;letter-spacing:-.005em;color:var(--forest)}
+#s1 .pol{left:64px;bottom:150px;width:300px;height:370px;transform:rotate(-5deg)}
+#s1 .chip{right:64px;top:590px}
+
+/* ---------- 02 / 03 example slides ---------- */
+.ex .art{inset:0}
+.ex .top{position:absolute;left:0;right:0;top:0;height:300px;background:linear-gradient(var(--cream) 45%,rgba(246,240,228,0));z-index:5}
+.ex h2{position:absolute;left:64px;top:150px;z-index:30;font-family:Clash,Anton;font-size:120px;line-height:.9;text-transform:uppercase;color:var(--forest)}
+.ex .pol{width:270px;height:340px;z-index:20}
+.ex .chip{z-index:25}
+.ex.dark h2,.ex.dark .handle,.ex.dark .count{color:var(--cream)}
+.ex.dark .top{background:linear-gradient(rgba(1,40,22,.85) 30%,rgba(1,40,22,0))}
+.ex.dark .bar{background:rgba(246,240,228,.2)}.ex.dark .bar i{background:var(--cream)}
+#s2 .pol{right:64px;bottom:140px;transform:rotate(4deg)}
+#s2 .chip{left:64px;top:300px}
+#s3 .pol{right:64px;bottom:140px;transform:rotate(-4deg)}
+#s3 .chip{left:64px;top:300px}
+
+/* ---------- 04 CTA ---------- */
+#s4 h2{position:absolute;left:64px;top:170px;font-family:Clash,Anton;font-size:150px;line-height:.88;text-transform:uppercase;color:var(--forest);z-index:5}
+#s4 .sub{position:absolute;left:68px;top:452px;font-family:Silkscreen;font-size:24px;letter-spacing:.04em;color:var(--forest)}
+#s4 .fr{position:absolute;background:var(--paper);padding:12px 12px 12px;box-shadow:0 18px 40px rgba(1,40,22,.25);z-index:6}
+#s4 .fr .art{position:relative;width:100%;height:100%}
+#s4 .pill{position:absolute;left:64px;top:1008px;height:132px;display:flex;align-items:center;gap:22px;background:var(--forest);border-radius:999px;padding:0 14px 0 50px;z-index:10}
+#s4 .pill span{font-family:Satoshi,Manrope;font-weight:900;font-size:52px;color:var(--cream)}
+#s4 .pill em{font-style:normal;font-family:Clash,Anton;font-size:68px;letter-spacing:.02em;padding:6px 40px 4px;border-radius:999px;background:var(--grad);color:#fff}
+#s4 .dm{position:absolute;left:68px;top:1152px;font-family:Satoshi,Manrope;font-weight:500;font-size:32px;color:var(--forest)}
+#s4 .ig{position:absolute;right:64px;top:1010px;width:330px;border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(1,40,22,.2);z-index:10}
+#s4 .ig img{width:100%;display:block}
+#s4 .arrow{position:absolute;right:378px;top:1170px;z-index:10}
+</style></head><body>
+
+<!-- 01 COVER -->
+<section class="s" id="s1">
+  <img class="logo" src="assets/logo-forest.png"><div class="handle">@theskilledbrains</div>
+  <div class="k1">Stop sending Diwali <s>photos.</s></div>
+  <h1>Send <span class="g">AI GIFs.</span></h1>
+  <div class="art" data-img="art1"></div><div class="fadeTop"></div>
+  <div class="chip"><i></i>GIF</div>
+  <div class="pol"><div class="ph" data-img="before1"></div><b>the real one</b></div>
+  <div class="count">01/04</div><div class="bar"><i style="width:25%"></i></div>
+</section>
+
+<!-- 02 SHEETAL -->
+<section class="s ex" id="s2">
+  <div class="art" data-img="art2"></div><div class="top"></div>
+  <img class="logo" src="assets/logo-forest.png"><div class="handle">@theskilledbrains</div>
+  <h2>Same <span class="g">photo.</span></h2>
+  <div class="chip"><i></i>GIF</div>
+  <div class="pol"><div class="ph" data-img="before2"></div><b>the real one</b></div>
+  <div class="count">02/04</div><div class="bar"><i style="width:50%"></i></div>
+</section>
+
+<!-- 03 YRM BALCONY -->
+<section class="s ex dark" id="s3">
+  <div class="art" data-img="art3"></div><div class="top"></div>
+  <img class="logo" src="assets/logo-forest.png" style="filter:invert(1) brightness(1.6)"><div class="handle">@theskilledbrains</div>
+  <h2>Now it <span class="g">moves.</span></h2>
+  <div class="chip"><i></i>GIF</div>
+  <div class="pol"><div class="ph" data-img="before3"></div><b>the real one</b></div>
+  <div class="count">03/04</div><div class="bar"><i style="width:75%"></i></div>
+</section>
+
+<!-- 04 CTA -->
+<section class="s" id="s4">
+  <img class="logo" src="assets/logo-forest.png"><div class="handle">@theskilledbrains</div>
+  <h2>Want the<br><span class="g">prompts?</span></h2>
+  <div class="sub">MAKE YOUR OWN DIWALI GIF</div>
+  <div class="fr" style="left:64px;top:540px;width:300px;height:400px;transform:rotate(-4deg)"><div class="art" data-img="art2"></div></div>
+  <div class="fr" style="left:380px;top:520px;width:320px;height:420px;transform:rotate(1.5deg);z-index:7"><div class="art" data-img="art1"></div></div>
+  <div class="fr" style="left:716px;top:548px;width:300px;height:400px;transform:rotate(4deg)"><div class="art" data-img="art3"></div></div>
+  <div class="pill"><span>Comment</span><em id="ctaWord">GIF</em></div>
+  <div class="dm">and we'll DM you the prompts.</div>
+  <div class="ig"><img src="assets/ig-profile.png"></div>
+  <div class="count">04/04</div><div class="bar"><i style="width:100%"></i></div>
+</section>
+
+<script>
+const IMG = window.IMG || {}, FX = window.FX || {};
+if (window.CTA) document.getElementById('ctaWord').textContent = window.CTA;
+document.querySelectorAll('[data-img]').forEach(el => {
+  const v = IMG[el.dataset.img];
+  if (v && v.src) { el.style.backgroundImage = `url("${v.src}")`; if (v.pos) el.style.backgroundPosition = v.pos; }
+  else { el.classList.add('placeholder'); el.textContent = el.dataset.img; }
+});
+// deterministic noise
+function rng(seed){ return () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }; }
+// grain: 6 pre-made frames, cycled, so the texture "boils" like a real GIF
+const grains = [...Array(6)].map((_, k) => { const c = document.createElement('canvas'); c.width = 540; c.height = 675;
+  const x = c.getContext('2d'), d = x.createImageData(540, 675), r = rng(k * 7919 + 3);
+  for (let i = 0; i < d.data.length; i += 4) { const v = 128 + (r() - .5) * 255; d.data[i] = d.data[i+1] = d.data[i+2] = v; d.data[i+3] = 255; }
+  x.putImageData(d, 0, 0); return c; });
+document.querySelectorAll('.s').forEach(s => {
+  const g = document.createElement('canvas'); g.className = 'grain'; g.width = 540; g.height = 675; s.appendChild(g);
+  const f = document.createElement('canvas'); f.className = 'fx'; f.width = 1080; f.height = 1350; s.insertBefore(f, s.querySelector('.top,.fadeTop') || null);
+});
+// effects: flame (flicker glow), spark (sparkler burst), twinkle (fairy light), float (lantern glow drifting), burst (firework)
+function draw(sec, t){
+  const s = document.getElementById(sec), c = s.querySelector('canvas.fx'), x = c.getContext('2d');
+  x.clearRect(0, 0, 1080, 1350); const TAU = Math.PI * 2;
+  for (const e of (FX[sec] || [])) {
+    const ph = e.ph || 0;
+    if (e.type === 'flame') {
+      const fl = .75 + .18 * Math.sin(TAU * (3 * t + ph)) + .07 * Math.sin(TAU * (7 * t + ph * 3));
+      const r = (e.r || 40) * (1.6 + .25 * fl);
+      const gr = x.createRadialGradient(e.x, e.y, 0, e.x, e.y, r);
+      gr.addColorStop(0, `rgba(255,214,120,${.55 * fl})`); gr.addColorStop(.4, `rgba(255,150,50,${.25 * fl})`); gr.addColorStop(1, 'rgba(255,140,40,0)');
+      x.globalCompositeOperation = 'screen'; x.fillStyle = gr; x.beginPath(); x.arc(e.x, e.y, r, 0, TAU); x.fill();
+      // little flame tongue
+      const h = (e.r || 40) * (.9 + .25 * fl), w = h * .32, sway = Math.sin(TAU * (2 * t + ph)) * w * .25;
+      x.globalCompositeOperation = 'source-over'; x.fillStyle = `rgba(255,${190 + 40 * fl | 0},90,.92)`;
+      x.beginPath(); x.moveTo(e.x - w, e.y); x.quadraticCurveTo(e.x - w, e.y - h * .5, e.x + sway, e.y - h);
+      x.quadraticCurveTo(e.x + w, e.y - h * .5, e.x + w, e.y); x.quadraticCurveTo(e.x, e.y + w * .6, e.x - w, e.y); x.fill();
+      x.fillStyle = 'rgba(255,250,220,.95)'; x.beginPath(); x.ellipse(e.x + sway * .4, e.y - h * .3, w * .4, h * .32, 0, 0, TAU); x.fill();
+    }
+    if (e.type === 'twinkle') {
+      const a = .35 + .65 * Math.max(0, Math.sin(TAU * (2 * t + ph)));
+      const r = e.r || 18, gr = x.createRadialGradient(e.x, e.y, 0, e.x, e.y, r * 2.4);
+      gr.addColorStop(0, `rgba(255,236,170,${.9 * a})`); gr.addColorStop(1, 'rgba(255,220,140,0)');
+      x.globalCompositeOperation = 'screen'; x.fillStyle = gr; x.beginPath(); x.arc(e.x, e.y, r * 2.4, 0, TAU); x.fill();
+    }
+    if (e.type === 'spark') {
+      const r = rng(e.seed || 11); x.globalCompositeOperation = 'screen'; const n = e.n || 70, R = e.r || 150;
+      for (let i = 0; i < n; i++) {
+        const ang = r() * TAU, sp = .35 + r() * .65, off = r(); const life = (t * (e.speed || 3) + off) % 1;
+        const d = R * sp * life, px = e.x + Math.cos(ang) * d, py = e.y + Math.sin(ang) * d + life * life * 30;
+        const a = (1 - life) * (r() > .2 ? 1 : .5);
+        x.strokeStyle = `rgba(255,${200 + r() * 55 | 0},${120 + r() * 80 | 0},${a})`; x.lineWidth = 2 + 2 * (1 - life);
+        x.beginPath(); x.moveTo(px, py); x.lineTo(px - Math.cos(ang) * 14 * (1 - life), py - Math.sin(ang) * 14 * (1 - life)); x.stroke();
+      }
+      const gr = x.createRadialGradient(e.x, e.y, 0, e.x, e.y, R * .5);
+      gr.addColorStop(0, 'rgba(255,240,190,.9)'); gr.addColorStop(1, 'rgba(255,200,120,0)'); x.fillStyle = gr; x.beginPath(); x.arc(e.x, e.y, R * .5, 0, TAU); x.fill();
+    }
+    if (e.type === 'float') {
+      const dy = Math.sin(TAU * (t + ph)) * (e.amp || 10), a = .7 + .3 * Math.sin(TAU * (2 * t + ph));
+      const r = e.r || 60, gr = x.createRadialGradient(e.x, e.y + dy, 0, e.x, e.y + dy, r * 1.8);
+      gr.addColorStop(0, `rgba(255,190,90,${.55 * a})`); gr.addColorStop(1, 'rgba(255,170,70,0)');
+      x.globalCompositeOperation = 'screen'; x.fillStyle = gr; x.beginPath(); x.arc(e.x, e.y + dy, r * 1.8, 0, TAU); x.fill();
+    }
+    if (e.type === 'burst') {
+      const life = (t * (e.speed || 1) + ph) % 1, r = rng(e.seed || 5), n = e.n || 36, R = (e.r || 140) * Math.sqrt(life);
+      x.globalCompositeOperation = 'screen';
+      for (let i = 0; i < n; i++) { const ang = i / n * TAU + r() * .1, px = e.x + Math.cos(ang) * R, py = e.y + Math.sin(ang) * R + life * life * 40;
+        x.fillStyle = (i % 3 ? `rgba(226,174,74,${1 - life})` : `rgba(0,213,121,${1 - life})`); x.beginPath(); x.arc(px, py, 4 * (1 - life) + 1.5, 0, TAU); x.fill(); }
+    }
+  }
+  x.globalCompositeOperation = 'source-over';
+  // grain boil (12 fps), chip blink, strike-through draw on cover
+  const g = s.querySelector('canvas.grain').getContext('2d'); g.drawImage(grains[Math.floor(t * 36) % 6], 0, 0);
+  const dot = s.querySelector('.chip i'); if (dot) dot.style.opacity = (Math.floor(t * 4) % 2) ? .25 : 1;
+  if (sec === 's1') { const k = Math.min(1, Math.max(0, (t - .05) / .25)); s.querySelector('.k1').style.setProperty('--strike', k < 1 ? k : 1); }
+}
+window.show = id => { document.querySelectorAll('.s').forEach(s => s.classList.toggle('on', s.id === id)); };
+window.setT = (id, t) => draw(id, t);
+const h = (location.hash || '#s1').slice(1); show(h); draw(h, .6);
+</script>
+</body></html>
