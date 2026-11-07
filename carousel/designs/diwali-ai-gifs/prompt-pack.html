@@ -1,0 +1,86 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- DM resource for COMMENT "GIF": the public Diwali AI GIF prompts. Render with render-pdf.cjs (A4).
+     Thumbnails in art/thumbs (gitignored). Prompts are gender-neutral versions of CHATGPT_PROMPTS.md + GIF_PROMPTS.md. -->
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Playfair+Display:ital,wght@1,900&display=block" rel="stylesheet">
+<style>
+@font-face{font-family:Satoshi;font-weight:500;src:url(fonts/Satoshi-Medium.woff2)}
+@font-face{font-family:Satoshi;font-weight:700;src:url(fonts/Satoshi-Bold.woff2)}
+@font-face{font-family:Satoshi;font-weight:900;src:url(fonts/Satoshi-Black.woff2)}
+@page{size:A4;margin:0}
+:root{--forest:#012816;--cream:#F6F0E4;--paper:#FBF8F1;--orange:#F08A24;--mint:#00D579;--ink:#101010}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Satoshi;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pg{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:var(--cream);padding:16mm 16mm}
+.pg:last-child{page-break-after:auto}
+.logo{height:10mm}
+.top{display:flex;justify-content:space-between;align-items:center}
+.handle{font-family:Silkscreen;font-size:9pt;color:var(--forest)}
+.serif{font-family:'Playfair Display';font-style:italic;font-weight:900;color:var(--orange);letter-spacing:-.01em}
+.caps{font-weight:700;text-transform:uppercase;letter-spacing:.3em;font-size:10.5pt;color:var(--ink)}
+.cover h1{font-size:64pt;line-height:1;text-align:center;margin-top:20mm}
+.cover .caps{text-align:center;margin-top:5mm}
+.trio{display:flex;justify-content:center;gap:5mm;margin-top:12mm}
+.trio div{width:50mm;height:62mm;background-size:cover;background-position:center;border:2.5mm solid var(--paper);box-shadow:0 3mm 8mm rgba(1,40,22,.2)}
+.trio div:nth-child(1){transform:rotate(-5deg)}.trio div:nth-child(3){transform:rotate(5deg)}
+.steps{margin-top:14mm;display:grid;gap:4.5mm}
+.step{display:flex;gap:6mm;align-items:baseline}
+.step b{font-family:Silkscreen;font-weight:400;color:var(--orange);font-size:13pt;min-width:11mm}
+.step p{font-size:13pt;font-weight:500;line-height:1.45;color:var(--forest)}
+.tip{position:absolute;left:16mm;right:16mm;bottom:18mm;background:var(--forest);color:#fff;border-radius:5mm;padding:6mm 7mm;font-size:11pt;line-height:1.5}
+.tip strong{color:var(--orange)}
+.pg h2{font-size:40pt;line-height:1;margin-top:9mm}
+.pg .num{font-family:Silkscreen;font-size:10pt;color:var(--forest)}
+.row{display:flex;gap:8mm;margin-top:7mm}
+.thumb{width:52mm;height:65mm;background-size:cover;background-position:center;flex:none;border:2.5mm solid var(--paper);box-shadow:0 3mm 8mm rgba(1,40,22,.18)}
+.side{font-size:11.5pt;line-height:1.5;color:var(--forest)}
+.side .k{margin-bottom:2mm;font-size:9pt}
+.side p+.k{margin-top:5mm}
+.prompt{margin-top:6mm;background:#fff;border-left:2mm solid var(--orange);border-radius:3mm;padding:5.5mm 7mm;font-size:10.3pt;line-height:1.55}
+.prompt .k{font-size:8.5pt;margin-bottom:2.5mm;color:var(--orange)}
+.foot{position:absolute;left:16mm;right:16mm;bottom:10mm;display:flex;justify-content:space-between;font-size:9pt;font-weight:700;color:var(--forest);opacity:.6}
+</style></head><body>
+
+<section class="pg cover">
+  <div class="top"><img class="logo" src="assets/logo-forest.png"><span class="handle">@theskilledbrains</span></div>
+  <h1 class="serif">Diwali AI GIFs</h1>
+  <div class="caps">The prompt pack</div>
+  <div class="trio"><div style="background-image:url(art/thumbs/t2.jpg)"></div><div style="background-image:url(art/thumbs/t1.jpg)"></div><div style="background-image:url(art/thumbs/t3.jpg)"></div></div>
+  <div class="steps">
+    <div class="step"><b>01</b><p>Open ChatGPT, upload one clear photo of yourself (face visible, good light) and paste a <strong>Step 1</strong> prompt. You get a Diwali grain-art picture.</p></div>
+    <div class="step"><b>02</b><p>Upload that picture to ChatGPT's video option (Sora) or any image-to-video tool and paste the <strong>Step 2</strong> prompt. You get a short moving loop.</p></div>
+    <div class="step"><b>03</b><p>Export or convert the loop to a GIF and send it to family and friends instead of a normal photo.</p></div>
+  </div>
+  <div class="tip"><strong>If the face changes:</strong> reply in the same chat with "The face must match the uploaded photo exactly. Same face shape, eyes, smile, hair, skin tone and glasses. Redo it."<br><strong>If the loop jumps:</strong> ask for "the last frame must match the first frame so it loops cleanly".</div>
+</section>
+
+<section class="pg">
+  <div class="top"><img class="logo" src="assets/logo-forest.png"><span class="num">LOOK 01 / 03</span></div>
+  <h2 class="serif">Sparkler night</h2>
+  <div class="row"><div class="thumb" style="background-image:url(art/thumbs/t1.jpg)"></div>
+    <div class="side"><div class="k caps">The look</div><p>Flat grain-art portrait on a cream wall, a lit sparkler in your hand, paper lanterns, fairy lights and three diyas.</p><div class="k caps">Best photo</div><p>Front-facing, chest up, smiling at the camera.</p></div></div>
+  <div class="prompt"><div class="k caps">Step 1: the picture</div>Turn the uploaded photo into a flat "grain art" illustration of the SAME person for Diwali. The person must be instantly recognisable: keep the exact face shape, eyes, eyebrows, nose, smile, hair, skin tone, facial hair and glasses if any. Do not make them slimmer, younger or lighter-skinned. Style: modern flat editorial illustration with a visible risograph grain texture, simple bold shapes, no outlines, no 3D, no anime. Scene: chest-up portrait holding a lit sparkler at shoulder height, wearing a deep green kurta (or a festive outfit of your choice). Plain warm cream wall, a string of small warm fairy lights across the top, 2-3 flat paper lanterns in orange and gold, three lit clay diyas on a ledge at the bottom. No text, no logo, no border. 2:3 portrait.</div>
+  <div class="prompt"><div class="k caps">Step 2: make it move</div>Animate this exact illustration into a seamless 4-second loop. Keep the art style, colours, grain, framing and face exactly the same. The camera stays still. Only these move: the sparkler fizzes and throws small golden sparks, the diya flames flicker, the fairy lights twinkle, the lanterns sway slightly, and the person gives a small smile and one slow blink. No new objects, no text, no zoom. The last frame must match the first. 4:5 portrait, no audio.</div>
+  <div class="foot"><span>Diwali AI GIFs prompt pack</span><span>@theskilledbrains</span></div>
+</section>
+
+<section class="pg">
+  <div class="top"><img class="logo" src="assets/logo-forest.png"><span class="num">LOOK 02 / 03</span></div>
+  <h2 class="serif">Diya in hand</h2>
+  <div class="row"><div class="thumb" style="background-image:url(art/thumbs/t2.jpg)"></div>
+    <div class="side"><div class="k caps">The look</div><p>Waist-up portrait holding a lit diya in both hands, a marigold toran on top and a rangoli at the bottom.</p><div class="k caps">Best photo</div><p>Waist up, looking at the camera, hands visible if possible.</p></div></div>
+  <div class="prompt"><div class="k caps">Step 1: the picture</div>Turn the uploaded photo into a flat "grain art" illustration of the SAME person for Diwali. The person must be instantly recognisable: keep the exact face shape, eyes, eyebrows, nose, smile, hair, skin tone, facial hair, earrings and glasses if any. Do not make them slimmer, younger or lighter-skinned. Style: modern flat editorial illustration with a visible risograph grain texture, simple bold shapes, no outlines, no 3D, no anime. Scene: waist-up portrait holding a lit clay diya in both hands in front of the chest, the flame softly lighting the face, wearing a marigold-orange kurta with a thin gold border. Plain warm cream wall, a marigold garland across the top edge, a few warm fairy lights, a simple flat rangoli at the bottom. No text, no logo, no border. 2:3 portrait.</div>
+  <div class="prompt"><div class="k caps">Step 2: make it move</div>Animate this exact illustration into a seamless 4-second loop. Keep the art style, colours, grain, framing and face exactly the same. The camera stays still. Only these move: the diya flame flickers and its warm glow pulses on the face, the marigold garland sways slightly, a few petals drift down, a few strands of hair move gently, and the person gives one slow blink and a soft smile. No new objects, no text, no zoom. The last frame must match the first. 4:5 portrait, no audio.</div>
+  <div class="foot"><span>Diwali AI GIFs prompt pack</span><span>@theskilledbrains</span></div>
+</section>
+
+<section class="pg">
+  <div class="top"><img class="logo" src="assets/logo-forest.png"><span class="num">LOOK 03 / 03</span></div>
+  <h2 class="serif">Rooftop lanterns</h2>
+  <div class="row"><div class="thumb" style="background-image:url(art/thumbs/t3.jpg)"></div>
+    <div class="side"><div class="k caps">The look</div><p>Night terrace in deep green, sky lanterns, two fireworks, a city skyline and diyas along the railing.</p><div class="k caps">Best photo</div><p>An evening or night photo, standing, from the thighs or knees up.</p></div></div>
+  <div class="prompt"><div class="k caps">Step 1: the picture</div>Turn the uploaded photo into a flat "grain art" illustration of the SAME person for Diwali. The person must be instantly recognisable: keep the exact face shape, eyes, eyebrows, nose, smile, hair, skin tone, facial hair and glasses if any, and the same pose. Do not make them slimmer, younger or lighter-skinned. Style: modern flat editorial illustration with a visible risograph grain texture, simple bold shapes, no outlines, no 3D, no anime. Scene: Diwali night on a rooftop terrace, wearing an ivory kurta with a dark green jacket. Deep forest-green night sky, a simple flat city skyline, 3-4 glowing sky lanterns in orange and gold, two flat firework bursts in gold and mint green, a row of lit diyas along the railing. Keep the top of the sky open. No text, no logo, no border. 2:3 portrait.</div>
+  <div class="prompt"><div class="k caps">Step 2: make it move</div>Animate this exact illustration into a seamless 4-second loop. Keep the art style, colours, grain, framing and face exactly the same. The camera stays still. Only these move: the sky lanterns drift up slowly and glow, the two fireworks burst, fade and burst again, the diya flames flicker, the city windows twinkle, and the person gives one slow blink and a small smile. No new objects, no text, no zoom. The last frame must match the first. 4:5 portrait, no audio.</div>
+  <div class="foot"><span>Diwali AI GIFs prompt pack</span><span>@theskilledbrains</span></div>
+</section>
+</body></html>
