@@ -9,20 +9,25 @@ const here = (...p) => path.join(__dirname, ...p);
 const has = f => fs.existsSync(here(f)) ? { src: f } : null;
 const names = ["cover", "same-photo", "now-it-moves", "cta"];
 const IMG = {
-  art1: has("art/art-01-cover-yrm.png"), art2: has("art/art-02-sheetal.png"), art3: has("art/art-03-yrm-balcony.png"),
+  art1: has("art/clean-01.png") || has("art/art-01-cover-yrm.png"), art2: has("art/clean-02.png") || has("art/art-02-sheetal.png"), art3: has("art/clean-03.png") || has("art/art-03-yrm-balcony.png"),
+  cta1: has("art/art-01-cover-yrm.png"), cta2: has("art/art-02-sheetal.png"), cta3: has("art/art-03-yrm-balcony.png"),
   before1: { src: "people/yrm-cover.jpg", pos: "center 30%" }, before2: { src: "people/sheetal.jpg", pos: "center 30%" },
   before3: { src: "people/yrm-balcony.jpg", pos: "center 40%" },
 };
 const FX = fs.existsSync(here("fx.json")) ? JSON.parse(fs.readFileSync(here("fx.json"))) : {};
 for (const k of Object.keys(FX)) if (k.startsWith("_")) delete FX[k];
 const POS = FX.pos || {}; delete FX.pos; const REVEAL = FX.reveal || {}; delete FX.reveal; for (const k in POS) if (IMG[k]) IMG[k].pos = POS[k];
+// sprites cut by prep_sprites.py (motion settings per sprite live in fx.json "sprites")
+const SPR = fs.existsSync(here("art/sprites.json")) ? JSON.parse(fs.readFileSync(here("art/sprites.json"))) : {};
+const SPRFX = FX.sprites || {}; delete FX.sprites;
+for (const k in SPR) Object.assign(SPR[k], { src: `art/sp-${k}.png` }, SPRFX[k] || {});
 const FPS = 24, SEC = 4, ONLY = process.env.ONLY ? process.env.ONLY.split(",").map(Number) : null;
 (async () => {
   const out = path.resolve(process.argv[2] || here("out")); fs.mkdirSync(out, { recursive: true });
   const b = await chromium.launch();
   const mk = async (dsf, anim) => { const p = await b.newPage({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: dsf });
-    await p.addInitScript(([img, fx, rv, anim, cta]) => { window.IMG = img; window.FX = fx; window.REVEAL = rv; window.ANIM = anim; if (cta) window.CTA = cta; }, [IMG, FX, REVEAL, !!anim, process.argv[3] || ""]);
-    await p.goto("file://" + here("slides.html"), { waitUntil: "networkidle" }); await p.evaluate(() => document.fonts.ready); return p; };
+    await p.addInitScript(([img, fx, rv, spr, anim, cta]) => { window.IMG = img; window.FX = fx; window.REVEAL = rv; window.SPR = spr; window.ANIM = anim; if (cta) window.CTA = cta; }, [IMG, FX, REVEAL, SPR, !!anim, process.argv[3] || ""]);
+    await p.goto("file://" + here("slides.html"), { waitUntil: "networkidle" }); await p.evaluate(() => document.fonts.ready); await p.evaluate(() => window.SPR_READY); return p; };
   const still = await mk(2), vid = process.env.STILLS ? null : await mk(1, true);
   for (let i = 1; i <= 4; i++) {
     if (ONLY && !ONLY.includes(i)) continue;
