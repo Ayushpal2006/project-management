@@ -12,8 +12,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ART = {1: "art/art-01-cover-yrm.png", 2: "art/art-02-sheetal.png", 3: "art/art-03-yrm-balcony.png"}
 # name: (art, x0, y0, x1, y1, mode, extra)  boxes in art px
 REGIONS = {
-    "s1-lanL": (1, 0, 580, 185, 960, "swing", {}),
-    "s1-lanS": (1, 188, 600, 282, 990, "swing", {}),
+    "s1-lanL": (1, 0, 580, 185, 960, "swing", {"split": "L"}),
+    "s1-lanS": (1, 188, 600, 282, 990, "swing", {"split": "S"}),
     "s1-lanR": (1, 880, 560, 1024, 1000, "swing", {}),
     "s2-garland": (2, 0, 0, 1024, 240, "wave", {"nohair": True}),
     "s3-lan1": (3, 650, 140, 810, 300, "bob", {}),
@@ -45,6 +45,9 @@ def main():
             cx, cy = cen[i][0] + x0, cen[i][1] + y0
             if st[i, cv2.CC_STAT_AREA] > 150 and bx0 <= cx <= bx1 and by0 <= cy <= by1: keep[lab == i] = 1
         m = cv2.dilate(keep, np.ones((5, 5), np.uint8))
+        # the two left cover lanterns touch: split them along the big lantern's outline
+        if ex.get("split") == "L": m[:770 - y0, 200 - x0:] = 0; m[770 - y0:, 150 - x0:] = 0
+        if ex.get("split") == "S": m[:, :150 - x0] = 0; m[:770 - y0, :200 - x0] = 0
         alpha = cv2.GaussianBlur((m * 255).astype(np.uint8), (5, 5), 0)
         cv2.imwrite(os.path.join(HERE, f"art/sp-{name}.png"), np.dstack([img[y0:y1, x0:x1], alpha]))
         if not ex.get("keep"):

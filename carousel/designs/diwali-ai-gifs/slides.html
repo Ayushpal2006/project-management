@@ -7,6 +7,7 @@
 <style>
 @font-face{font-family:Clash;src:url(fonts/ClashDisplay-Bold.woff2),local("Anton")}
 @font-face{font-family:Satoshi;font-weight:500;src:url(fonts/Satoshi-Medium.woff2),local("Manrope Medium")}
+@font-face{font-family:Satoshi;font-weight:700;src:url(fonts/Satoshi-Bold.woff2)}
 @font-face{font-family:Satoshi;font-weight:900;src:url(fonts/Satoshi-Black.woff2),local("Manrope ExtraBold")}
 :root{--forest:#012816;--mint:#00D579;--cream:#F6F0E4;--paper:#FBF8F1;--orange:#F08A24;--gold:#E2AE4A;--ink:#101010;
  --grad:linear-gradient(90deg,#FF3E8A 0%,#FF7A2F 100%)}
@@ -87,13 +88,38 @@ canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events
 #s3 .pol{right:58px;bottom:auto;top:420px;width:230px;height:290px;transform:rotate(-4deg)}
 #s3 .handle{color:var(--cream)}
 #s2 .handle{background:var(--cream);padding:8px 14px;border-radius:999px;top:62px}
+
+/* ---- reference typography (user, 7 Nov): orange italic serif title + wide-tracked caps subline ---- */
+.serif{font-family:'Playfair Display',serif!important;font-style:italic;font-weight:900;color:var(--orange)!important;letter-spacing:-.015em!important;text-transform:none!important}
+.caps{font-family:Satoshi,Manrope,sans-serif!important;font-weight:700;text-transform:uppercase;letter-spacing:.3em!important;color:var(--ink)}
+#s1 .k1{left:0;right:0;top:118px;text-align:center;font-size:26px}
+#s1 .k1 s::after{height:5px;top:48%}
+#s1 h1{left:0;right:0;top:150px;text-align:center;font-size:150px;line-height:1}
+#s1 .chip{display:none}
+#s1 .logo,#s2 .logo,#s3 .logo,#s4 .logo{height:46px;top:52px}
+#s1 .handle,#s4 .handle{top:66px}
+#s2 h2{left:640px;top:250px;font-size:120px;line-height:.95}
+#s2 .sub{position:absolute;left:646px;top:500px;font-size:17px;z-index:30}
+#s2 .chip{top:550px;left:646px}
+#s3 h2{left:0;right:0;text-align:center;bottom:190px;font-size:132px;line-height:1}
+#s3 .sub{position:absolute;left:0;right:0;text-align:center;bottom:140px;font-size:22px;color:var(--cream)!important;z-index:30}
+#s3 .chip{display:none}
+#s4 h2{left:0;right:0;top:150px;text-align:center;font-size:118px;line-height:1;white-space:nowrap}
+#s4 .sub{left:0;right:0;text-align:center;top:310px;font-size:28px;color:var(--ink)}
+#s4 .blob{position:absolute;border-radius:50%;z-index:1}
+#s4 .pill{left:50%;transform:translateX(-50%) scale(var(--pz,1));top:930px;height:150px;padding:0 16px 0 60px;background:var(--forest);box-shadow:0 18px 40px rgba(1,40,22,.25)}
+#s4 .pill span{font-size:60px;color:#fff}
+#s4 .pill em{font-family:'Playfair Display';font-style:italic;font-weight:900;font-size:72px;background:var(--paper);color:var(--orange);padding:4px 46px 10px}
+#s4 .dm{left:0;right:0;text-align:center;top:1104px;font-size:34px;color:#333}
+#s4 .ig{left:50%;right:auto;transform:translateX(-50%);top:1170px;width:300px}
+body.artonly .s.on>*:not(.art):not(canvas.fx):not(canvas.grain){visibility:hidden}
 </style></head><body>
 
 <!-- 01 COVER -->
 <section class="s" id="s1">
   <img class="logo" src="assets/logo-forest.png"><div class="handle">@theskilledbrains</div>
-  <div class="k1">Stop sending Diwali <s>photos.</s></div>
-  <h1>Send <span class="g">AI GIFs.</span></h1>
+  <div class="k1 caps">Stop sending Diwali <s>photos</s></div>
+  <h1 class="serif">Send AI GIFs.</h1>
   <div class="art full" data-img="art1" style="background-position:0 -231px"></div>
   <div class="chip"><i></i>GIF</div>
   <div class="pol"><div class="ph" data-img="before1"></div><b>the real one</b></div>
@@ -104,7 +130,7 @@ canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events
 <section class="s ex" id="s2">
   <div class="art full" data-img="art2" style="background-position:0 -80px"></div>
   <img class="logo" src="assets/logo-forest.png"><div class="handle">@theskilledbrains</div>
-  <h2>Same <span class="g">photo.</span></h2>
+  <h2 class="serif">Same<br>photo.</h2><div class="sub caps">Now a Diwali GIF</div>
   <div class="chip"><i></i>GIF</div>
   <div class="pol"><div class="ph" data-img="before2"></div><b>the real one</b></div>
   <div class="count">02/04</div><div class="bar"><i style="width:50%"></i></div>
@@ -114,7 +140,7 @@ canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events
 <section class="s ex dark" id="s3">
   <div class="art full" data-img="art3" style="background-position:0 -60px"></div><div class="bot"></div>
   <img class="logo" src="assets/logo-forest.png" style="filter:invert(1) brightness(1.6)"><div class="handle">@theskilledbrains</div>
-  <h2>Now it <span class="g">moves.</span></h2>
+  <h2 class="serif">Now it moves.</h2><div class="sub caps">Real moments, animated</div>
   <div class="chip"><i></i>GIF</div>
   <div class="pol"><div class="ph" data-img="before3"></div><b>the real one</b></div>
   <div class="count">03/04</div><div class="bar"><i style="width:75%"></i></div>
@@ -123,13 +149,15 @@ canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events
 <!-- 04 CTA -->
 <section class="s" id="s4">
   <img class="logo" src="assets/logo-forest.png"><div class="handle">@theskilledbrains</div>
-  <h2>Want the<br><span class="g">prompts?</span></h2>
-  <div class="sub">MAKE YOUR OWN DIWALI GIF</div>
-  <div class="fr" style="left:64px;top:540px;width:300px;height:400px;transform:rotate(-4deg)"><div class="art" data-img="cta2" style="background-position:center 15%"></div></div>
-  <div class="fr" style="left:380px;top:520px;width:320px;height:420px;transform:rotate(1.5deg);z-index:7"><div class="art" data-img="cta1" style="background-position:center 40%"></div></div>
-  <div class="fr" style="left:716px;top:548px;width:300px;height:400px;transform:rotate(4deg)"><div class="art" data-img="cta3" style="background-position:center 25%"></div></div>
+  <h2 class="serif">Want the prompt?</h2>
+  <div class="sub caps">Make your own Diwali GIF</div>
+  <div class="blob" style="left:-150px;top:520px;width:420px;height:420px;background:var(--forest)"></div>
+  <div class="blob" style="right:-110px;top:430px;width:320px;height:320px;background:var(--mint)"></div>
+  <div class="fr" style="left:96px;top:450px;width:300px;height:400px;transform:rotate(-6deg)"><div class="art" data-img="cta2" style="background-position:center 15%"></div></div>
+  <div class="fr" style="left:380px;top:420px;width:320px;height:420px;transform:rotate(0deg);z-index:7"><div class="art" data-img="cta1" style="background-position:center 40%"></div></div>
+  <div class="fr" style="left:684px;top:450px;width:300px;height:400px;transform:rotate(5deg)"><div class="art" data-img="cta3" style="background-position:center 25%"></div></div>
   <div class="pill"><span>Comment</span><em id="ctaWord">GIF</em></div>
-  <div class="dm">and we'll DM you the prompts.</div>
+  <div class="dm">and we'll send it straight to your DMs</div>
   <div class="ig"><img src="assets/ig-profile.png"></div>
   <div class="count">04/04</div><div class="bar"><i style="width:100%"></i></div>
 </section>
@@ -160,7 +188,7 @@ function draw(sec, t){
   x.clearRect(0, 0, 1080, 1350); const TAU = Math.PI * 2;
   // gentle breathing push-in on the art + its moving layer (loops: 1.00 -> 1.025 -> 1.00)
   const z = 1 + .0125 * (1 - Math.cos(TAU * t)), af = s.querySelector('.art.full');
-  if (af && window.ANIM) { const tf = `scale(${z})`; af.style.transformOrigin = c.style.transformOrigin = '50% 45%'; af.style.transform = c.style.transform = tf; }
+  if (af && window.ANIM && window.ZOOM) { const tf = `scale(${z})`; af.style.transformOrigin = c.style.transformOrigin = '50% 45%'; af.style.transform = c.style.transform = tf; }
   // sprites: parts cut out of the art (lanterns, garland, fireworks) and moved on top of the clean plate
   const OFF = {s1: -231, s2: -80, s3: -60}[sec], K = 1080 / 1024;
   for (const [nm, sp] of Object.entries(SPR)) {
@@ -241,7 +269,9 @@ function draw(sec, t){
   }
   x.globalCompositeOperation = 'source-over';
   // grain boil (12 fps), chip blink, strike-through draw on cover
-  const g = s.querySelector('canvas.grain').getContext('2d'); g.drawImage(grains[Math.floor(t * 36) % 6], 0, 0);
+  const g = s.querySelector('canvas.grain').getContext('2d'); g.drawImage(grains[window.ANIM ? 0 : Math.floor(t * 36) % 6], 0, 0);  // static grain in loops keeps GIFs small
+  if (sec === 's4') { s.querySelector('.pill').style.setProperty('--pz', 1 + .035 * Math.max(0, Math.sin(TAU * 2 * t)));
+    const F = window.CTAF; if (F) s.querySelectorAll('.fr .art').forEach((el, j) => { const L = F[el.dataset.img]; if (L) { el.style.backgroundImage = `url("${L[Math.floor(t * L.length) % L.length]}")`; } }); }
   const dot = s.querySelector('.chip i'); if (dot) dot.style.opacity = (Math.floor(t * 4) % 2) ? .25 : 1;
   
 }
