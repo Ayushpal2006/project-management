@@ -34,7 +34,7 @@ canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events
 .chip i{width:16px;height:16px;border-radius:50%;background:var(--mint);display:block}
 
 /* ---------- 01 cover ---------- */
-#s1 .art{left:0;right:0;top:420px;bottom:0}
+#s1 .art{inset:0}
 #s1 .fadeTop{position:absolute;left:0;right:0;top:420px;height:140px;background:linear-gradient(var(--cream),rgba(246,240,228,0));z-index:5}
 #s1 .k1{position:absolute;left:64px;top:160px;z-index:30;font-family:Clash,Anton;font-size:58px;line-height:1;text-transform:uppercase;letter-spacing:.005em;color:var(--forest)}
 #s1 .k1 s{text-decoration:none;position:relative}
@@ -69,6 +69,24 @@ canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events
 #s4 .ig{position:absolute;right:64px;top:1010px;width:330px;border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(1,40,22,.2);z-index:10}
 #s4 .ig img{width:100%;display:block}
 #s4 .arrow{position:absolute;right:378px;top:1170px;z-index:10}
+
+/* ---- tuned to the ChatGPT art (1024x1536, shown 1080 wide) ---- */
+.s .art.full{inset:0;background-size:1080px auto;background-repeat:no-repeat}
+#s1 .k1{top:116px;font-size:50px}
+#s1 h1{top:162px;font-size:132px;line-height:.9}
+#s1 .pol{left:auto;right:58px;bottom:auto;top:800px;width:250px;height:310px;transform:rotate(5deg)}
+#s1 .pol b{font-size:38px}
+#s1 .chip{right:64px;top:184px}
+#s2 h2{left:650px;top:238px;font-size:124px}
+#s2 .chip{left:654px;top:500px}
+#s2 .pol{right:44px;bottom:auto;top:830px;width:230px;height:290px;transform:rotate(4deg)}
+#s2 .pol b,#s3 .pol b{font-size:34px}
+#s3 .bot{position:absolute;left:0;right:0;bottom:0;height:420px;background:linear-gradient(rgba(1,40,22,0),rgba(1,40,22,.92) 65%);z-index:5}
+#s3 h2{top:auto;bottom:140px;font-size:132px}
+#s3 .chip{left:auto;right:64px;top:770px}
+#s3 .pol{right:58px;bottom:auto;top:420px;width:230px;height:290px;transform:rotate(-4deg)}
+#s3 .handle{color:var(--cream)}
+#s2 .handle{background:var(--cream);padding:8px 14px;border-radius:999px;top:62px}
 </style></head><body>
 
 <!-- 01 COVER -->
@@ -76,7 +94,7 @@ canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events
   <img class="logo" src="assets/logo-forest.png"><div class="handle">@theskilledbrains</div>
   <div class="k1">Stop sending Diwali <s>photos.</s></div>
   <h1>Send <span class="g">AI GIFs.</span></h1>
-  <div class="art" data-img="art1"></div><div class="fadeTop"></div>
+  <div class="art full" data-img="art1" style="background-position:0 -231px"></div>
   <div class="chip"><i></i>GIF</div>
   <div class="pol"><div class="ph" data-img="before1"></div><b>the real one</b></div>
   <div class="count">01/04</div><div class="bar"><i style="width:25%"></i></div>
@@ -84,7 +102,7 @@ canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events
 
 <!-- 02 SHEETAL -->
 <section class="s ex" id="s2">
-  <div class="art" data-img="art2"></div><div class="top"></div>
+  <div class="art full" data-img="art2" style="background-position:0 -80px"></div>
   <img class="logo" src="assets/logo-forest.png"><div class="handle">@theskilledbrains</div>
   <h2>Same <span class="g">photo.</span></h2>
   <div class="chip"><i></i>GIF</div>
@@ -94,7 +112,7 @@ canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events
 
 <!-- 03 YRM BALCONY -->
 <section class="s ex dark" id="s3">
-  <div class="art" data-img="art3"></div><div class="top"></div>
+  <div class="art full" data-img="art3" style="background-position:0 -60px"></div><div class="bot"></div>
   <img class="logo" src="assets/logo-forest.png" style="filter:invert(1) brightness(1.6)"><div class="handle">@theskilledbrains</div>
   <h2>Now it <span class="g">moves.</span></h2>
   <div class="chip"><i></i>GIF</div>
@@ -107,9 +125,9 @@ canvas.grain{position:absolute;inset:0;width:1080px;height:1350px;pointer-events
   <img class="logo" src="assets/logo-forest.png"><div class="handle">@theskilledbrains</div>
   <h2>Want the<br><span class="g">prompts?</span></h2>
   <div class="sub">MAKE YOUR OWN DIWALI GIF</div>
-  <div class="fr" style="left:64px;top:540px;width:300px;height:400px;transform:rotate(-4deg)"><div class="art" data-img="art2"></div></div>
-  <div class="fr" style="left:380px;top:520px;width:320px;height:420px;transform:rotate(1.5deg);z-index:7"><div class="art" data-img="art1"></div></div>
-  <div class="fr" style="left:716px;top:548px;width:300px;height:400px;transform:rotate(4deg)"><div class="art" data-img="art3"></div></div>
+  <div class="fr" style="left:64px;top:540px;width:300px;height:400px;transform:rotate(-4deg)"><div class="art" data-img="art2" style="background-position:center 15%"></div></div>
+  <div class="fr" style="left:380px;top:520px;width:320px;height:420px;transform:rotate(1.5deg);z-index:7"><div class="art" data-img="art1" style="background-position:center 40%"></div></div>
+  <div class="fr" style="left:716px;top:548px;width:300px;height:400px;transform:rotate(4deg)"><div class="art" data-img="art3" style="background-position:center 25%"></div></div>
   <div class="pill"><span>Comment</span><em id="ctaWord">GIF</em></div>
   <div class="dm">and we'll DM you the prompts.</div>
   <div class="ig"><img src="assets/ig-profile.png"></div>
@@ -133,7 +151,7 @@ const grains = [...Array(6)].map((_, k) => { const c = document.createElement('c
   x.putImageData(d, 0, 0); return c; });
 document.querySelectorAll('.s').forEach(s => {
   const g = document.createElement('canvas'); g.className = 'grain'; g.width = 540; g.height = 675; s.appendChild(g);
-  const f = document.createElement('canvas'); f.className = 'fx'; f.width = 1080; f.height = 1350; s.insertBefore(f, s.querySelector('.top,.fadeTop') || null);
+  const f = document.createElement('canvas'); f.className = 'fx'; f.width = 1080; f.height = 1350; s.insertBefore(f, s.querySelector('.bot,.chip') || null);
 });
 // effects: flame (flicker glow), spark (sparkler burst), twinkle (fairy light), float (lantern glow drifting), burst (firework)
 function draw(sec, t){
@@ -153,6 +171,12 @@ function draw(sec, t){
       x.beginPath(); x.moveTo(e.x - w, e.y); x.quadraticCurveTo(e.x - w, e.y - h * .5, e.x + sway, e.y - h);
       x.quadraticCurveTo(e.x + w, e.y - h * .5, e.x + w, e.y); x.quadraticCurveTo(e.x, e.y + w * .6, e.x - w, e.y); x.fill();
       x.fillStyle = 'rgba(255,250,220,.95)'; x.beginPath(); x.ellipse(e.x + sway * .4, e.y - h * .3, w * .4, h * .32, 0, 0, TAU); x.fill();
+    }
+    if (e.type === 'ember') {
+      const r = rng(e.seed || 21); x.globalCompositeOperation = 'screen';
+      for (let i = 0; i < (e.n || 14); i++) { const off = r(), life = (t * (e.speed || 1) + off) % 1, sw = Math.sin(TAU * (life * 2 + r())) * 14;
+        const px = e.x + (r() - .5) * (e.w || 40) + sw, py = e.y - life * (e.h || 260), a = Math.sin(Math.PI * life) * .9;
+        x.fillStyle = `rgba(255,${190 + r() * 50 | 0},110,${a})`; x.beginPath(); x.arc(px, py, 2.2 + r() * 2.2, 0, TAU); x.fill(); }
     }
     if (e.type === 'twinkle') {
       const a = .35 + .65 * Math.max(0, Math.sin(TAU * (2 * t + ph)));

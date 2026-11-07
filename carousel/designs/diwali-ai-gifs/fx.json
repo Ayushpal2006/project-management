@@ -1,1 +1,23 @@
-{"s1":[{"type":"spark","x":760,"y":700,"r":150},{"type":"flame","x":300,"y":1250,"r":30},{"type":"twinkle","x":200,"y":420}]}
+{
+ "_note": "Effect positions in slide px (1080x1350), measured on the ChatGPT art as placed in slides.html.",
+ "s1": [
+  {"type":"twinkle","x":32,"y":334,"ph":0.0},{"type":"twinkle","x":141,"y":381,"ph":0.3},{"type":"twinkle","x":257,"y":412,"ph":0.6},
+  {"type":"twinkle","x":342,"y":435,"ph":0.15},{"type":"twinkle","x":432,"y":448,"ph":0.45},{"type":"twinkle","x":882,"y":412,"ph":0.75},
+  {"type":"twinkle","x":981,"y":376,"ph":0.05},{"type":"twinkle","x":1054,"y":338,"ph":0.55},
+  {"type":"float","x":95,"y":560,"r":55,"ph":0.1},{"type":"float","x":228,"y":670,"r":45,"ph":0.6},{"type":"float","x":995,"y":650,"r":55,"ph":0.35},
+  {"type":"spark","x":363,"y":729,"r":135,"n":80,"speed":3},
+  {"type":"flame","x":295,"y":1288,"r":46,"ph":0.0},{"type":"flame","x":544,"y":1288,"r":46,"ph":0.33},{"type":"flame","x":795,"y":1290,"r":46,"ph":0.66}
+ ],
+ "s2": [
+  {"type":"float","x":371,"y":930,"r":140,"amp":0,"ph":0.2},
+  {"type":"ember","x":371,"y":880,"n":16,"h":300,"w":50},
+  {"type":"flame","x":371,"y":918,"r":56,"ph":0.1}
+ ],
+ "s3": [
+  {"type":"burst","x":186,"y":71,"r":160,"n":40,"ph":0.0,"seed":5},{"type":"burst","x":938,"y":83,"r":150,"n":36,"ph":0.5,"seed":9},
+  {"type":"float","x":770,"y":168,"r":70,"amp":12,"ph":0.0},{"type":"float","x":333,"y":220,"r":45,"amp":9,"ph":0.4},
+  {"type":"float","x":169,"y":334,"r":48,"amp":10,"ph":0.7},{"type":"float","x":928,"y":324,"r":38,"amp":8,"ph":0.2},
+  {"type":"twinkle","x":981,"y":668,"r":9,"ph":0.1},{"type":"twinkle","x":57,"y":731,"r":9,"ph":0.5},{"type":"twinkle","x":928,"y":636,"r":9,"ph":0.8},{"type":"twinkle","x":749,"y":689,"r":9,"ph":0.3},
+  {"type":"flame","x":74,"y":1096,"r":42,"ph":0.0},{"type":"flame","x":205,"y":1096,"r":42,"ph":0.4},{"type":"flame","x":907,"y":1096,"r":42,"ph":0.2},{"type":"flame","x":1027,"y":1096,"r":42,"ph":0.7}
+ ]
+}
