@@ -1,0 +1,131 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>32 AI Tools Guide</title>
+<style>
+  @font-face { font-family: "Clash"; font-weight: 600; src: url("fonts/ClashDisplay-600.woff2"); }
+  @font-face { font-family: "Clash"; font-weight: 700; src: url("fonts/ClashDisplay-700.woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 500; src: url("fonts/Satoshi-500.woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 700; src: url("fonts/Satoshi-700.woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 900; src: url("fonts/Satoshi-900.woff2"); }
+  @font-face { font-family: "Playfair"; font-style: normal; src: url("fonts/PlayfairDisplay.ttf"); font-weight: 400 900; }
+  @font-face { font-family: "Playfair"; font-style: italic; src: url("fonts/PlayfairDisplay-Italic.ttf"); font-weight: 400 900; }
+  @font-face { font-family: "Silk"; src: url("fonts/Silkscreen-Regular.ttf"); }
+  @page { size: 794px 1123px; margin: 0; }
+  :root { --ivory:#F5F0E4; --card:#FFFCF5; --forest:#012816; --sage:#7ED088; --sagel:#DDEFD9; --mint:#00D579; --muted:#5E6E64; --line:#E3DCCB; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#888; font-family:Satoshi; color:var(--forest); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .page { width:794px; height:1123px; background:var(--ivory); position:relative; overflow:hidden; page-break-after:always; padding:56px 56px 48px; }
+  .abs { position:absolute; }
+  .silk { font-family:Silk; letter-spacing:.12em; text-transform:uppercase; font-size:10px; }
+  .hdr { display:flex; justify-content:space-between; align-items:center; margin-bottom:26px; }
+  .hdr img { height:26px; }
+  .foot { position:absolute; left:56px; right:56px; bottom:26px; display:flex; justify-content:space-between; color:var(--muted); }
+  h1 { font-family:Clash; font-weight:700; letter-spacing:-.01em; }
+  .catno { font-family:Playfair; font-weight:900; font-size:96px; line-height:.8; color:var(--forest); }
+  .cathead { display:flex; align-items:flex-end; gap:18px; margin-bottom:6px; }
+  .cathead h1 { font-size:46px; line-height:.95; }
+  .cathead h1 span { background:linear-gradient(transparent 62%, var(--sage) 62%, var(--sage) 92%, transparent 92%); }
+  .intro { font-size:15px; color:var(--muted); margin:10px 0 20px; max-width:560px; }
+  .tool { display:grid; grid-template-columns:60px 1fr; gap:16px; padding:16px 0; border-top:1.5px solid var(--line); }
+  .tool:last-child { border-bottom:1.5px solid var(--line); }
+  .ic { width:56px; height:56px; border-radius:14px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 1px 0 var(--line); }
+  .ic img { width:100%; height:100%; object-fit:contain; }
+  .ic.pad img { width:70%; height:70%; }
+  .tname { display:flex; align-items:baseline; gap:10px; }
+  .tname b { font-family:Clash; font-weight:700; font-size:21px; }
+  .tname a { font-size:12px; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--sage); }
+  .free { margin-left:auto; font-size:10.5px; font-weight:700; background:var(--sagel); padding:3px 9px; border-radius:20px; white-space:nowrap; }
+  .what { font-size:13.2px; line-height:1.45; margin:5px 0 7px; }
+  .cols { display:grid; grid-template-columns:1.15fr 1fr; gap:16px; }
+  .lbl { font-family:Silk; font-size:9px; letter-spacing:.12em; color:var(--muted); margin-bottom:3px; }
+  ul { list-style:none; font-size:12.2px; line-height:1.45; }
+  ul li { padding-left:14px; position:relative; }
+  ul li:before { content:""; position:absolute; left:0; top:7px; width:6px; height:6px; border-radius:50%; background:var(--mint); }
+  .try { font-size:12.2px; line-height:1.45; background:var(--card); border-left:3px solid var(--mint); padding:6px 10px; border-radius:0 8px 8px 0; }
+</style></head>
+<body>
+<div id="root"></div>
+<script src="guide-data.js"></script>
+<script>
+const LOGO = {capcut:"capcut.com.svg",descript:"descript.com.png",opus:"opus.pro.png",runway:"runwayml.com.png",canva:"canva.com.png|pad",ideogram:"ideogram.ai.svg",photoroom:"photoroom.com.png",firefly:"firefly.adobe.com.png",chatgpt:"chatgpt.com.svg|pad",claude:"claude.ai.png|pad",gemini:"gemini.google.com.png|pad",grammarly:"grammarly.com.svg|pad",eleven:"elevenlabs.io.png",suno:"suno.com.png|pad",podcast:"podcast.adobe.com.svg",murf:"murf.ai.png|pad",perplex:"perplexity.ai.png",nblm:"notebooklm.google.png|pad",elicit:"elicit.com.png|pad",consensus:"consensus.app.png|pad",gamma:"gamma.app.png|pad",napkin:"napkin.ai.png",beautiful:"beautiful.ai.png",pitch:"pitch.com.png",lovable:"lovable.dev.png|pad",cursor:"cursor.com.png",bolt:"bolt.new.png",replit:"replit.com.png|pad",notion:"notion.so.png|pad",otter:"otter.ai.png",todoist:"todoist.com.png",zapier:"zapier.com.png"};
+const NAME = {capcut:["CapCut","capcut.com"],descript:["Descript","descript.com"],opus:["OpusClip","opus.pro"],runway:["Runway","runwayml.com"],canva:["Canva","canva.com"],ideogram:["Ideogram","ideogram.ai"],photoroom:["Photoroom","photoroom.com"],firefly:["Adobe Firefly","firefly.adobe.com"],chatgpt:["ChatGPT","chatgpt.com"],claude:["Claude","claude.ai"],gemini:["Gemini","gemini.google.com"],grammarly:["Grammarly","grammarly.com"],eleven:["ElevenLabs","elevenlabs.io"],suno:["Suno","suno.com"],podcast:["Adobe Podcast","podcast.adobe.com"],murf:["Murf AI","murf.ai"],perplex:["Perplexity","perplexity.ai"],nblm:["NotebookLM","notebooklm.google"],elicit:["Elicit","elicit.com"],consensus:["Consensus","consensus.app"],gamma:["Gamma","gamma.app"],napkin:["Napkin AI","napkin.ai"],beautiful:["Beautiful.ai","beautiful.ai"],pitch:["Pitch","pitch.com"],lovable:["Lovable","lovable.dev"],cursor:["Cursor","cursor.com"],bolt:["Bolt","bolt.new"],replit:["Replit","replit.com"],notion:["Notion","notion.com"],otter:["Otter.ai","otter.ai"],todoist:["Todoist","todoist.com"],zapier:["Zapier","zapier.com"]};
+const TOTAL = 11;
+const hdr = () => `<div class="hdr"><img src="logos/tsb-forest.png"><span class="silk" style="color:var(--muted)">32 AI tools you'll actually use</span></div>`;
+const foot = n => `<div class="foot silk"><span>@theskilledbrains</span><span>${String(n).padStart(2,"0")} / ${TOTAL}</span></div>`;
+let h = "";
+
+/* cover */
+h += `<section class="page" style="padding:0">
+  <svg class="abs" style="right:-80px;top:-80px" width="380" height="380" viewBox="0 0 380 380"><path d="M190 10 C 300 0, 380 90, 370 200 C 360 300, 270 380, 170 370 C 70 360, 0 280, 10 180 C 20 80, 90 18, 190 10Z" fill="#CDEBCF"/></svg>
+  <img class="abs" src="logos/tsb-forest.png" style="left:56px;top:56px;height:34px">
+  <div class="abs silk" style="left:56px;top:150px;color:var(--muted)">Free guide · 2026 edition</div>
+  <div class="abs" style="left:50px;top:170px;font-family:Playfair;font-weight:900;font-size:260px;line-height:1;letter-spacing:-.04em">32</div>
+  <div class="abs" style="left:380px;top:228px;font-family:Clash;font-weight:700;font-size:92px;line-height:.9">AI<br>TOOLS</div>
+  <div class="abs" style="left:56px;top:452px;background:var(--sage);padding:8px 18px;font-family:Satoshi;font-weight:900;font-size:26px;letter-spacing:.02em">YOU'LL ACTUALLY USE</div>
+  <div class="abs" style="left:56px;top:520px;width:330px;font-size:16px;line-height:1.5;color:var(--forest)">What each tool does, what to use it for, and the exact first thing to try. 8 categories, 4 tools each.</div>
+  <svg class="abs" style="left:300px;top:560px" width="560" height="600" viewBox="0 0 560 600"><path d="M40 600 V 250 C 40 110, 150 30, 290 30 C 430 30, 530 110, 530 250 V 600 Z" fill="#012816"/><path d="M10 560 C 0 280, 110 40, 300 0" stroke="#00D579" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+  <img class="abs" src="people/sheetal-point-guide.png" style="left:290px;bottom:-40px;width:560px;filter:drop-shadow(0 8px 18px rgba(1,40,22,.22))">
+  <div class="abs silk" style="left:56px;bottom:40px;color:var(--muted)">@theskilledbrains</div>
+</section>`;
+
+/* how to use + stacks */
+h += `<section class="page">${hdr()}
+  <div class="silk" style="color:var(--muted);margin-top:10px">Before you start</div>
+  <h1 style="font-size:44px;margin:8px 0 18px;line-height:1">Don't try all 32.<br><span style="font-family:Playfair;font-style:italic;font-weight:800">Try one this week.</span></h1>
+  <div style="font-size:15px;line-height:1.6;max-width:600px">
+    <p style="margin-bottom:10px">Saving a list of tools doesn't build a skill. Using one does. Here's how to get the most out of this guide:</p>
+    <ul style="font-size:15px;line-height:1.7">
+      <li><b>Pick the category</b> that matches what you want to do right now.</li>
+      <li><b>Choose one tool</b> and do the "Try this first" step. It takes 10-15 minutes.</li>
+      <li><b>Use it on something real</b>: your next post, assignment, email or project.</li>
+      <li><b>Add the next tool</b> only when the first one feels easy.</li>
+    </ul>
+  </div>
+  <div style="margin-top:26px;background:var(--forest);color:var(--ivory);border-radius:14px;padding:16px 20px;display:flex;gap:18px;align-items:center">
+    <div style="font-family:Playfair;font-weight:900;font-size:58px;line-height:1;color:var(--mint)">8×4</div>
+    <div style="font-size:13.5px;line-height:1.5"><b style="font-family:Clash;font-size:17px">Why 32?</b><br>8 jobs people actually do with AI, 4 tools for each, so you always have a choice without drowning in options. Like the 32 pieces on a chessboard: every one has a role, but you only move the one you need.</div>
+  </div>
+  <div class="silk" style="color:var(--muted);margin:26px 0 12px">Starter stacks: 3 tools for one goal</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+  ${STACKS.map(s=>`<div style="background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px">
+     <div style="font-family:Clash;font-weight:700;font-size:19px">${s[0]}</div>
+     <div style="margin:8px 0 6px;display:flex;gap:6px;flex-wrap:wrap">${s[1].map(t=>`<span style="background:var(--forest);color:#fff;font-weight:700;font-size:12px;padding:3px 10px;border-radius:20px">${t}</span>`).join("")}</div>
+     <div style="font-size:13px;color:var(--muted)">${s[2]}</div></div>`).join("")}
+  </div>
+  <div style="margin-top:22px;font-size:12px;color:var(--muted);line-height:1.5;border-top:1.5px solid var(--line);padding-top:12px">Note: AI tools change their plans and prices often. "Free to start" means there was a free plan, trial or credits when we made this guide. Check the website before you pay for anything.</div>
+  ${foot(2)}</section>`;
+
+/* categories */
+CATS.forEach((c,i)=>{
+  h += `<section class="page">${hdr()}
+   <div class="cathead"><div class="catno">${c.n}</div><h1><span>${c.title}</span></h1></div>
+   <div class="intro">${c.intro}</div>
+   ${c.tools.map(t=>{ const [file,pad]=LOGO[t.k].split("|"); const [nm,url]=NAME[t.k];
+     return `<div class="tool"><div class="ic ${pad||""}"><img src="logos/${file}"></div><div>
+       <div class="tname"><b>${nm}</b><a href="https://${url}">${url}</a><span class="free">${t.free}</span></div>
+       <div class="what">${t.what}</div>
+       <div class="cols"><div><div class="lbl">Use it for</div><ul>${t.use.map(u=>`<li>${u}</li>`).join("")}</ul></div>
+       <div><div class="lbl">Try this first</div><div class="try">${t.start}</div></div></div></div></div>`}).join("")}
+   <div style="margin-top:18px;display:flex;gap:14px;align-items:center;background:var(--forest);color:var(--ivory);border-radius:14px;padding:14px 18px">
+     <div class="silk" style="color:var(--mint);white-space:nowrap">Just starting?</div>
+     <div style="font-size:13.5px;line-height:1.45"><b style="font-family:Clash;font-size:16px">Begin with ${PICKS[c.n][0]}.</b> ${PICKS[c.n][1]}</div></div>
+   ${foot(i+3)}</section>`;
+});
+
+/* closing */
+h += `<section class="page" style="background:var(--forest);color:var(--ivory)">
+  <img src="logos/tsb-ivory.png" style="height:30px">
+  <div class="silk" style="color:var(--sage);margin-top:120px">Your next step</div>
+  <h1 style="font-size:64px;line-height:.98;margin:14px 0 26px">Pick one tool.<br><span style="color:var(--mint)">Use it today.</span></h1>
+  <div style="font-size:17px;line-height:1.6;max-width:520px;color:#DDE7DF">Tools don't make you skilled. Practice does. Start with one tool from this guide, make something real with it, and share it.</div>
+  <div style="margin-top:60px;display:inline-block;border:2px solid var(--mint);border-radius:16px;padding:20px 26px">
+    <div class="silk" style="color:var(--sage)">Follow for more practical AI skills</div>
+    <div style="font-family:Clash;font-weight:700;font-size:34px;margin-top:6px">@theskilledbrains</div>
+    <div style="font-size:14px;color:#BFD0C4;margin-top:4px">Instagram · YouTube · theskilledbrains.com</div>
+  </div>
+  <svg class="abs" style="right:-120px;bottom:-120px" width="460" height="460" viewBox="0 0 460 460"><circle cx="230" cy="230" r="220" fill="#0E3B24"/><path d="M40 300 C 120 120, 300 60, 440 120" stroke="#00D579" stroke-width="3" fill="none"/></svg>
+  <div class="foot silk" style="color:#8FA597"><span>@theskilledbrains</span><span>${TOTAL} / ${TOTAL}</span></div>
+</section>`;
+document.getElementById("root").innerHTML = h;
+</script>
+</body></html>
