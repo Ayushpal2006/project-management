@@ -33,6 +33,7 @@ All our skills are in `skills/`. Inside this repo Claude Code finds them through
 | `skilled-brains-motion-style` | Motion graphics and style frames for videos (house rules) |
 | `skilled-brains-reference-look` | The editorial reference look for videos (wins over motion-style where they differ) |
 | `skilled-brains-talking-head` | Talking-head videos (planned) |
+| `skilled-brains-support` | Triage the brand’s Gmail support inbox, check certificates and login issues in Graphy, and prepare customer replies |
 | `skilled-brains-editing-tools` | B-roll sources and editing tools |
 
 Third-party video skills (effects, watch-skill, GSAP, Three.js) are pinned in `video-skills/skills.tsv`.
