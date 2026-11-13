@@ -6,8 +6,8 @@ Personal brief for any LLM or designer (Claude Code, Codex, ChatGPT, Gemini) tha
 - **How she's named on screen:** Shital Didi (display name on @theskilledbrains is "Sheetal Singh").
 - **Appears in:** carousels, thumbnails, long videos, shorts.
 - **Photo source:** Google Drive folder `1XV1u89C2XZvYmO1pM5snuhiLAPNLFd0E` (120 JPGs, no subfolders: `DSC00055.JPG` to `DSC00174.JPG`, 7008x4672 Sony, about 6-9 MB each). Same set as the Mac folder `The Skilled brains/sheetal didi thumbnail images/`. Studio headshot `Sheetal.png` (black polo, white background) is in `brand/assets/`, not in the Drive folder. Local copies: `photos/` (1280 px) and `grid/` (local only while the repo is public).
-- **Video folders (same Drive):** `Sheetal Brolls` (office and cafe B-roll clips IMG_6767-6795), `Dec shorts` (IMG_5230, 5232, 5233: green-screen talking head) and `study brolls` (22 clips, only 2 checked so far). Grid frames were pulled from these at full 1080p.
-- **Last updated:** 2026-11-06. Every one of the 120 Drive photos and about 630 video frames were reviewed for this version.
+- **Video folders:** `Sheetal Brolls` (Drive folder `1YPyyIgf4aqq601FcE6E1eizfEsQiUNHY`, link-shared; also has one still, `IMG_6777.HEIC`, a top-down shot of her hands typing on a MacBook, 4284x5712, with a notebook of her own notes in frame) (office and cafe B-roll clips IMG_6767-6795), `Dec shorts` (IMG_5230, 5232, 5233: green-screen talking head) and `study brolls` (22 clips, only 2 checked so far). Grid frames were pulled from these at full 1080p.
+- **Last updated:** 2026-11-13 (candid picks from Sheetal Brolls). 2026-11-06: Every one of the 120 Drive photos and about 630 video frames were reviewed for this version.
 
 ## Source set
 
@@ -117,6 +117,20 @@ Use this to match a photo to the slide's job. The bold file is the best pick in 
 - **Vertical Reel or Short cover:** DSC00093-00095, DSC00159-00161, DSC00059-00060, DSC00068.
 - **Wide or background plate:** DSC00145-00147 (low angle), DSC00116 (desk with MacBook).
 - **"Before" photo for AI edits (calm, natural):** DSC00059, DSC00060, DSC00173, DSC00111; off-camera DSC00143.
+
+### Candid picks (added 2026-11-13; user: studio shots feel too serious, use natural candids)
+
+All are 1080x1920 or 1920x1080 frames from `Sheetal Brolls`, look E (brown linen shirt). Sharp enough for a cover photo card or a small snapshot. They are not usable as a full-bleed 2x cover.
+
+| Use | Frame | What it shows |
+|---|---|---|
+| **Cover (warm, natural)** | IMG_6767 t=6 s | At her desk, turned back from the laptop, smiling at the camera. The best candid with eye contact. |
+| Working / typing | IMG_6795 t=2 s | Typing on a laptop on a stand, looking at the screen. |
+| Writing / scripts | IMG_6775 t=8 s | Writing in a notebook with an orange pen, eyes down. |
+| Phone / organising | IMG_6784 t=4 s | Seated in the lounge, scrolling her phone (top of her head is cropped in the clip). |
+| Talking / explaining | IMG_6788 t=8 s | Standing by a phone on a tripod, explaining with both hands. |
+
+First used in `carousel/designs/32-ai-tools`.
 
 ## Do / Don't for AI image tools
 
