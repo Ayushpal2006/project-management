@@ -10,7 +10,7 @@
   - type from the brief: Playfair Display (numbers), Clash Display (headings), Satoshi (body), Silkscreen (labels)
   - the reference's glossy 3D props are dropped (brief §9): real app icons, hand-drawn strokes, 4% grain
   - left-aligned, asymmetric corners that swap side per slide; no "students" label
-  Faces: Sheetal (Gen AI pillar), candid frames from her Drive "Sheetal Brolls" clips (cover IMG_6767 t=6s; snapshots IMG_6788, 6775, 6795, 6784), not mirrored. v1 used the studio cut-out DSC00059; user said it felt too serious (13 Nov).
+  Faces: Sheetal (Gen AI pillar), cover = studio DSC00064 (pointing up, soft smile) cut out; candid snapshots from her Drive "Sheetal Brolls" clips ( IMG_6788, 6775, 6795, 6784), not mirrored. v1 used the studio cut-out DSC00059; user said it felt too serious (13 Nov); v2 candid desk cover (IMG_6767) was "too candid", so v3 uses DSC00064.
   Local only (gitignored): fonts/, people/, logos/. 1080x1350, 80 px margins. Open with #s1 ... #s6.
 -->
 <style>
@@ -74,7 +74,7 @@
   .c-pill svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
   .c-sheetal { position: absolute; z-index: 3; }
   .c-row { position: absolute; left: 80px; top: 935px; display: flex; flex-wrap: wrap; width: 460px; align-items: center; z-index: 4; }
-  .c-row .ic { width: 84px; height: 84px; border-radius: 22px; overflow: hidden; border: 4px solid var(--ivory); margin-right: -18px; background: #fff; display: flex; align-items: center; justify-content: center; }
+  .c-row .ic { width: 76px; height: 76px; border-radius: 22px; overflow: hidden; border: 4px solid var(--ivory); margin-right: -18px; background: #fff; display: flex; align-items: center; justify-content: center; }
   .c-row .ic img { width: 100%; height: 100%; object-fit: cover; }
   .c-row .ic.pad img { width: 72%; height: 72%; object-fit: contain; }
   .c-row .more { width: 100%; margin-top: 18px; font-family: "Satoshi"; font-weight: 700; font-size: 28px; line-height: 1.2; }
@@ -192,19 +192,18 @@ function section([num, a, b, keys], y) {
 let html = '';
 /* ---------- 1 cover ---------- */
 html += `<section class="slide" id="s1">
-  <svg class="abs" style="right:-40px;top:250px" width="620" height="900" viewBox="0 0 620 900">
-    <path filter="url(#rough2)" d="M120 60 C 260 0, 520 10, 620 40 V 860 C 470 900, 220 880, 90 820 C 20 640, 40 260, 120 60 Z" fill="#012816"/>
-    <path d="M40 880 C 0 600, 60 200, 260 10" stroke="#00D579" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>
-  <svg class="abs" style="left:-60px;bottom:-80px" width="420" height="300" viewBox="0 0 420 300">
-    <path filter="url(#rough2)" d="M0 300 V 120 C 80 60, 200 40, 300 120 C 360 170, 400 230, 420 300 Z" fill="#7ED088" opacity=".35"/></svg>
-  <div class="snap" style="left:478px;top:300px;width:560px;height:770px;padding:16px 16px 18px;transform:rotate(2.5deg);z-index:3"><div class="tape" style="width:150px;margin-left:-75px;top:-18px"></div><img src="people/candid-cover.jpg" style="object-position:50% 30%"></div>
-  <div class="top" style="right:auto"><div class="brand"><img src="logos/tsb-forest.png"></div></div>
-  <div class="c-num">32</div>
-  <svg class="abs" style="left:455px;top:125px;z-index:5" width="90" height="90" viewBox="0 0 90 90"><g stroke="#012816" stroke-width="7" stroke-linecap="round" fill="none"><path d="M14 52 L8 26"/><path d="M30 40 L50 12"/><path d="M40 62 L76 50"/></g></svg>
-  <div class="c-h">AI<br>TOOLS</div>
-  <div class="c-pill"><svg viewBox="0 0 400 90" preserveAspectRatio="none"><path filter="url(#rough)" d="M6 12 C 120 4, 280 2, 394 8 L 396 80 C 280 86, 120 88, 4 84 Z" fill="#7ED088"/></svg>You'll actually use</div>
-  <div class="c-row">${["chatgpt","canva","capcut","notion","perplex"].map(icon).join('')}<div class="more">+27 more<br><span style="font-weight:500;color:#5E6E64">in 8 categories</span></div></div>
-  <div class="foot" style="right:auto;bottom:70px"><div class="swipe">Save & swipe ${arrow.replace('#012816','#F5F0E4').replace('#012816','#F5F0E4')}</div></div>
+  <svg class="abs" style="left:110px;top:640px" width="900" height="760" viewBox="0 0 900 760">
+    <path filter="url(#rough2)" d="M60 760 V 300 C 60 120, 230 30, 450 30 C 670 30, 840 120, 840 300 V 760 Z" fill="#012816"/>
+    <path d="M10 700 C 0 330, 160 40, 440 0" stroke="#00D579" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>
+  <svg class="abs" style="right:-60px;top:-60px" width="360" height="300" viewBox="0 0 360 300">
+    <path filter="url(#rough2)" d="M360 0 V 230 C 280 260, 170 250, 100 170 C 60 120, 40 60, 30 0 Z" fill="#7ED088" opacity=".35"/></svg>
+  <img class="abs" src="people/sheetal-point-cut.png" style="left:84px;bottom:-70px;width:980px;z-index:3">
+  <div class="top"><div class="brand"><img src="logos/tsb-forest.png"></div><div class="pg silk" style="padding-top:4px">Swipe &rarr;</div></div>
+  <div class="abs" style="left:66px;top:118px;font-family:Playfair;font-weight:900;font-size:340px;line-height:.86;letter-spacing:-12px;z-index:4">32</div>
+  <div class="abs" style="left:520px;top:178px;font-family:Clash;font-weight:700;font-size:122px;line-height:.9;letter-spacing:-3px;z-index:4">AI<br>TOOLS</div>
+  <svg class="abs" style="left:925px;top:150px;z-index:5" width="80" height="80" viewBox="0 0 90 90"><g stroke="#012816" stroke-width="7" stroke-linecap="round" fill="none"><path d="M14 52 L8 26"/><path d="M30 40 L50 12"/><path d="M40 62 L76 50"/></g></svg>
+  <div class="c-pill" style="top:470px">${'<svg viewBox="0 0 400 90" preserveAspectRatio="none"><path filter="url(#rough)" d="M6 12 C 120 4, 280 2, 394 8 L 396 80 C 280 86, 120 88, 4 84 Z" fill="#7ED088"/></svg>'}You'll actually use</div>
+  <div class="c-row" style="left:640px;top:478px;width:auto;flex-wrap:nowrap">${["chatgpt","canva","capcut","notion","perplex"].map(icon).join('')}</div>
   <div class="grain"></div>
 </section>`;
 
