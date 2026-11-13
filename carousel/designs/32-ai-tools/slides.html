@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>32 AI tools you'll actually use</title>
+<!--
+  2026-11-13. Built from the user's reference (an "AI tools" listicle: seated face + giant serif number cover,
+  2x2 tool-card grids per category, follow CTA), adapted to TSB, not copied:
+  - palette from our logo: ivory ground, forest #012816 organic corners, sage #7ED088 brush marks, mint #00D579 accents
+  - type from the brief: Playfair Display (numbers), Clash Display (headings), Satoshi (body), Silkscreen (labels)
+  - the reference's glossy 3D props are dropped (brief §9): real app icons, hand-drawn strokes, 4% grain
+  - left-aligned, asymmetric corners that swap side per slide; no "students" label
+  Face: Sheetal (Gen AI pillar), real photo DSC00059 cut out, not mirrored.
+  Local only (gitignored): fonts/, people/, logos/. 1080x1350, 80 px margins. Open with #s1 ... #s6.
+-->
+<style>
+  @font-face { font-family: "Clash"; font-weight: 600; src: url("fonts/ClashDisplay-600.woff2"); }
+  @font-face { font-family: "Clash"; font-weight: 700; src: url("fonts/ClashDisplay-700.woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 500; src: url("fonts/Satoshi-500.woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 700; src: url("fonts/Satoshi-700.woff2"); }
+  @font-face { font-family: "Satoshi"; font-weight: 900; src: url("fonts/Satoshi-900.woff2"); }
+  @font-face { font-family: "Playfair"; font-style: normal; src: url("fonts/PlayfairDisplay.ttf"); font-weight: 400 900; }
+  @font-face { font-family: "Playfair"; font-style: italic; src: url("fonts/PlayfairDisplay-Italic.ttf"); font-weight: 400 900; }
+  @font-face { font-family: "Silk"; src: url("fonts/Silkscreen-Regular.ttf"); }
+  :root { --ivory: #F5F0E4; --card: #FFFCF5; --forest: #012816; --forest2: #0E3B24; --sage: #7ED088; --sagel: #CDEBCF; --mint: #00D579; --muted: #5E6E64; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: var(--ivory); }
+  body { font-family: "Satoshi", sans-serif; -webkit-font-smoothing: antialiased; color: var(--forest); }
+  .slide { position: absolute; inset: 0; display: none; overflow: hidden; background: var(--ivory); }
+  .slide.on { display: block; }
+  .grain { position: absolute; inset: 0; background: url("assets/grain.png"); background-size: 256px; opacity: .045; mix-blend-mode: multiply; pointer-events: none; z-index: 50; }
+  .silk { font-family: "Silk", monospace; font-size: 20px; letter-spacing: 1.5px; text-transform: uppercase; }
+  svg.abs, img.abs, .abs { position: absolute; }
+
+  /* top bar */
+  .top { position: absolute; left: 80px; right: 80px; top: 64px; display: flex; align-items: center; justify-content: space-between; z-index: 10; }
+  .top .brand { display: flex; align-items: center; gap: 14px; }
+  .top .brand img { height: 46px; }
+  .top .pg { color: var(--forest); opacity: .7; }
+
+  /* section */
+  .sec { position: absolute; left: 80px; right: 80px; }
+  .sec .lab { color: #2f7a4a; display: flex; gap: 12px; align-items: center; }
+  .sec .lab i { display: inline-block; width: 36px; height: 3px; background: #2f7a4a; border-radius: 2px; }
+  .sec h2 { position: relative; display: inline-block; font-family: "Clash"; font-weight: 600; font-size: 84px; line-height: 1; letter-spacing: -1.5px; margin-top: 14px; padding-bottom: 6px; z-index: 1; }
+  .sec h2 em { font-style: normal; color: #1f8a4c; }
+  .sec h2 .brush { position: absolute; left: -8px; bottom: -14px; width: 104%; height: 30px; z-index: -1; }
+  .sec h2 .ticks { position: absolute; right: -58px; top: -26px; width: 56px; height: 56px; }
+  .sec .num { position: absolute; right: 0; top: -6px; font-family: "Playfair"; font-style: italic; font-weight: 900; font-size: 150px; line-height: 1; color: transparent; -webkit-text-stroke: 2.5px rgba(1,40,22,.22); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 44px; }
+  .card { position: relative; height: 150px; background: var(--card); border: 2px solid rgba(1,40,22,.13); border-radius: 30px; display: flex; align-items: center; padding: 0 22px; box-shadow: 0 7px 0 rgba(1,40,22,.07); }
+  .card .ic { width: 96px; height: 96px; border-radius: 24px; overflow: hidden; flex: none; background: #fff; box-shadow: 0 0 0 1.5px rgba(1,40,22,.08); display: flex; align-items: center; justify-content: center; }
+  .card .ic img { width: 100%; height: 100%; object-fit: cover; }
+  .card .ic.pad img { width: 72%; height: 72%; object-fit: contain; }
+  .card .bar { width: 2px; height: 70px; background: rgba(1,40,22,.14); margin: 0 20px; flex: none; }
+  .card .tx { flex: 1; min-width: 0; }
+  .card .nm { font-family: "Clash"; font-weight: 600; font-size: 33px; line-height: 1.05; letter-spacing: -.3px; white-space: nowrap; }
+  .card .url { font-weight: 500; font-size: 22px; color: var(--muted); margin-top: 7px; white-space: nowrap; }
+  .card .go { width: 50px; height: 50px; border-radius: 50%; background: var(--sagel); flex: none; display: flex; align-items: center; justify-content: center; }
+  .card .flick { position: absolute; left: 104px; top: -18px; width: 34px; height: 34px; }
+
+  .foot { position: absolute; left: 80px; right: 80px; bottom: 58px; display: flex; justify-content: space-between; align-items: center; z-index: 10; }
+  .foot .save { font-family: "Satoshi"; font-weight: 700; font-size: 24px; display: flex; gap: 10px; align-items: center; }
+  .foot .swipe { font-family: "Satoshi"; font-weight: 900; font-size: 24px; display: flex; gap: 10px; align-items: center; background: var(--forest); color: var(--ivory); padding: 12px 22px; border-radius: 40px; }
+
+  /* cover */
+  .c-num { position: absolute; left: 62px; top: 105px; font-family: "Playfair"; font-weight: 900; font-size: 400px; line-height: .86; letter-spacing: -14px; color: var(--forest); z-index: 4; }
+  .c-h { position: absolute; left: 80px; top: 545px; font-family: "Clash"; font-weight: 700; font-size: 118px; line-height: .9; letter-spacing: -3px; z-index: 4; }
+  .c-pill { position: absolute; left: 70px; top: 785px; z-index: 4; padding: 18px 34px 20px; font-family: "Satoshi"; font-weight: 900; font-size: 40px; letter-spacing: .5px; text-transform: uppercase; }
+  .c-pill svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+  .c-sheetal { position: absolute; z-index: 3; }
+  .c-row { position: absolute; left: 80px; top: 935px; display: flex; flex-wrap: wrap; width: 460px; align-items: center; z-index: 4; }
+  .c-row .ic { width: 84px; height: 84px; border-radius: 22px; overflow: hidden; border: 4px solid var(--ivory); margin-right: -18px; background: #fff; display: flex; align-items: center; justify-content: center; }
+  .c-row .ic img { width: 100%; height: 100%; object-fit: cover; }
+  .c-row .ic.pad img { width: 72%; height: 72%; object-fit: contain; }
+  .c-row .more { width: 100%; margin-top: 18px; font-family: "Satoshi"; font-weight: 700; font-size: 28px; line-height: 1.2; }
+
+  /* cta */
+  .cta-q { position: absolute; left: 80px; top: 190px; font-family: "Playfair"; font-style: italic; font-weight: 700; font-size: 84px; line-height: 1; letter-spacing: -1px; }
+  .cta-1 { position: absolute; left: 80px; top: 330px; }
+  .cta-1 .k { font-family: "Clash"; font-weight: 700; font-size: 150px; line-height: .9; letter-spacing: -4px; }
+  .cta-word { position: absolute; left: 80px; top: 480px; background: var(--forest); color: var(--mint); font-family: "Playfair"; font-weight: 900; font-size: 190px; line-height: 1; padding: 6px 46px 26px 40px; border-radius: 36px; letter-spacing: -4px; transform: rotate(-2deg); }
+  .cta-2 { position: absolute; left: 80px; top: 790px; font-family: "Clash"; font-weight: 600; font-size: 64px; line-height: 1; letter-spacing: -1px; }
+  .cta-2 em { font-style: normal; position: relative; z-index: 1; }
+  .ig { position: absolute; left: 80px; top: 900px; width: 760px; border-radius: 26px; overflow: hidden; border: 2px solid rgba(1,40,22,.14); box-shadow: 0 8px 0 rgba(1,40,22,.08); background: #fff; }
+  .ig img { width: 100%; display: block; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="rough" x="-5%" y="-30%" width="110%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035 0.6" numOctaves="2" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="9"/>
+    </filter>
+    <filter id="rough2" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="9"/>
+      <feDisplacementMap in="SourceGraphic" scale="14"/>
+    </filter>
+  </defs>
+</svg>
+
+<div id="root"></div>
+
+<script>
+const L = f => `logos/${f}`;
+const T = {
+  capcut:   ["CapCut", "capcut.com", "capcut.com.svg"],
+  descript: ["Descript", "descript.com", "descript.com.png"],
+  opus:     ["OpusClip", "opus.pro", "opus.pro.png"],
+  runway:   ["Runway", "runwayml.com", "runwayml.com.png"],
+  canva:    ["Canva", "canva.com", "canva.com.png"],
+  ideogram: ["Ideogram", "ideogram.ai", "ideogram.ai.png"],
+  photoroom:["Photoroom", "photoroom.com", "photoroom.com.png"],
+  firefly:  ["Adobe Firefly", "firefly.adobe.com", "firefly.adobe.com.png"],
+  chatgpt:  ["ChatGPT", "chatgpt.com", "chatgpt.com.svg", "pad"],
+  claude:   ["Claude", "claude.ai", "claude.ai.png", "pad"],
+  gemini:   ["Gemini", "gemini.google.com", "gemini.google.com.png", "pad"],
+  grammarly:["Grammarly", "grammarly.com", "grammarly.com.svg", "pad"],
+  eleven:   ["ElevenLabs", "elevenlabs.io", "elevenlabs.io.png"],
+  suno:     ["Suno", "suno.com", "suno.com.png"],
+  podcast:  ["Adobe Podcast", "podcast.adobe.com", "podcast.adobe.com.svg"],
+  murf:     ["Murf AI", "murf.ai", "murf.ai.png"],
+  perplex:  ["Perplexity", "perplexity.ai", "perplexity.ai.png"],
+  nblm:     ["NotebookLM", "notebooklm.google", "notebooklm.google.png", "pad"],
+  elicit:   ["Elicit", "elicit.com", "elicit.com.png"],
+  consensus:["Consensus", "consensus.app", "consensus.app.png", "pad"],
+  gamma:    ["Gamma", "gamma.app", "gamma.app.png"],
+  napkin:   ["Napkin AI", "napkin.ai", "napkin.ai.png"],
+  beautiful:["Beautiful.ai", "beautiful.ai", "beautiful.ai.png"],
+  pitch:    ["Pitch", "pitch.com", "pitch.com.png"],
+  lovable:  ["Lovable", "lovable.dev", "lovable.dev.png", "pad"],
+  cursor:   ["Cursor", "cursor.com", "cursor.com.png"],
+  bolt:     ["Bolt", "bolt.new", "bolt.new.png"],
+  replit:   ["Replit", "replit.com", "replit.com.png", "pad"],
+  notion:   ["Notion", "notion.com", "notion.so.png", "pad"],
+  otter:    ["Otter.ai", "otter.ai", "otter.ai.png"],
+  todoist:  ["Todoist", "todoist.com", "todoist.com.png"],
+  zapier:   ["Zapier", "zapier.com", "zapier.com.png"],
+};
+const PAGES = [
+  [["01", "Video", "editing", ["capcut","descript","opus","runway"]], ["02", "Design &", "thumbnails", ["canva","ideogram","photoroom","firefly"]]],
+  [["03", "Scripts &", "writing", ["chatgpt","claude","gemini","grammarly"]], ["04", "Voice &", "music", ["eleven","suno","podcast","murf"]]],
+  [["05", "Research", "", ["perplex","nblm","elicit","consensus"]], ["06", "Presen", "tations", ["gamma","napkin","beautiful","pitch"]]],
+  [["07", "Vibe", "coding", ["lovable","cursor","bolt","replit"]], ["08", "Getting", "organised", ["notion","otter","todoist","zapier"]]],
+];
+const TOTAL = 6;
+
+const ticks = c => `<svg class="ticks" viewBox="0 0 56 56"><g stroke="${c||'#012816'}" stroke-width="5" stroke-linecap="round" fill="none">
+  <path d="M8 30 L4 14"/><path d="M18 24 L30 6"/><path d="M24 36 L46 28"/></g></svg>`;
+const flick = `<svg class="flick" viewBox="0 0 34 34"><g stroke="#012816" stroke-width="3.6" stroke-linecap="round" fill="none"><path d="M6 26 L3 12"/><path d="M14 22 L24 6"/></g></svg>`;
+const brush = (c, op) => `<svg class="brush" viewBox="0 0 400 30" preserveAspectRatio="none"><path filter="url(#rough)" d="M6 18 C 90 8, 230 6, 394 12 L 392 22 C 260 20, 120 24, 8 27 Z" fill="${c||'#7ED088'}" opacity="${op||.75}"/></svg>`;
+const arrow = `<svg width="26" height="26" viewBox="0 0 26 26"><path d="M5 13 H20 M14 6 L21 13 L14 20" stroke="#012816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
+const icon = k => { const t = T[k]; return `<div class="ic ${t[3]||''}"><img src="${L(t[2])}"></div>`; };
+const card = k => { const t = T[k]; return `<div class="card">${icon(k)}${flick}<div class="bar"></div><div class="tx"><div class="nm">${t[0]}</div><div class="url">${t[1]}</div></div><div class="go">${arrow}</div></div>`; };
+
+/* organic corner shapes: hand-cut, flat, no gloss */
+const cornerTL = `<svg class="abs" style="left:0;top:0" width="400" height="277" viewBox="0 0 520 360">
+  <path filter="url(#rough2)" d="M0 0 H300 C 250 40, 200 60, 150 120 C 100 180, 70 250, 0 300 Z" fill="#7ED088" opacity=".35"/>
+  <path filter="url(#rough2)" d="M0 0 H200 C 160 30, 120 70, 90 120 C 60 170, 40 200, 0 220 Z" fill="#012816"/>
+  <path d="M-10 250 C 120 200, 240 60, 330 -10" stroke="#00D579" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/></svg>`;
+const cornerBR = `<svg class="abs" style="right:0;bottom:0" width="560" height="380" viewBox="0 0 560 380">
+  <path filter="url(#rough2)" d="M560 380 H200 C 260 330, 330 300, 400 220 C 460 150, 500 110, 560 60 Z" fill="#7ED088" opacity=".35"/>
+  <path filter="url(#rough2)" d="M560 380 H330 C 380 340, 430 300, 470 240 C 500 200, 530 180, 560 165 Z" fill="#012816"/>
+  <path d="M570 110 C 430 170, 330 300, 260 400" stroke="#00D579" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/></svg>`;
+const cornerTR = `<svg class="abs" style="right:0;top:0" width="520" height="340" viewBox="0 0 520 340">
+  <path filter="url(#rough2)" d="M520 0 H210 C 260 40, 320 70, 370 130 C 420 190, 450 240, 520 290 Z" fill="#7ED088" opacity=".35"/>
+  <path filter="url(#rough2)" d="M520 0 H330 C 370 30, 400 70, 430 120 C 460 170, 480 190, 520 205 Z" fill="#012816"/>
+  <path d="M530 240 C 400 200, 290 70, 200 -10" stroke="#00D579" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/></svg>`;
+const cornerBL = `<svg class="abs" style="left:0;bottom:0" width="560" height="380" viewBox="0 0 560 380">
+  <path filter="url(#rough2)" d="M0 380 H360 C 300 330, 230 300, 160 220 C 100 150, 60 110, 0 60 Z" fill="#7ED088" opacity=".35"/>
+  <path filter="url(#rough2)" d="M0 380 H230 C 180 340, 130 300, 90 240 C 60 200, 30 180, 0 165 Z" fill="#012816"/>
+  <path d="M-10 110 C 130 170, 230 300, 300 400" stroke="#00D579" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/></svg>`;
+
+const topBar = (n, right) => `<div class="top" style="justify-content:${right?'flex-end':'flex-start'};gap:30px">${right?'':'<div class="brand"><img src="logos/tsb-forest.png"></div>'}<div class="pg silk" style="padding-top:4px">0${n} / 0${TOTAL}</div>${right?'<div class="brand"><img src="logos/tsb-forest.png"></div>':''}</div>`;
+
+function section([num, a, b, keys], y) {
+  return `<div class="sec" style="top:${y}px">
+    <div class="lab silk"><i></i>Category ${num}</div>
+    <h2>${a}${b ? (a.endsWith('n') ? '' : ' ') + `<em>${b}</em>` : ''}${brush()}${ticks()}</h2>
+    <div class="grid">${keys.map(card).join('')}</div>
+  </div>`;
+}
+
+let html = '';
+/* ---------- 1 cover ---------- */
+html += `<section class="slide" id="s1">
+  <svg class="abs" style="right:-60px;bottom:-60px" width="640" height="1100" viewBox="0 0 640 1100">
+    <path filter="url(#rough2)" d="M40 1100 V 380 C 40 170, 190 30, 360 30 C 530 30, 680 170, 680 380 V 1100 Z" fill="#012816"/>
+  </svg>
+  <svg class="abs" style="right:0;top:200px" width="160" height="500" viewBox="0 0 160 500"><path d="M150 0 C 60 120, 40 300, 120 500" stroke="#00D579" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".0"/></svg>
+  <svg class="abs" style="left:-60px;bottom:-80px" width="420" height="300" viewBox="0 0 420 300">
+    <path filter="url(#rough2)" d="M0 300 V 120 C 80 60, 200 40, 300 120 C 360 170, 400 230, 420 300 Z" fill="#7ED088" opacity=".35"/></svg>
+  <img class="c-sheetal" src="people/sheetal-cut.png" style="left:445px;bottom:-270px;height:1400px">
+  <div class="top" style="right:auto"><div class="brand"><img src="logos/tsb-forest.png"></div></div>
+  <div class="c-num">32</div>
+  <svg class="abs" style="left:455px;top:125px;z-index:5" width="90" height="90" viewBox="0 0 90 90"><g stroke="#012816" stroke-width="7" stroke-linecap="round" fill="none"><path d="M14 52 L8 26"/><path d="M30 40 L50 12"/><path d="M40 62 L76 50"/></g></svg>
+  <div class="c-h">AI<br>TOOLS</div>
+  <div class="c-pill"><svg viewBox="0 0 400 90" preserveAspectRatio="none"><path filter="url(#rough)" d="M6 12 C 120 4, 280 2, 394 8 L 396 80 C 280 86, 120 88, 4 84 Z" fill="#7ED088"/></svg>You'll actually use</div>
+  <div class="c-row">${["chatgpt","canva","capcut","notion","perplex"].map(icon).join('')}<div class="more">+27 more<br><span style="font-weight:500;color:#5E6E64">in 8 categories</span></div></div>
+  <div class="foot" style="right:auto;bottom:70px"><div class="swipe">Save & swipe ${arrow.replace('#012816','#F5F0E4').replace('#012816','#F5F0E4')}</div></div>
+  <div class="grain"></div>
+</section>`;
+
+/* ---------- 2-5 tool pages ---------- */
+const corners = [[cornerTR, cornerBL], [cornerTL, cornerBR], [cornerTR, cornerBL], [cornerTL, cornerBR]];
+PAGES.forEach((pg, i) => {
+  const n = i + 2;
+  html += `<section class="slide" id="s${n}">
+    ${corners[i][0]}${corners[i][1]}
+    ${topBar(n, corners[i][0] === cornerTL)}
+    ${section(pg[0], 150)}
+    ${section(pg[1], 690)}
+    <div class="grain"></div>
+  </section>`;
+});
+
+/* ---------- 6 CTA ---------- */
+html += `<section class="slide" id="s6">
+  ${cornerTR}
+  <svg class="abs" style="right:0;bottom:0" width="300" height="260" viewBox="0 0 300 260">
+    <path filter="url(#rough2)" d="M300 260 H40 C 100 210, 170 180, 220 120 C 250 80, 270 50, 300 30 Z" fill="#7ED088" opacity=".35"/></svg>
+  ${topBar(6, false)}
+  <div class="cta-q">Found one you'll try?</div>
+  <div class="cta-1"><div class="k">COMMENT</div></div>
+  <div class="cta-word">“TOOL”</div>
+  <svg class="abs" style="left:700px;top:520px" width="110" height="110" viewBox="0 0 110 110"><g stroke="#012816" stroke-width="7" stroke-linecap="round" fill="none"><path d="M16 64 L8 34"/><path d="M36 48 L62 14"/><path d="M48 78 L96 62"/></g></svg>
+  <div class="cta-2">& <em>follow for more${brush('#7ED088', .8).replace('class="brush"','class="brush" style="position:absolute;left:-6px;bottom:-12px;width:104%;height:26px;z-index:-1"')}</em></div>
+  <div class="ig"><img src="assets/ig-profile.png"></div>
+  <svg class="abs" style="left:250px;top:1150px;z-index:5" width="220" height="100" viewBox="0 0 220 100">
+    <path d="M200 80 C 150 96, 70 90, 40 40" stroke="#012816" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M26 58 L38 34 L62 44" stroke="#012816" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="grain"></div>
+</section>`;
+
+document.getElementById('root').innerHTML = html;
+const show = () => { const id = (location.hash || '#s1').slice(1); document.querySelectorAll('.slide').forEach(s => s.classList.toggle('on', s.id === id)); };
+window.addEventListener('hashchange', show); show();
+</script>
+</body>
+</html>
