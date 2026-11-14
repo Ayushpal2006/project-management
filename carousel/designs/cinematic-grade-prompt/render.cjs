@@ -1,5 +1,5 @@
 // Renders slides.html at 2160x2700 (2x of 1080x1350). Usage: node render.cjs [outDir]
-// Afters: after/after-0N-*.png (user's ChatGPT output) win; otherwise standin/after-0N-*.jpg (layout preview only).
+// Afters: hq/ (EDSR x2 upscale of after/) wins, then after/after-0N-*.png (user's ChatGPT output); otherwise standin/after-0N-*.jpg (layout preview only).
 const { chromium } = require("playwright");
 const path = require("path"), fs = require("fs");
 const names = ["cover", "before-path", "after-path", "before-museum", "after-museum", "cliff-split", "cta"];
@@ -14,7 +14,7 @@ function find(dir, stem) {
 const IMG = {}, used = {};
 for (const [n, k] of Object.entries(keys)) {
   IMG["before" + n] = url(`people/before-0${n}-${k}.jpg`);
-  const a = find("after", `after-0${n}-${k}`) || find("standin", `after-0${n}-${k}`);
+  const a = find("hq", `after-0${n}-${k}-2x`) || find("after", `after-0${n}-${k}`) || find("standin", `after-0${n}-${k}`);
   IMG["after" + n] = url(a); used[n] = a;
 }
 console.log("afters:", used);
