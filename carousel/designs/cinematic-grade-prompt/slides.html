@@ -1,0 +1,127 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Cinematic colour grading PROMPT carousel (TSB version of a before/after grading reference). 1080x1350, rendered at 2x by render.cjs.
+     Photo slots use data-img keys; render.cjs injects window.IMG with the user's ChatGPT afters from after/ (falls back to standin/).
+     people/, after/, standin/, fonts/, brand/ are gitignored (team photos stay out of the public repo). -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Silkscreen&family=Playfair+Display:ital,wght@1,700;1,800&display=block" rel="stylesheet">
+<style>
+@font-face{font-family:Clash;src:url(fonts/ClashDisplay-Bold.woff2)}
+@font-face{font-family:Satoshi;font-weight:500;src:url(fonts/Satoshi-Medium.woff2)}
+@font-face{font-family:Satoshi;font-weight:700;src:url(fonts/Satoshi-Bold.woff2)}
+@font-face{font-family:Satoshi;font-weight:900;src:url(fonts/Satoshi-Black.woff2)}
+:root{--forest:#012816;--mint:#00D579;--ivory:#F6F0E4}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:#000}
+.s{display:none;width:1080px;height:1350px;position:relative;overflow:hidden;font-family:Satoshi;color:#fff;background:#0b0b0c}
+.s:target{display:block}
+.s::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.045;mix-blend-mode:overlay;z-index:50;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.ph{position:absolute;background-size:cover;background-position:center;background-repeat:no-repeat}
+.shade-t{position:absolute;left:0;right:0;top:0;height:300px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,0));z-index:4}
+.shade-b{position:absolute;left:0;right:0;bottom:0;height:300px;background:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,0));z-index:4}
+/* frame: logo top-left, handle top-right, topic bottom-left, count bottom-right (inside IG safe area) */
+.logo{position:absolute;left:64px;top:58px;height:50px;z-index:20;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.handle{position:absolute;right:64px;top:70px;z-index:20;font-weight:700;font-size:25px;color:rgba(255,255,255,.92);text-shadow:0 1px 10px rgba(0,0,0,.55)}
+.topic{position:absolute;left:66px;bottom:70px;z-index:20;font-family:Silkscreen;font-size:21px;letter-spacing:.04em;line-height:1.35;color:rgba(255,255,255,.88);text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.topic b{color:var(--forest);background:var(--mint);font-weight:400;padding:1px 8px;border-radius:5px;text-shadow:none}
+.count{position:absolute;right:64px;bottom:72px;z-index:20;font-family:Silkscreen;font-size:22px;color:rgba(255,255,255,.88);text-shadow:0 1px 8px rgba(0,0,0,.6)}
+/* the big italic label, left-aligned on the upper third */
+.lab{position:absolute;left:62px;top:150px;z-index:10;font-family:'Playfair Display';font-style:italic;font-weight:800;font-size:150px;line-height:1;letter-spacing:-.02em;text-shadow:0 6px 34px rgba(0,0,0,.4)}
+.lab small{display:block;font-family:Silkscreen;font-style:normal;font-weight:400;font-size:22px;letter-spacing:.06em;margin:0 0 14px 6px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.lab small{display:table!important;background:rgba(1,40,22,.78);padding:8px 14px 7px;border-radius:8px}
+.lab.after small{background:var(--mint);color:var(--forest);text-shadow:none}
+.chip{position:absolute;z-index:12;font-family:Silkscreen;font-size:22px;letter-spacing:.06em;padding:9px 16px 8px;border-radius:8px;background:rgba(1,40,22,.82);color:#fff}
+.chip.m{background:var(--mint);color:var(--forest)}
+
+/* 1 · cover */
+#s1 .top{left:0;top:0;width:1080px;height:675px;background-size:150%;background-position:52% 34%}
+#s1 .bot{left:0;top:675px;width:1080px;height:675px;background-size:150%;background-position:52% 24%}
+#s1 .seam{position:absolute;left:0;right:0;top:672px;height:6px;background:var(--mint);z-index:6}
+#s1 .band{position:absolute;left:0;right:0;top:470px;height:420px;background:linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.32) 45%,rgba(0,0,0,.32) 55%,rgba(0,0,0,0));z-index:5}
+#s1 .kick{position:absolute;left:64px;top:500px;z-index:10;font-family:Satoshi;font-weight:900;font-size:52px;letter-spacing:-.01em;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+#s1 h1{position:absolute;left:54px;top:558px;z-index:10;font-family:Anton;font-weight:400;font-size:250px;line-height:1;color:var(--mint);letter-spacing:.005em;text-shadow:0 8px 40px rgba(0,0,0,.35)}
+#s1 .c1{left:64px;top:140px}
+#s1 .c2{left:64px;top:1180px}
+#s1 .swipe{position:absolute;right:64px;bottom:72px;z-index:20;font-family:Silkscreen;font-size:24px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+
+/* 6 · split before/after */
+#s6 .top{left:0;top:0;width:1080px;height:675px;background-position:50% 50%}
+#s6 .bot{left:0;top:675px;width:1080px;height:675px;background-position:50% 50%}
+#s6 .seam{position:absolute;left:0;right:0;top:672px;height:6px;background:var(--mint);z-index:6}
+#s6 .lab{font-size:110px}
+#s6 .l1{top:150px}
+#s6 .l2{top:760px}
+
+/* 7 · CTA */
+#s7 .bg{inset:-30px;filter:blur(6px) brightness(.82)}
+#s7 .card{position:absolute;left:64px;right:64px;top:250px;bottom:190px;border-radius:44px;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.38);backdrop-filter:blur(26px) saturate(1.2);-webkit-backdrop-filter:blur(26px);z-index:10;box-shadow:0 30px 80px rgba(0,0,0,.25);padding:64px 60px}
+#s7 .ig{width:100%;border-radius:22px;background:#fff;display:block;box-shadow:0 14px 40px rgba(0,0,0,.25)}
+#s7 .k{margin-top:70px;font-family:Satoshi;font-weight:900;font-size:56px;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.3)}
+#s7 .word{font-family:'Playfair Display';font-style:italic;font-weight:800;font-size:150px;line-height:.95;margin:6px 0 0 -6px;white-space:nowrap;color:#fff;text-shadow:0 8px 40px rgba(0,0,0,.3)}
+#s7 .word span{color:var(--mint)}
+#s7 .dm{margin-top:24px;font-weight:700;font-size:38px;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+#s7 .save{position:absolute;left:60px;bottom:56px;display:flex;align-items:center;gap:16px;font-weight:700;font-size:32px}
+#s7 .save svg{width:30px;height:38px}
+</style></head><body>
+
+<!-- 1 · cover: before on top, after below, title across the seam -->
+<section class="s" id="s1">
+  <div class="ph top" data-img="before1"></div>
+  <div class="ph bot" data-img="after1"></div>
+  <div class="band"></div><div class="seam"></div>
+  <div class="shade-t"></div><div class="shade-b"></div>
+  <img class="logo" src="brand/logo-ivory.png"><div class="handle">@theskilledbrains</div>
+  <span class="chip c1">BEFORE</span>
+  <div class="kick">Cinematic colour grading</div>
+  <h1>PROMPT</h1>
+  <span class="chip m c2">AFTER</span>
+  <div class="swipe">SWIPE &rarr;</div>
+</section>
+
+<!-- 2-5 · full-bleed before / after pairs -->
+<section class="s" id="s2"><div class="ph" style="inset:0" data-img="before2"></div><div class="shade-t"></div><div class="shade-b"></div>
+  <img class="logo" src="brand/logo-ivory.png"><div class="handle">@theskilledbrains</div>
+  <div class="lab"><small>FLAT DAYLIGHT</small>Before</div>
+  <div class="topic">CINEMATIC COLOUR<br>GRADING <b>PROMPT</b></div><div class="count">02/07</div></section>
+<section class="s" id="s3"><div class="ph" style="inset:0" data-img="after2"></div><div class="shade-t"></div><div class="shade-b"></div>
+  <img class="logo" src="brand/logo-ivory.png"><div class="handle">@theskilledbrains</div>
+  <div class="lab after"><small>ONE PROMPT LATER</small>After</div>
+  <div class="topic">CINEMATIC COLOUR<br>GRADING <b>PROMPT</b></div><div class="count">03/07</div></section>
+<section class="s" id="s4"><div class="ph" style="inset:0" data-img="before3"></div><div class="shade-t"></div><div class="shade-b"></div>
+  <img class="logo" src="brand/logo-ivory.png"><div class="handle">@theskilledbrains</div>
+  <div class="lab"><small>HAZY SKY</small>Before</div>
+  <div class="topic">CINEMATIC COLOUR<br>GRADING <b>PROMPT</b></div><div class="count">04/07</div></section>
+<section class="s" id="s5"><div class="ph" style="inset:0" data-img="after3"></div><div class="shade-t"></div><div class="shade-b"></div>
+  <img class="logo" src="brand/logo-ivory.png"><div class="handle">@theskilledbrains</div>
+  <div class="lab after"><small>SAME PROMPT</small>After</div>
+  <div class="topic">CINEMATIC COLOUR<br>GRADING <b>PROMPT</b></div><div class="count">05/07</div></section>
+
+<!-- 6 · split -->
+<section class="s" id="s6">
+  <div class="ph top" data-img="before4"></div><div class="ph bot" data-img="after4"></div><div class="seam"></div>
+  <div class="shade-t"></div><div class="shade-b"></div>
+  <img class="logo" src="brand/logo-ivory.png"><div class="handle">@theskilledbrains</div>
+  <div class="lab l1"><small>OVERCAST</small>Before</div>
+  <div class="lab after l2"><small>GOLDEN HOUR</small>After</div>
+  <div class="topic">CINEMATIC COLOUR<br>GRADING <b>PROMPT</b></div><div class="count">06/07</div>
+</section>
+
+<!-- 7 · CTA -->
+<section class="s" id="s7">
+  <div class="ph bg" data-img="after2"></div><div class="shade-t"></div>
+  <img class="logo" src="brand/logo-ivory.png"><div class="handle">@theskilledbrains</div>
+  <div class="card">
+    <img class="ig" src="brand/ig-profile.png">
+    <div class="k">Comment</div>
+    <div class="word" id="ctaword">&ldquo;<span>PROMPT</span>&rdquo;</div>
+    <div class="dm">and we'll send it to your DMs</div>
+    <div class="save"><svg viewBox="0 0 30 38"><path d="M2 2h26v34L15 27 2 36z" fill="#fff"/></svg>Save this for later</div>
+  </div>
+  <div class="count">07/07</div>
+</section>
+
+<script>
+const IMG = window.IMG || {};
+document.querySelectorAll('[data-img]').forEach(el => { const u = IMG[el.dataset.img]; if (u) el.style.backgroundImage = `url("${u}")`; });
+</script>
+</body></html>
