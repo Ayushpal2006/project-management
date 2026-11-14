@@ -3,7 +3,7 @@
 // CTA word: env CTA_WORD (default SKETCH).
 const { chromium } = require("playwright");
 const path = require("path"), fs = require("fs");
-const names = ["cover", "teaching", "thinking", "dsr-desk", "pointing-up", "dsr-window", "cta"];
+const names = ["cover", "teaching", "thinking", "arms-crossed", "pointing-up", "creators-hq", "cta"];
 const url = f => "file://" + path.join(__dirname, f);
 const IMG = { ctaWord: process.env.CTA_WORD || "SKETCH" };
 for (let n = 1; n <= 7; n++) {
