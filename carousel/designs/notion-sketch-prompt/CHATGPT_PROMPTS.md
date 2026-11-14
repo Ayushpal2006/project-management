@@ -1,6 +1,6 @@
 # Photo to Notion-style sketch PROMPT: ChatGPT pack
 
-Six sketches to make in ChatGPT (image generation). For each one: open a **new chat**, upload the photo, paste the master prompt, then add that photo's extra line.
+Seven sketches to make in ChatGPT (image generation). For each one: open a **new chat**, upload the photo, paste the master prompt, then add that photo's extra line.
 
 **Mac folder:** `/Users/ayush/Downloads/Project Management /The Skilled brains/Notion sketch prompt/`
 - Photos to upload are in `before/`
@@ -20,7 +20,7 @@ Composition: the full figure exactly as posed in the photo, centred, with 6% whi
 Output: pure white #FFFFFF background, nothing else in the frame, no text, no signature, no border, no shadow. Portrait 2:3, 1024 x 1536 PNG.
 ```
 
-## The six images
+## The seven images
 
 | # | Upload (in before/) | Extra line to add | Save as (in after/) |
 |---|---|---|---|
@@ -30,6 +30,7 @@ Output: pure white #FFFFFF background, nothing else in the frame, no text, no si
 | 4 | `before-04-arms-crossed.jpg` (YRM, arms crossed) | Full body, arms crossed, confident head tilt. Overshirt open over a tee, light trousers, sneakers. No screen. | `after-04-arms-crossed.png` |
 | 5 | `before-05-pointing-up.jpg` (Sheetal didi, both index fingers up) | Waist up. Both hands up, index fingers pointing to the sky, big smile, long open hair as a solid black shape. Add 3 small spark marks above the fingers. | `after-05-pointing-up.png` |
 | 6 | `before-06-creators-hq.jpg` (YRM standing, hands in pockets) | Full body, hands in pockets, relaxed stance, cream overshirt over a white tee, light trousers, sneakers. No sign or background. | `after-06-creators-hq.png` |
+| 7 | `before-07-cta.jpg` (Sheetal didi smiling, holding a card) | Waist up. Big smile, one hand holding up a small blank card, long open hair as a solid black shape. | `after-07-cta.png` |
 
 ## After you save them
 

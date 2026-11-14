@@ -1,4 +1,4 @@
-// Renders slides.html at 2160x2700 (2x of 1080x1350). Usage: python3 -I prep.py . && node render.cjs [outDir]
+// Renders slides.html at 2160x2880 (2x of 1080x1440, 3:4). Usage: python3 -I prep.py . && node render.cjs [outDir]
 // Photos: people/before-0N-*.jpg. Sketches: ink/ink-0N.png (made by prep.py from after/ or standin/).
 // CTA word: env CTA_WORD (default SKETCH).
 const { chromium } = require("playwright");
@@ -6,7 +6,7 @@ const path = require("path"), fs = require("fs");
 const names = ["cover", "teaching", "thinking", "arms-crossed", "pointing-up", "creators-hq", "cta"];
 const url = f => "file://" + path.join(__dirname, f);
 const IMG = { ctaWord: process.env.CTA_WORD || "SKETCH" };
-for (let n = 1; n <= 6; n++) {
+for (let n = 1; n <= 7; n++) {
   const b = fs.readdirSync(path.join(__dirname, "people")).find(f => f.startsWith(`before-0${n}-`));
   IMG["before" + n] = url(`people/${b}`);
   IMG["ink" + n] = url(`ink/ink-0${n}.png`);
@@ -15,7 +15,7 @@ for (let n = 1; n <= 6; n++) {
   const out = path.resolve(process.argv[2] || path.join(__dirname, "out"));
   fs.mkdirSync(out, { recursive: true });
   const browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: +(process.env.SCALE || 2) });
+  const page = await browser.newPage({ viewport: { width: 1080, height: 1440 }, deviceScaleFactor: +(process.env.SCALE || 2) });
   await page.addInitScript(m => { window.IMG = m; }, IMG);
   for (let i = 1; i <= names.length; i++) {
     await page.goto(url("slides.html") + `#s${i}`, { waitUntil: "load" });

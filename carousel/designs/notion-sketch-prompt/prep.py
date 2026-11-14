@@ -5,7 +5,7 @@ import sys, glob, os
 from PIL import Image, ImageOps
 D = sys.argv[1]; os.makedirs(f"{D}/ink", exist_ok=True)
 FOREST = (1, 40, 22)
-for n in range(1, 7):
+for n in range(1, 8):
     src = (sorted(glob.glob(f"{D}/after/after-0{n}-*")) or sorted(glob.glob(f"{D}/standin/after-0{n}-*")))
     if not src: continue
     im = ImageOps.exif_transpose(Image.open(src[0])).convert("L")
