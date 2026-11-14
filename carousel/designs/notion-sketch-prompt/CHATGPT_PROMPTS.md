@@ -1,41 +1,62 @@
-# Photo to Notion-style sketch PROMPT: ChatGPT pack
+# Photo to Notion-style sketch PROMPT: ChatGPT pack (v2, matches the reference)
 
-Seven sketches to make in ChatGPT (image generation). For each one: open a **new chat**, upload the photo, paste the master prompt, then add that photo's extra line.
+Each slide needs **two images**, made in **one ChatGPT chat per slide** (7 chats):
+- **Step A, studio photo:** your real phone photo turned into an editorial studio photo (like the reference's top half). Same person, same clothes and pose, a seamless backdrop in a brand colour.
+- **Step B, sketch:** in the same chat, the studio photo turned into the Notion-style ink sketch (the bottom half).
 
 **Mac folder:** `/Users/ayush/Downloads/Project Management /The Skilled brains/Notion sketch prompt/`
-- Photos to upload are in `before/`
-- Save each result in `after/` with the exact filename below (PNG). If ChatGPT can't save there, download it and drag it into `after/`.
+- Upload from `before/`
+- Save Step A in `studio/` and Step B in `after/`, with the exact names in the table. If ChatGPT can't save there, download and drag the files in.
 
-## Master prompt (also the DM resource for the CTA)
+If you skip Step A, the slide uses your original photo with a light grade. Step B is required.
+
+## Step A prompt (paste with the photo, then add the slide's backdrop line)
 
 ```
-Turn the person in this photo into a Notion-style illustration.
+Recreate this exact photo as a high-end editorial studio portrait.
 
-Style: clean hand-drawn black ink line art, like the people illustrations on Notion's website. Confident, slightly uneven pen outlines, minimal interior detail, solid flat black fills only on hair, dark clothing and shoes. No grey shading, no gradients, no colour, no hatching.
+Keep the person 100% identical: same face, face shape, skin tone, hairstyle, glasses, beard/moustache, expression, body and the same clothes and pose. Do not beautify, slim, or change age. This is a real person and must stay recognisable.
 
-Likeness: keep the face clearly recognisable as this exact person: same face shape, hairstyle and hairline, glasses (if any), beard or moustache, skin texture left white, same expression. Keep the same clothes, the same pose and any object they hold.
+Studio: one seamless paper backdrop (colour given below), soft large key light from the front-left, gentle fill, soft natural shadow on the floor, slight warm film tone, crisp focus, 85mm lens look, eye-level camera. The person fills about 70% of the frame height with clean space around them.
 
-Composition: the full figure exactly as posed in the photo, centred, with 6% white margin on every side. Add 2 or 3 tiny hand-drawn emotion/motion marks near the head. Drop the background completely.
-
-Output: pure white #FFFFFF background, nothing else in the frame, no text, no signature, no border, no shadow. Portrait 2:3, 1024 x 1536 PNG.
+No text, no logos, no props that are not in my photo.
+Landscape 3:2, 1536 x 1024 PNG.
 ```
 
-## The seven images
+## Step B prompt (send in the same chat, right after Step A)
 
-| # | Upload (in before/) | Extra line to add | Save as (in after/) |
-|---|---|---|---|
-| 1 | `before-01-cover.jpg` (YRM, leaning on rail, smiling) | Show him from head to shoes even though the photo cuts at the knees: black trousers, white sneakers, leaning back with both elbows on a simple railing drawn in 3-4 lines. He looks straight at the viewer and smiles. | `after-01-cover.png` |
-| 2 | `before-02-teaching.jpg` (YRM pointing at a screen) | Keep the raised pointing hand. Draw the screen behind him as a simple outlined rectangle with 3 short lines on it, nothing more. | `after-02-teaching.png` |
-| 3 | `before-03-thinking.jpg` (Sheetal didi, hand on chin, looking up) | Half body. Keep the thoughtful upward look, hand on chin, long open hair as a solid black shape with a few white strand lines, small hoop earrings, wrist watch. Add a tiny hand-drawn question mark near her head. | `after-03-thinking.png` |
-| 4 | `before-04-arms-crossed.jpg` (YRM, arms crossed) | Full body, arms crossed, confident head tilt. Overshirt open over a tee, light trousers, sneakers. No screen. | `after-04-arms-crossed.png` |
-| 5 | `before-05-pointing-up.jpg` (Sheetal didi, both index fingers up) | Waist up. Both hands up, index fingers pointing to the sky, big smile, long open hair as a solid black shape. Add 3 small spark marks above the fingers. | `after-05-pointing-up.png` |
-| 6 | `before-06-creators-hq.jpg` (YRM standing, hands in pockets) | Full body, hands in pockets, relaxed stance, cream overshirt over a white tee, light trousers, sneakers. No sign or background. | `after-06-creators-hq.png` |
-| 7 | `before-07-cta.jpg` (Sheetal didi smiling, holding a card) | Waist up. Big smile, one hand holding up a small blank card, long open hair as a solid black shape. | `after-07-cta.png` |
+```
+Now turn the person in that studio photo into a Notion-style illustration.
 
-## After you save them
+Style: clean hand-drawn black ink line art, like the people illustrations on Notion's website. Confident pen outlines with varied weight, solid flat black fills on hair, dark clothing and shoes, crisp detail on folds, glasses, watch and shoes. No grey shading, no gradients, no colour.
 
-Tell the thread "sketches are in". The thread stages `after/` into this design folder, runs `python3 -I prep.py .` (turns the black ink forest green on the ivory paper) and `node render.cjs`. Nothing else in the design changes.
+Likeness: keep the face clearly recognisable as this exact person (same face shape, hairstyle, glasses, beard or moustache, expression). Same clothes, same pose, same objects.
+
+Composition: the full figure as posed, centred, 6% white margin on every side. Add 2 or 3 tiny hand-drawn emotion/motion marks near the head. No background at all.
+
+Output: pure white #FFFFFF background, no text, no signature, no border, no shadow. Portrait 2:3, 1024 x 1536 PNG.
+```
+
+## The seven slides
+
+| # | Upload (before/) | Step A backdrop line | Step B extra line | Save Step A (studio/) | Save Step B (after/) |
+|---|---|---|---|---|---|
+| 1 | `before-01-cover.jpg` YRM leaning, smiling | Backdrop: deep forest green #012816. He leans back on a simple black metal studio rail, looking straight at the camera, smiling. Show him from head to shoes. | Head to shoes, leaning back on a simple railing drawn in a few lines, looking at the viewer. | `studio-01-cover.png` | `after-01-cover.png` |
+| 2 | `before-02-teaching.jpg` YRM pointing | Backdrop: clean white #FFFFFF. Keep the raised pointing hand; replace the TV with nothing (he points at empty space). | Keep the raised pointing hand. | `studio-02-teaching.png` | `after-02-teaching.png` |
+| 3 | `before-03-thinking.jpg` Sheetal didi, hand on chin | Backdrop: sage green #7ED088. Half body, hand on chin, looking up thoughtfully. | Half body. Long open hair as a solid black shape with a few white strand lines; small hoop earrings; wrist watch. Add a tiny question mark near her head. | `studio-03-thinking.png` | `after-03-thinking.png` |
+| 4 | `before-04-arms-crossed.jpg` YRM arms crossed | Backdrop: warm ivory #F6F0E4. Full body, arms crossed, confident head tilt; remove the screen. | Full body, arms crossed, overshirt open over a tee, sneakers. | `studio-04-arms-crossed.png` | `after-04-arms-crossed.png` |
+| 5 | `before-05-pointing-up.jpg` Sheetal didi, fingers up | Backdrop: dark forest #14281C hand-painted canvas texture (like an old-master studio backdrop). Waist up, both index fingers up, big smile. | Waist up, both index fingers up, big smile, 3 small spark marks above the fingers. | `studio-05-pointing-up.png` | `after-05-pointing-up.png` |
+| 6 | `before-06-creators-hq.jpg` YRM, hands in pockets | Backdrop: soft light grey #E9ECEA. Full body, hands in pockets, relaxed; no sign. | Full body, hands in pockets, cream overshirt over a white tee, light trousers, sneakers. | `studio-06-creators-hq.png` | `after-06-creators-hq.png` |
+| 7 | `before-07-cta.jpg` Sheetal didi smiling with a card | Backdrop: soft light grey #E9ECEA. Waist up, big smile, holding up a small blank card. | Waist up, big smile, one hand holding up a small blank card. | `studio-07-cta.png` | `after-07-cta.png` |
+
+The backdrops use only brand colours (forest #012816, dark forest #14281C, sage #7ED088, ivory #F6F0E4, white, light grey), so the brand brief doesn't change.
 
 ## Tips
-- If the face drifts, reply in the same chat: "Make the face look more like the photo: same jaw, nose, eyes and glasses. Keep everything else."
-- If ChatGPT adds grey shading or a background: "Pure black ink on pure white only, remove all grey and background."
+- If the face drifts in Step A: "The face must match my photo exactly: same jaw, nose, eyes, glasses and skin tone. Keep everything else."
+- If Step B adds grey or a background: "Pure black ink on pure white only. Remove all grey and background."
+
+## The DM resource
+The Step B prompt is the one people get when they comment "SKETCH".
+
+## After you save them
+Tell the thread "images are in". The thread stages `studio/` and `after/` into this design, runs `grade.py`, `prep.py` and `render.cjs`, and nothing else in the layout changes.

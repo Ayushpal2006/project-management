@@ -1,4 +1,4 @@
-// Renders slides.html at 2160x2880 (2x of 1080x1440, 3:4). Usage: python3 -I prep.py . && node render.cjs [outDir]
+// Renders slides.html at 2160x2880 (2x of 1080x1440, 3:4). Usage: python3 -I grade.py . && python3 -I prep.py . && node render.cjs [outDir]
 // Photos: people/before-0N-*.jpg. Sketches: ink/ink-0N.png (made by prep.py from after/ or standin/).
 // CTA word: env CTA_WORD (default SKETCH).
 const { chromium } = require("playwright");
@@ -7,8 +7,12 @@ const names = ["cover", "teaching", "thinking", "arms-crossed", "pointing-up", "
 const url = f => "file://" + path.join(__dirname, f);
 const IMG = { ctaWord: process.env.CTA_WORD || "SKETCH" };
 for (let n = 1; n <= 7; n++) {
-  const b = fs.readdirSync(path.join(__dirname, "people")).find(f => f.startsWith(`before-0${n}-`));
-  IMG["before" + n] = url(`people/${b}`);
+  // photo: studio/ (ChatGPT studio version) > graded/ (grade.py) > people/ (original)
+  for (const dir of ["studio", "graded", "people"]) {
+    const d = path.join(__dirname, dir);
+    const b = fs.existsSync(d) && fs.readdirSync(d).find(f => f.startsWith(`before-0${n}-`) || f.startsWith(`studio-0${n}-`));
+    if (b) { IMG["before" + n] = url(`${dir}/${b}`); break; }
+  }
   IMG["ink" + n] = url(`ink/ink-0${n}.png`);
 }
 (async () => {
