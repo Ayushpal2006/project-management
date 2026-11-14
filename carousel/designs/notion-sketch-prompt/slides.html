@@ -1,0 +1,137 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Photo -> Notion-style sketch PROMPT carousel (TSB version of a photo/illustration reference). 1080x1350, rendered at 2x by render.cjs.
+     Sketchbook direction: ivory paper, forest-ink sketch as the hero, the real photo taped on as a polaroid, one mint arrow.
+     render.cjs injects window.IMG (photos from people/, inked sketches from ink/, built by prep.py from after/ or standin/).
+     people/, after/, standin/, ink/, fonts/, brand/ are gitignored (team photos stay out of the public repo). -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Silkscreen&display=block" rel="stylesheet">
+<style>
+@font-face{font-family:Clash;src:url(fonts/ClashDisplay-Bold.woff2)}
+@font-face{font-family:Satoshi;font-weight:500;src:url(fonts/Satoshi-Medium.woff2)}
+@font-face{font-family:Satoshi;font-weight:700;src:url(fonts/Satoshi-Bold.woff2)}
+:root{--forest:#012816;--mint:#00D579;--ivory:#F6F0E4;--paper:#FBF7EE}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:var(--ivory)}
+.s{display:none;width:1080px;height:1350px;position:relative;overflow:hidden;font-family:Satoshi;color:var(--forest);
+ background:var(--ivory) radial-gradient(rgba(1,40,22,.13) 1.6px,transparent 1.8px) 0 0/36px 36px}
+.s:target{display:block}
+.s::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;z-index:50;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+/* frame */
+.logo{position:absolute;left:64px;top:58px;height:50px;z-index:20}
+.handle{position:absolute;right:64px;top:70px;z-index:20;font-weight:700;font-size:25px}
+.topic{position:absolute;left:66px;bottom:66px;z-index:20;font-family:Silkscreen;font-size:21px;letter-spacing:.04em;line-height:1.4}
+.topic b{background:var(--mint);font-weight:400;padding:1px 8px;border-radius:5px}
+.count{position:absolute;right:64px;bottom:68px;z-index:20;font-family:Silkscreen;font-size:22px}
+.chip{position:absolute;z-index:30;font-family:Silkscreen;font-size:22px;letter-spacing:.06em;padding:9px 16px 8px;border-radius:8px;background:var(--forest);color:#fff;white-space:nowrap}
+.chip.m{background:var(--mint);color:var(--forest)}
+/* polaroid with washi tape */
+.pol{position:absolute;z-index:12;background:#fff;padding:16px 16px 64px;box-shadow:0 18px 40px rgba(1,40,22,.18),0 2px 6px rgba(1,40,22,.12)}
+.pol .ph{width:100%;height:100%;background-size:cover;background-position:center}
+.pol .cap{position:absolute;left:20px;bottom:18px;font-family:Silkscreen;font-size:20px;letter-spacing:.05em;color:var(--forest)}
+.pol .tape{position:absolute;left:50%;top:-24px;width:170px;height:48px;margin-left:-85px;background:rgba(0,213,121,.72);transform:rotate(-3deg);
+ clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,100% 0,96% 12%,100% 25%,96% 40%,100% 55%,96% 70%,100% 85%,96% 100%,0 100%,4% 85%,0 70%,4% 55%,0 40%,4% 25%)}
+/* sketch */
+.sk{position:absolute;z-index:8;background-repeat:no-repeat;background-size:contain}
+.arrow{position:absolute;z-index:25}
+.arrow path{fill:none;stroke:var(--mint);stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+
+/* content slides: polaroid left-top, sketch right (alt flips) */
+.c .pol{left:64px;top:170px;width:400px;height:540px;transform:rotate(-4deg)}
+.c .sk{right:30px;top:140px;width:640px;height:1040px;background-position:right bottom}
+.c .arrow{left:330px;top:720px;width:250px;height:230px}
+.c .chip.m{left:120px;top:1000px}
+.c.alt .pol{left:auto;right:64px;transform:rotate(4deg)}
+.c.alt .sk{right:auto;left:30px;background-position:left bottom}
+.c.alt .arrow{left:auto;right:330px;transform:scaleX(-1)}
+.c.alt .chip.m{left:auto;right:110px}
+
+/* 1 · cover */
+#s1 .pol{left:70px;top:170px;width:380px;height:500px;transform:rotate(-5deg)}
+#s1 .sk{right:20px;top:120px;width:600px;height:880px;background-position:right top}
+#s1 .arrow{left:380px;top:420px;width:230px;height:180px}
+#s1 .kick{position:absolute;left:64px;top:880px;z-index:22;font-family:Clash;font-size:60px;line-height:1.02;letter-spacing:-.01em}
+#s1 h1{position:absolute;left:52px;top:1000px;z-index:22;font-family:Anton;font-weight:400;font-size:230px;line-height:1;letter-spacing:.005em}
+#s1 h1 span{position:relative;display:inline-block}
+#s1 h1 span::before{content:"";position:absolute;left:-14px;right:-18px;bottom:22px;height:92px;background:var(--mint);z-index:-1;transform:rotate(-1.5deg);border-radius:6px}
+#s1 .swipe{position:absolute;right:64px;bottom:68px;z-index:20;font-family:Silkscreen;font-size:24px}
+
+/* 7 · CTA */
+#s7 .pol{left:64px;top:190px;width:740px;height:auto;padding-bottom:20px;transform:rotate(-3deg)}
+#s7 .pol img{display:block;width:100%}
+#s7 .k{position:absolute;left:64px;top:690px;font-family:Clash;font-size:64px;z-index:22}
+#s7 .word{position:absolute;left:54px;top:765px;z-index:22;font-family:Anton;font-size:190px;line-height:1}
+#s7 .word span{position:relative;display:inline-block}
+#s7 .word span::before{content:"";position:absolute;left:-14px;right:-18px;bottom:20px;height:86px;background:var(--mint);z-index:-1;transform:rotate(-1.5deg);border-radius:6px}
+#s7 .dm{position:absolute;left:64px;top:990px;font-weight:700;font-size:40px;z-index:22}
+#s7 .save{position:absolute;left:64px;top:1060px;display:flex;align-items:center;gap:14px;font-weight:700;font-size:32px;z-index:22;opacity:.85}
+#s7 .save svg{width:26px;height:34px}
+#s7 .sk{right:24px;top:520px;width:380px;height:700px;background-position:right bottom}
+</style></head><body>
+
+<!-- 1 · cover -->
+<section class="s" id="s1">
+  <img class="logo" src="brand/logo-forest.png"><div class="handle">@theskilledbrains</div>
+  <div class="pol"><span class="tape"></span><div class="ph" data-img="before1"></div><span class="cap">THE PHOTO</span></div>
+  <svg class="arrow" viewBox="0 0 230 180"><path d="M14 30 C 70 6, 150 30, 186 120"/><path d="M150 104 L 188 128 L 206 84"/></svg>
+  <div class="sk" data-img="ink1"></div>
+  <div class="kick">Your photo, as a<br>Notion-style sketch</div>
+  <h1><span>PROMPT</span></h1>
+  <div class="swipe">SWIPE &rarr;</div>
+</section>
+
+<!-- 2-6 · photo -> sketch pairs -->
+<section class="s c" id="s2">
+  <img class="logo" src="brand/logo-forest.png"><div class="handle">@theskilledbrains</div>
+  <div class="pol"><span class="tape"></span><div class="ph" data-img="before2" style="background-position:50% 30%"></div><span class="cap">PHOTO</span></div>
+  <svg class="arrow" viewBox="0 0 250 230"><path d="M30 14 C 10 110, 80 190, 220 196"/><path d="M180 160 L 224 196 L 182 226"/></svg>
+  <div class="sk" data-img="ink2"></div><span class="chip m">ONE PROMPT</span>
+  <div class="topic">PHOTO TO <b>NOTION</b><br>STYLE SKETCH</div><div class="count">02/07</div>
+</section>
+<section class="s c alt" id="s3">
+  <img class="logo" src="brand/logo-forest.png"><div class="handle">@theskilledbrains</div>
+  <div class="pol"><span class="tape"></span><div class="ph" data-img="before3" style="background-position:46% 40%"></div><span class="cap">PHOTO</span></div>
+  <svg class="arrow" viewBox="0 0 250 230"><path d="M30 14 C 10 110, 80 190, 220 196"/><path d="M180 160 L 224 196 L 182 226"/></svg>
+  <div class="sk" data-img="ink3"></div><span class="chip m">SAME PROMPT</span>
+  <div class="topic">PHOTO TO <b>NOTION</b><br>STYLE SKETCH</div><div class="count">03/07</div>
+</section>
+<section class="s c" id="s4">
+  <img class="logo" src="brand/logo-forest.png"><div class="handle">@theskilledbrains</div>
+  <div class="pol"><span class="tape"></span><div class="ph" data-img="before4" style="background-position:50% 30%"></div><span class="cap">PHOTO</span></div>
+  <svg class="arrow" viewBox="0 0 250 230"><path d="M30 14 C 10 110, 80 190, 220 196"/><path d="M180 160 L 224 196 L 182 226"/></svg>
+  <div class="sk" data-img="ink4"></div><span class="chip m">SAME PROMPT</span>
+  <div class="topic">PHOTO TO <b>NOTION</b><br>STYLE SKETCH</div><div class="count">04/07</div>
+</section>
+<section class="s c alt" id="s5">
+  <img class="logo" src="brand/logo-forest.png"><div class="handle">@theskilledbrains</div>
+  <div class="pol"><span class="tape"></span><div class="ph" data-img="before5" style="background-position:52% 40%"></div><span class="cap">PHOTO</span></div>
+  <svg class="arrow" viewBox="0 0 250 230"><path d="M30 14 C 10 110, 80 190, 220 196"/><path d="M180 160 L 224 196 L 182 226"/></svg>
+  <div class="sk" data-img="ink5"></div><span class="chip m">SAME PROMPT</span>
+  <div class="topic">PHOTO TO <b>NOTION</b><br>STYLE SKETCH</div><div class="count">05/07</div>
+</section>
+<section class="s c" id="s6">
+  <img class="logo" src="brand/logo-forest.png"><div class="handle">@theskilledbrains</div>
+  <div class="pol"><span class="tape"></span><div class="ph" data-img="before6" style="background-position:50% 45%"></div><span class="cap">PHOTO</span></div>
+  <svg class="arrow" viewBox="0 0 250 230"><path d="M30 14 C 10 110, 80 190, 220 196"/><path d="M180 160 L 224 196 L 182 226"/></svg>
+  <div class="sk" data-img="ink6"></div><span class="chip m">SAME PROMPT</span>
+  <div class="topic">PHOTO TO <b>NOTION</b><br>STYLE SKETCH</div><div class="count">06/07</div>
+</section>
+
+<!-- 7 · CTA -->
+<section class="s" id="s7">
+  <img class="logo" src="brand/logo-forest.png"><div class="handle">@theskilledbrains</div>
+  <div class="pol"><span class="tape"></span><img src="brand/ig-profile.png"></div>
+  <div class="sk" data-img="ink5"></div>
+  <div class="k">Comment</div>
+  <div class="word">&ldquo;<span id="ctaword">SKETCH</span>&rdquo;</div>
+  <div class="dm">and we'll DM you the prompt</div>
+  <div class="save"><svg viewBox="0 0 30 38"><path d="M2 2h26v34L15 27 2 36z" fill="#012816"/></svg>Save this for later</div>
+  <div class="count">07/07</div>
+</section>
+
+<script>
+const IMG = window.IMG || {};
+document.querySelectorAll('[data-img]').forEach(el => { const u = IMG[el.dataset.img]; if (u) el.style.backgroundImage = `url("${u}")`; });
+if (IMG.ctaWord) document.getElementById('ctaword').textContent = IMG.ctaWord;
+</script>
+</body></html>

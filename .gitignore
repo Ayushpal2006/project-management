@@ -11,3 +11,12 @@ brand/references/files/
 brand/assets/
 brand/hero-thumbnails/*
 !brand/hero-thumbnails/INDEX.md
+
+# notion-sketch-prompt: photos, sketches and fonts stay local
+carousel/designs/notion-sketch-prompt/people/
+carousel/designs/notion-sketch-prompt/after/
+carousel/designs/notion-sketch-prompt/standin/
+carousel/designs/notion-sketch-prompt/ink/
+carousel/designs/notion-sketch-prompt/fonts/
+carousel/designs/notion-sketch-prompt/brand/
+carousel/designs/notion-sketch-prompt/out/
