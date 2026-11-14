@@ -1,0 +1,85 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Public DM resource for COMMENT "PROMPT": the cinematic colour grading prompt as a 3-page A4-ish PDF (1080x1350 pages). Rendered by render-pdf.cjs. -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Silkscreen&family=Playfair+Display:ital,wght@1,800&family=JetBrains+Mono:wght@400;600&display=block" rel="stylesheet">
+<style>
+@font-face{font-family:Satoshi;font-weight:500;src:url(fonts/Satoshi-Medium.woff2)}
+@font-face{font-family:Satoshi;font-weight:700;src:url(fonts/Satoshi-Bold.woff2)}
+@font-face{font-family:Satoshi;font-weight:900;src:url(fonts/Satoshi-Black.woff2)}
+:root{--forest:#012816;--mint:#00D579;--ivory:#F6F0E4}
+@page{size:1080px 1350px;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Satoshi;color:var(--forest);background:#fff}
+.pg{width:1080px;height:1350px;position:relative;overflow:hidden;page-break-after:always;background:var(--ivory);padding:90px 80px}
+.pg:last-child{page-break-after:auto}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:56px}
+.top img{height:50px}
+.top span{font-weight:700;font-size:24px}
+.chip{display:inline-block;font-family:Silkscreen;font-size:20px;letter-spacing:.06em;padding:8px 14px 7px;border-radius:8px;background:var(--forest);color:#fff}
+.chip.m{background:var(--mint);color:var(--forest)}
+h1{font-family:Anton;font-weight:400;font-size:190px;line-height:1;color:var(--forest);margin:26px 0 30px}
+h1 span{display:inline-block;background:var(--mint);padding:6px 18px 0;line-height:1.05}
+h2{font-family:'Playfair Display';font-style:italic;font-weight:800;font-size:72px;line-height:1;margin:12px 0 26px}
+.lead{font-size:34px;font-weight:500;line-height:1.35;max-width:820px}
+.ba{display:flex;gap:24px;margin-top:56px}
+.ba div{flex:1;height:520px;border-radius:24px;background-size:cover;background-position:50% 35%;position:relative}
+.ba .chip{position:absolute;left:18px;top:18px}
+.prompt{background:var(--forest);color:#EAF7EF;border-radius:28px;padding:40px 44px;font-family:'JetBrains Mono';font-size:19.5px;line-height:1.55;white-space:pre-wrap}
+.prompt b{color:var(--mint);font-weight:600}
+ol{margin:10px 0 0 34px;font-size:30px;font-weight:500;line-height:1.4}
+ol li{margin-bottom:22px}
+ol li b{font-weight:900}
+.tip{margin-top:30px;border-left:8px solid var(--mint);padding:8px 0 8px 26px;font-size:28px;line-height:1.4}
+.foot{position:absolute;left:80px;right:80px;bottom:56px;display:flex;justify-content:space-between;font-family:Silkscreen;font-size:18px;color:rgba(1,40,22,.7)}
+</style></head><body>
+
+<section class="pg">
+  <div class="top"><img src="brand/logo-forest.png"><span>@theskilledbrains</span></div>
+  <span class="chip">CINEMATIC COLOUR GRADING</span>
+  <h1><span>PROMPT</span></h1>
+  <p class="lead">Turn a flat, grey daytime photo into a golden-hour film still, while keeping the face exactly the same.</p>
+  <div class="ba"><div data-img="before1"><span class="chip">BEFORE</span></div><div data-img="after1"><span class="chip m">AFTER</span></div></div>
+  <div class="foot"><span>WORKS IN CHATGPT IMAGE GENERATION</span><span>01/03</span></div>
+</section>
+
+<section class="pg">
+  <div class="top"><img src="brand/logo-forest.png"><span>@theskilledbrains</span></div>
+  <span class="chip m">COPY THIS</span>
+  <h2>The prompt</h2>
+<div class="prompt">Edit this exact photo. Do not create a new image.
+
+Location: <b>[where the photo was taken, e.g. a beach in Goa, a village road, a city street]</b>.
+
+Keep the person 100% identical: same face, facial features, skin tone, expression, hair, glasses, clothes, pose, body shape and position in the frame. Do not lighten, smooth or beautify the skin. Keep the same background, objects, camera angle and framing. Do not add or remove people, objects or text. Never mirror the image.
+
+Only change the light and the colour, like a film colourist:
+- Light: golden hour, about 40 minutes before sunset. Warm, low sunlight from one side, soft long shadows, a gentle warm rim light on the hair and shoulders.
+- Atmosphere: light natural haze and soft visible sun rays. For this location: <b>[e.g. sun rays through the trees / golden sparkle on the water / warm light on the buildings]</b>. Subtle and believable.
+- Sky: if it is grey, flat or overexposed, make it a late-afternoon sky, soft blue fading to warm peach, a few clouds lit gold underneath.
+- Grade: warm amber highlights, deep teal-green shadows, rich natural greens, true-to-life warm skin (never orange), gentle film contrast, very fine film grain.
+- Finish: full-frame cinema camera, 35mm lens, natural depth of field, crisp detail. Photorealistic, like a still from a premium travel film.
+
+Output: portrait, same framing as the original, highest resolution, PNG.</div>
+  <div class="foot"><span>FILL THE TWO <b style="color:var(--forest)">[ ]</b> PARTS, THEN PASTE</span><span>02/03</span></div>
+</section>
+
+<section class="pg">
+  <div class="top"><img src="brand/logo-forest.png"><span>@theskilledbrains</span></div>
+  <span class="chip">HOW TO USE IT</span>
+  <h2>3 steps</h2>
+  <ol>
+    <li><b>Pick a flat photo.</b> Overcast sky, harsh noon light or a dull phone shot works best. A clear face helps.</li>
+    <li><b>Open ChatGPT, upload the photo,</b> fill in the two [ ] parts of the prompt and paste it.</li>
+    <li><b>Check the face.</b> If it looks even slightly different, press regenerate. Download the PNG.</li>
+  </ol>
+  <div class="tip"><b>Face keeps changing?</b> Upload 3 to 5 clear close-ups of the same person along with the photo, and add this line at the top: "The extra images are face references only. Keep this exact face."</div>
+  <div class="tip"><b>Doing many photos?</b> Upload them all in one chat, ask it to edit one at a time, and type "next" after each.</div>
+  <div class="ba" style="margin-top:40px"><div data-img="before2" style="height:250px"><span class="chip">BEFORE</span></div><div data-img="after2" style="height:250px"><span class="chip m">AFTER</span></div></div>
+  <div class="foot"><span>FOLLOW @THESKILLEDBRAINS FOR MORE</span><span>03/03</span></div>
+</section>
+
+<script>
+const IMG = window.IMG || {};
+document.querySelectorAll('[data-img]').forEach(el => { const u = IMG[el.dataset.img]; if (u) el.style.backgroundImage = `url("${u}")`; });
+</script>
+</body></html>
